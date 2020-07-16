@@ -14,7 +14,15 @@ public class GameAssets : MonoBehaviour
             return _i;
         }
     }
+
     // SFX
+    //[Header("SFX Clips")]
 
     // Musics
+    //[Header("Music Clips")]
+
+    // Sprites
+    //[Header("Sprites")]
+
+    // If you have any other types of assets to implement, set a header for it (ex: Header("Music Clips")]) !
 }
