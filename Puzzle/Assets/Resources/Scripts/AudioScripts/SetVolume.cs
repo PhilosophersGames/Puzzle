@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-
-public class SetVolume : MonoBehaviour
+using UnityEngine.UI;
+public class SetVolume : MonoBehaviour, EventHandler
 {
     public AudioMixer mixer;
 
