@@ -7,7 +7,7 @@ public class SoundFxOnUI : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
 {
     public void OnPointerEnter(PointerEventData ped)
     {
-        AudioManager.Instance.PlaySFX(GameAssets.i.AshkanMouseOverSFX);
+   //     AudioManager.Instance.PlaySFX(GameAssets.i.AshkanMouseOverSFX);
    //     transform.GetChild(0).gameObject.SetActive(true);
     }
 

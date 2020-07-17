@@ -14,7 +14,7 @@ public class Settings : MonoBehaviour
 
     public void Start()
     {
-        AudioManager.Instance.PlayMusic(GameAssets.i.VisualNovelTheme);
+   //     AudioManager.Instance.PlayMusic(GameAssets.i.VisualNovelTheme);
     }
 
     void Update()
@@ -22,6 +22,7 @@ public class Settings : MonoBehaviour
         // ENABLE SETTINGS
         if (Input.GetKeyDown("escape"))
         {
+            AudioManager.Instance.PlayMusic(GameAssets.i.VisualNovelTheme);
             AudioManager.Instance.PlaySFX(GameAssets.i.AshkanMouseClickSFX);
             if (settingsActive == false && ispressed == false)
             {
