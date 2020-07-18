@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        movePoint.parent = null;
+        //movePoint.parent = null;
     }
 
     void Update()
