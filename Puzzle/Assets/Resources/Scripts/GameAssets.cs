@@ -16,11 +16,14 @@ public class GameAssets : MonoBehaviour
     }
 
     // SFX
-    //[Header("SFX Clips")]
+    [Header("SFX Clips")]
 
+    public AudioClip AshkanMouseOverSFX;
+    public AudioClip AshkanMouseClickSFX;
     // Musics
-    //[Header("Music Clips")]
+    [Header("Music Clips")]
 
+    public AudioClip VisualNovelTheme;
     // Sprites
     //[Header("Sprites")]
 
