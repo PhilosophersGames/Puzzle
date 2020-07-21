@@ -18,6 +18,10 @@ public class roomTransition : MonoBehaviour
         {
             transform.Rotate(0, 00, -90);
         }
+        if (Input.GetKeyDown("e") && canRotate == true)
+        {
+            transform.Rotate(0, 00, 90);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
