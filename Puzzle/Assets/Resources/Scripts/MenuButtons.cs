@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Security.Permissions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,5 +24,15 @@ public class MenuButtons : MonoBehaviour
     {
         MenuCanvas.SetActive(false);
         SettingsCanvas.SetActive(true);
+    }
+
+    public void EraseSave()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
+    public void quit()
+    {
+        Application.Quit();
     }
 }
