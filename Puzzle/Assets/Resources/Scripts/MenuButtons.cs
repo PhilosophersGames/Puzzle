@@ -31,7 +31,7 @@ public class MenuButtons : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
-    public void quit()
+    public void Quit()
     {
         Application.Quit();
     }
