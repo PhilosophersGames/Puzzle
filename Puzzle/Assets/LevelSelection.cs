@@ -8,7 +8,6 @@ public class LevelSelection : MonoBehaviour
     // Gameobject array to get reference of all the Coins in the scene
     private GameObject[] coins;
     public bool[] Unlocklevel;
-    public int you;
 
     void Awake()
     {
@@ -48,6 +47,10 @@ public class LevelSelection : MonoBehaviour
             Unlocklevel[2] = (PlayerPrefs.GetInt("Level3") == 1 ? true : false);
             Unlocklevel[3] = (PlayerPrefs.GetInt("Level4") == 1 ? true : false);
             Unlocklevel[4] = (PlayerPrefs.GetInt("Level5") == 1 ? true : false);
+            Unlocklevel[5] = (PlayerPrefs.GetInt("Level6") == 1 ? true : false);
+            Unlocklevel[6] = (PlayerPrefs.GetInt("Level7") == 1 ? true : false);
+            Unlocklevel[7] = (PlayerPrefs.GetInt("Level8") == 1 ? true : false);
+           // Unlocklevel[8] = (PlayerPrefs.GetInt("Level9") == 1 ? true : false);
         }
         else
         {
@@ -63,6 +66,10 @@ public class LevelSelection : MonoBehaviour
         PlayerPrefs.SetInt("Level3", (Unlocklevel[2] ? 1 : 0));
         PlayerPrefs.SetInt("Level4", (Unlocklevel[3] ? 1 : 0));
         PlayerPrefs.SetInt("Level5", (Unlocklevel[4] ? 1 : 0));
+        PlayerPrefs.SetInt("Level6", (Unlocklevel[5] ? 1 : 0));
+        PlayerPrefs.SetInt("Level7", (Unlocklevel[6] ? 1 : 0));
+        PlayerPrefs.SetInt("Level8", (Unlocklevel[7] ? 1 : 0));
+       // PlayerPrefs.SetInt("Level9", (Unlocklevel[8] ? 1 : 0));
 
         PlayerPrefs.Save();
     }
