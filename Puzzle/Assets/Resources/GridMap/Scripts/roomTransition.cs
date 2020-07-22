@@ -29,8 +29,8 @@ public class roomTransition : MonoBehaviour
         {
             canRotate = true;
             camera.SetActive(true);
-            other.transform.parent = this.transform;
-            movePoint.transform.parent = this.transform;
+           other.transform.parent = this.transform;
+          //  movePoint.transform.parent = this.transform;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
