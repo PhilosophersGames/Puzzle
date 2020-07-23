@@ -4,33 +4,60 @@ using UnityEngine;
 
 public class roomTransition : MonoBehaviour
 {
-    public GameObject camera;
+   // public GameObject camera;
     private GameObject movePoint;
     public bool canRotate;
-   
-    void  Start()
+    public float rotSpeed;
+    public bool isRotating = false;
+
+    void Start()
     {
         movePoint = GameObject.Find("MovePoint");
     }
     void Update()
     {
-        if (Input.GetKeyDown("r") && canRotate == true)
+
+        if (Input.GetKeyDown("r") && canRotate && !isRotating)
         {
-            transform.Rotate(0, 00, -90);
+            float currentAngle = transform.rotation.eulerAngles.z;
+            StartCoroutine(Rotate(currentAngle, currentAngle + 90f));
+            isRotating = true;
         }
-        if (Input.GetKeyDown("e") && canRotate == true)
+        if (Input.GetKeyDown("q") && canRotate && !isRotating)
         {
-            transform.Rotate(0, 00, 90);
+            StartCoroutine(Rotate2());
+            isRotating = true;
         }
     }
+
+
+    IEnumerator Rotate(float angle, float targetAngle)
+    {
+        float t = 0f;
+
+        while (t <= 1f)
+        {
+
+            transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
+            t += Time.deltaTime * rotSpeed;
+            Debug.Log($"t: {t}");
+            Debug.Log("Coroutine running");
+            yield return null;
+        }
+        transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
+        isRotating = false;
+
+    }
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             canRotate = true;
-            camera.SetActive(true);
-           other.transform.parent = this.transform;
-          //  movePoint.transform.parent = this.transform;
+        //    camera.SetActive(true);
+            other.transform.parent = this.transform;
+            movePoint.transform.parent = this.transform;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -38,9 +65,9 @@ public class roomTransition : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             canRotate = false;
-            camera.SetActive(false);
-        //    other.transform.parent = null;
-        //    movePoint.transform.parent = null;
+            // camera.SetActive(false);
+            //    other.transform.parent = null;
+            //    movePoint.transform.parent = null;
         }
     }
 }
