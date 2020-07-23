@@ -10,6 +10,8 @@ public class MenuButtons : MonoBehaviour
     public GameObject MenuCanvas;
     public GameObject SettingsCanvas;
 
+    public AchievementManager achievementManager;
+
     public void StartButtonClick()
     {
         SceneManager.LoadScene(1);
