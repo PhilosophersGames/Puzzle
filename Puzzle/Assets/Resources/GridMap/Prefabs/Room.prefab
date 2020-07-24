@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2545562428906834591}
   - component: {fileID: 2545562428906834588}
   - component: {fileID: 4799078069529741284}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2567,6 +2567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 0
+  rotSpeed: 5
+  polygoneCollider: {fileID: 2545562428966695164}
 --- !u!60 &2545562428966695164
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2592,12 +2594,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.10976146, y: 4.562453}
-      - {x: -4.6060953, y: 4.555852}
-      - {x: -4.5546327, y: -4.599967}
-      - {x: 4.5569096, y: -4.5871367}
-      - {x: 4.5597463, y: 4.5092416}
-      - {x: 4.559875, y: 4.5306726}
+    - - {x: 0.042055354, y: 4.4525347}
+      - {x: -4.497639, y: 4.5405946}
+      - {x: -4.446353, y: -4.3854}
+      - {x: -4.4265327, y: -4.470404}
+      - {x: 4.472484, y: -4.430619}
+      - {x: 4.478269, y: 4.5827966}
+      - {x: 4.31162, y: 4.560553}
 --- !u!1 &2545562429374054450
 GameObject:
   m_ObjectHideFlags: 0
