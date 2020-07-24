@@ -7,13 +7,13 @@ public class roomTransition : MonoBehaviour
     public GameObject camera;
     private GameObject movePoint;
     public bool canRotate;
-   
     void  Start()
     {
         movePoint = GameObject.Find("MovePoint");
     }
     void Update()
     {
+
         if (Input.GetKeyDown("r") && canRotate == true)
         {
             transform.Rotate(0, 00, -90);
@@ -29,6 +29,13 @@ public class roomTransition : MonoBehaviour
         {
             canRotate = true;
             camera.SetActive(true);
+           other.transform.parent = this.transform;
+          //  movePoint.transform.parent = this.transform;
+        }
+                 if (other.CompareTag("FreezingEye"))
+        {
+           // canRotate = true;
+         //   camera.SetActive(true);
            other.transform.parent = this.transform;
           //  movePoint.transform.parent = this.transform;
         }

@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         if (Input.anyKey)
-                 achievementManager.UnlockAchievement(Achievements.FirstStep);
+//                 achievementManager.UnlockAchievement(Achievements.FirstStep);
         //transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime, 0f);
         rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), moveSpeed * Input.GetAxis("Vertical"));
     }
