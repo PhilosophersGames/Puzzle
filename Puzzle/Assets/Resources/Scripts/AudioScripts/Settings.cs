@@ -14,13 +14,14 @@ public class Settings : MonoBehaviour
 
     public void Start()
     {
-        
     }
+
     void Update()
-    {
-       // ENABLE SETTINGS
+    {   
+        // ENABLE SETTINGS
         if (Input.GetKeyDown("escape"))
         {
+            AudioManager.Instance.PlaySFX(GameAssets.i.AshkanMouseClickSFX);
             if (settingsActive == false && ispressed == false)
             {
                 //Pause here
@@ -28,7 +29,6 @@ public class Settings : MonoBehaviour
                 settingsActive = true;
                     ispressed = true;
              }
-
             if (settingsActive == true && ispressed == false)
             {
                 // Resume here
