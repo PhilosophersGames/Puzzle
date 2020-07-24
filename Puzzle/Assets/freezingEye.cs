@@ -17,9 +17,8 @@ public class freezingEye : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // Raycast
-         // look at 2D
+         // look at the target, cast a raycast, and constraint rotation if the player is inSight
         Vector3 dir = Target.transform.position - transform.position;
         float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
 
@@ -46,5 +45,5 @@ public class freezingEye : MonoBehaviour
         }
 
     }
-    }
+}
 
