@@ -6,7 +6,7 @@ public class RoomTransition : MonoBehaviour
 {
    // public GameObject camera;
     private GameObject movePoint;
-    private GameObject crates;
+ //   private GameObject crates;
     private Player player;
     public bool canRotate;
     public float rotSpeed;
@@ -19,7 +19,7 @@ public class RoomTransition : MonoBehaviour
     {
         movePoint = GameObject.Find("MovePoint");
         player = GameObject.Find("Player").GetComponent<Player>();
-        crates = GameObject.Find("Crates");
+     //   crates = GameObject.Find("Crates");
    //     rigidBodyRoom = GetComponent<Rigidbody2D>();
    //     rigidBodyRoom = tileMap.GetComponent<Rigidbody2D>();
     }
@@ -98,7 +98,7 @@ public class RoomTransition : MonoBehaviour
             //   camera.SetActive(true);
             //   movePoint.transform.parent = this.transform;
         }
-        if (other.CompareTag("Crates"))
+        if (other.CompareTag("Object"))
         {
             other.transform.parent = this.transform;
         }
