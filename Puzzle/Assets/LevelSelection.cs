@@ -8,7 +8,7 @@ public class LevelSelection : MonoBehaviour
     // Gameobject array to get reference of all the Coins in the scene
     private GameObject[] coins;
     public bool[] Unlocklevel;
-
+    public AchievementManager achievementManager;
     void Awake()
     {
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
@@ -27,6 +27,7 @@ public class LevelSelection : MonoBehaviour
                 Unlocklevel[SceneManager.GetActiveScene().buildIndex - 1] = true;
                 // Save the state of unlocked levels
                 SaveUnlockedLevel();
+                AchievementsGestion();
 
                 if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -37,6 +38,11 @@ public class LevelSelection : MonoBehaviour
         }
     }
 
+    public void AchievementsGestion()
+    {
+        if (Unlocklevel[0])
+         achievementManager.UnlockAchievement(Achievements.HamsterMind);
+    }
     public void LoadUnlockedLevel()
     {
         // Load UnlockedLevelState

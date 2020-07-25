@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f66c500fe9b47fb83e817f2e771c86, type: 3}
+  m_Name: Achievement DataBase
+  m_EditorClassIdentifier: 
+  achievements:
+    array:
+    - id: FirstStep
+      title: First Steps
+      description: Make your first move
+    - id: HamsterMind
+      title: HamsterMind
+      description: Rotate over 1000 times
+    - id: End
+      title: It is the end
+      description: Finish the game
