@@ -10,7 +10,7 @@ public class Ladder : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PolygonCollider2D>().isTrigger = true;
-             other.transform.parent.GetComponentInChildren<roomTransition>().canRotate = false;
+             other.transform.parent.GetComponentInChildren<RoomTransition>().canRotate = false;
         }
     }
     
@@ -18,7 +18,7 @@ public class Ladder : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.transform.GetComponent<PolygonCollider2D>().isTrigger = false;
-            other.transform.parent.GetComponentInChildren<roomTransition>().canRotate = true;
+            other.transform.parent.GetComponentInChildren<RoomTransition>().canRotate = true;
         }
     }
 }

@@ -29,19 +29,19 @@ public class freezingEye : MonoBehaviour
         {
             tempPlayer = hit.collider.gameObject;
             inSight = true;
-            hit.collider.transform.parent.GetComponentInChildren<roomTransition>().canRotate = false;
+            hit.collider.transform.parent.GetComponentInChildren<RoomTransition>().canRotate = false;
             Debug.Log("Player In sight");
         }
         
         if (hit.collider.tag != "Player" && inSight == true)
          {
             inSight = false;
-            tempPlayer.transform.parent.GetComponentInChildren<roomTransition>().canRotate = true;
+            tempPlayer.transform.parent.GetComponentInChildren<RoomTransition>().canRotate = true;
          }
         if (inSight == true)
         {
         tempPlayer = hit.collider.gameObject;
-        tempPlayer.transform.parent.GetComponentInChildren<roomTransition>().canRotate = false;
+        tempPlayer.transform.parent.GetComponentInChildren<RoomTransition>().canRotate = false;
         }
 
     }
