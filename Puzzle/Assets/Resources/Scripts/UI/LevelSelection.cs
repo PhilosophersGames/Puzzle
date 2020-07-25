@@ -27,7 +27,7 @@ public class LevelSelection : MonoBehaviour
                 Unlocklevel[SceneManager.GetActiveScene().buildIndex - 1] = true;
                 // Save the state of unlocked levels
                 SaveUnlockedLevel();
-                AchievementsGestion();
+               // AchievementsGestion();
 
                 if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -40,8 +40,6 @@ public class LevelSelection : MonoBehaviour
 
     public void AchievementsGestion()
     {
-        if (Unlocklevel[0])
-         achievementManager.UnlockAchievement(Achievements.HamsterMind);
     }
     public void LoadUnlockedLevel()
     {
