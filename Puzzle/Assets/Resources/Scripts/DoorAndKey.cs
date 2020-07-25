@@ -5,19 +5,32 @@ using UnityEngine;
 public class DoorAndKey : MonoBehaviour
 {
 
+    private bool DoorOpened;
     public bool hasKey;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D other) {
         
         if (other.CompareTag("Player") && hasKey == true)
         {
             this.gameObject.SetActive(false);
+        }
+    }
+
+    public void OpenDoor()
+    {
+        if (DoorOpened == false)
+        {
+             this.gameObject.SetActive(false);
+        DoorOpened = true;
+        }
+    }
+
+       public void CloseDoor()
+    {
+        if (DoorOpened == true)
+        {
+        this.gameObject.SetActive(true);
+        DoorOpened = false;
         }
     }
 }
