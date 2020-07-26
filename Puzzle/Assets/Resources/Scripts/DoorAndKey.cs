@@ -5,9 +5,15 @@ using UnityEngine;
 public class DoorAndKey : MonoBehaviour
 {
 
-    private bool DoorOpened;
+    public bool DoorOpened;
     public bool hasKey;
     // Update is called once per frame
+    void Start()
+    {
+        if (DoorOpened == true)
+            this.gameObject.SetActive(false);
+
+    }
     private void OnTriggerEnter2D(Collider2D other) {
         
         if (other.CompareTag("Player") && hasKey == true)

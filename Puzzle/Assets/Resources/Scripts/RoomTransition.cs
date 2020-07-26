@@ -56,8 +56,6 @@ public class RoomTransition : MonoBehaviour
 
             transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
             t += Time.deltaTime * rotSpeed;
-            Debug.Log($"t: {t}");
-            Debug.Log("Coroutine running");
             yield return null;
         }
         transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
@@ -75,9 +73,7 @@ public class RoomTransition : MonoBehaviour
         {
 
             transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
-            t += Time.deltaTime * rotSpeed;
-            Debug.Log($"t: {t}");
-            Debug.Log("Coroutine running");
+            t += Time.deltaTime * rotSpeed; 
             yield return null;
         }
         transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
@@ -98,7 +94,7 @@ public class RoomTransition : MonoBehaviour
             //   camera.SetActive(true);
             //   movePoint.transform.parent = this.transform;
         }
-        if (other.CompareTag("Object"))
+        if (other.CompareTag("Object") || other.CompareTag("Coin"))
         {
             other.transform.parent = this.transform;
         }

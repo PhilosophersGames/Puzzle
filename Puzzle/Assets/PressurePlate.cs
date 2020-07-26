@@ -5,6 +5,9 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour
 {
     public GameObject door;
+    public GameObject doorTwo;
+    public GameObject doorInversed;
+    public GameObject doorInversedTwo;
     private SpriteRenderer spriteRenderer;
     public Sprite spriteOn;
     public Sprite spriteOff;
@@ -20,7 +23,14 @@ public class PressurePlate : MonoBehaviour
             if (other.CompareTag("Object") || other.CompareTag("Player"))
             {
                 spriteRenderer.sprite = spriteOn;
-                door.GetComponent<DoorAndKey>().OpenDoor();
+                if (door != null)
+                    door.GetComponent<DoorAndKey>().OpenDoor();
+                if (doorTwo != null)
+                    doorTwo.GetComponent<DoorAndKey>().OpenDoor();
+                if (doorInversed != null)
+                    doorInversed.GetComponent<DoorAndKey>().CloseDoor();
+                if (doorInversedTwo != null)
+                    doorInversedTwo.GetComponent<DoorAndKey>().CloseDoor();
             }
          /*   else
             {
@@ -34,7 +44,14 @@ public class PressurePlate : MonoBehaviour
             if ((other.CompareTag("Object") || other.CompareTag("Player")))
             {
                 spriteRenderer.sprite = spriteOff;
-                door.GetComponent<DoorAndKey>().CloseDoor();
+                if (door != null)
+                    door.GetComponent<DoorAndKey>().CloseDoor();
+                if (doorTwo != null)
+                    doorTwo.GetComponent<DoorAndKey>().CloseDoor();
+                if (doorInversed != null)
+                    doorInversed.GetComponent<DoorAndKey>().OpenDoor();
+                if (doorInversedTwo != null)
+                    doorInversedTwo.GetComponent<DoorAndKey>().OpenDoor();
             }
         }
     }
