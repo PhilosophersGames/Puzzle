@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomTransition : MonoBehaviour
 {
    // public GameObject camera;
-   //public AchievementManager achievementManager;
+    public AchievementManager achievementManager;
     private GameObject movePoint;
  //   private GameObject crates;
     private Player player;
@@ -18,11 +18,10 @@ public class RoomTransition : MonoBehaviour
  //   public GameObject tileMap;
 
     private void Awake() {
-               // achievementManager = Resources.Load("Achievements/Achiev Prefabs/AchievementManager") as AchievementManager;
+                achievementManager = FindObjectOfType<AchievementManager>();
     }
     void Start()
     {
-
         movePoint = GameObject.Find("MovePoint");
         player = GameObject.Find("Player").GetComponent<Player>();
      //   crates = GameObject.Find("Crates");
@@ -37,7 +36,7 @@ public class RoomTransition : MonoBehaviour
             }
         if (Input.GetKeyDown("r") && canRotate && !isRotating && !player.isMoving)
         {
-           // achievementManager.UnlockAchievement(Achievements.FirstStep);
+            achievementManager.UnlockAchievement(Achievements.FirstStep);
             float currentAngle = transform.rotation.eulerAngles.z;
             polygoneCollider.enabled = false;
             transform.localScale -= new Vector3(0.3f, 0.3f, 0);
@@ -48,7 +47,7 @@ public class RoomTransition : MonoBehaviour
         }
         if (Input.GetKeyDown("q") && canRotate && !isRotating && !player.isMoving)
         {
-        //    achievementManager.UnlockAchievement(Achievements.FirstStep);
+            achievementManager.UnlockAchievement(Achievements.FirstStep);
             float currentAngle = transform.rotation.eulerAngles.z;
             polygoneCollider.enabled = false;
             transform.localScale -= new Vector3(0.3f, 0.3f, 0);
@@ -59,14 +58,12 @@ public class RoomTransition : MonoBehaviour
         }
     }
 
-
     IEnumerator Rotate(float angle, float targetAngle)
     {
         float t = 0f;
 
         while (t <= 1f)
         {
-
             transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
             t += Time.deltaTime * rotSpeed;
             yield return null;
@@ -97,7 +94,6 @@ public class RoomTransition : MonoBehaviour
 
     }
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -112,6 +108,7 @@ public class RoomTransition : MonoBehaviour
             other.transform.parent = this.transform;
         }
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
