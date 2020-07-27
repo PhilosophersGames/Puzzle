@@ -19,13 +19,18 @@ public class MenuButtons : MonoBehaviour
 
     public void RebootButtonClick()
     {
-        SceneManager.LoadScene(0);
+       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void OptionButtonClick()
     {
         MenuCanvas.SetActive(false);
         SettingsCanvas.SetActive(true);
+    }
+
+    public void MenuButtonClick()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void EraseSave()
