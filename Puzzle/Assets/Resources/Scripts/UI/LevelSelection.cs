@@ -9,8 +9,11 @@ public class LevelSelection : MonoBehaviour
     private GameObject[] coins;
     public bool[] Unlocklevel;
     public AchievementManager achievementManager;
+
+
     void Awake()
     {
+        ScreenCapture.CaptureScreenshot("SomeLevel");
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
         LoadUnlockedLevel();
     }
