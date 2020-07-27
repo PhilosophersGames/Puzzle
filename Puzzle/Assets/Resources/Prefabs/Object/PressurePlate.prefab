@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c8a32324ff95a4d458519a333ac6e159, type: 3}
   m_Color: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
   m_FlipX: 0
@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 0}
+  doorTwo: {fileID: 0}
+  doorInversed: {fileID: 0}
+  doorInversedTwo: {fileID: 0}
   spriteOn: {fileID: 21300000, guid: 00fb32bc37db35948a31a5d86f20a81f, type: 3}
   spriteOff: {fileID: 21300000, guid: c8a32324ff95a4d458519a333ac6e159, type: 3}
 --- !u!50 &7029600931550007099
