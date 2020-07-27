@@ -30,7 +30,10 @@ public class LevelSelection : MonoBehaviour
                // AchievementsGestion();
 
                 if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
+                {
+                    Debug.Log("Hello");
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
                 //if it went through all the levels available, redirects to Menu (build index 0)
                 else
                     SceneManager.LoadScene(0);
