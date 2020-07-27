@@ -13,7 +13,6 @@ public class LevelSelection : MonoBehaviour
 
     void Awake()
     {
-        ScreenCapture.CaptureScreenshot("SomeLevel");
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
         LoadUnlockedLevel();
     }
