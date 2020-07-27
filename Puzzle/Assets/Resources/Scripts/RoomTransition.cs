@@ -5,18 +5,24 @@ using UnityEngine;
 public class RoomTransition : MonoBehaviour
 {
    // public GameObject camera;
+   //public AchievementManager achievementManager;
     private GameObject movePoint;
  //   private GameObject crates;
     private Player player;
     public bool canRotate;
     public float rotSpeed;
     public static bool isRotating = false;
+    public static int HamsterRotation;
     public PolygonCollider2D polygoneCollider;
  //   public Rigidbody2D rigidBodyRoom;
  //   public GameObject tileMap;
 
+    private void Awake() {
+               // achievementManager = Resources.Load("Achievements/Achiev Prefabs/AchievementManager") as AchievementManager;
+    }
     void Start()
     {
+
         movePoint = GameObject.Find("MovePoint");
         player = GameObject.Find("Player").GetComponent<Player>();
      //   crates = GameObject.Find("Crates");
@@ -25,24 +31,31 @@ public class RoomTransition : MonoBehaviour
     }
     void Update()
     {
-
+            if (HamsterRotation + 1 == 1000)
+            {
+           //     achievementManager.UnlockAchievement(Achievements.HamsterMind);
+            }
         if (Input.GetKeyDown("r") && canRotate && !isRotating && !player.isMoving)
         {
+           // achievementManager.UnlockAchievement(Achievements.FirstStep);
             float currentAngle = transform.rotation.eulerAngles.z;
             polygoneCollider.enabled = false;
             transform.localScale -= new Vector3(0.3f, 0.3f, 0);
             //     rigidBodyRoom.isKinematic = false;
             StartCoroutine(Rotate(currentAngle, currentAngle + 90f));
             isRotating = true;
+            HamsterRotation++;
         }
         if (Input.GetKeyDown("q") && canRotate && !isRotating && !player.isMoving)
         {
+        //    achievementManager.UnlockAchievement(Achievements.FirstStep);
             float currentAngle = transform.rotation.eulerAngles.z;
             polygoneCollider.enabled = false;
             transform.localScale -= new Vector3(0.3f, 0.3f, 0);
             //    rigidBodyRoom.isKinematic = false;
             StartCoroutine(Rotate(currentAngle, currentAngle - 90f));
             isRotating = true;
+            HamsterRotation++;
         }
     }
 

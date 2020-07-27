@@ -27,7 +27,7 @@ public class AchievementDataBaseEditor : Editor
 
     private void GenerateEnum()
     {
-        string filePath = Path.Combine(Application.dataPath, "Resources/Achievements/AchScripts/Achievements.cs");
+        string filePath = Path.Combine(Application.dataPath, "Resources/Achievements/Achievement Scripts/Achievements.cs");
         string code = "public enum Achievements {";
         foreach (Achievement achievement in database.achievements)
         {
@@ -36,6 +36,6 @@ public class AchievementDataBaseEditor : Editor
         }
         code += "}";
         File.WriteAllText(filePath, code);
-        AssetDatabase.ImportAsset("Assets/Resources/Achievements/AchScripts/Achievement.cs");
+        AssetDatabase.ImportAsset("Assets/Resources/Achievements/Achievement Scripts/Achievement.cs");
     }
 }
