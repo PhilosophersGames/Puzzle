@@ -12,6 +12,7 @@ public class RoomTransition : MonoBehaviour
     public bool canRotate;
     public float rotSpeed;
     public static bool isRotating = false;
+    public static bool rotationDirection;
     public static int HamsterRotation;
     public PolygonCollider2D polygoneCollider;
  //   public Rigidbody2D rigidBodyRoom;
@@ -34,8 +35,9 @@ public class RoomTransition : MonoBehaviour
             {
            //     achievementManager.UnlockAchievement(Achievements.HamsterMind);
             }
-        if (Input.GetKeyDown("r") && canRotate && !isRotating && !player.isMoving)
+        if (Input.GetKeyDown("e") && canRotate && !isRotating && !player.isMoving)
         {
+            rotationDirection = true;
             achievementManager.UnlockAchievement(Achievements.FirstStep);
             float currentAngle = transform.rotation.eulerAngles.z;
             polygoneCollider.enabled = false;
@@ -45,8 +47,9 @@ public class RoomTransition : MonoBehaviour
             isRotating = true;
             HamsterRotation++;
         }
-        if (Input.GetKeyDown("q") && canRotate && !isRotating && !player.isMoving)
+        if (Input.GetKeyDown("r") && canRotate && !isRotating && !player.isMoving)
         {
+            rotationDirection = false;
             achievementManager.UnlockAchievement(Achievements.FirstStep);
             float currentAngle = transform.rotation.eulerAngles.z;
             polygoneCollider.enabled = false;
