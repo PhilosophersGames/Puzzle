@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3858985866510689671}
   - component: {fileID: 6725808333177012042}
   - component: {fileID: 7483158109328614469}
+  - component: {fileID: 1234705992}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -105,8 +106,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 44ad081d03fefca479ced0b93c93d706, type: 3}
-  m_Color: {r: 0.7868676, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 9203954956759660754, guid: 6182f8fbd2e09b245b3e65d31677692b,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -147,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acce8ee1a288a74c86df63147191ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1234705992}
   rb: {fileID: 6725808333177012042}
   moveSpeed: 10
 --- !u!50 &6725808333177012042
@@ -187,7 +190,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.627451, y: 0.627451}
+    oldSize: {x: 1.25, y: 1.25}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -199,3 +202,22 @@ PolygonCollider2D:
       - {x: -0.3137255, y: -0.3137255}
       - {x: 0.3137255, y: -0.3137255}
       - {x: 0.3137255, y: 0.3137255}
+--- !u!95 &1234705992
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760879363663117422}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 623526393b4275642abc85ba7def9088, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
