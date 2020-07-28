@@ -18,10 +18,6 @@ public class LevelSelection : MonoBehaviour
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
         LoadUnlockedLevel();
     }
-    private void Start() 
-    {
-        achievementLeastRotations =  GetComponent<AchievementLeastRotations>();
-    }
 
     void Update()
     {
@@ -53,8 +49,7 @@ public class LevelSelection : MonoBehaviour
 
     public void AchievementsGestion()
     {
-        Debug.Log(achievementLeastRotations.rotationNumbers);
-        if (achievementLeastRotations.rotationNumbers < 5)
+        if (achievementLeastRotations.rotationNumbers < 36)
             achievementManager.UnlockAchievement(Achievements.MasterMind);
         if (Unlocklevel[6] == true)
             achievementManager.UnlockAchievement(Achievements.Chapter1);

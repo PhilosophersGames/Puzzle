@@ -14,9 +14,7 @@ public class AchievementLeastRotations : MonoBehaviour
            if (Input.GetKeyDown("e") || Input.GetKeyDown("r"))
            {
                rotationNumbers++;
-           }
-           
-       }
-
+           }        
+        }
     }
 }
