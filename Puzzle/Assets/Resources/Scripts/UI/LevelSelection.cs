@@ -49,7 +49,7 @@ public class LevelSelection : MonoBehaviour
 
     public void AchievementsGestion()
     {
-        if (achievementLeastRotations.rotationNumbers < 36)
+        if (achievementLeastRotations.rotationNumbers < 36 && achievementLeastRotations.achievement == true)
             achievementManager.UnlockAchievement(Achievements.MasterMind);
         if (Unlocklevel[6] == true)
             achievementManager.UnlockAchievement(Achievements.Chapter1);

@@ -21,9 +21,7 @@ public class GameAssets : MonoBehaviour
     public AudioClip AshkanMouseOverSFX;
     public AudioClip AshkanMouseClickSFX;
     // Musics
-    [Header("Music Clips")]
 
-    public AudioClip VisualNovelTheme;
     // Sprites
     //[Header("Sprites")]
 
