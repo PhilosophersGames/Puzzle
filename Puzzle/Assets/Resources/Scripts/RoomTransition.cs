@@ -33,7 +33,7 @@ public class RoomTransition : MonoBehaviour
     {
             if (HamsterRotation == 100)
             {
-                    
+                    achievementManager.UnlockAchievement(Achievements.HamsterMind);
             }
         if (Input.GetKeyDown("e") && canRotate && !isRotating && !player.isMoving)
         {
