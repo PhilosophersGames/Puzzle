@@ -9,14 +9,20 @@ public class LevelSelection : MonoBehaviour
     private GameObject[] coins;
     public bool[] Unlocklevel;
     public AchievementManager achievementManager;
-
+    public AchievementLeastRotations achievementLeastRotations;
 
     void Awake()
     {
-
+//        achievementLeastRotations =  GameObject.Find("AchievementLeastRotations").GetComponent<AchievementLeastRotations>();
+        //ScreenCapture.CaptureScreenshot("C:/Users/youce/Desktop/JEU DE CARTE/PNG/Temp");
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
         LoadUnlockedLevel();
     }
+    private void Start() 
+    {
+        achievementLeastRotations =  GetComponent<AchievementLeastRotations>();
+    }
+
     void Update()
     {
         // check if we are not in the menu
@@ -30,6 +36,7 @@ public class LevelSelection : MonoBehaviour
                 // Save the state of unlocked levels
                 SaveUnlockedLevel();
                 AchievementsGestion();
+
                 if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -46,6 +53,9 @@ public class LevelSelection : MonoBehaviour
 
     public void AchievementsGestion()
     {
+        Debug.Log(achievementLeastRotations.rotationNumbers);
+        if (achievementLeastRotations.rotationNumbers < 5)
+            achievementManager.UnlockAchievement(Achievements.MasterMind);
         if (Unlocklevel[6] == true)
             achievementManager.UnlockAchievement(Achievements.Chapter1);
         if (Unlocklevel[10] == true)

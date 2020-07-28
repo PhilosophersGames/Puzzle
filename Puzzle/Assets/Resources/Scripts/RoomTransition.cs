@@ -13,7 +13,7 @@ public class RoomTransition : MonoBehaviour
     public float rotSpeed;
     public static bool isRotating = false;
     public static bool rotationDirection;
-    public static int HamsterRotation;
+    public int HamsterRotation;
     public PolygonCollider2D polygoneCollider;
  //   public Rigidbody2D rigidBodyRoom;
  //   public GameObject tileMap;
@@ -31,9 +31,9 @@ public class RoomTransition : MonoBehaviour
     }
     void Update()
     {
-            if (HamsterRotation + 1 == 1000)
+            if (HamsterRotation == 100)
             {
-           //     achievementManager.UnlockAchievement(Achievements.HamsterMind);
+                    
             }
         if (Input.GetKeyDown("e") && canRotate && !isRotating && !player.isMoving)
         {
