@@ -13,10 +13,10 @@ public class LevelSelection : MonoBehaviour
 
     void Awake()
     {
+
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
         LoadUnlockedLevel();
     }
-
     void Update()
     {
         // check if we are not in the menu
@@ -30,7 +30,6 @@ public class LevelSelection : MonoBehaviour
                 // Save the state of unlocked levels
                 SaveUnlockedLevel();
                 AchievementsGestion();
-
                 if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
