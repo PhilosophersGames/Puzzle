@@ -1,1 +1,1 @@
-public enum Achievements {FirstStep,HamsterMind,MasterMind,Chapter1,Chapter2,Chapter3,Chapter4,End,}
+public enum Achievements {FirstStep,Chapter1,Chapter2,Chapter3,Chapter4,HamsterMind,MasterMind,End,}

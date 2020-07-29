@@ -10,7 +10,7 @@ public class ResetCrate : MonoBehaviour
     
     void Update()
     {
-        if (zoneEnter == true && Input.GetKeyDown("e"))
+        if (zoneEnter == true && Input.GetKeyDown("p"))
         {
             crate.transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             crate.transform.position = new Vector3(resetPosition.position.x, resetPosition.position.y, 0);

@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class LevelUnlockButtonProperties : MonoBehaviour
 {
 
-    int i;
+    private int i;
+    public int startButtonIndex;
     public bool[] Unlocklevel;
     public Sprite lockedImage;
     public GameObject[] levels;
@@ -45,7 +46,7 @@ public class LevelUnlockButtonProperties : MonoBehaviour
         }
     }
 
-    void WhichLevelsAreUnlocked()
+    public void WhichLevelsAreUnlocked()
     {
                     if (PlayerPrefs.HasKey("C2Level3"))
         {
