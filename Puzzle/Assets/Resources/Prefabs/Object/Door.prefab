@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6590029297641381914, guid: aacb84f7bcd00b74ba8d0a97ea6a9e6e,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510a8d26478ab104d8f38438c6149be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DoorOpened: 0
   hasKey: 0
 --- !u!50 &2363786391373914510
 Rigidbody2D:
