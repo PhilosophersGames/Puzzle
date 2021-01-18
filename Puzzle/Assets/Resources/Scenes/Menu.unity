@@ -912,7 +912,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Moving Labyrinth
+  m_text: A Maze In Ghost
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -981,10 +981,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 259936248}
-    characterCount: 16
+    characterCount: 15
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -1226,14 +1226,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.31764707, g: 0.6431373, b: 0.83921576, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.21960784}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 2558733732477372186, guid: 59ead66291183da41acb4c2b52078ec7,
+    type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7543,6 +7544,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2411839585293434973, guid: 851709e2e5c735e4183cdb69a1b84d9b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -251.20001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647492654980260905, guid: 851709e2e5c735e4183cdb69a1b84d9b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -251.20001
+      objectReference: {fileID: 0}
     - target: {fileID: 2776061307837515990, guid: 851709e2e5c735e4183cdb69a1b84d9b,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -7572,6 +7583,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876746146750036680, guid: 851709e2e5c735e4183cdb69a1b84d9b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -251.20001
       objectReference: {fileID: 0}
     - target: {fileID: 2925623368924021391, guid: 851709e2e5c735e4183cdb69a1b84d9b,
         type: 3}
@@ -7907,6 +7923,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5886553648133141416, guid: 851709e2e5c735e4183cdb69a1b84d9b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -251.20001
       objectReference: {fileID: 0}
     - target: {fileID: 7249910695180314193, guid: 851709e2e5c735e4183cdb69a1b84d9b,
         type: 3}
@@ -8403,6 +8424,37 @@ PrefabInstance:
         type: 3}
       propertyPath: achievementManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2662393007054279071, guid: fb06c8ed28034434c9e133a011e82db6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 42ffc2d58a0adb44b99836dd32c459ac,
+        type: 3}
+    - target: {fileID: 2662393007054279071, guid: fb06c8ed28034434c9e133a011e82db6,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2662393007054279071, guid: fb06c8ed28034434c9e133a011e82db6,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.53333336
+      objectReference: {fileID: 0}
+    - target: {fileID: 2662393007054279071, guid: fb06c8ed28034434c9e133a011e82db6,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2662393007054279071, guid: fb06c8ed28034434c9e133a011e82db6,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2662393007054279071, guid: fb06c8ed28034434c9e133a011e82db6,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2769327501524863331, guid: fb06c8ed28034434c9e133a011e82db6,
         type: 3}
