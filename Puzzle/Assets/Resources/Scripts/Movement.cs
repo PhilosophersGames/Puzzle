@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
         else
         {
             rb.velocity = new Vector2(0, 0);
-            if (rotatePlayer == true)
+            if (rotatePlayer == true && moveSpeed >= 0)
             {
                 if(RoomTransition.rotationDirection == true)
                 transform.Rotate(0, 0, -90);
@@ -23,10 +23,8 @@ public class Movement : MonoBehaviour
                 transform.Rotate(0, 0, 90);
             }
         }
-                if (RoomTransition.isRotating == true)
-        {
+        if (RoomTransition.isRotating == true)
             rotatePlayer = false;
-        }
         else
             rotatePlayer = true;
 
