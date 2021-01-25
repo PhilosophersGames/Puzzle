@@ -10,6 +10,12 @@ public class Movement : MonoBehaviour
     public float moveSpeed;
     private bool rotatePlayer = true;
 
+
+
+    void Awake()
+    {
+        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FixedJoystick>();
+    }
     void Update()
     {
         //transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime, 0f);
