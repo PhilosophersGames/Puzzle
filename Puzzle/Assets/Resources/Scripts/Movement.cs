@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Movement : MonoBehaviour
@@ -9,10 +9,11 @@ public class Movement : MonoBehaviour
     public Rigidbody2D rb;
     public float moveSpeed;
     private bool rotatePlayer = true;
+
     void Update()
     {
         //transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime, 0f);
-
+        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FixedJoystick>();
         //ComputerMovement();
         MobileMovement();
     }

@@ -36,6 +36,7 @@ public class RoomTransition : MonoBehaviour
     {
         achievementManager = FindObjectOfType<AchievementManager>();
     }
+
     void Start()
     {
         movePoint = GameObject.Find("MovePoint");
@@ -79,7 +80,6 @@ public class RoomTransition : MonoBehaviour
             mobileTap = 0;
         }
     }
-
     IEnumerator Rotate(float angle, float targetAngle)
     {
         float t = 0f;
@@ -146,11 +146,11 @@ public class RoomTransition : MonoBehaviour
         if (Input.touchCount > 0)
         {
             var touch = Input.GetTouch(0);
-            if ((touch.position.x < Screen.width / 2) && (touch.position.y > Screen.height / 3))
+            if ((touch.position.x < Screen.width / 2) && (touch.position.y > Screen.height / 3) && canRotate)
             {
                 mobileTap = 1;
             }
-            else if (touch.position.x > Screen.width / 2)
+            else if ((touch.position.x > Screen.width / 2) && canRotate)
             {
                 mobileTap = 2;
             }
@@ -171,13 +171,13 @@ public class RoomTransition : MonoBehaviour
 
             if (!stopTouch)
             {
-                if (Distance.x < -swipeRange)
+                if (Distance.x < -swipeRange && canRotate)
                 {
                     Debug.Log("Left");
                     mobileTap = 1;
                     stopTouch = true;
                 }
-                else if (Distance.x > swipeRange)
+                else if (Distance.x > swipeRange && canRotate)
                 {
                     mobileTap = 2;
                     stopTouch = true;
@@ -206,7 +206,6 @@ public class RoomTransition : MonoBehaviour
             {
                 Debug.Log("tap");
             }
-
         }
     }
 }
