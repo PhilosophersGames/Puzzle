@@ -13,7 +13,6 @@ public class Movement : MonoBehaviour
     void Update()
     {
         //transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime, 0f);
-        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FixedJoystick>();
         //ComputerMovement();
         MobileMovement();
     }
