@@ -106,7 +106,7 @@ public class RoomTransition : MonoBehaviour
             //   camera.SetActive(true);
             //   movePoint.transform.parent = this.transform;
         }
-        if (other.CompareTag("Object") || other.CompareTag("Coin") || other.CompareTag("FreezingEye"))
+        if (other.CompareTag("Object") || other.CompareTag("Coin") || other.CompareTag("FreezingEye") || other.CompareTag("Phantom"))
         {
             other.transform.parent = this.transform;
         }

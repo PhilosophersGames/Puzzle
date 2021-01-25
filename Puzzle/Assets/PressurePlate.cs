@@ -20,7 +20,7 @@ public class PressurePlate : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D other) {
         {
-            if (other.CompareTag("Object") || other.CompareTag("Player"))
+            if (other.CompareTag("Object") || other.CompareTag("Player")|| other.CompareTag("Phantom"))
             {
                 spriteRenderer.sprite = spriteOn;
                 if (door != null)
@@ -41,7 +41,7 @@ public class PressurePlate : MonoBehaviour
     }
         private void OnTriggerExit2D(Collider2D other) {
         {
-            if ((other.CompareTag("Object") || other.CompareTag("Player")))
+            if ((other.CompareTag("Object") || other.CompareTag("Player") || other.CompareTag("Phantom")))
             {
                 spriteRenderer.sprite = spriteOff;
                 if (door != null)
