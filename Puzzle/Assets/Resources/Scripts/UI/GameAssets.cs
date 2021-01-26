@@ -19,9 +19,11 @@ public class GameAssets : MonoBehaviour
     [Header("SFX Clips")]
 
     public AudioClip AshkanMouseOverSFX;
+
     public AudioClip AshkanMouseClickSFX;
     // Musics
-
+    [Header("Music Clips")]
+    public AudioClip MainTheme;
     // Sprites
     //[Header("Sprites")]
 

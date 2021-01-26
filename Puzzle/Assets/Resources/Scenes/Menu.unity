@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 95214443}
   - component: {fileID: 95214442}
   - component: {fileID: 95214441}
+  - component: {fileID: 95214445}
   m_Layer: 5
   m_Name: MenuCanvas
   m_TagString: Untagged
@@ -221,6 +222,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &95214445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95214440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d53ea0dd08f097a4dbd80d9e840b9de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &259936246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,6 +2001,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632443534}
   m_CullTransparentMesh: 0
+--- !u!1001 &1661851415
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 909010491296849729, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 84.06235
+      objectReference: {fileID: 0}
+    - target: {fileID: 909010491296849729, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 340.61426
+      objectReference: {fileID: 0}
+    - target: {fileID: 909010491296849729, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -136.81638
+      objectReference: {fileID: 0}
+    - target: {fileID: 909010491296849729, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909010491296849729, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909010491296849729, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909010491296849729, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 909010491296849729, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 909010491296849729, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909010491296849729, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909010491296849729, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909010491296849731, guid: 0028929e1cd0c40568e67793848dce66,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0028929e1cd0c40568e67793848dce66, type: 3}
 --- !u!1 &1716666933
 GameObject:
   m_ObjectHideFlags: 0

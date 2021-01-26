@@ -173,7 +173,6 @@ public class RoomTransition : MonoBehaviour
             {
                 if (Distance.x < -swipeRange && canRotate)
                 {
-                    Debug.Log("Left");
                     mobileTap = 1;
                     stopTouch = true;
                 }
