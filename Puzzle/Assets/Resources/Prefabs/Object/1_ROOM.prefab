@@ -2695,10 +2695,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd688c498d6cfc4f9fc869160c045ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swipeRange: 0
+  tapRange: 0
+  mobileTap: 0
   achievementManager: {fileID: 7599364843264320481, guid: 51f21e9986571f54f9263336a60fe416,
     type: 3}
   canRotate: 0
   rotSpeed: 5
+  HamsterRotation: 0
   polygoneCollider: {fileID: 2545562428966695164}
 --- !u!60 &2545562428966695164
 PolygonCollider2D:
@@ -5240,6 +5244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3661881478827170639}
+  - component: {fileID: 3223327847532334226}
   m_Layer: 0
   m_Name: 1_ROOM
   m_TagString: Room
@@ -5262,3 +5267,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &3223327847532334226
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7596657082593307543}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0012264252, y: 0.0076265335}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 10.007414, y: 9.994604}
+  m_EdgeRadius: 0

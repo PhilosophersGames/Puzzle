@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class RoomTransition : MonoBehaviour
 {
-
-
     // SWIPE 
-
+    RaycastHit2D hit;
+    Vector2 touchPos;
     private Vector2 startTouchPosition;
     private Vector2 currentPosition;
     private Vector2 endTouchPosition;
     private bool stopTouch = false;
 
+    private bool roro;
     public float swipeRange;
     public float tapRange;
 
@@ -123,6 +123,7 @@ public class RoomTransition : MonoBehaviour
             other.transform.parent = this.transform;
             //   camera.SetActive(true);
             //   movePoint.transform.parent = this.transform;
+            this.GetComponentInParent<BoxCollider2D>().enabled = true;
         }
         if (other.CompareTag("Object") || other.CompareTag("Coin") || other.CompareTag("FreezingEye"))
         {
@@ -138,6 +139,7 @@ public class RoomTransition : MonoBehaviour
             // camera.SetActive(false);
             //    other.transform.parent = null;
             //    movePoint.transform.parent = null;
+            this.GetComponentInParent<BoxCollider2D>().enabled = false;
         }
     }
 
@@ -162,45 +164,48 @@ public class RoomTransition : MonoBehaviour
     {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
+            touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             startTouchPosition = Input.GetTouch(0).position;
+            hit = Physics2D.Raycast(touchPos, (Input.GetTouch(0).position));
         }
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && (Input.GetTouch(0).position.y > Screen.height / 3.8))
-        {
-            currentPosition = Input.GetTouch(0).position;
-            Vector2 Distance = currentPosition - startTouchPosition;
 
-            if (!stopTouch)
+        if (hit)
+        {
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && hit.transform.gameObject.tag == ("Room"))
             {
-                if (Distance.x < -swipeRange && canRotate)
+                currentPosition = Input.GetTouch(0).position;
+                Vector2 Distance = currentPosition - startTouchPosition;
+
+                if (!stopTouch)
                 {
-                    mobileTap = 1;
-                    stopTouch = true;
+                    if (Distance.x < -swipeRange && canRotate)
+                    {
+                        mobileTap = 1;
+                        stopTouch = true;
+                    }
+                    else if (Distance.x > swipeRange && canRotate)
+                    {
+                        mobileTap = 2;
+                        stopTouch = true;
+                    }
+                    /*                 else if (Distance.y > swipeRange)
+                                    {
+                                        outputText.text = "Up";
+                                        stopTouch = true;
+                                    }
+                                    else if (Distance.y < -swipeRange)
+                                    {
+                                        outputText.text = "Down";
+                                        stopTouch = true;
+                                    } */
                 }
-                else if (Distance.x > swipeRange && canRotate)
-                {
-                    mobileTap = 2;
-                    stopTouch = true;
-                }
-                /*                 else if (Distance.y > swipeRange)
-                                {
-                                    outputText.text = "Up";
-                                    stopTouch = true;
-                                }
-                                else if (Distance.y < -swipeRange)
-                                {
-                                    outputText.text = "Down";
-                                    stopTouch = true;
-                                } */
             }
         }
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             stopTouch = false;
-
             endTouchPosition = Input.GetTouch(0).position;
-
             Vector2 Distance = endTouchPosition - startTouchPosition;
-
             if (Mathf.Abs(Distance.x) < tapRange && Mathf.Abs(Distance.y) < tapRange)
             {
                 Debug.Log("tap");
