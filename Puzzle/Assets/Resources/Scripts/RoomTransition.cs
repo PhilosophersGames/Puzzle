@@ -125,7 +125,7 @@ public class RoomTransition : MonoBehaviour
             //   movePoint.transform.parent = this.transform;
             this.GetComponentInParent<BoxCollider2D>().enabled = true;
         }
-        if (other.CompareTag("Object") || other.CompareTag("Coin") || other.CompareTag("FreezingEye"))
+        if (other.CompareTag("Object") || other.CompareTag("Coin") || other.CompareTag("FreezingEye") || other.CompareTag("Phantom"))
         {
             other.transform.parent = this.transform;
         }
@@ -133,7 +133,7 @@ public class RoomTransition : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")) 
         {
             canRotate = false;
             // camera.SetActive(false);

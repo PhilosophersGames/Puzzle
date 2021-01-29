@@ -12,7 +12,7 @@ public class AchievementLeastRotations : MonoBehaviour
     void Update() 
     {
        if (achievement == true)
-       {
+       {       
          if (RoomTransition.isRotating == true && multipleCount == true)
          {
             rotationNumbers++;
