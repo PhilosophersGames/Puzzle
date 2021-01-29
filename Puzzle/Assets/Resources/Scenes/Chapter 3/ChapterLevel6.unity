@@ -32950,6 +32950,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a5c195084de6a45b35fd679db059e0, type: 3}
+--- !u!114 &810195360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4583457415407340881, guid: 1da44c7a26a276241b6078671125739a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1125663207}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014f1044b2fe8f24a877b319f58a1228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &820020389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33174,6 +33186,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1089379379, guid: 8a5b9ac0b9ecd56428e671683d7b017d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089379381, guid: 8a5b9ac0b9ecd56428e671683d7b017d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 810195360}
+    - target: {fileID: 1089379381, guid: 8a5b9ac0b9ecd56428e671683d7b017d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RstCrate
+      objectReference: {fileID: 0}
     - target: {fileID: 4624498887685498676, guid: 8a5b9ac0b9ecd56428e671683d7b017d,
         type: 3}
       propertyPath: m_Camera

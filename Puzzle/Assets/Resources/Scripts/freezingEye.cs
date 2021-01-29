@@ -31,7 +31,7 @@ public class freezingEye : MonoBehaviour
         float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
 
 
-          //  Debug.DrawRay(transform.position, Target.transform.position - transform.position, Color.red);
+            Debug.DrawRay(transform.position, Target.transform.position - transform.position, Color.red);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Target.transform.position - transform.position);
 
         // SET the linerenderer position on sight
