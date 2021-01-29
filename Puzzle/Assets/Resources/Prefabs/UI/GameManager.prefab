@@ -571,7 +571,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1500867751032857255}
-        m_MethodName: Pause
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -580,6 +580,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5010705139416620727}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1001 &2585892803874767355
 PrefabInstance:
@@ -703,6 +714,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167a51a96c1b44272a23b6619b5691bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5010705139416620727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7380122204917669708, guid: 1de81772f45f8d1488da141969454af2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2585892803874767355}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4624498888666786217
 PrefabInstance:
   m_ObjectHideFlags: 0
