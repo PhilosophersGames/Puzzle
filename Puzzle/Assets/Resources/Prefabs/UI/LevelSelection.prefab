@@ -576,7 +576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 106f0eed0db14cb4690e9aac4cb38343, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 189acb3eb146619419a59913ef13ed3d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3266,6 +3266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Unlocklevel: 0000000000
   achievementManager: {fileID: 0}
+  achievementLeastRotations: {fileID: 0}
 --- !u!114 &1408286314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3307,6 +3308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3dea3cd9d7f96948859309c14795e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startButtonIndex: 0
   Unlocklevel: 
   lockedImage: {fileID: 21300000, guid: 3beaff5f4747ac746bae9d191ab7f116, type: 3}
   levels: []
@@ -3662,7 +3664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 189acb3eb146619419a59913ef13ed3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 106f0eed0db14cb4690e9aac4cb38343, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

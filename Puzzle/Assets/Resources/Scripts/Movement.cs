@@ -7,6 +7,15 @@ public class Movement : MonoBehaviour
     public Rigidbody2D rb;
     public float moveSpeed;
     private bool rotatePlayer = true;
+
+    private bool sameRoomAsPlayer;
+
+    private GameObject player;
+
+    void Start() 
+    {
+        player = GameObject.FindWithTag("Player");
+    }
     void Update()
     {
         //transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime, 0f);
@@ -15,7 +24,14 @@ public class Movement : MonoBehaviour
         else
         {
             rb.velocity = new Vector2(0, 0);
-            if (rotatePlayer == true && moveSpeed >= 0)
+            if (rotatePlayer == true && this.CompareTag("Player"))
+            {
+                if(RoomTransition.rotationDirection == true)
+                transform.Rotate(0, 0, -90);
+                if(RoomTransition.rotationDirection == false)
+                transform.Rotate(0, 0, 90);
+            }
+            if (rotatePlayer == true && this.CompareTag("Phantom") && this.transform.parent == player.transform.parent)
             {
                 if(RoomTransition.rotationDirection == true)
                 transform.Rotate(0, 0, -90);
