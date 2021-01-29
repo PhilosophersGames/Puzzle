@@ -53,7 +53,7 @@ public class RoomTransition : MonoBehaviour
         {
             achievementManager.UnlockAchievement(Achievements.HamsterMind);
         }
-        if ((mobileTap == 1) && canRotate && !isRotating && !player.isMoving)
+        if ((mobileTap == 1 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.isMoving)
         {
             rotationDirection = true;
             achievementManager.UnlockAchievement(Achievements.FirstStep);
@@ -66,7 +66,7 @@ public class RoomTransition : MonoBehaviour
             HamsterRotation++;
             mobileTap = 0;
         }
-        if (mobileTap == 2 && canRotate && !isRotating && !player.isMoving)
+        if ((mobileTap == 2 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.isMoving)
         {
             rotationDirection = false;
             achievementManager.UnlockAchievement(Achievements.FirstStep);
