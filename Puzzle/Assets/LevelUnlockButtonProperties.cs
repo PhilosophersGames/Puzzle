@@ -15,7 +15,7 @@ public class LevelUnlockButtonProperties : MonoBehaviour
     // Start is called before the first frame update
 
     private void Awake()
-     {
+    {
         levelSprites = new Sprite[SceneManager.sceneCountInBuildSettings - 1];
         levels = GameObject.FindGameObjectsWithTag("LevelButton");
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
@@ -23,7 +23,7 @@ public class LevelUnlockButtonProperties : MonoBehaviour
     }
     void Start()
     {
-      //  if (Unlocklevel[0] == true)
+        //  if (Unlocklevel[0] == true)
         UnlockImage();
     }
     // Update is called once per frame
@@ -33,22 +33,22 @@ public class LevelUnlockButtonProperties : MonoBehaviour
         while (i < SceneManager.sceneCountInBuildSettings - 1)
         {
             levelSprites[i - 1] = levels[i].GetComponent<Image>().sprite;
-            if(Unlocklevel[i - 1] == true)
+            if (Unlocklevel[i - 1] == true)
             {
-             levels[i].GetComponent<Image>().sprite = levelSprites[i - 1];
-            i++;
+                levels[i].GetComponent<Image>().sprite = levelSprites[i - 1];
+                i++;
             }
             else if (Unlocklevel[i - 1] == false)
             {
                 levels[i].GetComponent<Image>().sprite = lockedImage;
-                 i++;
+                i++;
             }
         }
     }
 
     public void WhichLevelsAreUnlocked()
     {
-                    if (PlayerPrefs.HasKey("C2Level3"))
+        if (PlayerPrefs.HasKey("C2Level3"))
         {
             Unlocklevel[0] = (PlayerPrefs.GetInt("C1Level1") == 1 ? true : false);
             Unlocklevel[1] = (PlayerPrefs.GetInt("C1Level2") == 1 ? true : false);
@@ -74,7 +74,15 @@ public class LevelUnlockButtonProperties : MonoBehaviour
             Unlocklevel[18] = (PlayerPrefs.GetInt("C4Level2") == 1 ? true : false);
             Unlocklevel[19] = (PlayerPrefs.GetInt("C4Level3") == 1 ? true : false);
             Unlocklevel[20] = (PlayerPrefs.GetInt("C4Level4") == 1 ? true : false);
-            Unlocklevel[21] = (PlayerPrefs.GetInt("C4Level5") == 1 ? true : false);
+
+            Unlocklevel[21] = (PlayerPrefs.GetInt("C5Level1") == 1 ? true : false);
+            Unlocklevel[22] = (PlayerPrefs.GetInt("C5Level2") == 1 ? true : false);
+            Unlocklevel[23] = (PlayerPrefs.GetInt("C5Level3") == 1 ? true : false);
+            Unlocklevel[24] = (PlayerPrefs.GetInt("C5Level4") == 1 ? true : false);
+            Unlocklevel[25] = (PlayerPrefs.GetInt("C5Level5") == 1 ? true : false);
+            Unlocklevel[26] = (PlayerPrefs.GetInt("C5Level6") == 1 ? true : false);
+
+            Unlocklevel[26] = (PlayerPrefs.GetInt("CFLevel1") == 1 ? true : false);
         }
         else
         {

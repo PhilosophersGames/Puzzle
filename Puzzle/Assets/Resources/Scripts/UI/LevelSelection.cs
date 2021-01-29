@@ -13,7 +13,7 @@ public class LevelSelection : MonoBehaviour
 
     void Awake()
     {
-//        achievementLeastRotations =  GameObject.Find("AchievementLeastRotations").GetComponent<AchievementLeastRotations>();
+        //        achievementLeastRotations =  GameObject.Find("AchievementLeastRotations").GetComponent<AchievementLeastRotations>();
         //ScreenCapture.CaptureScreenshot("C:/Users/youce/Desktop/JEU DE CARTE/PNG/Temp");
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
         LoadUnlockedLevel();
@@ -60,6 +60,8 @@ public class LevelSelection : MonoBehaviour
             achievementManager.UnlockAchievement(Achievements.Chapter3);
         if (Unlocklevel[21] == true)
             achievementManager.UnlockAchievement(Achievements.Chapter4);
+        if (Unlocklevel[27] == true)
+            achievementManager.UnlockAchievement(Achievements.Chapter5);
     }
     public void LoadUnlockedLevel()
     {
@@ -90,7 +92,15 @@ public class LevelSelection : MonoBehaviour
             Unlocklevel[18] = (PlayerPrefs.GetInt("C4Level2") == 1 ? true : false);
             Unlocklevel[19] = (PlayerPrefs.GetInt("C4Level3") == 1 ? true : false);
             Unlocklevel[20] = (PlayerPrefs.GetInt("C4Level4") == 1 ? true : false);
-            Unlocklevel[21] = (PlayerPrefs.GetInt("C4Level5") == 1 ? true : false);
+
+            Unlocklevel[21] = (PlayerPrefs.GetInt("C5Level1") == 1 ? true : false);
+            Unlocklevel[22] = (PlayerPrefs.GetInt("C5Level2") == 1 ? true : false);
+            Unlocklevel[23] = (PlayerPrefs.GetInt("C5Level3") == 1 ? true : false);
+            Unlocklevel[24] = (PlayerPrefs.GetInt("C5Level4") == 1 ? true : false);
+            Unlocklevel[25] = (PlayerPrefs.GetInt("C5Level5") == 1 ? true : false);
+            Unlocklevel[26] = (PlayerPrefs.GetInt("C5Level6") == 1 ? true : false);
+
+            Unlocklevel[27] = (PlayerPrefs.GetInt("CFLevel1") == 1 ? true : false);
         }
         else
         {
@@ -130,13 +140,24 @@ public class LevelSelection : MonoBehaviour
         PlayerPrefs.SetInt("C4Level2", (Unlocklevel[18] ? 1 : 0));
         PlayerPrefs.SetInt("C4Level3", (Unlocklevel[19] ? 1 : 0));
         PlayerPrefs.SetInt("C4Level4", (Unlocklevel[20] ? 1 : 0));
-        PlayerPrefs.SetInt("C4Level5", (Unlocklevel[21] ? 1 : 0));
+
+        // chapter 5
+        PlayerPrefs.SetInt("C5Level1", (Unlocklevel[21] ? 1 : 0));
+        PlayerPrefs.SetInt("C5Level2", (Unlocklevel[22] ? 1 : 0));
+        PlayerPrefs.SetInt("C5Level3", (Unlocklevel[23] ? 1 : 0));
+        PlayerPrefs.SetInt("C5Level4", (Unlocklevel[24] ? 1 : 0));
+        PlayerPrefs.SetInt("C5Level5", (Unlocklevel[25] ? 1 : 0));
+        PlayerPrefs.SetInt("C5Level6", (Unlocklevel[26] ? 1 : 0));
+
+        // final chapter 
+        PlayerPrefs.SetInt("CFLevel1", (Unlocklevel[27] ? 1 : 0));
+
         PlayerPrefs.Save();
     }
 
     // Functions to load the levels based on the build index(Go to File->BuildSettings to manage it)
 
-//Chapter 0
+    //Chapter 0
     public void GotoLevel1()
     {
         SceneManager.LoadScene(1);
@@ -178,84 +199,119 @@ public class LevelSelection : MonoBehaviour
             SceneManager.LoadScene(7);
     }
 
-//Chapter2
-        public void GotoChapter2Level1()
+    //Chapter2
+    public void GotoChapter2Level1()
     {
         if (Unlocklevel[6] == true)
             SceneManager.LoadScene(8);
     }
-            public void GotoChapter2Level2()
+    public void GotoChapter2Level2()
     {
         if (Unlocklevel[7] == true)
             SceneManager.LoadScene(9);
     }
-            public void GotoChapter2Level3()
+    public void GotoChapter2Level3()
     {
         if (Unlocklevel[8] == true)
             SceneManager.LoadScene(10);
     }
-            public void GotoChapter2Level4()
+    public void GotoChapter2Level4()
     {
         if (Unlocklevel[9] == true)
             SceneManager.LoadScene(11);
     }
 
-//Chapter 3
-        public void GotoChapter3Level1()
+    //Chapter 3
+    public void GotoChapter3Level1()
     {
         if (Unlocklevel[10] == true)
             SceneManager.LoadScene(12);
     }
-            public void GotoChapter3Level2()
+    public void GotoChapter3Level2()
     {
         if (Unlocklevel[11] == true)
             SceneManager.LoadScene(13);
     }
-            public void GotoChapter3Level3()
+    public void GotoChapter3Level3()
     {
         if (Unlocklevel[12] == true)
             SceneManager.LoadScene(14);
     }
-            public void GotoChapter3Level4()
+    public void GotoChapter3Level4()
     {
         if (Unlocklevel[13] == true)
             SceneManager.LoadScene(15);
     }
-                public void GotoChapter3Level5()
+    public void GotoChapter3Level5()
     {
         if (Unlocklevel[14] == true)
             SceneManager.LoadScene(16);
     }
-                public void GotoChapter3Level6()
+    public void GotoChapter3Level6()
     {
         if (Unlocklevel[15] == true)
             SceneManager.LoadScene(17);
     }
 
-//Chapter 4
-        public void GotoChapter4Level1()
+    //Chapter 4
+    public void GotoChapter4Level1()
     {
         if (Unlocklevel[16] == true)
             SceneManager.LoadScene(18);
     }
-            public void GotoChapter4Level2()
+    public void GotoChapter4Level2()
     {
         if (Unlocklevel[17] == true)
             SceneManager.LoadScene(19);
     }
-            public void GotoChapter4Level3()
+    public void GotoChapter4Level3()
     {
         if (Unlocklevel[18] == true)
             SceneManager.LoadScene(20);
     }
-            public void GotoChapter4Level4()
+    public void GotoChapter4Level4()
     {
         if (Unlocklevel[19] == true)
             SceneManager.LoadScene(21);
     }
-                public void GotoChapter4Level5()
+
+    // Chapter 5
+    public void GotoChapter5Level1()
     {
         if (Unlocklevel[20] == true)
             SceneManager.LoadScene(22);
+    }
+
+    public void GotoChapter5Level2()
+    {
+        if (Unlocklevel[21] == true)
+            SceneManager.LoadScene(23);
+    }
+    public void GotoChapter5Level3()
+    {
+        if (Unlocklevel[22] == true)
+            SceneManager.LoadScene(24);
+    }
+    public void GotoChapter5Level4()
+    {
+        if (Unlocklevel[23] == true)
+            SceneManager.LoadScene(25);
+    }
+    public void GotoChapter5Level5()
+    {
+        if (Unlocklevel[24] == true)
+            SceneManager.LoadScene(26);
+    }
+    public void GotoChapter5Level6()
+    {
+        if (Unlocklevel[25] == true)
+            SceneManager.LoadScene(27);
+    }
+
+    // Chapter Final
+    public void GotoChapterFLevel1()
+    {
+        if (Unlocklevel[26] == true)
+            SceneManager.LoadScene(28);
     }
 }
