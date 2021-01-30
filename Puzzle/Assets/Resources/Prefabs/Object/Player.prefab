@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acce8ee1a288a74c86df63147191ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
   animator: {fileID: 1234705992}
   rb: {fileID: 6725808333177012042}
   moveSpeed: 10
@@ -198,10 +199,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.3137255, y: 0.3137255}
-      - {x: -0.3137255, y: -0.3137255}
-      - {x: 0.3137255, y: -0.3137255}
-      - {x: 0.3137255, y: 0.3137255}
+    - - {x: -0.2412017, y: 0.2835073}
+      - {x: -0.24422355, y: -0.2835073}
+      - {x: 0.30163813, y: -0.28048542}
+      - {x: 0.286529, y: 0.28652906}
 --- !u!95 &1234705992
 Animator:
   serializedVersion: 3
