@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class freezingEye : MonoBehaviour
 {
- 
+
     // Start is called before the first frame update
 
+    
     private LineRenderer lineRenderer;
     private GameObject Target;
     private bool inSight;
     public GameObject tempPlayer;
+    [SerializeField] private LayerMask layerMaskTab;
     void Awake()
     {
         Target = GameObject.FindWithTag("Player");
@@ -26,13 +28,13 @@ public class freezingEye : MonoBehaviour
     void Update()
     {
         // Raycast
-         // look at the target, cast a raycast, and constraint rotation if the player is inSight
+        // look at the target, cast a raycast, and constraint rotation if the player is inSight
         Vector3 dir = Target.transform.position - transform.position;
         float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
 
 
             Debug.DrawRay(transform.position, Target.transform.position - transform.position, Color.red);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Target.transform.position - transform.position);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Target.transform.position - transform.position, Mathf.Infinity, ~layerMaskTab);
 
         // SET the linerenderer position on sight
         lineRenderer.SetPosition(0, transform.position);
