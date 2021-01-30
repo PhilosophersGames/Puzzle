@@ -63,101 +63,55 @@ public class LevelSelection : MonoBehaviour
         if (Unlocklevel[27] == true)
             achievementManager.UnlockAchievement(Achievements.Chapter5);
     }
+
+    private string GetLevelName(int chapterNumber, int i)
+    {
+        string tab = $"C{chapterNumber.ToString()}Level{i.ToString()}";
+        return (tab);
+    }
     public void LoadUnlockedLevel()
     {
         // Load UnlockedLevelState
         if (PlayerPrefs.HasKey("C2Level3"))
         {
-            Unlocklevel[0] = (PlayerPrefs.GetInt("C1Level1") == 1 ? true : false);
-            Unlocklevel[1] = (PlayerPrefs.GetInt("C1Level2") == 1 ? true : false);
-            Unlocklevel[2] = (PlayerPrefs.GetInt("C1Level3") == 1 ? true : false);
-            Unlocklevel[3] = (PlayerPrefs.GetInt("C1Level4") == 1 ? true : false);
-            Unlocklevel[4] = (PlayerPrefs.GetInt("C1Level5") == 1 ? true : false);
-            Unlocklevel[5] = (PlayerPrefs.GetInt("C1Level6") == 1 ? true : false);
-            Unlocklevel[6] = (PlayerPrefs.GetInt("C1Level7") == 1 ? true : false);
-
-            Unlocklevel[7] = (PlayerPrefs.GetInt("C2Level1") == 1 ? true : false);
-            Unlocklevel[8] = (PlayerPrefs.GetInt("C2Level2") == 1 ? true : false);
-            Unlocklevel[9] = (PlayerPrefs.GetInt("C2Level3") == 1 ? true : false);
-            Unlocklevel[10] = (PlayerPrefs.GetInt("C2Level4") == 1 ? true : false);
-
-            Unlocklevel[11] = (PlayerPrefs.GetInt("C3Level1") == 1 ? true : false);
-            Unlocklevel[12] = (PlayerPrefs.GetInt("C3Level2") == 1 ? true : false);
-            Unlocklevel[13] = (PlayerPrefs.GetInt("C3Level3") == 1 ? true : false);
-            Unlocklevel[14] = (PlayerPrefs.GetInt("C3Level4") == 1 ? true : false);
-            Unlocklevel[15] = (PlayerPrefs.GetInt("C3Level5") == 1 ? true : false);
-            Unlocklevel[16] = (PlayerPrefs.GetInt("C3Level6") == 1 ? true : false);
-
-            Unlocklevel[17] = (PlayerPrefs.GetInt("C4Level1") == 1 ? true : false);
-            Unlocklevel[18] = (PlayerPrefs.GetInt("C4Level2") == 1 ? true : false);
-            Unlocklevel[19] = (PlayerPrefs.GetInt("C4Level3") == 1 ? true : false);
-            Unlocklevel[20] = (PlayerPrefs.GetInt("C4Level4") == 1 ? true : false);
-
-            Unlocklevel[21] = (PlayerPrefs.GetInt("C5Level1") == 1 ? true : false);
-            Unlocklevel[22] = (PlayerPrefs.GetInt("C5Level2") == 1 ? true : false);
-            Unlocklevel[23] = (PlayerPrefs.GetInt("C5Level3") == 1 ? true : false);
-            Unlocklevel[24] = (PlayerPrefs.GetInt("C5Level4") == 1 ? true : false);
-            Unlocklevel[25] = (PlayerPrefs.GetInt("C5Level5") == 1 ? true : false);
-            Unlocklevel[26] = (PlayerPrefs.GetInt("C5Level6") == 1 ? true : false);
-
-            Unlocklevel[27] = (PlayerPrefs.GetInt("CFLevel1") == 1 ? true : false);
+            int chapterNumber = 1;
+            int i = -1;
+            for(int level = 0; level <= 27; level++)
+            {
+                i++;
+                Unlocklevel[i] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i+1)) == 1 ? true : false);
+                if(level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
+                {
+                    i = -1;
+                    chapterNumber++;
+                }
+            }
         }
         else
-        {
             Debug.Log("No Save");
-        }
     }
 
     public void SaveUnlockedLevel()
     {
         // Save UnlockedLevelState
-        // chapter 1
-        PlayerPrefs.SetInt("C1Level1", (Unlocklevel[0] ? 1 : 0));
-        PlayerPrefs.SetInt("C1Level2", (Unlocklevel[1] ? 1 : 0));
-        PlayerPrefs.SetInt("C1Level3", (Unlocklevel[2] ? 1 : 0));
-        PlayerPrefs.SetInt("C1Level4", (Unlocklevel[3] ? 1 : 0));
-        PlayerPrefs.SetInt("C1Level5", (Unlocklevel[4] ? 1 : 0));
-        PlayerPrefs.SetInt("C1Level6", (Unlocklevel[5] ? 1 : 0));
-        PlayerPrefs.SetInt("C1Level7", (Unlocklevel[6] ? 1 : 0));
-
-        // chapter 2
-        PlayerPrefs.SetInt("C2Level1", (Unlocklevel[7] ? 1 : 0));
-        PlayerPrefs.SetInt("C2Level2", (Unlocklevel[8] ? 1 : 0));
-        PlayerPrefs.SetInt("C2Level3", (Unlocklevel[9] ? 1 : 0));
-        PlayerPrefs.SetInt("C2Level4", (Unlocklevel[10] ? 1 : 0));
-
-        // chapter 3
-        PlayerPrefs.SetInt("C3Level1", (Unlocklevel[11] ? 1 : 0));
-        PlayerPrefs.SetInt("C3Level2", (Unlocklevel[12] ? 1 : 0));
-        PlayerPrefs.SetInt("C3Level3", (Unlocklevel[13] ? 1 : 0));
-        PlayerPrefs.SetInt("C3Level4", (Unlocklevel[14] ? 1 : 0));
-        PlayerPrefs.SetInt("C3Level5", (Unlocklevel[15] ? 1 : 0));
-        PlayerPrefs.SetInt("C3Level6", (Unlocklevel[16] ? 1 : 0));
-
-        // chapter 4
-
-        PlayerPrefs.SetInt("C4Level1", (Unlocklevel[17] ? 1 : 0));
-        PlayerPrefs.SetInt("C4Level2", (Unlocklevel[18] ? 1 : 0));
-        PlayerPrefs.SetInt("C4Level3", (Unlocklevel[19] ? 1 : 0));
-        PlayerPrefs.SetInt("C4Level4", (Unlocklevel[20] ? 1 : 0));
-
-        // chapter 5
-        PlayerPrefs.SetInt("C5Level1", (Unlocklevel[21] ? 1 : 0));
-        PlayerPrefs.SetInt("C5Level2", (Unlocklevel[22] ? 1 : 0));
-        PlayerPrefs.SetInt("C5Level3", (Unlocklevel[23] ? 1 : 0));
-        PlayerPrefs.SetInt("C5Level4", (Unlocklevel[24] ? 1 : 0));
-        PlayerPrefs.SetInt("C5Level5", (Unlocklevel[25] ? 1 : 0));
-        PlayerPrefs.SetInt("C5Level6", (Unlocklevel[26] ? 1 : 0));
-
-        // final chapter 
-        PlayerPrefs.SetInt("CFLevel1", (Unlocklevel[27] ? 1 : 0));
-
+        int chapterNumber = 1;
+        int i = -1;
+        for(int level = 0; level <= 27; level++)
+        {
+            i++;
+            PlayerPrefs.SetInt(GetLevelName(chapterNumber, i+1), (Unlocklevel[i] ? 1 : 0));
+            if(level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
+            {
+                i = -1;
+                chapterNumber++;
+            }
+        }
         PlayerPrefs.Save();
     }
 
     // Functions to load the levels based on the build index(Go to File->BuildSettings to manage it)
 
-    //Chapter 0
+    //Chapter 1
     public void GotoLevel1()
     {
         SceneManager.LoadScene(1);
