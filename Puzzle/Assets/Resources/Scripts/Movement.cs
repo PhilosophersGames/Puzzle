@@ -8,6 +8,9 @@ public class Movement : MonoBehaviour
     public Animator animator;
     public Rigidbody2D rb;
     public float moveSpeed;
+
+    float roundHorizontal;
+    float roundVertical;
     private bool rotatePlayer = true;
 
 
@@ -36,7 +39,10 @@ public class Movement : MonoBehaviour
     void ComputerMovement()
     {
         if (RoomTransition.isRotating == false)
-            rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), moveSpeed * Input.GetAxis("Vertical"));
+        {
+            if (Mathf.Abs(moveSpeed * roundHorizontal) < Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) < Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
+                rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), moveSpeed * Input.GetAxis("Vertical"));
+        }
         else
         {
             rb.velocity = new Vector2(0, 0);
@@ -68,8 +74,37 @@ public class Movement : MonoBehaviour
     }
     void MobileMovement()
     {
+
         if (RoomTransition.isRotating == false)
-            rb.velocity = new Vector2(moveSpeed * joystick.Horizontal, moveSpeed * joystick.Vertical);
+        {
+
+            if (Mathf.Abs(joystick.Horizontal) > Mathf.Abs(joystick.Vertical) && joystick.Horizontal > 0)
+            {
+                roundHorizontal = 1f;
+                roundVertical = 0f;
+            }
+            else if (Mathf.Abs(joystick.Horizontal) > Mathf.Abs(joystick.Vertical) && joystick.Horizontal < 0)
+            {
+                roundHorizontal = -1f;
+                roundVertical = 0f;
+            }
+            else
+                roundHorizontal = 0f;
+            if (Mathf.Abs(joystick.Vertical) > Mathf.Abs(joystick.Horizontal) && joystick.Vertical > 0)
+            {
+                roundVertical = 1f;
+                roundHorizontal = 0f;
+            }
+            else if (Mathf.Abs(joystick.Vertical) > Mathf.Abs(joystick.Horizontal) && joystick.Vertical < 0)
+            {
+                roundVertical = -1f;
+                roundHorizontal = 0f;
+            }
+            else
+                roundVertical = 0f;
+            if (Mathf.Abs(moveSpeed * roundHorizontal) > Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) > Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
+                rb.velocity = new Vector2(moveSpeed * roundHorizontal, moveSpeed * roundVertical);
+        }
         else
         {
             rb.velocity = new Vector2(0, 0);
