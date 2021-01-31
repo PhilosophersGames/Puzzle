@@ -79,7 +79,7 @@ public class LevelSelection : MonoBehaviour
             for(int level = 0; level <= 27; level++)
             {
                 i++;
-                Unlocklevel[i] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i+1)) == 1 ? true : false);
+                Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i+1)) == 1 ? true : false);
                 if(level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
                 {
                     i = -1;
@@ -99,7 +99,7 @@ public class LevelSelection : MonoBehaviour
         for(int level = 0; level <= 27; level++)
         {
             i++;
-            PlayerPrefs.SetInt(GetLevelName(chapterNumber, i+1), (Unlocklevel[i] ? 1 : 0));
+            PlayerPrefs.SetInt(GetLevelName(chapterNumber, i+1), (Unlocklevel[level] ? 1 : 0));
             if(level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
             {
                 i = -1;

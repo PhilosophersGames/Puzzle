@@ -60,7 +60,7 @@ public class LevelUnlockButtonProperties : MonoBehaviour
             for (int level = 0; level <= 27; level++)
             {
                 i++;
-                Unlocklevel[i] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
+                Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
                 if (level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
                 {
                     i = -1;
