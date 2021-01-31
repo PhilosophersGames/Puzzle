@@ -77,7 +77,8 @@ public class Movement : MonoBehaviour
 
         if (RoomTransition.isRotating == false)
         {
-
+            roundHorizontal = 0f;
+            roundVertical = 0f;
             if (Mathf.Abs(joystick.Horizontal) > Mathf.Abs(joystick.Vertical) && joystick.Horizontal > 0)
             {
                 roundHorizontal = 1f;
@@ -88,8 +89,6 @@ public class Movement : MonoBehaviour
                 roundHorizontal = -1f;
                 roundVertical = 0f;
             }
-            else
-                roundHorizontal = 0f;
             if (Mathf.Abs(joystick.Vertical) > Mathf.Abs(joystick.Horizontal) && joystick.Vertical > 0)
             {
                 roundVertical = 1f;
@@ -100,10 +99,9 @@ public class Movement : MonoBehaviour
                 roundVertical = -1f;
                 roundHorizontal = 0f;
             }
-            else
-                roundVertical = 0f;
-            if (Mathf.Abs(moveSpeed * roundHorizontal) > Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) > Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
-                rb.velocity = new Vector2(moveSpeed * roundHorizontal, moveSpeed * roundVertical);
+           // if (Mathf.Abs(moveSpeed * roundHorizontal) > Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) > Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
+            //    rb.velocity = new Vector2(moveSpeed * roundHorizontal, moveSpeed * roundVertical);
+            rb.velocity = new Vector2(moveSpeed * roundHorizontal, moveSpeed * roundVertical);
         }
         else
         {
