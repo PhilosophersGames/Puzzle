@@ -12,6 +12,8 @@ public class RoomTransition : MonoBehaviour
     private Vector2 endTouchPosition;
     private bool stopTouch = false;
 
+    private Transform MiddleofRooms;
+
     private bool roro;
     public float swipeRange;
     public float tapRange;
@@ -170,17 +172,29 @@ public class RoomTransition : MonoBehaviour
             {
                 currentPosition = Input.GetTouch(0).position;
                 Vector2 Distance = currentPosition - startTouchPosition;
+                MiddleofRooms = GameObject.Find("MiddleofRooms").transform;
+                
 
                 if (!stopTouch)
                 {
-                    if (Distance.x < -swipeRange && canRotate)
+                    if (Distance.x < -swipeRange && canRotate && touchPos.y > MiddleofRooms.position.y)
                     {
                         mobileTap = 1;
                         stopTouch = true;
                     }
-                    else if (Distance.x > swipeRange && canRotate)
+                    if (Distance.x < -swipeRange && canRotate && touchPos.y <=  MiddleofRooms.position.y)
                     {
                         mobileTap = 2;
+                        stopTouch = true;
+                    }
+                    if (Distance.x > swipeRange && canRotate && touchPos.y >  MiddleofRooms.position.y)
+                    {
+                        mobileTap = 2;
+                        stopTouch = true;
+                    }
+                    if (Distance.x > swipeRange && canRotate && touchPos.y <=  MiddleofRooms.position.y)
+                    {
+                        mobileTap = 1;
                         stopTouch = true;
                     }
                     /*                 else if (Distance.y > swipeRange)
