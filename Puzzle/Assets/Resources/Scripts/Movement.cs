@@ -4,7 +4,7 @@ using System.Collections;
 public class Movement : MonoBehaviour
 {
 
-    public Joystick joystick;
+    //public Joystick joystick;
     public Animator animator;
     public Rigidbody2D rb;
     public float moveSpeed;
@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
 
     void Awake()
     {
-        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FixedJoystick>();
+     //   joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FixedJoystick>();
     }
 
     private bool sameRoomAsPlayer;
@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
     {
         if (RoomTransition.isRotating == false)
         {
-            if (Mathf.Abs(moveSpeed * roundHorizontal) < Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) < Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
+   //         if (Mathf.Abs(moveSpeed * roundHorizontal) < Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) < Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
                 rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), moveSpeed * Input.GetAxis("Vertical"));
         }
         else
@@ -74,34 +74,35 @@ public class Movement : MonoBehaviour
     }
     void MobileMovement()
     {
-
         if (RoomTransition.isRotating == false)
         {
-            roundHorizontal = 0f;
-            roundVertical = 0f;
-            if (Mathf.Abs(joystick.Horizontal) > Mathf.Abs(joystick.Vertical) && joystick.Horizontal > 0)
-            {
-                roundHorizontal = 1f;
-                roundVertical = 0f;
-            }
-            else if (Mathf.Abs(joystick.Horizontal) > Mathf.Abs(joystick.Vertical) && joystick.Horizontal < 0)
-            {
-                roundHorizontal = -1f;
-                roundVertical = 0f;
-            }
-            if (Mathf.Abs(joystick.Vertical) > Mathf.Abs(joystick.Horizontal) && joystick.Vertical > 0)
-            {
-                roundVertical = 1f;
-                roundHorizontal = 0f;
-            }
-            else if (Mathf.Abs(joystick.Vertical) > Mathf.Abs(joystick.Horizontal) && joystick.Vertical < 0)
-            {
-                roundVertical = -1f;
-                roundHorizontal = 0f;
-            }
-           // if (Mathf.Abs(moveSpeed * roundHorizontal) > Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) > Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
-            //    rb.velocity = new Vector2(moveSpeed * roundHorizontal, moveSpeed * roundVertical);
-            rb.velocity = new Vector2(moveSpeed * roundHorizontal, moveSpeed * roundVertical);
+//
+   //         if (Mathf.Abs(joystick.Horizontal) > Mathf.Abs(joystick.Vertical) && joystick.Horizontal > 0)
+ //           {
+ //               roundHorizontal = 1f;
+ //               roundVertical = 0f;
+   //         }
+  //          else if (Mathf.Abs(joystick.Horizontal) > Mathf.Abs(joystick.Vertical) && joystick.Horizontal < 0)
+  //          {
+  //              roundHorizontal = -1f;
+  //              roundVertical = 0f;
+ //           }
+ //           else
+//                roundHorizontal = 0f;
+ //           if (Mathf.Abs(joystick.Vertical) > Mathf.Abs(joystick.Horizontal) && joystick.Vertical > 0)
+  //          {
+  //              roundVertical = 1f;
+ //               roundHorizontal = 0f;
+ //           }
+ ////           else if (Mathf.Abs(joystick.Vertical) > Mathf.Abs(joystick.Horizontal) && joystick.Vertical < 0)
+ //           {
+//roundVertical = -1f;
+ //               roundHorizontal = 0f;
+ //           }
+ //           else
+ //               roundVertical = 0f;
+ //           if (Mathf.Abs(moveSpeed * roundHorizontal) > Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) > Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
+                rb.velocity = new Vector2(moveSpeed * SimpleInput.GetAxis("orizontal"), moveSpeed * SimpleInput.GetAxis("Vertical"));
         }
         else
         {
