@@ -102,7 +102,7 @@ public class Movement : MonoBehaviour
  //           else
  //               roundVertical = 0f;
  //           if (Mathf.Abs(moveSpeed * roundHorizontal) > Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) > Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
-                rb.velocity = new Vector2(moveSpeed * SimpleInput.GetAxis("orizontal"), moveSpeed * SimpleInput.GetAxis("Vertical");
+                rb.velocity = new Vector2(moveSpeed * SimpleInput.GetAxis("orizontal"), moveSpeed * SimpleInput.GetAxis("Vertical"));
         }
         else
         {
