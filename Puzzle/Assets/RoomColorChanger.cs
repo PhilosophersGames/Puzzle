@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -14,9 +14,12 @@ public class RoomColorChanger : MonoBehaviour
     public Tilemap colider;
     public Tilemap path;
     public Tilemap decoration;
+
+    private Color color;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        
     }
 
     // Update is called once per frame
@@ -24,15 +27,19 @@ public class RoomColorChanger : MonoBehaviour
     {
         if (isPlayerHere)
         {
-            colider.color = Color.white;
-            path.color = Color.white;
-            decoration.color = Color.white;
+            color = Color.white;
+            color.a = 1f;
+            colider.color = color;
+            path.color = color;
+            decoration.color = color;
         }
         else
         {
-            colider.color = Color.red;
-            path.color = Color.red;
-            decoration.color = Color.red;
+            color = new Color(0.70f,0.70f,0.70f,1f);
+           // color.a = 0.8f;
+            colider.color = color;
+            path.color = color;
+            decoration.color = color;
         }
         
     }
@@ -47,3 +54,4 @@ public class RoomColorChanger : MonoBehaviour
             isPlayerHere = false;
     }
 }
+
