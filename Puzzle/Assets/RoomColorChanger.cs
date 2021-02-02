@@ -24,15 +24,15 @@ public class RoomColorChanger : MonoBehaviour
     {
         if (isPlayerHere)
         {
-            colider.SetColor(new Vector3Int(255, 255, 255), Color.white);
-            path.SetColor(new Vector3Int(255, 255, 255), Color.white);
-            decoration.SetColor(new Vector3Int(255, 255, 255), Color.white);
+            colider.color = Color.white;
+            path.color = Color.white;
+            decoration.color = Color.white;
         }
         else
         {
-            colider.SetColor(new Vector3Int(120, 120, 120), Color.white);
-            path.SetColor(new Vector3Int(120, 120, 120), Color.white);
-            decoration.SetColor(new Vector3Int(120, 120, 120), Color.white);
+            colider.color = Color.red;
+            path.color = Color.red;
+            decoration.color = Color.red;
         }
         
     }
