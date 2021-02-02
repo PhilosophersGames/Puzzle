@@ -197,6 +197,26 @@ public class RoomTransition : MonoBehaviour
                         mobileTap = 1;
                         stopTouch = true;
                     }
+                     if (Distance.y < -swipeRange && canRotate && touchPos.x > MiddleofRooms.position.x)
+                    {
+                        mobileTap = 2;
+                        stopTouch = true;
+                    }
+                    if (Distance.y < -swipeRange && canRotate && touchPos.x <=  MiddleofRooms.position.x)
+                    {
+                        mobileTap = 1;
+                        stopTouch = true;
+                    }
+                    if (Distance.y > swipeRange && canRotate && touchPos.x >  MiddleofRooms.position.x)
+                    {
+                        mobileTap = 1;
+                        stopTouch = true;
+                    }
+                    if (Distance.y > swipeRange && canRotate && touchPos.x <=  MiddleofRooms.position.x)
+                    {
+                        mobileTap = 2;
+                        stopTouch = true;
+                    }
                     /*                 else if (Distance.y > swipeRange)
                                     {
                                         outputText.text = "Up";
