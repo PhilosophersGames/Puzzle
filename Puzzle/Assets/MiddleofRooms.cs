@@ -11,6 +11,7 @@ public class MiddleofRooms : MonoBehaviour
     }
     void Update()
     {
-        this.transform.position = player.transform.parent.gameObject.transform.parent.gameObject.transform.position;
+        if (player.transform.parent.gameObject.transform.parent.gameObject.transform.position != null)
+            this.transform.position = player.transform.parent.gameObject.transform.parent.gameObject.transform.position;
     }
 }
