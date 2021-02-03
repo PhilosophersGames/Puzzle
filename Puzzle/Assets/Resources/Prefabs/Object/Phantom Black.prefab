@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 9203954956759660754, guid: 6182f8fbd2e09b245b3e65d31677692b,
     type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -98,10 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acce8ee1a288a74c86df63147191ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
   animator: {fileID: 4761841458086738071}
   rb: {fileID: 2252831811346651541}
-  moveSpeed: -10
+  moveSpeed: -8
 --- !u!50 &2252831811346651541
 Rigidbody2D:
   serializedVersion: 4

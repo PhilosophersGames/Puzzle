@@ -12,6 +12,8 @@ public class RoomTransition : MonoBehaviour
     private Vector2 endTouchPosition;
     private bool stopTouch = false;
 
+    private Transform MiddleofRooms;
+
     private bool roro;
     public float swipeRange;
     public float tapRange;
@@ -50,7 +52,7 @@ public class RoomTransition : MonoBehaviour
         {
             achievementManager.UnlockAchievement(Achievements.HamsterMind);
         }
-        if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating)
+        if ((mobileTap == 1 || Input.GetKeyDown("r")) && canRotate && !isRotating) //&& !player.isMoving)
         {
             rotationDirection = true;
             achievementManager.UnlockAchievement(Achievements.FirstStep);
@@ -63,7 +65,7 @@ public class RoomTransition : MonoBehaviour
             HamsterRotation++;
             mobileTap = 0;
         }
-        if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating)
+        if ((mobileTap == 2 || Input.GetKeyDown("e")) && canRotate && !isRotating) //&& !player.isMoving)
         {
             rotationDirection = false;
             achievementManager.UnlockAchievement(Achievements.FirstStep);
@@ -118,8 +120,6 @@ public class RoomTransition : MonoBehaviour
         {
             canRotate = true;
             other.transform.parent = this.transform;
-            //   camera.SetActive(true);
-            //   movePoint.transform.parent = this.transform;
             this.GetComponentInParent<BoxCollider2D>().enabled = true;
         }
         if (other.CompareTag("Object") || other.CompareTag("Coin") || other.CompareTag("FreezingEye") || other.CompareTag("Phantom"))
@@ -133,9 +133,6 @@ public class RoomTransition : MonoBehaviour
         if (other.CompareTag("Player")) 
         {
             canRotate = false;
-            // camera.SetActive(false);
-            //    other.transform.parent = null;
-            //    movePoint.transform.parent = null;
             this.GetComponentInParent<BoxCollider2D>().enabled = false;
         }
     }
@@ -172,16 +169,48 @@ public class RoomTransition : MonoBehaviour
             {
                 currentPosition = Input.GetTouch(0).position;
                 Vector2 Distance = currentPosition - startTouchPosition;
+                MiddleofRooms = GameObject.Find("MiddleofRooms").transform;
+                
 
                 if (!stopTouch)
                 {
-                    if (Distance.x < -swipeRange && canRotate)
+                    if (Distance.x < -swipeRange && canRotate && touchPos.y > MiddleofRooms.position.y)
                     {
                         
                         mobileTap = 1;
                         stopTouch = true;
                     }
-                    else if (Distance.x > swipeRange && canRotate)
+                    if (Distance.x < -swipeRange && canRotate && touchPos.y <=  MiddleofRooms.position.y)
+                    {
+                        mobileTap = 2;
+                        stopTouch = true;
+                    }
+                    if (Distance.x > swipeRange && canRotate && touchPos.y >  MiddleofRooms.position.y)
+                    {
+                        mobileTap = 2;
+                        stopTouch = true;
+                    }
+                    if (Distance.x > swipeRange && canRotate && touchPos.y <=  MiddleofRooms.position.y)
+                    {
+                        mobileTap = 1;
+                        stopTouch = true;
+                    }
+                     if (Distance.y < -swipeRange && canRotate && touchPos.x > MiddleofRooms.position.x)
+                    {
+                        mobileTap = 2;
+                        stopTouch = true;
+                    }
+                    if (Distance.y < -swipeRange && canRotate && touchPos.x <=  MiddleofRooms.position.x)
+                    {
+                        mobileTap = 1;
+                        stopTouch = true;
+                    }
+                    if (Distance.y > swipeRange && canRotate && touchPos.x >  MiddleofRooms.position.x)
+                    {
+                        mobileTap = 1;
+                        stopTouch = true;
+                    }
+                    if (Distance.y > swipeRange && canRotate && touchPos.x <=  MiddleofRooms.position.x)
                     {
                         mobileTap = 2;
                         stopTouch = true;
