@@ -24,6 +24,7 @@ public class RoomTransition : MonoBehaviour
     public AchievementManager achievementManager;
     //   private GameObject crates;
     private GameObject player;
+    private bool buttonRotateLeft;
     public bool canRotate;
     public float rotSpeed;
     public static bool isRotating = false;
@@ -52,31 +53,36 @@ public class RoomTransition : MonoBehaviour
         {
             achievementManager.UnlockAchievement(Achievements.HamsterMind);
         }
-        if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating) //&& !player.isMoving)
+        if (GameObject.Find("/GameManager/UIcanvas"))
         {
-            rotationDirection = true;
-            achievementManager.UnlockAchievement(Achievements.FirstStep);
-            float currentAngle = transform.rotation.eulerAngles.z;
-            polygoneCollider.enabled = false;
-            transform.localScale -= new Vector3(0.3f, 0.3f, 0);
-            //     rigidBodyRoom.isKinematic = false;
-            StartCoroutine(Rotate(currentAngle, currentAngle + 90f));
-            isRotating = true;
-            HamsterRotation++;
-            mobileTap = 0;
-        }
-        if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating) //&& !player.isMoving)
-        {
-            rotationDirection = false;
-            achievementManager.UnlockAchievement(Achievements.FirstStep);
-            float currentAngle = transform.rotation.eulerAngles.z;
-            polygoneCollider.enabled = false;
-            transform.localScale -= new Vector3(0.3f, 0.3f, 0);
-            //    rigidBodyRoom.isKinematic = false;
-            StartCoroutine(Rotate(currentAngle, currentAngle - 90f));
-            isRotating = true;
-            HamsterRotation++;
-            mobileTap = 0;
+            if ((mobileTap == 1 || Input.GetKeyDown("e") || GameObject.Find("/GameManager/UIcanvas/Rotation Buttons").GetComponent<RotateButton>().rotateLeft == true) && canRotate && !isRotating) //&& !player.isMoving)
+            {
+                rotationDirection = true;
+                achievementManager.UnlockAchievement(Achievements.FirstStep);
+                float currentAngle = transform.rotation.eulerAngles.z;
+                polygoneCollider.enabled = false;
+                transform.localScale -= new Vector3(0.3f, 0.3f, 0);
+                //     rigidBodyRoom.isKinematic = false;
+                StartCoroutine(Rotate(currentAngle, currentAngle + 90f));
+                isRotating = true;
+                HamsterRotation++;
+                mobileTap = 0;
+                GameObject.Find("/GameManager/UIcanvas/Rotation Buttons").GetComponent<RotateButton>().rotateLeft = false;
+            }
+            if ((mobileTap == 2 || Input.GetKeyDown("r") || GameObject.Find("/GameManager/UIcanvas/Rotation Buttons").GetComponent<RotateButton>().rotateRight == true) && canRotate && !isRotating) //&& !player.isMoving)
+            {
+                rotationDirection = false;
+                achievementManager.UnlockAchievement(Achievements.FirstStep);
+                float currentAngle = transform.rotation.eulerAngles.z;
+                polygoneCollider.enabled = false;
+                transform.localScale -= new Vector3(0.3f, 0.3f, 0);
+                //    rigidBodyRoom.isKinematic = false;
+                StartCoroutine(Rotate(currentAngle, currentAngle - 90f));
+                isRotating = true;
+                HamsterRotation++;
+                mobileTap = 0;
+                GameObject.Find("/GameManager/UIcanvas/Rotation Buttons").GetComponent<RotateButton>().rotateRight = false;
+            }
         }
     }
     IEnumerator Rotate(float angle, float targetAngle)
@@ -247,5 +253,15 @@ public class RoomTransition : MonoBehaviour
                 Debug.Log("tap");
             }
         }
+    }
+
+    public void RotationButtonRight()
+    {
+        mobileTap = 1;
+    }
+
+    public void RotationButtonLeft()
+    {
+        mobileTap = 2;
     }
 }
