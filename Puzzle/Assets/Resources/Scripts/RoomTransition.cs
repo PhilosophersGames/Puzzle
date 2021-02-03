@@ -130,7 +130,7 @@ public class RoomTransition : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player"))
         {
             canRotate = false;
             this.GetComponentInParent<BoxCollider2D>().enabled = false;
@@ -170,29 +170,32 @@ public class RoomTransition : MonoBehaviour
                 currentPosition = Input.GetTouch(0).position;
                 Vector2 Distance = currentPosition - startTouchPosition;
                 MiddleofRooms = GameObject.Find("MiddleofRooms").transform;
-                
+
 
                 if (!stopTouch)
                 {
+                    swipeRange = 5f;
                     if (Distance.x < -swipeRange && canRotate && touchPos.y > MiddleofRooms.position.y && touchPos.x > MiddleofRooms.position.x)
                     {
                         // TOP RIGHT TO TOP LEFT
                         mobileTap = 1;
                         stopTouch = true;
                     }
-                    if (Distance.x < -swipeRange && canRotate && touchPos.y <=  MiddleofRooms.position.y && touchPos.x > MiddleofRooms.position.x)
+                    if (Distance.x < -swipeRange && canRotate && touchPos.y <= MiddleofRooms.position.y && touchPos.x > MiddleofRooms.position.x)
                     {
                         // BOTTOM RIGHT TO BOTTOM LEFT
                         mobileTap = 2;
                         stopTouch = true;
                     }
-                    if (Distance.x > swipeRange && canRotate && touchPos.y >  MiddleofRooms.position.y && touchPos.x <= MiddleofRooms.position.x)
+                    if (Distance.x > swipeRange && canRotate && touchPos.y > MiddleofRooms.position.y && touchPos.x <= MiddleofRooms.position.x)
                     {
+                        if (GameObject.Find("Hand-Cursor"))
+                            GameObject.Find("Hand-Cursor").GetComponent<Animator>().SetBool("SwipeRight", true);
                         // TOP LEFT TO TOP RIGHT
                         mobileTap = 2;
                         stopTouch = true;
                     }
-                    if (Distance.x > swipeRange && canRotate && touchPos.y <=  MiddleofRooms.position.y && touchPos.x <= MiddleofRooms.position.x)
+                    if (Distance.x > swipeRange && canRotate && touchPos.y <= MiddleofRooms.position.y && touchPos.x <= MiddleofRooms.position.x)
                     {
                         // BOTTOM LEFT TO BOTTOM RIGHT
                         mobileTap = 1;
@@ -201,37 +204,39 @@ public class RoomTransition : MonoBehaviour
                     if (Distance.y < -swipeRange && canRotate && touchPos.x > MiddleofRooms.position.x && touchPos.y > MiddleofRooms.position.y)
                     {
                         // TOP RIGHT TO BOTTOM RIGHT
+                        if (GameObject.Find("Hand-Cursor"))
+                            GameObject.Find("Hand-Cursor").GetComponent<Animator>().SetBool("SwipeDown", true);
                         mobileTap = 2;
                         stopTouch = true;
                     }
-                    if (Distance.y < -swipeRange && canRotate && touchPos.x <=  MiddleofRooms.position.x && touchPos.y > MiddleofRooms.position.y)
+                    if (Distance.y < -swipeRange && canRotate && touchPos.x <= MiddleofRooms.position.x && touchPos.y > MiddleofRooms.position.y)
                     {
                         // TOP LEFT TO BOTTOM LEFT
                         mobileTap = 1;
                         stopTouch = true;
                     }
-                    if (Distance.y > swipeRange && canRotate && touchPos.x >  MiddleofRooms.position.x && touchPos.y <= MiddleofRooms.position.y)
+                    if (Distance.y > swipeRange && canRotate && touchPos.x > MiddleofRooms.position.x && touchPos.y <= MiddleofRooms.position.y)
                     {
                         // BOTTOM RIGHT TO TOP RIGHT
                         mobileTap = 1;
                         stopTouch = true;
                     }
-                    if (Distance.y > swipeRange && canRotate && touchPos.x <=  MiddleofRooms.position.x && touchPos.y <= MiddleofRooms.position.y)
+                    if (Distance.y > swipeRange && canRotate && touchPos.x <= MiddleofRooms.position.x && touchPos.y <= MiddleofRooms.position.y)
                     {
                         // BOTTOM LEFT TOP TOP LEFT
                         mobileTap = 2;
                         stopTouch = true;
                     }
-                    /*                 else if (Distance.y > swipeRange)
-                                    {
-                                        outputText.text = "Up";
-                                        stopTouch = true;
-                                    }
-                                    else if (Distance.y < -swipeRange)
-                                    {
-                                        outputText.text = "Down";
-                                        stopTouch = true;
-                                    } */
+                    /*      else if (Distance.y > swipeRange)
+                            {
+                            outputText.text = "Up";
+                            stopTouch = true;
+                            }
+                            else if (Distance.y < -swipeRange)
+                            {
+                            outputText.text = "Down";
+                            stopTouch = true;
+                    } */
                 }
             }
         }

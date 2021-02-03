@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MiddleofRooms : MonoBehaviour
 {
-
     private GameObject player;
     private void Start() 
     {
