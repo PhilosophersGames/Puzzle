@@ -52,7 +52,7 @@ public class RoomTransition : MonoBehaviour
         {
             achievementManager.UnlockAchievement(Achievements.HamsterMind);
         }
-        if ((mobileTap == 1 || Input.GetKeyDown("r")) && canRotate && !isRotating) //&& !player.isMoving)
+        if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating) //&& !player.isMoving)
         {
             rotationDirection = true;
             achievementManager.UnlockAchievement(Achievements.FirstStep);
@@ -65,7 +65,7 @@ public class RoomTransition : MonoBehaviour
             HamsterRotation++;
             mobileTap = 0;
         }
-        if ((mobileTap == 2 || Input.GetKeyDown("e")) && canRotate && !isRotating) //&& !player.isMoving)
+        if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating) //&& !player.isMoving)
         {
             rotationDirection = false;
             achievementManager.UnlockAchievement(Achievements.FirstStep);
@@ -174,44 +174,51 @@ public class RoomTransition : MonoBehaviour
 
                 if (!stopTouch)
                 {
-                    if (Distance.x < -swipeRange && canRotate && touchPos.y > MiddleofRooms.position.y)
+                    if (Distance.x < -swipeRange && canRotate && touchPos.y > MiddleofRooms.position.y && touchPos.x > MiddleofRooms.position.x)
                     {
-                        
+                        // TOP RIGHT TO TOP LEFT
                         mobileTap = 1;
                         stopTouch = true;
                     }
-                    if (Distance.x < -swipeRange && canRotate && touchPos.y <=  MiddleofRooms.position.y)
+                    if (Distance.x < -swipeRange && canRotate && touchPos.y <=  MiddleofRooms.position.y && touchPos.x > MiddleofRooms.position.x)
                     {
+                        // BOTTOM RIGHT TO BOTTOM LEFT
                         mobileTap = 2;
                         stopTouch = true;
                     }
-                    if (Distance.x > swipeRange && canRotate && touchPos.y >  MiddleofRooms.position.y)
+                    if (Distance.x > swipeRange && canRotate && touchPos.y >  MiddleofRooms.position.y && touchPos.x <= MiddleofRooms.position.x)
                     {
+                        // TOP LEFT TO TOP RIGHT
                         mobileTap = 2;
                         stopTouch = true;
                     }
-                    if (Distance.x > swipeRange && canRotate && touchPos.y <=  MiddleofRooms.position.y)
+                    if (Distance.x > swipeRange && canRotate && touchPos.y <=  MiddleofRooms.position.y && touchPos.x <= MiddleofRooms.position.x)
                     {
+                        // BOTTOM LEFT TO BOTTOM RIGHT
                         mobileTap = 1;
                         stopTouch = true;
                     }
-                     if (Distance.y < -swipeRange && canRotate && touchPos.x > MiddleofRooms.position.x)
+                    if (Distance.y < -swipeRange && canRotate && touchPos.x > MiddleofRooms.position.x && touchPos.y > MiddleofRooms.position.y)
                     {
+                        // TOP RIGHT TO BOTTOM RIGHT
                         mobileTap = 2;
                         stopTouch = true;
                     }
-                    if (Distance.y < -swipeRange && canRotate && touchPos.x <=  MiddleofRooms.position.x)
+                    if (Distance.y < -swipeRange && canRotate && touchPos.x <=  MiddleofRooms.position.x && touchPos.y > MiddleofRooms.position.y)
                     {
+                        // TOP LEFT TO BOTTOM LEFT
                         mobileTap = 1;
                         stopTouch = true;
                     }
-                    if (Distance.y > swipeRange && canRotate && touchPos.x >  MiddleofRooms.position.x)
+                    if (Distance.y > swipeRange && canRotate && touchPos.x >  MiddleofRooms.position.x && touchPos.y <= MiddleofRooms.position.y)
                     {
+                        // BOTTOM RIGHT TO TOP RIGHT
                         mobileTap = 1;
                         stopTouch = true;
                     }
-                    if (Distance.y > swipeRange && canRotate && touchPos.x <=  MiddleofRooms.position.x)
+                    if (Distance.y > swipeRange && canRotate && touchPos.x <=  MiddleofRooms.position.x && touchPos.y <= MiddleofRooms.position.y)
                     {
+                        // BOTTOM LEFT TOP TOP LEFT
                         mobileTap = 2;
                         stopTouch = true;
                     }
