@@ -20,9 +20,8 @@ public class RoomTransition : MonoBehaviour
     // public GameObject camera;
     public int mobileTap;
     public AchievementManager achievementManager;
-    private GameObject movePoint;
     //   private GameObject crates;
-    private Player player;
+    private GameObject player;
     public bool canRotate;
     public float rotSpeed;
     public static bool isRotating = false;
@@ -39,8 +38,6 @@ public class RoomTransition : MonoBehaviour
 
     void Start()
     {
-        movePoint = GameObject.Find("MovePoint");
-        player = GameObject.Find("Player").GetComponent<Player>();
         //   crates = GameObject.Find("Crates");
         //     rigidBodyRoom = GetComponent<Rigidbody2D>();
         //     rigidBodyRoom = tileMap.GetComponent<Rigidbody2D>();
@@ -53,7 +50,7 @@ public class RoomTransition : MonoBehaviour
         {
             achievementManager.UnlockAchievement(Achievements.HamsterMind);
         }
-        if ((mobileTap == 1 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.isMoving)
+        if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating)
         {
             rotationDirection = true;
             achievementManager.UnlockAchievement(Achievements.FirstStep);
@@ -66,7 +63,7 @@ public class RoomTransition : MonoBehaviour
             HamsterRotation++;
             mobileTap = 0;
         }
-        if ((mobileTap == 2 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.isMoving)
+        if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating)
         {
             rotationDirection = false;
             achievementManager.UnlockAchievement(Achievements.FirstStep);
@@ -180,6 +177,7 @@ public class RoomTransition : MonoBehaviour
                 {
                     if (Distance.x < -swipeRange && canRotate)
                     {
+                        
                         mobileTap = 1;
                         stopTouch = true;
                     }
