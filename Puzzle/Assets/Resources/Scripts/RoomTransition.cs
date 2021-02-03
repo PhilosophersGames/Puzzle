@@ -162,7 +162,6 @@ public class RoomTransition : MonoBehaviour
             startTouchPosition = Input.GetTouch(0).position;
             hit = Physics2D.Raycast(touchPos, (Input.GetTouch(0).position));
         }
-
         if (hit)
         {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && hit.transform.gameObject.tag == ("Room"))
@@ -170,8 +169,6 @@ public class RoomTransition : MonoBehaviour
                 currentPosition = Input.GetTouch(0).position;
                 Vector2 Distance = currentPosition - startTouchPosition;
                 MiddleofRooms = GameObject.Find("MiddleofRooms").transform;
-
-
                 if (!stopTouch)
                 {
                     swipeRange = 5f;
