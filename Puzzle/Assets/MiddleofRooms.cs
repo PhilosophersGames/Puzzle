@@ -5,13 +5,13 @@ using UnityEngine;
 public class MiddleofRooms : MonoBehaviour
 {
     private GameObject player;
-    private void Start()
+    private void Awake()
     {
         player = GameObject.FindWithTag("Player");
     }
     void Update()
     {
-        if (player.transform.parent.gameObject.transform.parent.gameObject.transform.position != null)
+        if (transform.parent != null && transform.parent.parent != null)
             this.transform.position = player.transform.parent.gameObject.transform.parent.gameObject.transform.position;
     }
 }
