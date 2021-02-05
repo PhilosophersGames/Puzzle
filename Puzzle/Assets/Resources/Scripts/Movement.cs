@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
 
     void Awake()
     {
-     //   joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FixedJoystick>();
+        //   joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FixedJoystick>();
     }
 
     private bool sameRoomAsPlayer;
@@ -35,37 +35,36 @@ public class Movement : MonoBehaviour
         MobileMovement();
     }
 
-
     void ComputerMovement()
     {
         if (RoomTransition.isRotating == false)
         {
-   //         if (Mathf.Abs(moveSpeed * roundHorizontal) < Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) < Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
-                rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), moveSpeed * Input.GetAxis("Vertical"));
+            //         if (Mathf.Abs(moveSpeed * roundHorizontal) < Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) < Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
+            rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), moveSpeed * Input.GetAxis("Vertical"));
         }
         else
         {
-            rb.velocity = new Vector2(0, 0);
-            if (rotatePlayer == true && this.CompareTag("Player"))
-            {
-                if (RoomTransition.rotationDirection == true)
-                    transform.Rotate(0, 0, -90);
-                if (RoomTransition.rotationDirection == false)
-                    transform.Rotate(0, 0, 90);
-            }
-            if (rotatePlayer == true && this.CompareTag("Phantom") && this.transform.parent == player.transform.parent)
-            {
-                if (RoomTransition.rotationDirection == true)
-                    transform.Rotate(0, 0, -90);
-                if (RoomTransition.rotationDirection == false)
-                    transform.Rotate(0, 0, 90);
-            }
+            // rb.velocity = new Vector2(0, 0);
+            /*  if (rotatePlayer == true && this.CompareTag("Player"))
+             {
+                 if (RoomTransition.rotationDirection == true)
+                     transform.Rotate(0, 0, -90);
+                 if (RoomTransition.rotationDirection == false)
+                     transform.Rotate(0, 0, 90);
+             }
+             if (rotatePlayer == true && this.CompareTag("Phantom") && this.transform.parent == player.transform.parent)
+             {
+                 if (RoomTransition.rotationDirection == true)
+                     transform.Rotate(0, 0, -90);
+                 if (RoomTransition.rotationDirection == false)
+                     transform.Rotate(0, 0, 90);
+             } */
         }
-        if (RoomTransition.isRotating == true)
-            rotatePlayer = false;
-        else
-            rotatePlayer = true;
-
+        /*         if (RoomTransition.isRotating == true)
+                    rotatePlayer = false;
+                else
+                    rotatePlayer = true;
+         */
         if (rb.velocity != Vector2.zero)
         {
             animator.SetFloat("Input_x", rb.velocity.x);
@@ -76,59 +75,59 @@ public class Movement : MonoBehaviour
     {
         if (RoomTransition.isRotating == false)
         {
-//
-   //         if (Mathf.Abs(joystick.Horizontal) > Mathf.Abs(joystick.Vertical) && joystick.Horizontal > 0)
- //           {
- //               roundHorizontal = 1f;
- //               roundVertical = 0f;
-   //         }
-  //          else if (Mathf.Abs(joystick.Horizontal) > Mathf.Abs(joystick.Vertical) && joystick.Horizontal < 0)
-  //          {
-  //              roundHorizontal = -1f;
-  //              roundVertical = 0f;
- //           }
- //           else
-//                roundHorizontal = 0f;
- //           if (Mathf.Abs(joystick.Vertical) > Mathf.Abs(joystick.Horizontal) && joystick.Vertical > 0)
-  //          {
-  //              roundVertical = 1f;
- //               roundHorizontal = 0f;
- //           }
- ////           else if (Mathf.Abs(joystick.Vertical) > Mathf.Abs(joystick.Horizontal) && joystick.Vertical < 0)
- //           {
-//roundVertical = -1f;
- //               roundHorizontal = 0f;
- //           }
- //           else
- //               roundVertical = 0f;
- //           if (Mathf.Abs(moveSpeed * roundHorizontal) > Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) > Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
-                rb.velocity = new Vector2(moveSpeed * SimpleInput.GetAxis("Horizontal"), moveSpeed * SimpleInput.GetAxis("Vertical"));
+            //
+            //         if (Mathf.Abs(joystick.Horizontal) > Mathf.Abs(joystick.Vertical) && joystick.Horizontal > 0)
+            //           {
+            //               roundHorizontal = 1f;
+            //               roundVertical = 0f;
+            //         }
+            //          else if (Mathf.Abs(joystick.Horizontal) > Mathf.Abs(joystick.Vertical) && joystick.Horizontal < 0)
+            //          {
+            //              roundHorizontal = -1f;
+            //              roundVertical = 0f;
+            //           }
+            //           else
+            //                roundHorizontal = 0f;
+            //           if (Mathf.Abs(joystick.Vertical) > Mathf.Abs(joystick.Horizontal) && joystick.Vertical > 0)
+            //          {
+            //              roundVertical = 1f;
+            //               roundHorizontal = 0f;
+            //           }
+            ////           else if (Mathf.Abs(joystick.Vertical) > Mathf.Abs(joystick.Horizontal) && joystick.Vertical < 0)
+            //           {
+            //roundVertical = -1f;
+            //               roundHorizontal = 0f;
+            //           }
+            //           else
+            //               roundVertical = 0f;
+            //           if (Mathf.Abs(moveSpeed * roundHorizontal) > Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) > Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
+            rb.velocity = new Vector2(moveSpeed * SimpleInput.GetAxis("Horizontal"), moveSpeed * SimpleInput.GetAxis("Vertical"));
         }
         else
         {
             rb.velocity = new Vector2(0, 0);
-            if (rotatePlayer == true)
-            {
-                if (RoomTransition.rotationDirection == true)
-                    transform.Rotate(0, 0, -90);
-                if (RoomTransition.rotationDirection == false)
-                    transform.Rotate(0, 0, 90);
-            }
-            if (rotatePlayer == true && this.CompareTag("Phantom") && this.transform.parent == player.transform.parent)
-            {
-                if (RoomTransition.rotationDirection == true)
-                    transform.Rotate(0, 0, -90);
-                if (RoomTransition.rotationDirection == false)
-                    transform.Rotate(0, 0, 90);
-            }
+            /*             if (rotatePlayer == true)
+                        {
+                            if (RoomTransition.rotationDirection == true)
+                                transform.Rotate(0, 0, -90);
+                            if (RoomTransition.rotationDirection == false)
+                                transform.Rotate(0, 0, 90);
+                        }
+                        if (rotatePlayer == true && this.CompareTag("Phantom") && this.transform.parent == player.transform.parent)
+                        {
+                            if (RoomTransition.rotationDirection == true)
+                                transform.Rotate(0, 0, -90);
+                            if (RoomTransition.rotationDirection == false)
+                                transform.Rotate(0, 0, 90);
+                        } */
         }
-        if (RoomTransition.isRotating == true)
-        {
-            rotatePlayer = false;
-        }
-        else
-            rotatePlayer = true;
-
+        /*         if (RoomTransition.isRotating == true)
+                {
+                    rotatePlayer = false;
+                }
+                else
+                    rotatePlayer = true;
+         */
         if (rb.velocity != Vector2.zero)
         {
             animator.SetFloat("Input_x", rb.velocity.x);

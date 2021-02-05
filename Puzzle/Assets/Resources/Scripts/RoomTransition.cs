@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class RoomTransition : MonoBehaviour
 {
+
+
+    private Button rotateLeftButton;
+    private Button rotateRightButton;
     // SWIPE 
     RaycastHit2D hit;
     Vector2 touchPos;
@@ -41,9 +46,14 @@ public class RoomTransition : MonoBehaviour
 
     void Start()
     {
-        //   crates = GameObject.Find("Crates");
-        //     rigidBodyRoom = GetComponent<Rigidbody2D>();
-        //     rigidBodyRoom = tileMap.GetComponent<Rigidbody2D>();
+        rotateLeftButton = GameObject.Find("/GameManager/UIcanvas/Rotation Buttons/RotateLeft").GetComponent<Button>();
+        rotateRightButton = GameObject.Find("/GameManager/UIcanvas/Rotation Buttons/RotateRight").GetComponent<Button>();
+        rotateLeftButton.onClick.AddListener(() => RotateLeftButtonTrue());
+        rotateRightButton.onClick.AddListener(() => RotateRightButtonTrue());
+        //crates = GameObject.Find("Crates");
+        //rigidBodyRoom = GetComponent<Rigidbody2D>();
+        //     
+        //rigidBodyRoom = tileMap.GetComponent<Rigidbody2D>();
     }
     void Update()
     {
@@ -55,7 +65,7 @@ public class RoomTransition : MonoBehaviour
         }
         if (GameObject.Find("/GameManager/UIcanvas"))
         {
-            if ((mobileTap == 1 || Input.GetKeyDown("e") || GameObject.Find("/GameManager/UIcanvas/Rotation Buttons").GetComponent<RotateButton>().rotateLeft == true) && canRotate && !isRotating) //&& !player.isMoving)
+            if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating) //&& !player.isMoving)
             {
                 rotationDirection = true;
                 achievementManager.UnlockAchievement(Achievements.FirstStep);
@@ -67,9 +77,12 @@ public class RoomTransition : MonoBehaviour
                 isRotating = true;
                 HamsterRotation++;
                 mobileTap = 0;
-                GameObject.Find("/GameManager/UIcanvas/Rotation Buttons").GetComponent<RotateButton>().rotateLeft = false;
+                if (GameObject.FindGameObjectWithTag("Player"))
+                    GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, -90);
+                if (GameObject.FindGameObjectWithTag("Phantom"))
+                    GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, -90);
             }
-            if ((mobileTap == 2 || Input.GetKeyDown("r") || GameObject.Find("/GameManager/UIcanvas/Rotation Buttons").GetComponent<RotateButton>().rotateRight == true) && canRotate && !isRotating) //&& !player.isMoving)
+            if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating) //&& !player.isMoving)
             {
                 rotationDirection = false;
                 achievementManager.UnlockAchievement(Achievements.FirstStep);
@@ -81,10 +94,26 @@ public class RoomTransition : MonoBehaviour
                 isRotating = true;
                 HamsterRotation++;
                 mobileTap = 0;
-                GameObject.Find("/GameManager/UIcanvas/Rotation Buttons").GetComponent<RotateButton>().rotateRight = false;
+                if (GameObject.FindGameObjectWithTag("Player"))
+                    GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, 90);
+                if (GameObject.FindGameObjectWithTag("Phantom"))
+                    GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, 90);
             }
         }
     }
+
+    void RotateLeftButtonTrue()
+    {
+        if (canRotate && !isRotating)
+            mobileTap = 1;
+    }
+
+    void RotateRightButtonTrue()
+    {
+        if (canRotate && !isRotating)
+            mobileTap = 2;
+    }
+
     IEnumerator Rotate(float angle, float targetAngle)
     {
         float t = 0f;
@@ -160,6 +189,7 @@ public class RoomTransition : MonoBehaviour
         else
             mobileTap = 0;
     }
+
     public void Swipe()
     {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -170,6 +200,7 @@ public class RoomTransition : MonoBehaviour
         }
         if (hit)
         {
+            swipeRange = 5f;
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && hit.transform.gameObject.tag == ("Room"))
             {
                 currentPosition = Input.GetTouch(0).position;
