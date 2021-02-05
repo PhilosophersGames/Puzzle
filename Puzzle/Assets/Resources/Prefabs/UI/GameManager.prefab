@@ -1240,6 +1240,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1239352989243796926, guid: 005235ca46432f6458e9fcc7c657393d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308029366817583789, guid: 005235ca46432f6458e9fcc7c657393d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3155954197112073882, guid: 005235ca46432f6458e9fcc7c657393d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1345,7 +1355,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rotation Buttons
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7689738691468159849, guid: 005235ca46432f6458e9fcc7c657393d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 005235ca46432f6458e9fcc7c657393d, type: 3}
 --- !u!224 &7171677587408067550 stripped
 RectTransform:

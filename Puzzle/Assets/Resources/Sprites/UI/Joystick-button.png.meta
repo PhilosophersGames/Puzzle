@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: ca28d5aef95ce4394ae19c85b9af2ed9
+guid: ff1c59c81c0ab8d42923f7cbfa57b61e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7886556867348159465
-    second: UIRebootButton_0
+      213: 9021823526069347973
+    second: Joystick-button_0
   - first:
-      213: 1748725971255022117
-    second: UIRebootButton_1
-  - first:
-      213: -7493841693402438161
-    second: UIRebootButton_0
-  - first:
-      213: 4136066656294862206
-    second: UIRebootButton_1
+      213: 7359206369223195306
+    second: Joystick-button_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -43,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -78,7 +72,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
@@ -90,7 +84,31 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
@@ -102,7 +120,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
@@ -111,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UIRebootButton_0
+      name: Joystick-button_0
       rect:
         serializedVersion: 2
-        x: 73
-        y: 38
-        width: 1255
-        height: 435
+        x: 785
+        y: 895
+        width: 352
+        height: 353
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe56cb51fa6800890800000000000000
-      internalID: -7493841693402438161
+      spriteID: 58620a182b4f33d70800000000000000
+      internalID: 9021823526069347973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIRebootButton_1
+      name: Joystick-button_1
       rect:
         serializedVersion: 2
-        x: 1474
-        y: 38
-        width: 1255
-        height: 396
+        x: 1430
+        y: 809
+        width: 613
+        height: 613
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,8 +164,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7dfac7c5b2466930800000000000000
-      internalID: 4136066656294862206
+      spriteID: aaa375ab337212660800000000000000
+      internalID: 7359206369223195306
       vertices: []
       indices: 
       edges: []
