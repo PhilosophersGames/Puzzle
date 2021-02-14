@@ -13,6 +13,8 @@ public class Movement : MonoBehaviour
     float roundVertical;
     private bool rotatePlayer = true;
 
+    public bool isMoving;
+
 
 
     void Awake()
@@ -67,9 +69,12 @@ public class Movement : MonoBehaviour
          */
         if (rb.velocity != Vector2.zero)
         {
+            isMoving = true;
             animator.SetFloat("Input_x", rb.velocity.x);
             animator.SetFloat("Input_y", rb.velocity.y);
         }
+        else
+            isMoving = false;
     }
     void MobileMovement()
     {
@@ -102,10 +107,12 @@ public class Movement : MonoBehaviour
             //               roundVertical = 0f;
             //           if (Mathf.Abs(moveSpeed * roundHorizontal) > Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) > Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
             rb.velocity = new Vector2(moveSpeed * SimpleInput.GetAxis("Horizontal"), moveSpeed * SimpleInput.GetAxis("Vertical"));
+            isMoving = false;
         }
         else
         {
             rb.velocity = new Vector2(0, 0);
+            isMoving = true;
             /*             if (rotatePlayer == true)
                         {
                             if (RoomTransition.rotationDirection == true)

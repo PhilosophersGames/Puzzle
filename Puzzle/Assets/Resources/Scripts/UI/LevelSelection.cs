@@ -30,6 +30,7 @@ public class LevelSelection : MonoBehaviour
             {
                 Unlocklevel[SceneManager.GetActiveScene().buildIndex - 1] = true;
                 // Save the state of unlocked levels
+                UnlockNewChapter();
                 SaveUnlockedLevel();
                 AchievementsGestion();
 
@@ -106,6 +107,26 @@ public class LevelSelection : MonoBehaviour
             }
         }
         PlayerPrefs.Save();
+    }
+
+    void UnlockNewChapter()
+    {
+        if (Unlocklevel[5]) 
+        {
+            Unlocklevel[6] = true;
+        }
+        if (Unlocklevel[9]) 
+        {
+            Unlocklevel[10] = true;
+        }
+        if (Unlocklevel[15]) 
+        {
+            Unlocklevel[16] = true;
+        }
+        if (Unlocklevel[19]) 
+        {
+            Unlocklevel[20] = true;
+        }
     }
 
     // Functions to load the levels based on the build index(Go to File->BuildSettings to manage it)

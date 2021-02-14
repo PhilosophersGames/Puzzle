@@ -46,6 +46,7 @@ public class RoomTransition : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         rotateLeftButton = GameObject.Find("/GameManager/UIcanvas/Rotation Buttons/RotateLeft").GetComponent<Button>();
         rotateRightButton = GameObject.Find("/GameManager/UIcanvas/Rotation Buttons/RotateRight").GetComponent<Button>();
         rotateLeftButton.onClick.AddListener(() => RotateLeftButtonTrue());
@@ -65,7 +66,7 @@ public class RoomTransition : MonoBehaviour
         }
         if (GameObject.Find("/GameManager/UIcanvas"))
         {
-            if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating) //&& !player.isMoving)
+            if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
             {
                 rotationDirection = true;
                 achievementManager.UnlockAchievement(Achievements.FirstStep);
@@ -79,10 +80,10 @@ public class RoomTransition : MonoBehaviour
                 mobileTap = 0;
                 if (GameObject.FindGameObjectWithTag("Player"))
                     GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, -90);
-                if (GameObject.FindGameObjectWithTag("Phantom"))
+                if (GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
                     GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, -90);
             }
-            if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating) //&& !player.isMoving)
+            if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
             {
                 rotationDirection = false;
                 achievementManager.UnlockAchievement(Achievements.FirstStep);
@@ -96,7 +97,7 @@ public class RoomTransition : MonoBehaviour
                 mobileTap = 0;
                 if (GameObject.FindGameObjectWithTag("Player"))
                     GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, 90);
-                if (GameObject.FindGameObjectWithTag("Phantom"))
+                if (GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
                     GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, 90);
             }
         }
