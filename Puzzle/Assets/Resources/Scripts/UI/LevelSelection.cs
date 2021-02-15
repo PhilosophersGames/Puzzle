@@ -10,6 +10,7 @@ public class LevelSelection : MonoBehaviour
     public bool[] Unlocklevel;
     public AchievementManager achievementManager;
     public AchievementLeastRotations achievementLeastRotations;
+    private GameObject UIEndScreen;
 
     void Awake()
     {
@@ -17,6 +18,11 @@ public class LevelSelection : MonoBehaviour
         //ScreenCapture.CaptureScreenshot("C:/Users/youce/Desktop/JEU DE CARTE/PNG/Temp");
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
         LoadUnlockedLevel();
+    }
+
+    private void Start()
+    {
+        UIEndScreen = GameObject.Find("/GameManager/UIcanvas/End Screen");
     }
 
     void Update()
@@ -33,19 +39,17 @@ public class LevelSelection : MonoBehaviour
                 UnlockNewChapter();
                 SaveUnlockedLevel();
                 AchievementsGestion();
-
-                if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                }
+                EndScreen();
                 //if it went through all the levels available, redirects to Menu (build index 0)
-                else
-                {
-                    SceneManager.LoadScene(0);
-                    achievementManager.UnlockAchievement(Achievements.End);
-                }
             }
         }
+    }
+
+    public void EndScreen()
+    {
+        GameObject.Find("/GameManager/LevelManager").SendMessage("StopTimer");
+        UIEndScreen.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void AchievementsGestion()
@@ -130,6 +134,22 @@ public class LevelSelection : MonoBehaviour
     }
 
     // Functions to load the levels based on the build index(Go to File->BuildSettings to manage it)
+
+
+    public void GoToNexLevel()
+    {
+        Time.timeScale = 1;
+        if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
+        {
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+            achievementManager.UnlockAchievement(Achievements.End);
+        }
+    }
 
     //Chapter 1
     public void GotoLevel1()
