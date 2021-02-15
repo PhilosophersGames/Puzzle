@@ -38,8 +38,8 @@ public class LevelSelection : MonoBehaviour
                 // Save the state of unlocked levels
                 UnlockNewChapter();
                 SaveUnlockedLevel();
-                AchievementsGestion();
                 EndScreen();
+                AchievementsGestion();
                 //if it went through all the levels available, redirects to Menu (build index 0)
             }
         }
@@ -49,7 +49,6 @@ public class LevelSelection : MonoBehaviour
     {
         GameObject.Find("/GameManager/LevelManager").SendMessage("StopTimer");
         UIEndScreen.SetActive(true);
-        Time.timeScale = 0;
     }
 
     public void AchievementsGestion()
@@ -66,6 +65,14 @@ public class LevelSelection : MonoBehaviour
             achievementManager.UnlockAchievement(Achievements.Chapter4);
         if (Unlocklevel[27] == true)
             achievementManager.UnlockAchievement(Achievements.Chapter5);
+        if (Unlocklevel[5] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter2);
+        if (Unlocklevel[9] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter3);
+        if (Unlocklevel[15] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter4);
+        if (Unlocklevel[20] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter5);
     }
 
     private string GetLevelName(int chapterNumber, int i)
@@ -138,7 +145,7 @@ public class LevelSelection : MonoBehaviour
 
     public void GoToNexLevel()
     {
-        Time.timeScale = 1;
+        
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
             

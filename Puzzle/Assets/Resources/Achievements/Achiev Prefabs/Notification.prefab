@@ -565,6 +565,7 @@ GameObject:
   - component: {fileID: 6733101027133532447}
   - component: {fileID: 6733101027133532446}
   - component: {fileID: 6733101027133532444}
+  - component: {fileID: 7744144297648125828}
   m_Layer: 5
   m_Name: Notification
   m_TagString: Untagged
@@ -580,7 +581,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6733101027133532442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2000}
   m_LocalScale: {x: 1.5291241, y: 1.5291241, z: 1.5291241}
   m_Children:
   - {fileID: 6733101025443422356}
@@ -674,3 +675,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   achievementTitleLabel: {fileID: 6733101026939561456}
+--- !u!223 &7744144297648125828
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733101027133532442}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
