@@ -34,7 +34,7 @@ public class RoomTransition : MonoBehaviour
     public float rotSpeed;
     public static bool isRotating = false;
     public static bool rotationDirection;
-    public int HamsterRotation;
+    public static int HamsterRotation;
     public PolygonCollider2D polygoneCollider;
     //   public Rigidbody2D rigidBodyRoom;
     //   public GameObject tileMap;
@@ -80,7 +80,7 @@ public class RoomTransition : MonoBehaviour
                 mobileTap = 0;
                 if (GameObject.FindGameObjectWithTag("Player"))
                     GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, -90);
-                if (GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
+                if (GameObject.FindGameObjectWithTag("Phantom") && GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
                     GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, -90);
             }
             if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
@@ -97,7 +97,8 @@ public class RoomTransition : MonoBehaviour
                 mobileTap = 0;
                 if (GameObject.FindGameObjectWithTag("Player"))
                     GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, 90);
-                if (GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
+
+                if (GameObject.FindGameObjectWithTag("Phantom") && GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
                     GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, 90);
             }
         }

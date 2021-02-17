@@ -10,13 +10,17 @@ public class LevelSelection : MonoBehaviour
     public bool[] Unlocklevel;
     public AchievementManager achievementManager;
     public AchievementLeastRotations achievementLeastRotations;
+    private GameObject UIEndScreen;
 
     void Awake()
     {
-        //        achievementLeastRotations =  GameObject.Find("AchievementLeastRotations").GetComponent<AchievementLeastRotations>();
-        //ScreenCapture.CaptureScreenshot("C:/Users/youce/Desktop/JEU DE CARTE/PNG/Temp");
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
         LoadUnlockedLevel();
+    }
+
+    private void Start()
+    {
+        UIEndScreen = GameObject.Find("/GameManager/UIcanvas/End Screen");
     }
 
     void Update()
@@ -32,36 +36,41 @@ public class LevelSelection : MonoBehaviour
                 // Save the state of unlocked levels
                 UnlockNewChapter();
                 SaveUnlockedLevel();
+                EndScreen();
                 AchievementsGestion();
-
-                if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                }
                 //if it went through all the levels available, redirects to Menu (build index 0)
-                else
-                {
-                    SceneManager.LoadScene(0);
-                    achievementManager.UnlockAchievement(Achievements.End);
-                }
             }
         }
+    }
+
+    public void EndScreen()
+    {
+        GameObject.Find("/GameManager/LevelManager").SendMessage("StopTimer");
+        UIEndScreen.SetActive(true);
     }
 
     public void AchievementsGestion()
     {
         if (achievementLeastRotations.rotationNumbers < 36 && achievementLeastRotations.achievement == true)
             achievementManager.UnlockAchievement(Achievements.MasterMind);
-        if (Unlocklevel[6] == true)
+        if (SceneManager.GetActiveScene().buildIndex == 7)
             achievementManager.UnlockAchievement(Achievements.Chapter1);
-        if (Unlocklevel[10] == true)
+        if (SceneManager.GetActiveScene().buildIndex == 11)
             achievementManager.UnlockAchievement(Achievements.Chapter2);
-        if (Unlocklevel[16] == true)
+        if (SceneManager.GetActiveScene().buildIndex == 17)
             achievementManager.UnlockAchievement(Achievements.Chapter3);
-        if (Unlocklevel[21] == true)
+        if (SceneManager.GetActiveScene().buildIndex == 21)
             achievementManager.UnlockAchievement(Achievements.Chapter4);
-        if (Unlocklevel[27] == true)
+        if (SceneManager.GetActiveScene().buildIndex == 28)
             achievementManager.UnlockAchievement(Achievements.Chapter5);
+        if (Unlocklevel[5] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter2);
+        if (Unlocklevel[9] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter3);
+        if (Unlocklevel[15] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter4);
+        if (Unlocklevel[20] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter5);
     }
 
     private string GetLevelName(int chapterNumber, int i)
@@ -130,6 +139,21 @@ public class LevelSelection : MonoBehaviour
     }
 
     // Functions to load the levels based on the build index(Go to File->BuildSettings to manage it)
+
+
+    public void GoToNexLevel()
+    {
+        
+        if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
+        {
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
 
     //Chapter 1
     public void GotoLevel1()
