@@ -315,17 +315,22 @@ public class LevelSelection : MonoBehaviour
     {
         int chapterNumber = 1;
         int i = -1;
+
         for (int level = 0; level < 27; level++)
         {
             i++;
             if (Unlocklevel[level] == false)
                 Unlocklevel[level] = true;
             PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level] ? 1 : 0));
+            Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
             if (level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
             {
                 i = -1;
                 chapterNumber++;
             }
         }
+      //  LoadUnlockedLevel();
+      //  GetComponent<LevelUnlockButtonProperties>().WhichLevelsAreUnlocked();
+        SceneManager.LoadScene(0);
     }
 }

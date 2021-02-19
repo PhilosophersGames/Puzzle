@@ -71,7 +71,4 @@ public class LevelUnlockButtonProperties : MonoBehaviour
         else
             Debug.Log("No Save");
     }
-    public void UnlockLevelsTest()
-    {
-    }
 }
