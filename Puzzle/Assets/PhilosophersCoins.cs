@@ -4,15 +4,15 @@ using UnityEngine;
 using TMPro;
 public class PhilosophersCoins : MonoBehaviour
 {
-    public int philoshophersCoins;
+    public int philosophersCoins;
     void Start()
     {
-        
+       // philosophersCoins = GameObject.Find("Ads Manager").transform.GetComponent<AdsManager>().philosophersCoins;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.GetComponent<TextMeshProUGUI>().text = philoshophersCoins.ToString();
+        transform.GetComponent<TextMeshProUGUI>().text = GameObject.Find("Ads Manager").transform.GetComponent<AdsManager>().philosophersCoins.ToString();
     }
 }

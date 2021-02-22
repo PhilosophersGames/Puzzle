@@ -5,14 +5,13 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour, IUnityAdsListener
 {
-    string placement = "rewardedVideo";
+    string gameId = "rewardedVideo";
 
-    private int philosophersCoins;
+    public int philosophersCoins;
 
     void Start()
     {
-        philosophersCoins = GameObject.Find("Philosophers Coins").transform.GetComponent<PhilosophersCoins>().philoshophersCoins;
-        Advertisement.AddListener(this);
+        Advertisement.AddListener(this);    
         Advertisement.Initialize("4016577", true);
     }
 
@@ -21,31 +20,29 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         Advertisement.Show(p);
     }
 
-    public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
+    public void OnUnityAdsDidFinish(string gameId, ShowResult showResult)
     {
         if (showResult == ShowResult.Finished)
         {
-            // Reward
-            Debug.Log("WIN");
             philosophersCoins += 100;
-            Advertisement.RemoveListener(this);
+            Debug.Log(philosophersCoins);
+         //   Advertisement.RemoveListener(this);
         }
         else if (showResult == ShowResult.Failed)
         {
-            // Fail
             Debug.Log("FAIL");
         }
 
     }
-    public void OnUnityAdsDidStart(string placementId)
+    public void OnUnityAdsDidStart(string gameId)
     {
 
     }
-    public void OnUnityAdsReady(string placementId)
+    public void OnUnityAdsReady(string gameId)
     {
     }
 
-    public void OnUnityAdsDidError(string placementId)
+    public void OnUnityAdsDidError(string gameId)
     {
     } 
 }
