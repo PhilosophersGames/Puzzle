@@ -33,12 +33,10 @@ public class LevelSelection : MonoBehaviour
             if (coins.Length == 0)
             {
                 Unlocklevel[SceneManager.GetActiveScene().buildIndex - 1] = true;
-                // Save the state of unlocked levels
                 UnlockNewChapter();
                 SaveUnlockedLevel();
                 EndScreen();
                 AchievementsGestion();
-                //if it went through all the levels available, redirects to Menu (build index 0)
             }
         }
     }
@@ -85,11 +83,11 @@ public class LevelSelection : MonoBehaviour
         {
             int chapterNumber = 1;
             int i = -1;
-            for(int level = 0; level <= 27; level++)
+            for (int level = 0; level <= 27; level++)
             {
                 i++;
-                Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i+1)) == 1 ? true : false);
-                if(level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
+                Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
+                if (level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
                 {
                     i = -1;
                     chapterNumber++;
@@ -105,11 +103,11 @@ public class LevelSelection : MonoBehaviour
         // Save UnlockedLevelState
         int chapterNumber = 1;
         int i = -1;
-        for(int level = 0; level <= 27; level++)
+        for (int level = 0; level <= 27; level++)
         {
             i++;
-            PlayerPrefs.SetInt(GetLevelName(chapterNumber, i+1), (Unlocklevel[level] ? 1 : 0));
-            if(level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
+            PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level] ? 1 : 0));
+            if (level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
             {
                 i = -1;
                 chapterNumber++;
@@ -120,19 +118,19 @@ public class LevelSelection : MonoBehaviour
 
     void UnlockNewChapter()
     {
-        if (Unlocklevel[5]) 
+        if (Unlocklevel[5])
         {
             Unlocklevel[6] = true;
         }
-        if (Unlocklevel[9]) 
+        if (Unlocklevel[9])
         {
             Unlocklevel[10] = true;
         }
-        if (Unlocklevel[15]) 
+        if (Unlocklevel[15])
         {
             Unlocklevel[16] = true;
         }
-        if (Unlocklevel[19]) 
+        if (Unlocklevel[19])
         {
             Unlocklevel[20] = true;
         }
@@ -143,10 +141,10 @@ public class LevelSelection : MonoBehaviour
 
     public void GoToNexLevel()
     {
-        
+
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
-            
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
@@ -197,7 +195,7 @@ public class LevelSelection : MonoBehaviour
             SceneManager.LoadScene(7);
     }
 
-    //Chapter2
+    //Chapter 2
     public void GotoChapter2Level1()
     {
         if (Unlocklevel[6] == true)
@@ -311,5 +309,28 @@ public class LevelSelection : MonoBehaviour
     {
         if (Unlocklevel[26] == true)
             SceneManager.LoadScene(28);
+    }
+
+    public void UnlockLevelsTest()
+    {
+        int chapterNumber = 1;
+        int i = -1;
+
+        for (int level = 0; level < 27; level++)
+        {
+            i++;
+            if (Unlocklevel[level] == false)
+                Unlocklevel[level] = true;
+            PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level] ? 1 : 0));
+            Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
+            if (level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
+            {
+                i = -1;
+                chapterNumber++;
+            }
+        }
+      //  LoadUnlockedLevel();
+      //  GetComponent<LevelUnlockButtonProperties>().WhichLevelsAreUnlocked();
+        SceneManager.LoadScene(0);
     }
 }

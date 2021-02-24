@@ -48,6 +48,7 @@ public class MenuButtons : MonoBehaviour
     public void EraseSave()
     {
         PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(0);
     }
 
     public void Quit()
