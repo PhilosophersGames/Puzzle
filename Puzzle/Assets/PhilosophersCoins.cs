@@ -13,6 +13,6 @@ public class PhilosophersCoins : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.GetComponent<TextMeshProUGUI>().text = GameObject.Find("Ads Manager").transform.GetComponent<AdsManager>().philosophersCoins.ToString();
+        transform.GetComponent<TextMeshProUGUI>().text = GameObject.Find("User").transform.GetComponent<User>().wallet.ToString();
     }
 }

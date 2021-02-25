@@ -7,8 +7,6 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 {
     string gameId = "rewardedVideo";
 
-    public int philosophersCoins;
-
     void Start()
     {
         Advertisement.AddListener(this);    
@@ -24,15 +22,13 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     {
         if (showResult == ShowResult.Finished)
         {
-            philosophersCoins += 100;
-            Debug.Log(philosophersCoins);
+            GameObject.Find("User").transform.GetComponent<User>().wallet += 100;
          //   Advertisement.RemoveListener(this);
         }
         else if (showResult == ShowResult.Failed)
         {
             Debug.Log("FAIL");
         }
-
     }
     public void OnUnityAdsDidStart(string gameId)
     {

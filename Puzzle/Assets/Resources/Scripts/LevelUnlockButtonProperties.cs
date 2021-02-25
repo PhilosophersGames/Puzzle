@@ -11,6 +11,7 @@ public class LevelUnlockButtonProperties : MonoBehaviour
     public bool[] Unlocklevel;
     public Sprite lockedImage;
     public GameObject[] levels;
+    public GameObject[] chapters;
     private Sprite[] levelSprites;
     // Start is called before the first frame update
 
@@ -19,20 +20,50 @@ public class LevelUnlockButtonProperties : MonoBehaviour
         levelSprites = new Sprite[SceneManager.sceneCountInBuildSettings - 1];
         levels = GameObject.FindGameObjectsWithTag("LevelButton");
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
+        chapters = GameObject.FindGameObjectsWithTag("Chapters");
         WhichLevelsAreUnlocked();
     }
+
     void Start()
     {
         //  if (Unlocklevel[0] == true)
+    //    EnableChapters();
         UnlockImage();
+        DisableChapters();
     }
     // Update is called once per frame
+
+    public void DisableChapters()
+    {
+        int i = 0;
+        while (i < chapters.Length)
+        {
+            chapters[i].gameObject.SetActive(false);
+            i++;
+        }
+    }
+
+    public void EnableChapters()
+    {
+        /*int i = 0;
+        while (i <= chapters.Length)
+        {
+            chapters[i].gameObject.SetActive(false);
+        }
+        */
+        chapters[0].gameObject.SetActive(true);
+        chapters[1].gameObject.SetActive(true);
+        chapters[2].gameObject.SetActive(true);
+        chapters[3].gameObject.SetActive(true);
+    }
+
     public void UnlockImage()
     {
         i = 1;
         while (i < SceneManager.sceneCountInBuildSettings - 1)
         {
             levelSprites[i - 1] = levels[i].GetComponent<Image>().sprite;
+
             if (Unlocklevel[i - 1] == true)
             {
                 levels[i].GetComponent<Image>().sprite = levelSprites[i - 1];
@@ -45,6 +76,7 @@ public class LevelUnlockButtonProperties : MonoBehaviour
             }
         }
     }
+
     private string GetLevelName(int chapterNumber, int i)
     {
         string tab = $"C{chapterNumber.ToString()}Level{i.ToString()}";
