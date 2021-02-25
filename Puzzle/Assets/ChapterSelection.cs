@@ -85,36 +85,4 @@ public class ChapterSelection : MonoBehaviour
             }
         }
     }
-
-    public void GotoChapter1()
-    {
-            if(unlockChapter[1] = true)
-            {
-                chapters[1].SetActive(true);
-            }
-    }
-
-
-    public void GotoChapter2()
-    {
-        
-    }
-
-
-    public void GotoChapter3()
-    {
-        
-    }
-
-
-    public void GotoChapter4()
-    {
-        
-    }
-
-
-    public void GotoChapter5()
-    {
-        
-    }
 }
