@@ -33,7 +33,6 @@ public class LevelSelection : MonoBehaviour
             if (coins.Length == 0)
             {
                 Unlocklevel[SceneManager.GetActiveScene().buildIndex - 1] = true;
-                UnlockNewChapter();
                 SaveUnlockedLevel();
                 EndScreen();
                 AchievementsGestion();
@@ -116,28 +115,28 @@ public class LevelSelection : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    void UnlockNewChapter()
+    public void UnlockNewChapter()
     {
-        if (Unlocklevel[5])
+        if (PlayerPrefs.GetInt("Chapter2") == 1)
         {
             Unlocklevel[6] = true;
         }
-        if (Unlocklevel[9])
+        if (PlayerPrefs.GetInt("Chapter3") == 1)
         {
             Unlocklevel[10] = true;
         }
-        if (Unlocklevel[15])
+        if (PlayerPrefs.GetInt("Chapter4") == 1)
         {
             Unlocklevel[16] = true;
         }
-        if (Unlocklevel[19])
+        if (PlayerPrefs.GetInt("Chapter5") == 1)
         {
             Unlocklevel[20] = true;
         }
+        SaveUnlockedLevel();
     }
 
     // Functions to load the levels based on the build index(Go to File->BuildSettings to manage it)
-
 
     public void GoToNexLevel()
     {
