@@ -20,6 +20,7 @@ public class LevelSelection : MonoBehaviour
 
     private void Start()
     {
+        UnlockNewChapter();
         UIEndScreen = GameObject.Find("/GameManager/UIcanvas/End Screen");
     }
 
@@ -117,23 +118,11 @@ public class LevelSelection : MonoBehaviour
 
     public void UnlockNewChapter()
     {
-        if (PlayerPrefs.GetInt("Chapter2") == 1)
-        {
             Unlocklevel[6] = true;
-        }
-        if (PlayerPrefs.GetInt("Chapter3") == 1)
-        {
             Unlocklevel[10] = true;
-        }
-        if (PlayerPrefs.GetInt("Chapter4") == 1)
-        {
             Unlocklevel[16] = true;
-        }
-        if (PlayerPrefs.GetInt("Chapter5") == 1)
-        {
             Unlocklevel[20] = true;
-        }
-        SaveUnlockedLevel();
+            SaveUnlockedLevel();
     }
 
     // Functions to load the levels based on the build index(Go to File->BuildSettings to manage it)
