@@ -10,7 +10,6 @@ public class MenuButtons : MonoBehaviour
     private int startButtonIndex;
     public GameObject MenuCanvas;
     public GameObject SettingsCanvas;
-    public GameObject chapters;
 
 
     private bool[] Unlocklevel;
