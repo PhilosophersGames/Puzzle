@@ -20,13 +20,11 @@ public class ChapterSelection : MonoBehaviour
         chapterPrice[4] = 1200;
         chapterPrice[4] = 1600;
     }
-
     void Update()
     {
         if (wallet != GameObject.Find("User").transform.GetComponent<User>().wallet)
             wallet = GameObject.Find("User").transform.GetComponent<User>().wallet;
     }
-
 
     public void BuyChapter(int i)
     {
@@ -40,7 +38,6 @@ public class ChapterSelection : MonoBehaviour
             }
         }
     }
-
     public void UnlockChapter(int i)
     {
         unlockChapter[i] = true;
@@ -49,5 +46,4 @@ public class ChapterSelection : MonoBehaviour
         transform.GetChild(i - 1).GetComponent<Button>().interactable = true;
         transform.GetChild(i - 1).GetComponent<Image>().sprite = null;
     }
-
 }
