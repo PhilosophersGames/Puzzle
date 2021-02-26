@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class LevelUnlockButtonProperties : MonoBehaviour
 {
-
+    public GameObject chapterParent;
     private int i;
     public int startButtonIndex;
     public bool[] Unlocklevel;
@@ -17,21 +17,18 @@ public class LevelUnlockButtonProperties : MonoBehaviour
 
     private void Awake()
     {
+        chapterParent.SetActive(true);
         levelSprites = new Sprite[SceneManager.sceneCountInBuildSettings - 1];
         levels = GameObject.FindGameObjectsWithTag("LevelButton");
         Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
         chapters = GameObject.FindGameObjectsWithTag("Chapters");
-        WhichLevelsAreUnlocked();
     }
 
     void Start()
     {
-        //  if (Unlocklevel[0] == true)
-    //    EnableChapters();
+        Unlocklevel = GetComponent<LevelSelection>().Unlocklevel;
         UnlockImage();
-        DisableChapters();
     }
-    // Update is called once per frame
 
     public void DisableChapters()
     {
@@ -45,20 +42,17 @@ public class LevelUnlockButtonProperties : MonoBehaviour
 
     public void EnableChapters()
     {
-        /*int i = 0;
-        while (i <= chapters.Length)
+        int i = 0;
+        while (i < chapters.Length)
         {
-            chapters[i].gameObject.SetActive(false);
+            chapters[i].gameObject.SetActive(true);
+            i++;
         }
-        */
-        chapters[0].gameObject.SetActive(true);
-        chapters[1].gameObject.SetActive(true);
-        chapters[2].gameObject.SetActive(true);
-        chapters[3].gameObject.SetActive(true);
     }
 
     public void UnlockImage()
     {
+        Unlocklevel = GetComponent<LevelSelection>().Unlocklevel;
         i = 1;
         while (i < SceneManager.sceneCountInBuildSettings - 1)
         {
@@ -82,25 +76,4 @@ public class LevelUnlockButtonProperties : MonoBehaviour
         string tab = $"C{chapterNumber.ToString()}Level{i.ToString()}";
         return (tab);
     }
-    public void WhichLevelsAreUnlocked()
-    {
-
-        if (PlayerPrefs.HasKey("C2Level3"))
-        {
-            int chapterNumber = 1;
-            int i = -1;
-            for (int level = 0; level <= 27; level++)
-            {
-                i++;
-                Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
-                if (level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
-                {
-                    i = -1;
-                    chapterNumber++;
-                }
-            }
-        }
-        else
-            Debug.Log("No Save");
     }
-}

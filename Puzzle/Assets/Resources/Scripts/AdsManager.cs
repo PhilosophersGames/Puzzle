@@ -6,6 +6,7 @@ using UnityEngine.Advertisements;
 public class AdsManager : MonoBehaviour, IUnityAdsListener
 {
     string gameId = "rewardedVideo";
+    private int wallet;
 
     void Start()
     {
@@ -22,7 +23,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     {
         if (showResult == ShowResult.Finished)
         {
-            GameObject.Find("User").transform.GetComponent<User>().wallet += 100;
+            GameObject.Find("User").transform.GetComponent<User>().UpdateUserMoney(100);
+            
          //   Advertisement.RemoveListener(this);
         }
         else if (showResult == ShowResult.Failed)
