@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ChapterSelection : MonoBehaviour
 {
+    public AchievementManager achievementManager;
     private int[] chapterPrice;
     private bool[] unlockChapter;
 
@@ -50,6 +51,16 @@ public class ChapterSelection : MonoBehaviour
         GetComponentInParent<LevelSelection>().UnlockNewChapter();
         GetComponentInParent<LevelUnlockButtonProperties>().UnlockImage();
         LoadUnlockChapters();
+
+     /*    if (unlockChapter[2] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter2);
+        if (unlockChapter[3] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter3);
+        if (unlockChapter[4] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter4);
+        if (unlockChapter[5] == true)
+            achievementManager.UnlockAchievement(Achievements.UnlockChapter5);
+            */
     }
 
     public void LoadUnlockChapters()

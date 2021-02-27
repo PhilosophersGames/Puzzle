@@ -71,14 +71,6 @@ public class LevelSelection : MonoBehaviour
             achievementManager.UnlockAchievement(Achievements.Chapter4);
         if (SceneManager.GetActiveScene().buildIndex == 28)
             achievementManager.UnlockAchievement(Achievements.Chapter5);
-        if (Unlocklevel[5] == true)
-            achievementManager.UnlockAchievement(Achievements.UnlockChapter2);
-        if (Unlocklevel[9] == true)
-            achievementManager.UnlockAchievement(Achievements.UnlockChapter3);
-        if (Unlocklevel[15] == true)
-            achievementManager.UnlockAchievement(Achievements.UnlockChapter4);
-        if (Unlocklevel[20] == true)
-            achievementManager.UnlockAchievement(Achievements.UnlockChapter5);
     }
 
     private string GetLevelName(int chapterNumber, int i)
