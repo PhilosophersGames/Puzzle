@@ -10,10 +10,14 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     void Start()
     {
-        Advertisement.AddListener(this);    
+        Advertisement.AddListener(this);
         Advertisement.Initialize("4016577", true);
     }
 
+    private void OnDisable()
+    {
+        Advertisement.RemoveListener(this);
+    }
     public void ShowAd(string p)
     {
         Advertisement.Show(p);
@@ -24,7 +28,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         if (showResult == ShowResult.Finished)
         {
             GameObject.Find("User").transform.GetComponent<User>().UpdateUserMoney(100);
-            
+            Debug.Log("User rewarded");
          //   Advertisement.RemoveListener(this);
         }
         else if (showResult == ShowResult.Failed)
