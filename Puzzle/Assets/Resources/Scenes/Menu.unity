@@ -2328,18 +2328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: 
-  buttonType: 0
-  consumePurchase: 1
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 0}
 --- !u!1 &1167256712
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,36 +3404,56 @@ PrefabInstance:
     - target: {fileID: 4322920118293609327, guid: 51f21e9986571f54f9263336a60fe416,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -120.15697
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4322920118293609327, guid: 51f21e9986571f54f9263336a60fe416,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 4322920118590966705, guid: 51f21e9986571f54f9263336a60fe416,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: -0.0000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 4322920118590966705, guid: 51f21e9986571f54f9263336a60fe416,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -7.510437
+      value: 64.052246
       objectReference: {fileID: 0}
     - target: {fileID: 4322920118590966705, guid: 51f21e9986571f54f9263336a60fe416,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -4.225708
+      value: 36.03839
       objectReference: {fileID: 0}
     - target: {fileID: 4322920118590966705, guid: 51f21e9986571f54f9263336a60fe416,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0000076293945
+      value: -0.0000076293945
+      objectReference: {fileID: 0}
+    - target: {fileID: 4322920118590966705, guid: 51f21e9986571f54f9263336a60fe416,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.77535117
+      objectReference: {fileID: 0}
+    - target: {fileID: 4322920118590966705, guid: 51f21e9986571f54f9263336a60fe416,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.77535117
+      objectReference: {fileID: 0}
+    - target: {fileID: 4322920118590966705, guid: 51f21e9986571f54f9263336a60fe416,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.77535117
       objectReference: {fileID: 0}
     - target: {fileID: 4322920119008572915, guid: 51f21e9986571f54f9263336a60fe416,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4322920119008572926, guid: 51f21e9986571f54f9263336a60fe416,
+        type: 3}
+      propertyPath: m_PixelPerfect
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4322920119008572927, guid: 51f21e9986571f54f9263336a60fe416,
