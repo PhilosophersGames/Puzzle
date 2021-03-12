@@ -38,18 +38,6 @@ MonoBehaviour:
       title: 'Chapter  5: End'
       description: Finish Chapter 5
       reward: 100
-    - id: HamsterMind
-      title: HamsterMind
-      description: Rotate 100 times in the same level
-      reward: -200
-    - id: MasterMind
-      title: MasterMind
-      description: Finish the last level in less than 36 Rotations
-      reward: 1500
-    - id: End
-      title: It is the end
-      description: Finish all chapters
-      reward: 100
     - id: UnlockChapter2
       title: Unlock Chapter 2
       description: Chapter 2 available
@@ -66,3 +54,19 @@ MonoBehaviour:
       title: Unlock Chapter 5
       description: Chapter 5 available
       reward: 100
+    - id: End
+      title: It is the end
+      description: Finish all chapters
+      reward: 100
+    - id: MasterMind
+      title: MasterMind
+      description: Finish the last level in less than 36 Rotations
+      reward: 1500
+    - id: HamsterMind
+      title: HamsterMind
+      description: Rotate 100 times in the same level
+      reward: -200
+    - id: Missclick
+      title: Fat Finger
+      description: You've missed clicked
+      reward: 0
