@@ -13,6 +13,9 @@ public class AchievementItemController : MonoBehaviour
     [SerializeField] TextMeshProUGUI descriptionLabel;
 
     public bool unlocked;
+    
+    #pragma warning disable 0649
+
     public Achievement achievement;
 
     public void RefreshView()
