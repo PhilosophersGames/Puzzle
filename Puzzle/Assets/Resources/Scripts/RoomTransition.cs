@@ -61,10 +61,11 @@ public class RoomTransition : MonoBehaviour
         {
             achievementManager.UnlockAchievement(Achievements.HamsterMind);
         }
-        if (GameObject.Find("/GameManager/UIcanvas"))
+        if (GameObject.FindGameObjectWithTag("UIcanvas"))
         {
             if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
             {
+                Debug.Log("Lol");
                 rotationDirection = true;
                 achievementManager.UnlockAchievement(Achievements.FirstStep);
                 float currentAngle = transform.rotation.eulerAngles.z;

@@ -9,6 +9,8 @@ public class RoomColorChanger : MonoBehaviour
 
     public bool isPlayerHere = false;
 
+    public int roomID;
+
     private GameObject player;
 
     public Tilemap colider;
