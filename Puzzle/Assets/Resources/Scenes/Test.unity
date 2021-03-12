@@ -128,6 +128,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1350092792027513932, guid: ee436c22527c83a4985f97a1c14fe3f3,
+        type: 3}
+      propertyPath: m_TargetEye
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507583916758557119, guid: ee436c22527c83a4985f97a1c14fe3f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507583916758557119, guid: ee436c22527c83a4985f97a1c14fe3f3,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949151489336105930, guid: ee436c22527c83a4985f97a1c14fe3f3,
+        type: 3}
+      propertyPath: m_TagString
+      value: RotateLeftButton
+      objectReference: {fileID: 0}
     - target: {fileID: 5908105969287175289, guid: ee436c22527c83a4985f97a1c14fe3f3,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -292,6 +312,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160061715257294402, guid: ee436c22527c83a4985f97a1c14fe3f3,
+        type: 3}
+      propertyPath: m_TagString
+      value: RotateRightButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee436c22527c83a4985f97a1c14fe3f3, type: 3}

@@ -47,8 +47,8 @@ public class RoomTransition : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        rotateLeftButton = GameObject.Find("/GameManager/UIcanvas/Rotation Buttons/RotateLeft").GetComponent<Button>();
-        rotateRightButton = GameObject.Find("/GameManager/UIcanvas/Rotation Buttons/RotateRight").GetComponent<Button>();
+        rotateLeftButton = GameObject.FindGameObjectWithTag("RotateLeftButton").GetComponent<Button>();
+        rotateRightButton = GameObject.FindGameObjectWithTag("RotateRightButton").GetComponent<Button>();
         rotateLeftButton.onClick.AddListener(() => RotateLeftButtonTrue());
         rotateRightButton.onClick.AddListener(() => RotateRightButtonTrue());
         HamsterRotation = 0;
