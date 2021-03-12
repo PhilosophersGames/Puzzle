@@ -53,8 +53,9 @@ public class LevelSelection : MonoBehaviour
     }
     public void EndScreen()
     {
-        GameObject.Find("/GameManager/LevelManager").SendMessage("StopTimer");
-        UIEndScreen.SetActive(true);
+        GameObject.FindGameObjectWithTag("LevelManager").SendMessage("StopTimer");
+        if (UIEndScreen)
+            UIEndScreen.SetActive(true);
     }
 
     public void AchievementsGestion()

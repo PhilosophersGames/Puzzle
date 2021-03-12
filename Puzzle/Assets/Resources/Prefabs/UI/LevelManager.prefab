@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7529562978397540896}
   m_Layer: 0
   m_Name: LevelManager
-  m_TagString: Untagged
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   Unlocklevel: 
   achievementManager: {fileID: 7599364842064851026}
   achievementLeastRotations: {fileID: 5952267512645118375}
+  rewardLevels: 
 --- !u!114 &5952267512645118375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +72,7 @@ PrefabInstance:
     - target: {fileID: 4322920118058855454, guid: 51f21e9986571f54f9263336a60fe416,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4322920118058855454, guid: 51f21e9986571f54f9263336a60fe416,
         type: 3}
