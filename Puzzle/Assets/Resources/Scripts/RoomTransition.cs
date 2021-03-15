@@ -76,7 +76,7 @@ public class RoomTransition : MonoBehaviour
                 isRotating = true;
                 HamsterRotation++;
                 mobileTap = 0;
-                if (GameObject.FindGameObjectWithTag("Player"))
+                if (GameObject.FindGameObjectWithTag("Player") && GameObject.FindGameObjectWithTag("Player").transform.parent == transform)
                     GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, -90);
                 if (GameObject.FindGameObjectWithTag("Phantom") && GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
                     GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, -90);
@@ -93,9 +93,8 @@ public class RoomTransition : MonoBehaviour
                 isRotating = true;
                 HamsterRotation++;
                 mobileTap = 0;
-                if (GameObject.FindGameObjectWithTag("Player"))
+                if (GameObject.FindGameObjectWithTag("Player") && GameObject.FindGameObjectWithTag("Player").transform.parent == transform)
                     GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, 90);
-
                 if (GameObject.FindGameObjectWithTag("Phantom") && GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
                     GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, 90);
             }
