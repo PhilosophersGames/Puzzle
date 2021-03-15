@@ -65,7 +65,6 @@ public class RoomTransition : MonoBehaviour
         {
             if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
             {
-                Debug.Log("Lol");
                 rotationDirection = true;
                 achievementManager.UnlockAchievement(Achievements.FirstStep);
                 float currentAngle = transform.rotation.eulerAngles.z;
