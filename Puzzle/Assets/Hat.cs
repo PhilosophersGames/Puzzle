@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hat : MonoBehaviour
 {
     private GameObject hatButton;
+    public bool hatEquiped;
 
     private void Awake() {
         hatButton = GameObject.FindGameObjectWithTag("HatButton");
@@ -21,6 +22,7 @@ public class Hat : MonoBehaviour
 
     void EquipHat()
     {
+        hatEquiped = true;
         hatButton.SetActive(true);
         transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
        // transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
@@ -28,8 +30,10 @@ public class Hat : MonoBehaviour
     
     void UnequipHat()
     {
+        hatEquiped = false;
         transform.GetComponent<SpriteRenderer>().enabled = false;
     }
+
     void RotateNeighborRoom()
     {
 
