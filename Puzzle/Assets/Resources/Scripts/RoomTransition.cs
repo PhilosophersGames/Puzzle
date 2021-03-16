@@ -39,6 +39,8 @@ public class RoomTransition : MonoBehaviour
     public GameObject hat;
 
     public GameObject[] rooms;
+
+    private GameObject[] ghosts;
     public PolygonCollider2D polygoneCollider;
     //   public Rigidbody2D rigidBodyRoom;
     //   public GameObject tileMap;
@@ -112,8 +114,17 @@ public class RoomTransition : MonoBehaviour
         mobileTap = 0;
         if (GameObject.FindGameObjectWithTag("Player") && (!hat || !hat.GetComponent<Hat>().hatEquiped))
             GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, 90 * delta);
-        if (GameObject.FindGameObjectWithTag("Phantom") && GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
-            GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, 90 * delta);
+        if (GameObject.FindGameObjectWithTag("Phantom"))
+        {
+            ghosts = GameObject.FindGameObjectsWithTag("Phantom");
+            foreach (GameObject ghost in ghosts)
+            {
+                if (ghost.transform.parent == player.transform.parent)
+                   ghost.transform.Rotate(0, 0, 90 * delta);
+            }
+                
+        }
+            
 
         /*  if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
           {
