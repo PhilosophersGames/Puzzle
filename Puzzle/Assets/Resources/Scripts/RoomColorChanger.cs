@@ -27,28 +27,28 @@ public class RoomColorChanger : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         if (GameObject.FindGameObjectWithTag("Hat"))
             hat = GameObject.FindGameObjectWithTag("Hat");
+        ColorChamber(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped))
-            ColorChamber(isPlayerHere);
-        //  else if (hat && hat.GetComponent<Hat>().hatEquiped && !isPlayerHere)
-        //    ColorChamber(isPlayerHere);
-        else if (hat && hat.GetComponent<Hat>().hatEquiped)
+        if (hat && hat.GetComponent<Hat>().hatEquiped)
         {
-            ColorChamber(false);
+            //ColorChamber(false);
             if (isPlayerHere)
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    // Debug.Log(neighborRoom[i].GetComponent<RoomDetector>().room);
                     if (neighborRoom[i].GetComponent<RoomDetector>().room)
-                        neighborRoom[i].GetComponent<RoomDetector>().room.GetComponent<RoomColorChanger>().ColorChamber(true);
+                        neighborRoom[i].GetComponent<RoomDetector>().room.transform.GetComponent<RoomColorChanger>().ColorChamber(true);
+                    else
+                        neighborRoom[i].transform.parent.parent.GetComponent<RoomColorChanger>().ColorChamber(false);
                 }
             }
         }
+        else if (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped))
+            ColorChamber(isPlayerHere);
     }
 
     public void ColorChamber(bool delta)
@@ -78,6 +78,14 @@ public class RoomColorChanger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             isPlayerHere = false;
+
+        for (int i = 0; i < 4; i++)
+        {
+            //Debug.Log(neighborRoom[i].GetComponent<RoomDetector>().room);
+            if (neighborRoom[i].GetComponent<RoomDetector>().room)
+                neighborRoom[i].GetComponent<RoomDetector>().room.transform.GetComponent<RoomColorChanger>().ColorChamber(false);
+            else
+                neighborRoom[i].transform.parent.parent.GetComponent<RoomColorChanger>().ColorChamber(false);
+        }
     }
 }
-

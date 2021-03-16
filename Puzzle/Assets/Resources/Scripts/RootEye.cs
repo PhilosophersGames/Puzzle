@@ -13,9 +13,12 @@ public class RootEye : MonoBehaviour
     private bool inSight;
     public GameObject tempPlayer;
     [SerializeField] private LayerMask layerMaskTab;
+
+     private GameObject joystick;
     void Awake()
     {
         Target = GameObject.FindWithTag("Player");
+        joystick = GameObject.Find("Joystick");
     }
 
     private void Start()
@@ -44,12 +47,14 @@ public class RootEye : MonoBehaviour
             tempPlayer = hit.collider.gameObject;
             inSight = true;
             hit.collider.transform.GetComponent<Movement>().moveSpeed = 0;
+            joystick.SetActive(false);
             Debug.Log("Player In sight");
         }
         if (hit.collider.tag != "Player" && inSight == true)
         {
             inSight = false;
             lineRenderer.enabled = false;
+            joystick.SetActive(true);
             tempPlayer.GetComponent<Movement>().moveSpeed = tempMoveSpeed;
         }
         if (inSight == true)
@@ -57,6 +62,7 @@ public class RootEye : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle - 100, Vector3.forward);
             lineRenderer.enabled = true;
             tempPlayer = hit.collider.gameObject;
+            joystick.SetActive(false);
             hit.collider.transform.GetComponent<Movement>().moveSpeed = 0;
         }
     }
