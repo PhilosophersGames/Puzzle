@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hat : MonoBehaviour
 {
     private GameObject hatButton;
-    public bool hatEquiped;
+    public bool hatEquiped = false;
 
     private void Awake() 
     {
