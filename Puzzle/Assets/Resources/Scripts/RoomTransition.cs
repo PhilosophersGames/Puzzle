@@ -64,7 +64,6 @@ public class RoomTransition : MonoBehaviour
         }
         if (GameObject.FindGameObjectWithTag("UIcanvas") && !GameObject.FindGameObjectWithTag("Hat").GetComponent<Hat>().hatEquiped)
         {
-            Debug.Log(GameObject.FindGameObjectWithTag("Hat").GetComponent<Hat>().hatEquiped);
             if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
                 RoomRotation(-1);
             else if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
@@ -72,7 +71,6 @@ public class RoomTransition : MonoBehaviour
         }
         else if (GameObject.FindGameObjectWithTag("UIcanvas") && GameObject.FindGameObjectWithTag("Hat").GetComponent<Hat>().hatEquiped)
         {
-            Debug.Log(GameObject.FindGameObjectWithTag("Hat").GetComponent<Hat>().hatEquiped);
             if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
             {
                 for (int i = 0; i < 4; i++)
