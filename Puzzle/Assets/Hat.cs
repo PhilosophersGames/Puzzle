@@ -7,28 +7,34 @@ public class Hat : MonoBehaviour
     private GameObject hatButton;
     public bool hatEquiped;
 
-    private void Awake() {
+    private void Awake() 
+    {
         hatButton = GameObject.FindGameObjectWithTag("HatButton");
         hatButton.SetActive(false);
+    }
+
+    private void Update() 
+    {
+        
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
-           EquipHat();
+            hatButton.SetActive(true);
+            EquipHat();
         }
     }
 
-    void EquipHat()
+    public void EquipHat()
     {
         hatEquiped = true;
-        hatButton.SetActive(true);
-        transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
-       // transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+        transform.GetComponent<SpriteRenderer>().enabled = true;
     }
     
-    void UnequipHat()
+    public void UnequipHat()
     {
         hatEquiped = false;
         transform.GetComponent<SpriteRenderer>().enabled = false;
