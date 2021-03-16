@@ -9,8 +9,6 @@ public class RootEye : MonoBehaviour
 
     private LineRenderer lineRenderer;
     private float tempMoveSpeed;
-
-    private GameObject analogues;
     private GameObject Target;
     private bool inSight;
     public GameObject tempPlayer;
@@ -25,7 +23,6 @@ public class RootEye : MonoBehaviour
        // Physics.IgnoreCollision(Target.GetComponent<Collider>(), GetComponent<Collider>());
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.enabled = false;
-        analogues = GameObject.Find("Rotation Buttons");
     }
 
     // Update is called once per frame
@@ -47,14 +44,12 @@ public class RootEye : MonoBehaviour
             tempPlayer = hit.collider.gameObject;
             inSight = true;
             hit.collider.transform.GetComponent<Movement>().moveSpeed = 0;
-            analogues.SetActive(false);
             Debug.Log("Player In sight");
         }
         if (hit.collider.tag != "Player" && inSight == true)
         {
             inSight = false;
             lineRenderer.enabled = false;
-            analogues.SetActive(true);
             tempPlayer.GetComponent<Movement>().moveSpeed = tempMoveSpeed;
         }
         if (inSight == true)
@@ -62,7 +57,6 @@ public class RootEye : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle - 100, Vector3.forward);
             lineRenderer.enabled = true;
             tempPlayer = hit.collider.gameObject;
-            analogues.SetActive(false);
             hit.collider.transform.GetComponent<Movement>().moveSpeed = 0;
         }
     }
