@@ -5532,6 +5532,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerHere: 0
+  neighborRoom:
+  - {fileID: 1587405546066281230}
+  - {fileID: 4322395321338485125}
+  - {fileID: 1868619763759644743}
+  - {fileID: 2577344000629247311}
   roomID: 0
   colider: {fileID: 7899835148097385321}
   path: {fileID: 5910058422823115957}
@@ -5614,6 +5619,8 @@ MonoBehaviour:
     type: 3}
   canRotate: 0
   rotSpeed: 5
+  hat: {fileID: 0}
+  rooms: []
   polygoneCollider: {fileID: 4285285620813469331}
 --- !u!60 &4285285620813469331
 PolygonCollider2D:
@@ -5695,6 +5702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ce6c19d0fba43b0aa9656ee198ecbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neighborRoom: []
   roomDetector:
   - {fileID: 1587405546066281230}
   - {fileID: 4322395321338485125}

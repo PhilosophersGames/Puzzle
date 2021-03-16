@@ -10,7 +10,7 @@ public class Hat : MonoBehaviour
     private void Awake() 
     {
         hatButton = GameObject.FindGameObjectWithTag("HatButton");
-        hatButton.SetActive(false);
+        hatButton.transform.GetChild(0).gameObject.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,7 +18,7 @@ public class Hat : MonoBehaviour
         {
             transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            hatButton.SetActive(true);
+            hatButton.transform.GetChild(0).gameObject.SetActive(true);
             EquipHat();
         }
     }

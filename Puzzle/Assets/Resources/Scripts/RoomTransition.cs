@@ -36,6 +36,8 @@ public class RoomTransition : MonoBehaviour
     public static bool rotationDirection;
     public static int HamsterRotation;
 
+    public GameObject hat;
+
     public GameObject[] rooms;
     public PolygonCollider2D polygoneCollider;
     //   public Rigidbody2D rigidBodyRoom;
@@ -54,6 +56,8 @@ public class RoomTransition : MonoBehaviour
         rotateLeftButton.onClick.AddListener(() => RotateLeftButtonTrue());
         rotateRightButton.onClick.AddListener(() => RotateRightButtonTrue());
         HamsterRotation = 0;
+        if (GameObject.FindGameObjectWithTag("Hat"))
+            hat = GameObject.FindGameObjectWithTag("Hat");
     }
     void Update()
     {
@@ -62,14 +66,16 @@ public class RoomTransition : MonoBehaviour
         {
             achievementManager.UnlockAchievement(Achievements.HamsterMind);
         }
-        if (GameObject.FindGameObjectWithTag("UIcanvas") && !GameObject.FindGameObjectWithTag("Hat").GetComponent<Hat>().hatEquiped)
+         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        if (GameObject.FindGameObjectWithTag("UIcanvas") && (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped)))
         {
             if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
                 RoomRotation(-1);
             else if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
                 RoomRotation(1);
         }
-        else if (GameObject.FindGameObjectWithTag("UIcanvas") && GameObject.FindGameObjectWithTag("Hat").GetComponent<Hat>().hatEquiped)
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        else if (GameObject.FindGameObjectWithTag("UIcanvas") && hat && hat.GetComponent<Hat>().hatEquiped)
         {
             if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
             {
@@ -104,7 +110,7 @@ public class RoomTransition : MonoBehaviour
         isRotating = true;
         HamsterRotation++;
         mobileTap = 0;
-        if (GameObject.FindGameObjectWithTag("Player") && !GameObject.FindGameObjectWithTag("Hat").GetComponent<Hat>().hatEquiped)
+        if (GameObject.FindGameObjectWithTag("Player") && (!hat || !hat.GetComponent<Hat>().hatEquiped))
             GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, 90 * delta);
         if (GameObject.FindGameObjectWithTag("Phantom") && GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
             GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, 90 * delta);
