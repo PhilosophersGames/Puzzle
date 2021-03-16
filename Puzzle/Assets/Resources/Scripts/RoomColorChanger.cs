@@ -32,20 +32,23 @@ public class RoomColorChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hat && hat.GetComponent<Hat>().hatEquiped && isPlayerHere)
+        if (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped))
+            ColorChamber(isPlayerHere);
+        //  else if (hat && hat.GetComponent<Hat>().hatEquiped && !isPlayerHere)
+        //    ColorChamber(isPlayerHere);
+        else if (hat && hat.GetComponent<Hat>().hatEquiped)
         {
-           // isPlayerHere = false;
-            for (int i = 0; i < 4; i++)
+            ColorChamber(false);
+            if (isPlayerHere)
             {
-                Debug.Log(neighborRoom[i].GetComponent<RoomDetector>().room);
-                if (neighborRoom[i].GetComponent<RoomDetector>().room)
-                    neighborRoom[i].transform.parent.parent.GetComponent<RoomColorChanger>().ColorChamber(true);
-                else
-                    neighborRoom[i].transform.parent.parent.GetComponent<RoomColorChanger>().ColorChamber(false);;
+                for (int i = 0; i < 4; i++)
+                {
+                    // Debug.Log(neighborRoom[i].GetComponent<RoomDetector>().room);
+                    if (neighborRoom[i].GetComponent<RoomDetector>().room)
+                        neighborRoom[i].GetComponent<RoomDetector>().room.GetComponent<RoomColorChanger>().ColorChamber(true);
+                }
             }
         }
-        else
-            ColorChamber(isPlayerHere);
     }
 
     public void ColorChamber(bool delta)
