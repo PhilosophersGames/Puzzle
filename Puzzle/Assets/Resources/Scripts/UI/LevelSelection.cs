@@ -10,7 +10,7 @@ public class LevelSelection : MonoBehaviour
     public bool[] Unlocklevel;
     public AchievementManager achievementManager;
     public AchievementLeastRotations achievementLeastRotations;
-    private GameObject UIEndScreen;
+    public GameObject UIEndScreen;
 
     public bool[] rewardLevels;
 
@@ -24,7 +24,6 @@ public class LevelSelection : MonoBehaviour
     private void Start()
     {
         UnlockNewChapter();
-        UIEndScreen = GameObject.Find("/GameManager/UIcanvas/End Screen");
     }
 
     void Update()
@@ -32,6 +31,7 @@ public class LevelSelection : MonoBehaviour
         // check if we are not in the menu
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
+            Debug.Log("HI");
             // find all the gameobjects with the tag "coin" then load the next scene when they are no more
             coins = GameObject.FindGameObjectsWithTag("Coin");
             if (coins.Length == 0)
@@ -40,7 +40,7 @@ public class LevelSelection : MonoBehaviour
                 RewardPlayer();
                 SaveUnlockedLevel();
                 EndScreen();
-                AchievementsGestion();
+            //    AchievementsGestion();
             }
         }
     }
@@ -85,11 +85,11 @@ public class LevelSelection : MonoBehaviour
         {
             int chapterNumber = 1;
             int i = -1;
-            for (int level = 0; level <= 27; level++)
+            for (int level = 0; level <= 39; level++)
             {
                 i++;
                 Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
-                if (level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
+                if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39)
                 {
                     i = -1;
                     chapterNumber++;
@@ -103,11 +103,11 @@ public class LevelSelection : MonoBehaviour
     {
         int chapterNumber = 1;
         int i = -1;
-        for (int level = 0; level <= 27; level++)
+        for (int level = 0; level <= 39; level++)
         {
             i++;
             PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level] ? 1 : 0));
-            if (level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
+            if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39)
             {
                 i = -1;
                 chapterNumber++;
@@ -117,10 +117,10 @@ public class LevelSelection : MonoBehaviour
     }
     public void UnlockNewChapter()
     {
-        Unlocklevel[6] = true;
-        Unlocklevel[10] = true;
-        Unlocklevel[16] = true;
-        Unlocklevel[20] = true;
+        Unlocklevel[7] = true;
+        Unlocklevel[15] = true;
+        Unlocklevel[23] = true;
+        Unlocklevel[31] = true;
         SaveUnlockedLevel();
     }
     public void GoToNexLevel()
@@ -148,14 +148,14 @@ public class LevelSelection : MonoBehaviour
         int chapterNumber = 1;
         int i = -1;
 
-        for (int level = 0; level < 27; level++)
+        for (int level = 0; level <= 47; level++)
         {
             i++;
             if (Unlocklevel[level] == false)
                 Unlocklevel[level] = true;
             PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level] ? 1 : 0));
             Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
-            if (level == 6 || level == 10 || level == 16 || level == 20 || level == 27)
+            if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 47)
             {
                 i = -1;
                 chapterNumber++;
