@@ -60,7 +60,6 @@ public class ChapterSelection : MonoBehaviour
             achievementManager.UnlockAchievement(Achievements.UnlockChapter4);
         if (unlockChapter[5] == true)
             achievementManager.UnlockAchievement(Achievements.UnlockChapter5);
-
     }
 
     public void LoadUnlockChapters()
