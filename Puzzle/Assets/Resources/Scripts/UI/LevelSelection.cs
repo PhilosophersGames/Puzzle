@@ -31,7 +31,6 @@ public class LevelSelection : MonoBehaviour
         // check if we are not in the menu
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            Debug.Log("HI");
             // find all the gameobjects with the tag "coin" then load the next scene when they are no more
             coins = GameObject.FindGameObjectsWithTag("Coin");
             if (coins.Length == 0)
