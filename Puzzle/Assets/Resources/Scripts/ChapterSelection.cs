@@ -52,7 +52,7 @@ public class ChapterSelection : MonoBehaviour
         GetComponentInParent<LevelUnlockButtonProperties>().UnlockImage();
         LoadUnlockChapters();
 
-         if (unlockChapter[2] == true)
+        if (unlockChapter[2] == true)
             achievementManager.UnlockAchievement(Achievements.UnlockChapter2);
         if (unlockChapter[3] == true)
             achievementManager.UnlockAchievement(Achievements.UnlockChapter3);
