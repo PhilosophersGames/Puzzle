@@ -100,7 +100,6 @@ public class RoomTransition : MonoBehaviour
 
     public void RoomRotation(int delta)
     {
-        //Debug.Log("Toss a coin");
         rotationDirection = true;
         if (delta == 1)
             rotationDirection = false;
