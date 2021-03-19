@@ -7,6 +7,8 @@ public class Hat : MonoBehaviour
     private GameObject hatButton;
     public bool hatEquiped = false;
 
+    public int hatType;
+
     private void Awake() 
     {
         hatButton = GameObject.FindGameObjectWithTag("HatButton");
@@ -18,7 +20,8 @@ public class Hat : MonoBehaviour
         {
             transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            hatButton.transform.GetChild(0).gameObject.SetActive(true);
+            if (hatType == 0)
+                hatButton.transform.GetChild(0).gameObject.SetActive(true);
             EquipHat();
         }
     }

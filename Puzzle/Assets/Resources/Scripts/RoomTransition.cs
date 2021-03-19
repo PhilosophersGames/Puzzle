@@ -68,7 +68,7 @@ public class RoomTransition : MonoBehaviour
         {
             achievementManager.UnlockAchievement(Achievements.HamsterMind);
         }
-         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         if (GameObject.FindGameObjectWithTag("UIcanvas") && (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped)))
         {
             if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
@@ -84,7 +84,7 @@ public class RoomTransition : MonoBehaviour
                 for (int i = 0; i < 4; i++)
                 {
                     if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i])
-                        player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i].GetComponentInChildren<RoomTransition>().RoomRotation(-1); 
+                        player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i].GetComponentInChildren<RoomTransition>().RoomRotation(-1);
                 }
             }
             else if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
@@ -116,14 +116,24 @@ public class RoomTransition : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Phantom"))
         {
             ghosts = GameObject.FindGameObjectsWithTag("Phantom");
-            foreach (GameObject ghost in ghosts)
+            if (!hat || !hat.GetComponent<Hat>().hatEquiped)
             {
-                if (ghost.transform.parent == player.transform.parent)
-                   ghost.transform.Rotate(0, 0, 90 * delta);
+                foreach (GameObject ghost in ghosts)
+                {
+                    if (ghost.transform.parent == player.transform.parent)
+                        ghost.transform.Rotate(0, 0, 90 * delta);
+                }
             }
-                
+            else if (hat && hat.GetComponent<Hat>().hatEquiped)
+            {
+                foreach (GameObject ghost in ghosts)
+                {
+                    if (ghost.transform.parent == transform)
+                        ghost.transform.Rotate(0, 0, 90 * delta);
+                }
+            }
         }
-            
+
 
         /*  if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
           {
@@ -171,23 +181,23 @@ public class RoomTransition : MonoBehaviour
         transform.localScale += new Vector3(0.3f, 0.3f, 0);
     }
 
-   /* IEnumerator Rotate2(float angle, float targetAngle)
-    {
-        float t = 0f;
+    /* IEnumerator Rotate2(float angle, float targetAngle)
+     {
+         float t = 0f;
 
-        while (t <= 1f)
-        {
-            transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
-            t += Time.deltaTime * rotSpeed;
-            yield return null;
-        }
-        transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
-        isRotating = false;
-        polygoneCollider.enabled = true;
-        transform.localScale += new Vector3(0.3f, 0.3f, 0);
-        //   rigidBodyRoom.isKinematic = true;
+         while (t <= 1f)
+         {
+             transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
+             t += Time.deltaTime * rotSpeed;
+             yield return null;
+         }
+         transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
+         isRotating = false;
+         polygoneCollider.enabled = true;
+         transform.localScale += new Vector3(0.3f, 0.3f, 0);
+         //   rigidBodyRoom.isKinematic = true;
 
-    }*/
+     }*/
 
     private void OnTriggerEnter2D(Collider2D other)
     {
