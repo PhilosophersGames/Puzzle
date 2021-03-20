@@ -8,6 +8,8 @@ public class LaserEmitter : MonoBehaviour
     private Transform laserPoint;
     private float rotation = 90;
 
+    public bool activeLaser;
+
     [SerializeField] private LayerMask layerMaskTab;
 
     void Start()
@@ -18,9 +20,11 @@ public class LaserEmitter : MonoBehaviour
 
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, laserPoint.position - transform.position,  Mathf.Infinity, ~layerMaskTab);
-        lineRenderer.SetPosition(0, laserPoint.position);
-        lineRenderer.SetPosition(1, hit.point);
+        if (activeLaser)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, laserPoint.position - transform.position, Mathf.Infinity, ~layerMaskTab);
+            lineRenderer.SetPosition(0, laserPoint.position);
+            lineRenderer.SetPosition(1, hit.point);
+        }
     }
 }
-    
