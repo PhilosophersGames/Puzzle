@@ -25,6 +25,10 @@ public class LaserEmitter : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, laserPoint.position - transform.position, Mathf.Infinity, ~layerMaskTab);
             lineRenderer.SetPosition(0, laserPoint.position);
             lineRenderer.SetPosition(1, hit.point);
+        if (hit.collider.tag == "Mirror")
+            {
+                hit.collider.SendMessage("ActivateLaser");
+            }
         }
     }
 }
