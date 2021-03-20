@@ -29,6 +29,8 @@ public class LaserEmitter : MonoBehaviour
             {
                 hit.collider.SendMessage("ActivateLaser");
             }
+        if (hit.collider.tag == "LaserReceiver")
+            hit.collider.SendMessage("OpenDoor");
         }
     }
 }
