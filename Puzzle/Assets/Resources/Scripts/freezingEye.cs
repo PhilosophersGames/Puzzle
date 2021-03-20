@@ -69,7 +69,6 @@ public class freezingEye : MonoBehaviour
             analogues.SetActive(false);
             tempPlayer.transform.parent.GetComponentInChildren<RoomTransition>().canRotate = false;
         }
-
     }
 }
 

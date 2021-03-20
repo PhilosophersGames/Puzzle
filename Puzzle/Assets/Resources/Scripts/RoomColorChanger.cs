@@ -9,6 +9,10 @@ public class RoomColorChanger : MonoBehaviour
 
     public bool isPlayerHere = false;
 
+    public GameObject[] neighborRoom = new GameObject[4];
+
+    public int roomID;
+
     private GameObject player;
 
     public Tilemap colider;
@@ -16,16 +20,40 @@ public class RoomColorChanger : MonoBehaviour
     public Tilemap decoration;
 
     private Color color;
+
+    public GameObject hat;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        
+        if (GameObject.FindGameObjectWithTag("Hat"))
+            hat = GameObject.FindGameObjectWithTag("Hat");
+        ColorChamber(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isPlayerHere)
+        if (hat && hat.GetComponent<Hat>().hatEquiped)
+        {
+            //ColorChamber(false);
+            if (isPlayerHere)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (neighborRoom[i].GetComponent<RoomDetector>().room)
+                        neighborRoom[i].GetComponent<RoomDetector>().room.transform.GetComponent<RoomColorChanger>().ColorChamber(true);
+                    else
+                        neighborRoom[i].transform.parent.parent.GetComponent<RoomColorChanger>().ColorChamber(false);
+                }
+            }
+        }
+        else if (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped))
+            ColorChamber(isPlayerHere);
+    }
+
+    public void ColorChamber(bool delta)
+    {
+        if (delta == true)
         {
             color = Color.white;
             color.a = 1f;
@@ -33,25 +61,31 @@ public class RoomColorChanger : MonoBehaviour
             path.color = color;
             decoration.color = color;
         }
-        else
+        else if (delta == false)
         {
-            color = new Color(0.70f,0.70f,0.70f,1f);
-           // color.a = 0.8f;
+            color = new Color(0.5f, 0.5f, 0.5f, 1f);
             colider.color = color;
             path.color = color;
             decoration.color = color;
         }
-        
     }
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
             isPlayerHere = true;
     }
-    private void OnTriggerExit2D(Collider2D other) 
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
             isPlayerHere = false;
+
+        for (int i = 0; i < 4; i++)
+        {
+            //Debug.Log(neighborRoom[i].GetComponent<RoomDetector>().room);
+            if (neighborRoom[i].GetComponent<RoomDetector>().room)
+                neighborRoom[i].GetComponent<RoomDetector>().room.transform.GetComponent<RoomColorChanger>().ColorChamber(false);
+            else
+                neighborRoom[i].transform.parent.parent.GetComponent<RoomColorChanger>().ColorChamber(false);
+        }
     }
 }
-

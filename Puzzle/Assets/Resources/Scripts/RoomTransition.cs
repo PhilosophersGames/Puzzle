@@ -35,6 +35,12 @@ public class RoomTransition : MonoBehaviour
     public static bool isRotating = false;
     public static bool rotationDirection;
     public static int HamsterRotation;
+
+    public GameObject hat;
+
+    public GameObject[] rooms;
+
+    private GameObject[] ghosts;
     public PolygonCollider2D polygoneCollider;
     //   public Rigidbody2D rigidBodyRoom;
     //   public GameObject tileMap;
@@ -47,60 +53,106 @@ public class RoomTransition : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        rotateLeftButton = GameObject.Find("/GameManager/UIcanvas/Rotation Buttons/RotateLeft").GetComponent<Button>();
-        rotateRightButton = GameObject.Find("/GameManager/UIcanvas/Rotation Buttons/RotateRight").GetComponent<Button>();
+        rotateLeftButton = GameObject.FindGameObjectWithTag("RotateLeftButton").GetComponent<Button>();
+        rotateRightButton = GameObject.FindGameObjectWithTag("RotateRightButton").GetComponent<Button>();
         rotateLeftButton.onClick.AddListener(() => RotateLeftButtonTrue());
         rotateRightButton.onClick.AddListener(() => RotateRightButtonTrue());
         HamsterRotation = 0;
+        if (GameObject.FindGameObjectWithTag("Hat"))
+            hat = GameObject.FindGameObjectWithTag("Hat");
     }
     void Update()
     {
-        //MobileTouchControls();
         Swipe();
         if (HamsterRotation == 100)
         {
             achievementManager.UnlockAchievement(Achievements.HamsterMind);
         }
-        if (GameObject.Find("/GameManager/UIcanvas"))
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        if (GameObject.FindGameObjectWithTag("UIcanvas") && (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped)))
+        {
+            if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
+                RoomRotation(-1);
+            else if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
+                RoomRotation(1);
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        else if (GameObject.FindGameObjectWithTag("UIcanvas") && hat && hat.GetComponent<Hat>().hatEquiped)
         {
             if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
             {
-                rotationDirection = true;
-                achievementManager.UnlockAchievement(Achievements.FirstStep);
-                float currentAngle = transform.rotation.eulerAngles.z;
-                polygoneCollider.enabled = false;
-                transform.localScale -= new Vector3(0.3f, 0.3f, 0);
-                //     rigidBodyRoom.isKinematic = false;
-                StartCoroutine(Rotate(currentAngle, currentAngle + 90f));
-                isRotating = true;
-                HamsterRotation++;
-                mobileTap = 0;
-                if (GameObject.FindGameObjectWithTag("Player"))
-                    GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, -90);
-                if (GameObject.FindGameObjectWithTag("Phantom") && GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
-                    GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, -90);
+                for (int i = 0; i < 4; i++)
+                {
+                    if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i])
+                        player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i].GetComponentInChildren<RoomTransition>().RoomRotation(-1);
+                }
             }
-            if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
+            else if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
             {
-                rotationDirection = false;
-                achievementManager.UnlockAchievement(Achievements.FirstStep);
-                float currentAngle = transform.rotation.eulerAngles.z;
-                polygoneCollider.enabled = false;
-                transform.localScale -= new Vector3(0.3f, 0.3f, 0);
-                //    rigidBodyRoom.isKinematic = false;
-                StartCoroutine(Rotate(currentAngle, currentAngle - 90f));
-                isRotating = true;
-                HamsterRotation++;
-                mobileTap = 0;
-                if (GameObject.FindGameObjectWithTag("Player"))
-                    GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, 90);
-
-                if (GameObject.FindGameObjectWithTag("Phantom") && GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
-                    GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, 90);
+                for (int i = 0; i < 4; i++)
+                {
+                    if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i])
+                        player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i].GetComponentInChildren<RoomTransition>().RoomRotation(1);
+                }
             }
         }
     }
 
+    public void RoomRotation(int delta)
+    {
+        rotationDirection = true;
+        if (delta == 1)
+            rotationDirection = false;
+        achievementManager.UnlockAchievement(Achievements.FirstStep);
+        float currentAngle = transform.rotation.eulerAngles.z;
+        polygoneCollider.enabled = false;
+        transform.localScale -= new Vector3(0.3f, 0.3f, 0);
+        StartCoroutine(Rotate(currentAngle, currentAngle - (90f * delta)));
+        isRotating = true;
+        HamsterRotation++;
+        mobileTap = 0;
+        if (GameObject.FindGameObjectWithTag("Player") && (!hat || !hat.GetComponent<Hat>().hatEquiped))
+            GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, 90 * delta);
+        if (GameObject.FindGameObjectWithTag("Phantom"))
+        {
+            ghosts = GameObject.FindGameObjectsWithTag("Phantom");
+            if (!hat || !hat.GetComponent<Hat>().hatEquiped)
+            {
+                foreach (GameObject ghost in ghosts)
+                {
+                    if (ghost.transform.parent == player.transform.parent)
+                        ghost.transform.Rotate(0, 0, 90 * delta);
+                }
+            }
+            else if (hat && hat.GetComponent<Hat>().hatEquiped)
+            {
+                foreach (GameObject ghost in ghosts)
+                {
+                    if (ghost.transform.parent == transform)
+                        ghost.transform.Rotate(0, 0, 90 * delta);
+                }
+            }
+        }
+
+
+        /*  if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
+          {
+              rotationDirection = false;
+              achievementManager.UnlockAchievement(Achievements.FirstStep);
+              float currentAngle = transform.rotation.eulerAngles.z;
+              polygoneCollider.enabled = false;
+              transform.localScale -= new Vector3(0.3f, 0.3f, 0);
+              //    rigidBodyRoom.isKinematic = false;
+              StartCoroutine(Rotate(currentAngle, currentAngle - 90f));
+              isRotating = true;
+              HamsterRotation++;
+              mobileTap = 0;
+              if (GameObject.FindGameObjectWithTag("Player"))
+                  GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, 0, 90);
+              if (GameObject.FindGameObjectWithTag("Phantom") && GameObject.FindGameObjectWithTag("Phantom").transform.parent == player.transform.parent)
+                  GameObject.FindGameObjectWithTag("Phantom").transform.Rotate(0, 0, 90);
+          }*/
+    }
     void RotateLeftButtonTrue()
     {
         if (canRotate && !isRotating)
@@ -127,26 +179,25 @@ public class RoomTransition : MonoBehaviour
         isRotating = false;
         polygoneCollider.enabled = true;
         transform.localScale += new Vector3(0.3f, 0.3f, 0);
-        //   rigidBodyRoom.isKinematic = true;
     }
 
-    IEnumerator Rotate2(float angle, float targetAngle)
-    {
-        float t = 0f;
+    /* IEnumerator Rotate2(float angle, float targetAngle)
+     {
+         float t = 0f;
 
-        while (t <= 1f)
-        {
-            transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
-            t += Time.deltaTime * rotSpeed;
-            yield return null;
-        }
-        transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
-        isRotating = false;
-        polygoneCollider.enabled = true;
-        transform.localScale += new Vector3(0.3f, 0.3f, 0);
-        //   rigidBodyRoom.isKinematic = true;
+         while (t <= 1f)
+         {
+             transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
+             t += Time.deltaTime * rotSpeed;
+             yield return null;
+         }
+         transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
+         isRotating = false;
+         polygoneCollider.enabled = true;
+         transform.localScale += new Vector3(0.3f, 0.3f, 0);
+         //   rigidBodyRoom.isKinematic = true;
 
-    }
+     }*/
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -156,7 +207,7 @@ public class RoomTransition : MonoBehaviour
             other.transform.parent = this.transform;
             this.GetComponentInParent<BoxCollider2D>().enabled = true;
         }
-        if (other.CompareTag("Object") || other.CompareTag("Coin") || other.CompareTag("FreezingEye") || other.CompareTag("Phantom"))
+        if (other.CompareTag("Object") || other.CompareTag("Coin") || other.CompareTag("FreezingEye") || other.CompareTag("Phantom") || other.CompareTag("Hat") || other.CompareTag("LaserBox"))
         {
             other.transform.parent = this.transform;
         }
