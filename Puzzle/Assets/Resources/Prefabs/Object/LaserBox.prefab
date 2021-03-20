@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4861476834495392087}
   - component: {fileID: 2053432776698326223}
   - component: {fileID: 5428714255212674035}
+  - component: {fileID: 1426608100921913383}
   m_Layer: 2
   m_Name: LaserBox
   m_TagString: LaserBox
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 130360611896716603}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5196882612991085201}
   - {fileID: 2386647554672065365}
@@ -71,19 +72,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130360611896716603}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &5428714255212674035
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -134,6 +135,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1426608100921913383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130360611896716603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34cb579695e1ba4c882a7f680214986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emissionPoints: 00000000000000000000000000000000
+  rb: {fileID: 2053432776698326223}
 --- !u!1001 &1504016444375875298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141,6 +156,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8970217374232985109}
     m_Modifications:
+    - target: {fileID: 6683447189846520944, guid: ff73fa20319b74b8ea2aff083d8e12ad,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6683447189846520946, guid: ff73fa20319b74b8ea2aff083d8e12ad,
         type: 3}
       propertyPath: m_Color.r
@@ -248,6 +268,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8970217374232985109}
     m_Modifications:
+    - target: {fileID: 6683447189846520944, guid: ff73fa20319b74b8ea2aff083d8e12ad,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6683447189846520946, guid: ff73fa20319b74b8ea2aff083d8e12ad,
         type: 3}
       propertyPath: m_Color.r
@@ -378,6 +403,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8970217374232985109}
     m_Modifications:
+    - target: {fileID: 6683447189846520944, guid: ff73fa20319b74b8ea2aff083d8e12ad,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6683447189846520946, guid: ff73fa20319b74b8ea2aff083d8e12ad,
         type: 3}
       propertyPath: m_Color.r
@@ -505,6 +535,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8970217374232985109}
     m_Modifications:
+    - target: {fileID: 6683447189846520944, guid: ff73fa20319b74b8ea2aff083d8e12ad,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6683447189846520946, guid: ff73fa20319b74b8ea2aff083d8e12ad,
         type: 3}
       propertyPath: m_Color.r
