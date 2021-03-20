@@ -207,7 +207,7 @@ public class RoomTransition : MonoBehaviour
             other.transform.parent = this.transform;
             this.GetComponentInParent<BoxCollider2D>().enabled = true;
         }
-        if (other.CompareTag("Object") || other.CompareTag("Coin") || other.CompareTag("FreezingEye") || other.CompareTag("Phantom") || other.CompareTag("Hat") || other.CompareTag("LaserBox"))
+        if (other.CompareTag("Object") || other.CompareTag("Coin") || other.CompareTag("FreezingEye") || other.CompareTag("Phantom") || other.CompareTag("Hat") || other.CompareTag("LaserBox") || other.CompareTag("Mirror"))
         {
             other.transform.parent = this.transform;
         }

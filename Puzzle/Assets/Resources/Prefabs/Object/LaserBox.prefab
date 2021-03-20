@@ -72,7 +72,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130360611896716603}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionPoints: 00000000000000000000000000000000
-  rb: {fileID: 2053432776698326223}
 --- !u!1001 &1504016444375875298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,6 +155,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8970217374232985109}
     m_Modifications:
+    - target: {fileID: 6683447189846520940, guid: ff73fa20319b74b8ea2aff083d8e12ad,
+        type: 3}
+      propertyPath: layerMaskTab.m_Bits
+      value: 1540
+      objectReference: {fileID: 0}
     - target: {fileID: 6683447189846520944, guid: ff73fa20319b74b8ea2aff083d8e12ad,
         type: 3}
       propertyPath: m_Parameters.widthMultiplier
@@ -268,6 +272,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8970217374232985109}
     m_Modifications:
+    - target: {fileID: 6683447189846520940, guid: ff73fa20319b74b8ea2aff083d8e12ad,
+        type: 3}
+      propertyPath: layerMaskTab.m_Bits
+      value: 1540
+      objectReference: {fileID: 0}
     - target: {fileID: 6683447189846520944, guid: ff73fa20319b74b8ea2aff083d8e12ad,
         type: 3}
       propertyPath: m_Parameters.widthMultiplier
@@ -403,6 +412,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8970217374232985109}
     m_Modifications:
+    - target: {fileID: 6683447189846520940, guid: ff73fa20319b74b8ea2aff083d8e12ad,
+        type: 3}
+      propertyPath: layerMaskTab.m_Bits
+      value: 1540
+      objectReference: {fileID: 0}
     - target: {fileID: 6683447189846520944, guid: ff73fa20319b74b8ea2aff083d8e12ad,
         type: 3}
       propertyPath: m_Parameters.widthMultiplier
@@ -535,6 +549,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8970217374232985109}
     m_Modifications:
+    - target: {fileID: 6683447189846520940, guid: ff73fa20319b74b8ea2aff083d8e12ad,
+        type: 3}
+      propertyPath: layerMaskTab.m_Bits
+      value: 1540
+      objectReference: {fileID: 0}
     - target: {fileID: 6683447189846520944, guid: ff73fa20319b74b8ea2aff083d8e12ad,
         type: 3}
       propertyPath: m_Parameters.widthMultiplier
