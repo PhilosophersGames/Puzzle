@@ -14,8 +14,9 @@ public class DoorAndKey : MonoBehaviour
             this.gameObject.SetActive(false);
 
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
         if (other.CompareTag("Player") && hasKey == true)
         {
             this.gameObject.SetActive(false);
@@ -26,17 +27,22 @@ public class DoorAndKey : MonoBehaviour
     {
         if (DoorOpened == false)
         {
-             this.gameObject.SetActive(false);
-        DoorOpened = true;
+            this.gameObject.SetActive(false);
+            DoorOpened = true;
         }
     }
 
-       public void CloseDoor()
+    public void CloseDoor()
     {
         if (DoorOpened == true)
         {
-        this.gameObject.SetActive(true);
-        DoorOpened = false;
+            this.gameObject.SetActive(true);
+            DoorOpened = false;
         }
+    }
+
+    public void OpenDoorLaser()
+    {
+        
     }
 }

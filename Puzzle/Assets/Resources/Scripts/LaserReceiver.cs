@@ -11,11 +11,11 @@ public class LaserReceiver : MonoBehaviour
     }
     void Update()
     {
-         door.GetComponent<DoorAndKey>().CloseDoor();
+         
     }
 
     public void OpenDoor()
     {
-        door.GetComponent<DoorAndKey>().OpenDoor();
+        
     }
 }

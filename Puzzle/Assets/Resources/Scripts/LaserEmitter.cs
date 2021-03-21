@@ -26,9 +26,7 @@ public class LaserEmitter : MonoBehaviour
             lineRenderer.SetPosition(0, laserPoint.position);
             lineRenderer.SetPosition(1, hit.point);
         if (hit.collider.tag == "Mirror")
-            {
-                hit.collider.SendMessage("ActivateLaser");
-            }
+            hit.collider.SendMessage("ActivateLaser");
         if (hit.collider.tag == "LaserReceiver")
             hit.collider.SendMessage("OpenDoor");
         }
