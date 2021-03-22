@@ -25,11 +25,15 @@ public class ChapterSelection : MonoBehaviour
         chapterPrice[3] = 800;
         chapterPrice[4] = 1200;
         chapterPrice[5] = 1600;
+        chapterPrice[6] = 2000;
+        //chapterPrice[7] = 2400;
+        //chapterPrice[8] = 2800;
     }
 
     public void BuyChapter(int i)
     {
         wallet = GameObject.Find("User").transform.GetComponent<User>().wallet;
+        Debug.Log(chapterPrice[i]);
         {
             if (wallet >= chapterPrice[i])
             {
