@@ -15,6 +15,8 @@ public class RoomTransition : MonoBehaviour
     private Vector2 startTouchPosition;
     private Vector2 currentPosition;
     private Vector2 endTouchPosition;
+
+    public Vector3 slide;
     private bool stopTouch = false;
 
     private Transform MiddleofRooms;
@@ -260,68 +262,54 @@ public class RoomTransition : MonoBehaviour
                 if (!stopTouch)
                 {
                     swipeRange = 5f;
-                    if (Distance.x < -swipeRange && canRotate && touchPos.y > MiddleofRooms.position.y && touchPos.x > MiddleofRooms.position.x)
+                    if (Distance.x < -swipeRange && canRotate &&  touchPos.x > MiddleofRooms.position.x)
                     {
-                        // TOP RIGHT TO TOP LEFT
-                        mobileTap = 1;
+                        //  RIGHT TO LEFT
+                        if (!transform.GetComponentInParent<AdjacentRooms>().neighborRoom[3].GetComponent<RoomDetector>().room)
+                        {
+                            slide = transform.parent.position;
+                            slide.x -= 10; 
+                            SlideRoom(3);
+                        }
                         stopTouch = true;
                     }
-                    if (Distance.x < -swipeRange && canRotate && touchPos.y <= MiddleofRooms.position.y && touchPos.x > MiddleofRooms.position.x)
-                    {
-                        // BOTTOM RIGHT TO BOTTOM LEFT
-                        mobileTap = 2;
-                        stopTouch = true;
-                    }
-                    if (Distance.x > swipeRange && canRotate && touchPos.y > MiddleofRooms.position.y && touchPos.x <= MiddleofRooms.position.x)
+                    if (Distance.x > swipeRange && canRotate && touchPos.x <= MiddleofRooms.position.x)
                     {
                         if (GameObject.Find("Hand-Cursor"))
                             GameObject.Find("Hand-Cursor").GetComponent<Animator>().SetBool("SwipeRight", true);
-                        // TOP LEFT TO TOP RIGHT
-                        mobileTap = 2;
+                        // LEFT TO RIGHT
+                        if (!transform.GetComponentInParent<AdjacentRooms>().neighborRoom[1].GetComponent<RoomDetector>().room)
+                        {
+                            slide = transform.parent.position;
+                            slide.x += 10; 
+                            SlideRoom(1);
+                        }
                         stopTouch = true;
                     }
-                    if (Distance.x > swipeRange && canRotate && touchPos.y <= MiddleofRooms.position.y && touchPos.x <= MiddleofRooms.position.x)
+                    if (Distance.y < -swipeRange && canRotate && touchPos.y > MiddleofRooms.position.y)
                     {
-                        // BOTTOM LEFT TO BOTTOM RIGHT
-                        mobileTap = 1;
-                        stopTouch = true;
-                    }
-                    if (Distance.y < -swipeRange && canRotate && touchPos.x > MiddleofRooms.position.x && touchPos.y > MiddleofRooms.position.y)
-                    {
-                        // TOP RIGHT TO BOTTOM RIGHT
+                        // TOP TO BOTTOM
                         if (GameObject.Find("Hand-Cursor"))
                             GameObject.Find("Hand-Cursor").GetComponent<Animator>().SetBool("SwipeDown", true);
-                        mobileTap = 2;
+                        if (!transform.GetComponentInParent<AdjacentRooms>().neighborRoom[2].GetComponent<RoomDetector>().room)
+                        {
+                            slide = transform.parent.position;
+                            slide.y -= 10; 
+                            SlideRoom(2);
+                        }
                         stopTouch = true;
                     }
-                    if (Distance.y < -swipeRange && canRotate && touchPos.x <= MiddleofRooms.position.x && touchPos.y > MiddleofRooms.position.y)
+                    if (Distance.y > swipeRange && canRotate && touchPos.y <= MiddleofRooms.position.y)
                     {
-                        // TOP LEFT TO BOTTOM LEFT
-                        mobileTap = 1;
+                        // BOTTOM TO TOP
+                        if (!transform.GetComponentInParent<AdjacentRooms>().neighborRoom[0].GetComponent<RoomDetector>().room)
+                        {
+                            slide = transform.parent.position;
+                            slide.y += 10; 
+                            SlideRoom(0);
+                        }
                         stopTouch = true;
                     }
-                    if (Distance.y > swipeRange && canRotate && touchPos.x > MiddleofRooms.position.x && touchPos.y <= MiddleofRooms.position.y)
-                    {
-                        // BOTTOM RIGHT TO TOP RIGHT
-                        mobileTap = 1;
-                        stopTouch = true;
-                    }
-                    if (Distance.y > swipeRange && canRotate && touchPos.x <= MiddleofRooms.position.x && touchPos.y <= MiddleofRooms.position.y)
-                    {
-                        // BOTTOM LEFT TOP TOP LEFT
-                        mobileTap = 2;
-                        stopTouch = true;
-                    }
-                    /*      else if (Distance.y > swipeRange)
-                            {
-                            outputText.text = "Up";
-                            stopTouch = true;
-                            }
-                            else if (Distance.y < -swipeRange)
-                            {
-                            outputText.text = "Down";
-                            stopTouch = true;
-                    } */
                 }
             }
         }
@@ -337,6 +325,12 @@ public class RoomTransition : MonoBehaviour
         }
     }
 
+    public void SlideRoom(int i)
+    {
+        transform.GetComponentInParent<AdjacentRooms>().neighborRoom[i].GetComponent<RoomDetector>().GetComponentInChildren<BoxCollider2D>().enabled = false;
+        transform.parent.position = Vector3.MoveTowards(transform.parent.position, slide, 100);
+        transform.GetComponentInParent<AdjacentRooms>().neighborRoom[i].GetComponent<RoomDetector>().CreateBorderLimit();    
+    }
     public void RotationButtonRight()
     {
         mobileTap = 1;
