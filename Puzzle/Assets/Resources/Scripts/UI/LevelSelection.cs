@@ -84,7 +84,7 @@ public class LevelSelection : MonoBehaviour
         {
             int chapterNumber = 1;
             int i = -1;
-            for (int level = 0; level <= 39; level++)
+            for (int level = 0; level <= 43; level++)
             {
                 i++;
                 Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
@@ -102,7 +102,7 @@ public class LevelSelection : MonoBehaviour
     {
         int chapterNumber = 1;
         int i = -1;
-        for (int level = 0; level <= 39; level++)
+        for (int level = 0; level <= 43; level++)
         {
             i++;
             PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level] ? 1 : 0));
@@ -116,10 +116,11 @@ public class LevelSelection : MonoBehaviour
     }
     public void UnlockNewChapter()
     {
-        Unlocklevel[7] = true;
+        Unlocklevel[6] = true;
         Unlocklevel[15] = true;
         Unlocklevel[23] = true;
         Unlocklevel[31] = true;
+        Unlocklevel[39] = true;
         SaveUnlockedLevel();
     }
     public void GoToNexLevel()
@@ -147,14 +148,14 @@ public class LevelSelection : MonoBehaviour
         int chapterNumber = 1;
         int i = -1;
 
-        for (int level = 0; level <= 47; level++)
+        for (int level = 0; level <= 43; level++)
         {
             i++;
             if (Unlocklevel[level] == false)
                 Unlocklevel[level] = true;
             PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level] ? 1 : 0));
             Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
-            if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 47)
+            if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 43)
             {
                 i = -1;
                 chapterNumber++;
