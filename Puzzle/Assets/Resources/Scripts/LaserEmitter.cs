@@ -8,6 +8,8 @@ public class LaserEmitter : MonoBehaviour
     private Transform laserPoint;
     private float rotation = 90;
 
+    private GameObject saveLaserReceiver;
+
     public bool activeLaser;
 
     [SerializeField] private LayerMask layerMaskTab;
@@ -28,7 +30,13 @@ public class LaserEmitter : MonoBehaviour
         if (hit.collider.tag == "Mirror")
             hit.collider.SendMessage("ActivateLaser");
         if (hit.collider.tag == "LaserReceiver")
-            hit.collider.SendMessage("OpenDoor");
+        {
+            saveLaserReceiver = hit.collider.gameObject;
+            hit.collider.SendMessage("OpenDoor", true);
+        }
+        else if (saveLaserReceiver && (!hit.collider || !(hit.collider.tag == "LaserReceiver")))
+           saveLaserReceiver.SendMessage("OpenDoor", false);
+
         }
     }
 }

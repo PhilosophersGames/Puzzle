@@ -14,8 +14,11 @@ public class LaserReceiver : MonoBehaviour
          
     }
 
-    public void OpenDoor()
+    public void OpenDoor(bool open)
     {
-        
+        if (open)
+            door.GetComponent<DoorAndKey>().OpenDoor();
+        else
+            door.GetComponent<DoorAndKey>().CloseDoor();
     }
 }

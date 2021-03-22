@@ -40,9 +40,4 @@ public class DoorAndKey : MonoBehaviour
             DoorOpened = false;
         }
     }
-
-    public void OpenDoorLaser()
-    {
-        
-    }
 }
