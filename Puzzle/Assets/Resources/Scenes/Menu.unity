@@ -1130,7 +1130,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1312728547}
+      - m_Target: {fileID: 2099220121}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -2734,12 +2734,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289702597}
   m_CullTransparentMesh: 0
---- !u!1 &1312728547 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4322920119008572915, guid: 51f21e9986571f54f9263336a60fe416,
-    type: 3}
-  m_PrefabInstance: {fileID: 1610286306}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1391161499
 GameObject:
   m_ObjectHideFlags: 0
@@ -3604,7 +3598,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1312728547}
+      objectReference: {fileID: 2099220121}
     - target: {fileID: 4590423427788180442, guid: 51f21e9986571f54f9263336a60fe416,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -4623,6 +4617,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095036613}
   m_CullTransparentMesh: 0
+--- !u!1 &2099220121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5129357766554136714, guid: 51f21e9986571f54f9263336a60fe416,
+    type: 3}
+  m_PrefabInstance: {fileID: 1610286306}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3292878634503566545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4715,6 +4715,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1408286313, guid: 851709e2e5c735e4183cdb69a1b84d9b, type: 3}
+      propertyPath: achievementManager
+      value: 
+      objectReference: {fileID: 1254899396}
+    - target: {fileID: 1748709534, guid: 851709e2e5c735e4183cdb69a1b84d9b, type: 3}
       propertyPath: achievementManager
       value: 
       objectReference: {fileID: 1254899396}
