@@ -43,6 +43,7 @@ public class RoomTransition : MonoBehaviour
     public GameObject[] rooms;
 
     private GameObject[] ghosts;
+
     public PolygonCollider2D polygoneCollider;
 
     private float roomScale; 
@@ -66,7 +67,7 @@ public class RoomTransition : MonoBehaviour
             hat = GameObject.FindGameObjectWithTag("Hat");
         roomScale = GameObject.FindGameObjectWithTag("RoomsContainer").transform.localScale.x;
     }
-    void FixedUpdate()
+    void Update()
     {
         ComputerSlideRoom();
         Swipe();
