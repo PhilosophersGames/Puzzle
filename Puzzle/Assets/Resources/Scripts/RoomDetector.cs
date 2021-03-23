@@ -38,4 +38,11 @@ public class RoomDetector : MonoBehaviour
             room = other.transform.parent.gameObject;
         }
     }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("AdjacentRooms"))
+        {
+            room = null;
+        }
+    }
 }
