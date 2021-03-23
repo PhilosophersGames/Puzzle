@@ -5,37 +5,51 @@ using UnityEngine;
 public class RoomDetector : MonoBehaviour
 {
     public GameObject room;
+
+    public GameObject roomDetector;
+
+    public GameObject slidableRoom;
+
+    public bool isSlidable;
     public Collider2D col;
 
-    private bool exist;
+    public bool exist;
 
     void Awake()
     {
         col = GetComponentInChildren<BoxCollider2D>();
     }
-    private void Start()
-    {
-        
-    }
+
     void Update()
-    {
-        if (!exist)
+    {   if(!exist)
         {
             CreateBorderLimit();
             exist = true;
+        }
+        if (slidableRoom)
+            isSlidable = true;
+        else
+        {
+            isSlidable = false;
         }
     }
 
     public void CreateBorderLimit()
     {
-        if (!room)
+        if(!room)
             col.enabled = true;
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("AdjacentRooms"))
         {
             room = other.transform.parent.gameObject;
+        }
+        if(other.CompareTag("SlidableRoom"))
+        {
+            Debug.Log("slidable");
+            slidableRoom = other.gameObject;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -43,6 +57,10 @@ public class RoomDetector : MonoBehaviour
         if (other.CompareTag("AdjacentRooms"))
         {
             room = null;
+        }
+        if(other.CompareTag("SlidableRoom"))
+        {
+            slidableRoom = null;
         }
     }
 }

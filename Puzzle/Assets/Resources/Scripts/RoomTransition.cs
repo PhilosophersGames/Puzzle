@@ -228,24 +228,6 @@ public class RoomTransition : MonoBehaviour
         }
     }
 
-    void MobileTouchControls()
-    {
-        if (Input.touchCount > 0)
-        {
-            var touch = Input.GetTouch(0);
-            if ((touch.position.x < Screen.width / 2) && (touch.position.y > Screen.height / 3) && canRotate)
-            {
-                mobileTap = 1;
-            }
-            else if ((touch.position.x > Screen.width / 2) && canRotate)
-            {
-                mobileTap = 2;
-            }
-        }
-        else
-            mobileTap = 0;
-    }
-
     public void Swipe()
     {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -260,23 +242,17 @@ public class RoomTransition : MonoBehaviour
             swipeRange = 5f;
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && hit.transform.gameObject.tag == ("RoomSkin"))
             {
-                Debug.Log("touchcount1");
                 currentPosition = Input.GetTouch(0).position;
                 Vector2 Distance = currentPosition - startTouchPosition;
                 MiddleofRooms = GameObject.Find("MiddleofRooms").transform;
                 if (!stopTouch)
                 {
-                    Debug.Log("Stop Touch");
                     swipeRange = 5f;
                     if (Distance.x < -swipeRange && canRotate &&  touchPos.x > MiddleofRooms.position.x)
                     {
                         //  RIGHT TO LEFT
-                        if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[3])
+                        if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[3].GetComponent<RoomDetector>().isSlidable)
                         {
-                        }
-                        else
-                        {
-                            Debug.Log("Righttoleft");
                             slide = transform.parent.position;
                             slide.x -= 10 * roomScale; 
                             SlideRoom(3);
@@ -289,7 +265,7 @@ public class RoomTransition : MonoBehaviour
                         if (GameObject.Find("Hand-Cursor"))
                             GameObject.Find("Hand-Cursor").GetComponent<Animator>().SetBool("SwipeRight", true);
                         // LEFT TO RIGHT
-                        if (!player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[1])
+                        if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[1].GetComponent<RoomDetector>().isSlidable)
                         {
                             slide = transform.parent.position;
                             slide.x += 10 * roomScale; 
@@ -303,7 +279,7 @@ public class RoomTransition : MonoBehaviour
                         // TOP TO BOTTOM
                         if (GameObject.Find("Hand-Cursor"))
                             GameObject.Find("Hand-Cursor").GetComponent<Animator>().SetBool("SwipeDown", true);
-                        if (!player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[2])
+                        if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[2].GetComponent<RoomDetector>().isSlidable)
                         {
                             slide = transform.parent.position;
                             slide.y -= 10 * roomScale; 
@@ -315,7 +291,7 @@ public class RoomTransition : MonoBehaviour
                     {
                         Debug.Log("bottomtotop");
                         // BOTTOM TO TOP
-                        if (!player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[0])
+                        if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[0].GetComponent<RoomDetector>().isSlidable)
                         {
                             slide = transform.parent.position;
                             slide.y += 10 * roomScale; 
@@ -348,12 +324,14 @@ public class RoomTransition : MonoBehaviour
                 room.transform.GetChild(1).transform.GetChild(j).transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
             }
         }
+        player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[i].GetComponent<RoomDetector>().slidableRoom.transform.position = transform.parent.position;
         transform.parent.position = slide;
+
         foreach (GameObject room in bigRooms)
         {
             for (int j = 0; j < 4; j++)
             {
-                room.transform.GetChild(1).transform.GetChild(j).GetComponent<RoomDetector>().CreateBorderLimit();
+                room.transform.GetChild(1).transform.GetChild(j).GetComponent<RoomDetector>().exist = false;
             }
         }
     }

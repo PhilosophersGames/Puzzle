@@ -116,7 +116,7 @@ public class LevelSelection : MonoBehaviour
     }
     public void UnlockNewChapter()
     {
-        Unlocklevel[6] = true;
+        Unlocklevel[7] = true;
         Unlocklevel[15] = true;
         Unlocklevel[23] = true;
         Unlocklevel[31] = true;
