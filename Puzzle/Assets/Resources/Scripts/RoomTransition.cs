@@ -91,6 +91,7 @@ public class RoomTransition : MonoBehaviour
                     if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i])
                         player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i].GetComponentInChildren<RoomTransition>().RoomRotation(-1);
                 }
+                mobileTap = 0;
             }
             else if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
             {
@@ -100,6 +101,7 @@ public class RoomTransition : MonoBehaviour
                         player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i].GetComponentInChildren<RoomTransition>().RoomRotation(1);
                 }
             }
+            mobileTap = 0;
         }
     }
 
