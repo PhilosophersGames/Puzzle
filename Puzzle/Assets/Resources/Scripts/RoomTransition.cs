@@ -66,8 +66,9 @@ public class RoomTransition : MonoBehaviour
             hat = GameObject.FindGameObjectWithTag("Hat");
         roomScale = GameObject.FindGameObjectWithTag("RoomsContainer").transform.localScale.x;
     }
-    void Update()
+    void FixedUpdate()
     {
+        ComputerSlideRoom();
         Swipe();
         if (HamsterRotation == 100)
         {
@@ -140,7 +141,6 @@ public class RoomTransition : MonoBehaviour
                 }
             }
         }
-
 
         /*  if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
           {
@@ -227,6 +227,52 @@ public class RoomTransition : MonoBehaviour
         {
             canRotate = false;
             this.GetComponentInParent<BoxCollider2D>().enabled = false;
+        }
+    }
+
+    public void ComputerSlideRoom()
+    {
+        //Right to Left
+        if (Input.GetKeyDown("j") && player.transform.parent == transform)
+        {
+            if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[3].GetComponent<RoomDetector>().isSlidable)
+            {
+                slide = transform.parent.position;
+                slide.x -= 10 * roomScale;
+                SlideRoom(3);
+            }
+        }
+
+        //Left to Right
+        if (Input.GetKeyDown("l") && player.transform.parent == transform)
+        {
+            if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[1].GetComponent<RoomDetector>().isSlidable)
+            {
+                slide = transform.parent.position;
+                slide.x += 10 * roomScale;
+                SlideRoom(1);
+            }
+        }
+        //Top to Bottom
+        if (Input.GetKeyDown("k") && player.transform.parent == transform)
+        {
+            if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[2].GetComponent<RoomDetector>().isSlidable)
+            {
+                slide = transform.parent.position;
+                slide.y -= 10 * roomScale;
+                SlideRoom(2);
+            }
+        }
+
+        // Bottom to Top
+        if (Input.GetKeyDown("i") && player.transform.parent == transform)
+        {
+            if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[0].GetComponent<RoomDetector>().isSlidable)
+            {
+                slide = transform.parent.position;
+                slide.y += 10 * roomScale;
+                SlideRoom(0);
+            }
         }
     }
 
@@ -328,7 +374,6 @@ public class RoomTransition : MonoBehaviour
         }
         player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[i].GetComponent<RoomDetector>().slidableRoom.transform.position = transform.parent.position;
         transform.parent.position = slide;
-
         foreach (GameObject room in bigRooms)
         {
             for (int j = 0; j < 4; j++)
