@@ -21,7 +21,8 @@ public class RoomDetector : MonoBehaviour
     }
 
     void Update()
-    {   if(!exist)
+    {   
+        if(!exist)
         {
             CreateBorderLimit();
             exist = true;
@@ -48,7 +49,6 @@ public class RoomDetector : MonoBehaviour
         }
         if(other.CompareTag("SlidableRoom"))
         {
-            Debug.Log("slidable");
             slidableRoom = other.gameObject;
         }
     }
