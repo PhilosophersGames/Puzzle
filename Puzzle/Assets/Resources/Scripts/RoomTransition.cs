@@ -337,7 +337,6 @@ public class RoomTransition : MonoBehaviour
             }
         }
     }
-
     private GameObject[] bigRooms;
     public void SlideRoom(int i)
     {
