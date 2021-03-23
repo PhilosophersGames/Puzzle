@@ -28,6 +28,5 @@ public class AdjacentRooms : MonoBehaviour
         {
             neighborRoom[++i] = room.GetComponent<RoomDetector>().room;
         }
-        
     }
 }

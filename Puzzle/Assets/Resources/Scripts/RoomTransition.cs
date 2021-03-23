@@ -44,6 +44,8 @@ public class RoomTransition : MonoBehaviour
 
     private GameObject[] ghosts;
     public PolygonCollider2D polygoneCollider;
+
+    private float roomScale; 
     //   public Rigidbody2D rigidBodyRoom;
     //   public GameObject tileMap;
 
@@ -62,6 +64,7 @@ public class RoomTransition : MonoBehaviour
         HamsterRotation = 0;
         if (GameObject.FindGameObjectWithTag("Hat"))
             hat = GameObject.FindGameObjectWithTag("Hat");
+        roomScale = GameObject.FindGameObjectWithTag("RoomsContainer").transform.localScale.x;
     }
     void Update()
     {
@@ -254,7 +257,7 @@ public class RoomTransition : MonoBehaviour
         if (hit)
         {
             swipeRange = 5f;
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && hit.transform.gameObject.tag == ("Room"))
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && hit.transform.gameObject.tag == ("RoomSkin"))
             {
                 currentPosition = Input.GetTouch(0).position;
                 Vector2 Distance = currentPosition - startTouchPosition;
@@ -268,7 +271,7 @@ public class RoomTransition : MonoBehaviour
                         if (!transform.GetComponentInParent<AdjacentRooms>().neighborRoom[3].GetComponent<RoomDetector>().room)
                         {
                             slide = transform.parent.position;
-                            slide.x -= 10; 
+                            slide.x -= 10 * roomScale; 
                             SlideRoom(3);
                         }
                         stopTouch = true;
@@ -281,7 +284,7 @@ public class RoomTransition : MonoBehaviour
                         if (!transform.GetComponentInParent<AdjacentRooms>().neighborRoom[1].GetComponent<RoomDetector>().room)
                         {
                             slide = transform.parent.position;
-                            slide.x += 10; 
+                            slide.x += 10 * roomScale; 
                             SlideRoom(1);
                         }
                         stopTouch = true;
@@ -294,7 +297,7 @@ public class RoomTransition : MonoBehaviour
                         if (!transform.GetComponentInParent<AdjacentRooms>().neighborRoom[2].GetComponent<RoomDetector>().room)
                         {
                             slide = transform.parent.position;
-                            slide.y -= 10; 
+                            slide.y -= 10 * roomScale; 
                             SlideRoom(2);
                         }
                         stopTouch = true;
@@ -305,7 +308,7 @@ public class RoomTransition : MonoBehaviour
                         if (!transform.GetComponentInParent<AdjacentRooms>().neighborRoom[0].GetComponent<RoomDetector>().room)
                         {
                             slide = transform.parent.position;
-                            slide.y += 10; 
+                            slide.y += 10 * roomScale; 
                             SlideRoom(0);
                         }
                         stopTouch = true;
@@ -325,17 +328,30 @@ public class RoomTransition : MonoBehaviour
         }
     }
 
+    private GameObject[] bigRooms;
     public void SlideRoom(int i)
     {
-        transform.GetComponentInParent<AdjacentRooms>().neighborRoom[i].GetComponent<RoomDetector>().GetComponentInChildren<BoxCollider2D>().enabled = false;
-        transform.parent.position = Vector3.MoveTowards(transform.parent.position, slide, 100);
-        transform.GetComponentInParent<AdjacentRooms>().neighborRoom[i].GetComponent<RoomDetector>().CreateBorderLimit();    
+        bigRooms = GameObject.FindGameObjectsWithTag("RoomSkin");
+        foreach (GameObject room in bigRooms)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                room.transform.GetChild(1).transform.GetChild(j).transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
+            }
+        }
+        transform.parent.position = slide;
+        foreach (GameObject room in bigRooms)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                room.transform.GetChild(1).transform.GetChild(j).GetComponent<RoomDetector>().CreateBorderLimit();
+            }
+        }
     }
     public void RotationButtonRight()
     {
         mobileTap = 1;
     }
-
     public void RotationButtonLeft()
     {
         mobileTap = 2;
