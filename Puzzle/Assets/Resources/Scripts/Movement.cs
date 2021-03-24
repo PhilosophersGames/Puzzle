@@ -26,20 +26,22 @@ public class Movement : MonoBehaviour
 
     private GameObject player;
 
+    public bool canMove;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        canMove = true;
     }
     void Update()
     {
-        //transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime, 0f);
         ComputerMovement();
         MobileMovement();
     }
 
     void ComputerMovement()
     {
-        if (RoomTransition.isRotating == false)
+        if (RoomTransition.isRotating == false && canMove)
         {
             //         if (Mathf.Abs(moveSpeed * roundHorizontal) < Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) < Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
             rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), moveSpeed * Input.GetAxis("Vertical"));
@@ -78,7 +80,7 @@ public class Movement : MonoBehaviour
     }
     void MobileMovement()
     {
-        if (RoomTransition.isRotating == false)
+        if (RoomTransition.isRotating == false && canMove)
         {
             rb.velocity = new Vector2(moveSpeed * SimpleInput.GetAxis("Horizontal"), moveSpeed * SimpleInput.GetAxis("Vertical"));
             isMoving = false;
