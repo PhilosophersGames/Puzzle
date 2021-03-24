@@ -6,7 +6,7 @@ public class LaserBox : MonoBehaviour
 {
     public int[] emissionPoints = new int[4];
 
-    public Rigidbody2D rb;
+    //public Rigidbody2D rb;
 
     private int point;
     void Start()
@@ -15,8 +15,8 @@ public class LaserBox : MonoBehaviour
     }
     void Update()
     {
-        if (RoomTransition.isRotating == true)
-            rb.velocity = new Vector2(0, 0);
+      //  if (RoomTransition.isRotating == true)
+        //    rb.velocity = new Vector2(0, 0);
 
     }
     public void ActiveLasers()

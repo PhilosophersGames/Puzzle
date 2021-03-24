@@ -116,7 +116,7 @@ public class LevelSelection : MonoBehaviour
     }
     public void UnlockNewChapter()
     {
-        Unlocklevel[6] = true;
+        Unlocklevel[7] = true;
         Unlocklevel[15] = true;
         Unlocklevel[23] = true;
         Unlocklevel[31] = true;
@@ -128,8 +128,12 @@ public class LevelSelection : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
-
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (SceneManager.GetActiveScene().buildIndex + 1 == 9 || SceneManager.GetActiveScene().buildIndex + 1 == 17 || SceneManager.GetActiveScene().buildIndex + 1 == 25 || SceneManager.GetActiveScene().buildIndex + 1 == 33 || SceneManager.GetActiveScene().buildIndex + 1 == 41)
+            {
+                SceneManager.LoadScene(0);
+            }
+            else
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {
