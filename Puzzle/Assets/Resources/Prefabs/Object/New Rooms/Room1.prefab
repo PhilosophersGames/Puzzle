@@ -221,6 +221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
+  roomDetector: {fileID: 0}
+  slidableRoom: {fileID: 0}
+  isSlidable: 0
   col: {fileID: 0}
 --- !u!58 &1081807777541552123
 CircleCollider2D:
@@ -306,6 +309,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
+  roomDetector: {fileID: 0}
+  slidableRoom: {fileID: 0}
+  isSlidable: 0
   col: {fileID: 0}
 --- !u!58 &5521869182843771067
 CircleCollider2D:
@@ -391,6 +397,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
+  roomDetector: {fileID: 0}
+  slidableRoom: {fileID: 0}
+  isSlidable: 0
   col: {fileID: 0}
 --- !u!58 &4084192695497339312
 CircleCollider2D:
@@ -2931,6 +2940,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
+  roomDetector: {fileID: 0}
+  slidableRoom: {fileID: 0}
+  isSlidable: 0
   col: {fileID: 0}
 --- !u!58 &7335924860091761139
 CircleCollider2D:
@@ -5743,16 +5755,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd688c498d6cfc4f9fc869160c045ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slide: {x: 0, y: 0, z: 0}
   swipeRange: 0
   tapRange: 0
   mobileTap: 0
   achievementManager: {fileID: 7599364843264320481, guid: 51f21e9986571f54f9263336a60fe416,
     type: 3}
   canRotate: 0
+  canSlide: 0
   rotSpeed: 5
   hat: {fileID: 0}
   rooms: []
   polygoneCollider: {fileID: 4285285620813469331}
+  slideInBetween: 0
 --- !u!60 &4285285620813469331
 PolygonCollider2D:
   m_ObjectHideFlags: 0

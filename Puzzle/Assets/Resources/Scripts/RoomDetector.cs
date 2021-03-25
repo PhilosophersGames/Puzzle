@@ -13,20 +13,26 @@ public class RoomDetector : MonoBehaviour
     public bool isSlidable;
     public Collider2D col;
 
-    public bool exist;
+    private GameObject[] bigRooms;
+
+    private GameObject rooms;
+
+    public float offset;
 
     void Awake()
     {
         col = GetComponentInChildren<BoxCollider2D>();
+        rooms = GameObject.FindGameObjectWithTag("RoomsContainer");
     }
 
     void Update()
-    {   
-        if(!exist)
+    {
+        if (rooms.GetComponent<SlideManager>().drawBorderCollider == false)
         {
-            CreateBorderLimit();
-            exist = true;
+            CheckBorderLimit();
         }
+        else
+            col.enabled = false;
         if (slidableRoom)
             isSlidable = true;
         else
@@ -35,10 +41,23 @@ public class RoomDetector : MonoBehaviour
         }
     }
 
+    public void CheckBorderLimit()
+    {
+        int count = 0;
+        bigRooms = GameObject.FindGameObjectsWithTag("RoomSkin");
+        foreach (GameObject room in bigRooms)
+        {
+            offset = Vector3.Distance(transform.position, room.transform.GetChild(1).transform.position);
+            if (!(offset <= Mathf.Abs(1f)))
+                count++;
+        }
+        if (count == bigRooms.Length)
+            CreateBorderLimit();
+    }
     public void CreateBorderLimit()
     {
-        if(!room)
-            col.enabled = true;
+        Debug.Log("LOLL");
+        col.enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -47,7 +66,7 @@ public class RoomDetector : MonoBehaviour
         {
             room = other.transform.parent.gameObject;
         }
-        if(other.CompareTag("SlidableRoom"))
+        if (other.CompareTag("SlidableRoom"))
         {
             slidableRoom = other.gameObject;
         }
@@ -58,7 +77,7 @@ public class RoomDetector : MonoBehaviour
         {
             room = null;
         }
-        if(other.CompareTag("SlidableRoom"))
+        if (other.CompareTag("SlidableRoom"))
         {
             slidableRoom = null;
         }
