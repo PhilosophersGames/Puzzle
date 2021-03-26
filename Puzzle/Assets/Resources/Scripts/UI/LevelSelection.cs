@@ -88,7 +88,7 @@ public class LevelSelection : MonoBehaviour
             {
                 i++;
                 Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
-                if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39)
+                if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 47 || level == 55)
                 {
                     i = -1;
                     chapterNumber++;
@@ -102,11 +102,11 @@ public class LevelSelection : MonoBehaviour
     {
         int chapterNumber = 1;
         int i = -1;
-        for (int level = 0; level <= 43; level++)
+        for (int level = 0; level <= 62; level++)
         {
             i++;
             PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level] ? 1 : 0));
-            if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39)
+            if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 47 || level == 55)
             {
                 i = -1;
                 chapterNumber++;
@@ -121,6 +121,8 @@ public class LevelSelection : MonoBehaviour
         Unlocklevel[23] = true;
         Unlocklevel[31] = true;
         Unlocklevel[39] = true;
+        Unlocklevel[47] = true;
+        Unlocklevel[55] = true;
         SaveUnlockedLevel();
     }
     public void GoToNexLevel()
@@ -159,7 +161,7 @@ public class LevelSelection : MonoBehaviour
                 Unlocklevel[level] = true;
             PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level] ? 1 : 0));
             Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
-            if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 43)
+            if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 43 || level == 51 || level == 59)
             {
                 i = -1;
                 chapterNumber++;

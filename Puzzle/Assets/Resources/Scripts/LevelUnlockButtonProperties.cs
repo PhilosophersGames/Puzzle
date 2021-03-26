@@ -76,4 +76,4 @@ public class LevelUnlockButtonProperties : MonoBehaviour
         string tab = $"C{chapterNumber.ToString()}Level{i.ToString()}";
         return (tab);
     }
-    }
+}
