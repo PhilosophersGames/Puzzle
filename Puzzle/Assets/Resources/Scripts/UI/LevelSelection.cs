@@ -88,7 +88,7 @@ public class LevelSelection : MonoBehaviour
             {
                 i++;
                 Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
-                if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 47 || level ==)
+                if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 47 || level == 55)
                 {
                     i = -1;
                     chapterNumber++;

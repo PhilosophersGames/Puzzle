@@ -33,7 +33,6 @@ public class ChapterSelection : MonoBehaviour
     public void BuyChapter(int i)
     {
         wallet = GameObject.Find("User").transform.GetComponent<User>().wallet;
-        Debug.Log(chapterPrice[i]);
         {
             if (wallet >= chapterPrice[i])
             {

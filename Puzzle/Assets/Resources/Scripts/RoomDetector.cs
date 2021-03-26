@@ -56,7 +56,6 @@ public class RoomDetector : MonoBehaviour
     }
     public void CreateBorderLimit()
     {
-        Debug.Log("LOLL");
         col.enabled = true;
     }
 
