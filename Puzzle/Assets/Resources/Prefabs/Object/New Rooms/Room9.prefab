@@ -41,6 +41,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6999926050934027284}
+  - component: {fileID: 1902841369750234261}
+  - component: {fileID: 7937061316615271128}
   m_Layer: 0
   m_Name: Rooms
   m_TagString: RoomsContainer
@@ -73,6 +75,42 @@ Transform:
   m_Father: {fileID: 2820108051095535911}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1902841369750234261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116945365638812322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f6683ba4d40794ca812ce5725ecbff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerHere: 0
+  neighborRoom:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomID: 0
+  colider: {fileID: 0}
+  path: {fileID: 0}
+  decoration: {fileID: 0}
+  hat: {fileID: 0}
+--- !u!114 &7937061316615271128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116945365638812322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2573dca2ee538304a8cad0abec65f266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawBorderCollider: 0
 --- !u!1001 &1231959795390787639
 PrefabInstance:
   m_ObjectHideFlags: 0
