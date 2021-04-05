@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 820798472113898331}
-  - component: {fileID: 8549005828900081794}
   - component: {fileID: 1377580751944366558}
   m_Layer: 0
   m_Name: Rooms
@@ -38,29 +37,6 @@ Transform:
   m_Father: {fileID: 2603203958333799334}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8549005828900081794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3849601247555842417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da26419f3c2857c438cbb8f96aba8194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinZero:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 11400000, guid: 1a8396ec045d93f4a987f7aaefb51670, type: 2}
-  - {fileID: 0}
-  skinOne:
-  - {fileID: 11400000, guid: 66812b8f48f3f45428eb035d592240b5, type: 2}
-  - {fileID: 11400000, guid: 4bb239e3c710eac478ff6b0b2d5732b3, type: 2}
-  - {fileID: 11400000, guid: c6d0b023766904f419d921174086a6d9, type: 2}
-  - {fileID: 11400000, guid: 837e3e71dd315554ea450bf923612b13, type: 2}
-  skinID: 0
 --- !u!114 &1377580751944366558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +93,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SlidableRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451865817346676255, guid: 27c32e74fe51802499888b214556fddf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8397280761369565322, guid: 27c32e74fe51802499888b214556fddf,
         type: 3}

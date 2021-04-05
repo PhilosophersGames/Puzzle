@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7348876006006509095}
-  - component: {fileID: 4706823918888868801}
   - component: {fileID: 7119900064824206661}
   m_Layer: 0
   m_Name: Rooms
@@ -36,29 +35,6 @@ Transform:
   m_Father: {fileID: 7800305970909534620}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4706823918888868801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972008581139385453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da26419f3c2857c438cbb8f96aba8194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinZero:
-  - {fileID: 11400000, guid: 2d20199153c59904197f187bc03a026d, type: 2}
-  - {fileID: 11400000, guid: 8d5d6202802b6ff479760531f9c07185, type: 2}
-  - {fileID: 11400000, guid: 1a8396ec045d93f4a987f7aaefb51670, type: 2}
-  - {fileID: 11400000, guid: 43d6ba41e7311a249bac39a549e35ff1, type: 2}
-  skinOne:
-  - {fileID: 11400000, guid: 66812b8f48f3f45428eb035d592240b5, type: 2}
-  - {fileID: 11400000, guid: 4bb239e3c710eac478ff6b0b2d5732b3, type: 2}
-  - {fileID: 11400000, guid: c6d0b023766904f419d921174086a6d9, type: 2}
-  - {fileID: 11400000, guid: 837e3e71dd315554ea450bf923612b13, type: 2}
-  skinID: 0
 --- !u!114 &7119900064824206661
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8038238780650767543}
-  - component: {fileID: 3319312441122396154}
   - component: {fileID: 7531275468372353773}
   m_Layer: 0
   m_Name: Rooms
@@ -43,29 +42,6 @@ Transform:
   m_Father: {fileID: 9088507765120479012}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3319312441122396154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416362814293005704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da26419f3c2857c438cbb8f96aba8194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinZero:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  skinOne:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  skinID: 0
 --- !u!114 &7531275468372353773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5610,6 +5586,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SlidableRoom (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451865817346676255, guid: 27c32e74fe51802499888b214556fddf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8397280761369565322, guid: 27c32e74fe51802499888b214556fddf,
         type: 3}
@@ -20225,6 +20206,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlidableRoom (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5451865817346676255, guid: 27c32e74fe51802499888b214556fddf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8397280761369565322, guid: 27c32e74fe51802499888b214556fddf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31276,6 +31262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlidableRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 5451865817346676255, guid: 27c32e74fe51802499888b214556fddf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8397280761369565322, guid: 27c32e74fe51802499888b214556fddf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31350,6 +31341,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SlidableRoom (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451865817346676255, guid: 27c32e74fe51802499888b214556fddf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8397280761369565322, guid: 27c32e74fe51802499888b214556fddf,
         type: 3}
