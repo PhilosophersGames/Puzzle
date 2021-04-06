@@ -45,6 +45,16 @@ public class Mirror : MonoBehaviour
             lineRenderer.SetPosition(0, laserPoint.position);
             lineRenderer.SetPosition(1, hit.point);
             inactiveFrames += 1;
+            Debug.Log(hit.collider.tag);
+            if (hit.collider.tag == "Mirror")
+                hit.collider.SendMessage("ActivateLaser");
+            if (hit.collider.tag == "LaserReceiver")
+            {
+                saveLaserReceiver = hit.collider.gameObject;
+                hit.collider.SendMessage("OpenDoor", true);
+            }
+            else if (saveLaserReceiver && (!hit.collider || !(hit.collider.tag == "LaserReceiver")))
+                saveLaserReceiver.SendMessage("OpenDoor", false);
         }
         else
         {
@@ -56,13 +66,7 @@ public class Mirror : MonoBehaviour
         }
         if (hit)
         {
-            if (hit.collider.tag == "LaserReceiver")
-            {
-                saveLaserReceiver = hit.collider.gameObject;
-                hit.collider.SendMessage("OpenDoor", true);
-            }
-            else if (saveLaserReceiver && (!hit.collider || !(hit.collider.tag == "LaserReceiver")))
-                saveLaserReceiver.SendMessage("OpenDoor", false);
+            
         }
 
     }
