@@ -109,12 +109,14 @@ public class RoomTransition : MonoBehaviour
         }
         if (slideInBetween == true)
         {
+            player.GetComponent<Movement>().moveSpeed = 0;
             GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().drawBorderCollider = true;
             canRotate = false;
             canSlide = false;
             transform.parent.position = Vector3.MoveTowards(transform.parent.position, saveSlidePosition, Time.deltaTime * rotSpeed * 8);
             if (transform.parent.position == saveSlidePosition)
             {
+                player.GetComponent<Movement>().moveSpeed = 8;
                 slideInBetween = false;
                 GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().StartChangeBool();
                 canRotate = true;

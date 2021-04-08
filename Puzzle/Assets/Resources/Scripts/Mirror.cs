@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +22,6 @@ public class Mirror : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
         laserPoint = transform.GetChild(0);
-
         if (direction == 1)
         {
             transform.Rotate(0, 0, -90, Space.Self);
@@ -64,11 +63,6 @@ public class Mirror : MonoBehaviour
         {
             isActive = false;
         }
-        if (hit)
-        {
-            
-        }
-
     }
     public void ActivateLaser()
     {
