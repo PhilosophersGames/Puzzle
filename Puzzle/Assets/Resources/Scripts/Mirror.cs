@@ -40,7 +40,7 @@ public class Mirror : MonoBehaviour
         if (isActive)
         {
             lineRenderer.enabled = true;
-            hit = Physics2D.Raycast(transform.position, laserPoint.position - transform.position, Mathf.Infinity, ~layerMaskTab);
+            hit = Physics2D.Raycast(laserPoint.position, laserPoint.position - transform.position, Mathf.Infinity, ~layerMaskTab);
             lineRenderer.SetPosition(0, laserPoint.position);
             lineRenderer.SetPosition(1, hit.point);
             inactiveFrames += 1;
