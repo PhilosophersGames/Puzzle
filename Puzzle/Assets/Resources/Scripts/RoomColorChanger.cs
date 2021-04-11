@@ -22,6 +22,8 @@ public class RoomColorChanger : MonoBehaviour
     private Color color;
 
     public GameObject hat;
+
+    public float RotationSpeed = 100;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -35,7 +37,6 @@ public class RoomColorChanger : MonoBehaviour
     {
         if (hat && hat.GetComponent<Hat>().hatEquiped)
         {
-            //ColorChamber(false);
             if (isPlayerHere)
             {
                 for (int i = 0; i < 4; i++)
@@ -53,7 +54,7 @@ public class RoomColorChanger : MonoBehaviour
 
     public void ColorChamber(bool delta)
     {
-        if (delta == true)
+        /*if (delta == true)
         {
             color = Color.white;
             color.a = 1f;
@@ -67,7 +68,9 @@ public class RoomColorChanger : MonoBehaviour
             colider.color = color;
             path.color = color;
             decoration.color = color;
-        }
+        }*/
+        if (delta == true)
+            transform.GetChild(2).transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime ));
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -78,7 +81,6 @@ public class RoomColorChanger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             isPlayerHere = false;
-
         for (int i = 0; i < 4; i++)
         {
             //Debug.Log(neighborRoom[i].GetComponent<RoomDetector>().room);

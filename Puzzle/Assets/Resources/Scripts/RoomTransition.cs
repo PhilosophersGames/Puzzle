@@ -134,6 +134,7 @@ public class RoomTransition : MonoBehaviour
         float currentAngle = transform.rotation.eulerAngles.z;
         polygoneCollider.enabled = false;
         transform.localScale -= new Vector3(0.3f, 0.3f, 0);
+        transform.parent.transform.GetChild(2).localScale -= new Vector3(0.3f, 0.3f, 0);
         StartCoroutine(Rotate(currentAngle, currentAngle - (90f * delta)));
         isRotating = true;
         HamsterRotation++;
@@ -187,6 +188,7 @@ public class RoomTransition : MonoBehaviour
         isRotating = false;
         polygoneCollider.enabled = true;
         transform.localScale += new Vector3(0.3f, 0.3f, 0);
+        transform.parent.transform.GetChild(2).localScale += new Vector3(0.3f, 0.3f, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
