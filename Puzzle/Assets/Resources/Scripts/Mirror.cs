@@ -37,7 +37,11 @@ public class Mirror : MonoBehaviour
     }
     void Update()
     {
-        if (isActive)
+        if (GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders)
+            lineRenderer.enabled = true;
+        else
+            lineRenderer.enabled = false;
+        if (isActive && GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders)
         {
             lineRenderer.enabled = true;
             hit = Physics2D.Raycast(laserPoint.position, laserPoint.position - transform.position, Mathf.Infinity, ~layerMaskTab);

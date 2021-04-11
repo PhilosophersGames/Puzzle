@@ -18,24 +18,29 @@ public class LaserEmitter : MonoBehaviour
     {
         laserPoint = transform.GetChild(0);
         lineRenderer = GetComponent<LineRenderer>();
+
     }
 
     void Update()
     {
-        if (activeLaser)
+        if (GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders)
+            lineRenderer.enabled = true;
+        else
+            lineRenderer.enabled = false;
+        if (activeLaser && GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders == true)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, laserPoint.position - transform.position, Mathf.Infinity, ~layerMaskTab);
             lineRenderer.SetPosition(0, laserPoint.position);
             lineRenderer.SetPosition(1, hit.point);
-        if (hit.collider.tag == "Mirror")
-            hit.collider.SendMessage("ActivateLaser");
-        if (hit.collider.tag == "LaserReceiver")
-        {
-            saveLaserReceiver = hit.collider.gameObject;
-            hit.collider.SendMessage("OpenDoor", true);
-        }
-        else if (saveLaserReceiver && (!hit.collider || !(hit.collider.tag == "LaserReceiver")))
-           saveLaserReceiver.SendMessage("OpenDoor", false);
+            if (hit.collider.tag == "Mirror")
+                hit.collider.SendMessage("ActivateLaser");
+            if (hit.collider.tag == "LaserReceiver")
+            {
+                saveLaserReceiver = hit.collider.gameObject;
+                hit.collider.SendMessage("OpenDoor", true);
+            }
+            else if (saveLaserReceiver && (!hit.collider || !(hit.collider.tag == "LaserReceiver")))
+                saveLaserReceiver.SendMessage("OpenDoor", false);
 
         }
     }

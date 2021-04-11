@@ -109,6 +109,7 @@ public class RoomTransition : MonoBehaviour
         }
         if (slideInBetween == true)
         {
+            GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders = false;
             player.GetComponent<Movement>().moveSpeed = 0;
             GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().drawBorderCollider = true;
             canRotate = false;
