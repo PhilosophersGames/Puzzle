@@ -11,8 +11,16 @@ public class TileSwap : MonoBehaviour
     private GameObject[] rooms;
     public int skinID;
 
+    private GameObject[] LaserBox;
+
     public void SkinChanger(int newSkin)
     {
+        LaserBox = GameObject.FindGameObjectsWithTag("LaserBox");
+        foreach(GameObject box in LaserBox)
+        {
+            if (box.GetComponent<LineRenderer>() && box.GetComponent<LineRenderer>().enabled == true)
+                box.GetComponent<LineRenderer>().enabled = false;
+        }
         if (skinID != newSkin)
         {
             rooms = GameObject.FindGameObjectsWithTag("RoomSkin");
@@ -48,6 +56,11 @@ public class TileSwap : MonoBehaviour
                     }
                 }
             }
+        }
+        foreach(GameObject box in LaserBox)
+        {
+            if (box.GetComponent<LineRenderer>())
+                box.GetComponent<LineRenderer>().enabled = true;
         }
         skinID = newSkin;
     }

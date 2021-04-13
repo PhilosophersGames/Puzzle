@@ -70,7 +70,16 @@ public class RoomColorChanger : MonoBehaviour
             decoration.color = color;
         }*/
         if (delta == true)
-            transform.GetChild(2).transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime ));
+        {
+            transform.GetChild(2).transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime));
+            if (transform.GetChild(3))
+                transform.GetChild(3).gameObject.SetActive(true);
+        }
+        else
+        {
+            if (transform.GetChild(3))
+                transform.GetChild(3).gameObject.SetActive(false);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

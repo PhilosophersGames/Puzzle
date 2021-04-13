@@ -52,6 +52,8 @@ public class RoomTransition : MonoBehaviour
 
     public bool slideInBetween;
 
+    private GameObject[] mirrorBox;
+
     private void Awake()
     {
         achievementManager = FindObjectOfType<AchievementManager>();
@@ -68,6 +70,7 @@ public class RoomTransition : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Hat"))
             hat = GameObject.FindGameObjectWithTag("Hat");
         roomScale = GameObject.FindGameObjectWithTag("RoomsContainer").transform.localScale.x;
+        mirrorBox = GameObject.FindGameObjectsWithTag("Mirror");
     }
     void Update()
     {
@@ -109,19 +112,23 @@ public class RoomTransition : MonoBehaviour
         }
         if (slideInBetween == true)
         {
+            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            foreach (GameObject box in mirrorBox)
+                box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders = false;
-            player.GetComponent<Movement>().moveSpeed = 0;
             GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().drawBorderCollider = true;
             canRotate = false;
             canSlide = false;
             transform.parent.position = Vector3.MoveTowards(transform.parent.position, saveSlidePosition, Time.deltaTime * rotSpeed * 8);
             if (transform.parent.position == saveSlidePosition)
             {
-                player.GetComponent<Movement>().moveSpeed = 8;
                 slideInBetween = false;
                 GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().StartChangeBool();
                 canRotate = true;
                 canSlide = true;
+                player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                foreach (GameObject box in mirrorBox)
+                    box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             }
         }
     }

@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawBorderCollider: 0
+  thereIsColliders: 0
 --- !u!1 &9149190318494477808
 GameObject:
   m_ObjectHideFlags: 0
@@ -5648,6 +5649,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3529309940488870359}
     m_Modifications:
+    - target: {fileID: 4484884098189006642, guid: 8a5b9ac0b9ecd56428e671683d7b017d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4624498887685498677, guid: 8a5b9ac0b9ecd56428e671683d7b017d,
         type: 3}
       propertyPath: m_LocalPosition.z

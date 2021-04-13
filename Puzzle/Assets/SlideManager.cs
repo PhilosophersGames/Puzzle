@@ -22,7 +22,7 @@ public class SlideManager : MonoBehaviour
     }
     public IEnumerator ChangeBool()
     {
-        float waitTime = 0.1f;
+        float waitTime = 0.01f;
 
         yield return new WaitForSeconds(waitTime);
         drawBorderCollider = false;
