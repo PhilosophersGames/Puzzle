@@ -6,12 +6,10 @@ using UnityEngine.EventSystems;
 public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;
-
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     public Transform initialSlot;
     public int elementID;
-
     private void Start()
     {
         initialSlot = transform.parent;
@@ -19,7 +17,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvasGroup = GetComponent<CanvasGroup>();
         canvas = GameObject.Find("GameCanvas").GetComponent<Canvas>();
     }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         canvasGroup.alpha = .6f;
@@ -30,7 +27,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
         rectTransform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
     }
-
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.alpha = 1f;
@@ -50,9 +46,10 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         else if (eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "Element")
         {
-            eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<ColorSlot>().SwitchElements(initialSlot.gameObject);
-            transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform.parent);
+            transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform.parent.transform);
             transform.position = eventData.pointerCurrentRaycast.gameObject.transform.parent.transform.position;
+            if (eventData.pointerCurrentRaycast.gameObject.transform.parent.transform.childCount != 0)
+                eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<ColorSlot>().SwitchElements(initialSlot.gameObject);
         }
         // ================================================================= Drag an Element anywhere else =================================================================
         else
