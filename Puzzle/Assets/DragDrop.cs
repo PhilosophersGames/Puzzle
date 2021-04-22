@@ -15,7 +15,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         initialSlot = transform.parent;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        canvas = GameObject.Find("GameCanvas").GetComponent<Canvas>();
+        canvas = GameObject.Find("PaletteCanvas").GetComponent<Canvas>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -34,9 +34,9 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         //  ================================================================= Drag an Element in a ColorSlot =================================================================
 
-        if (eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "ColorSlot")
+        if (eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "ColorSlot" && eventData.pointerCurrentRaycast.gameObject.GetComponent<ColorSlot>().isUnlocked)
         {
-            if (eventData.pointerCurrentRaycast.gameObject.transform.childCount != 0)
+            if (eventData.pointerCurrentRaycast.gameObject.transform.childCount > 1)
                 eventData.pointerCurrentRaycast.gameObject.GetComponent<ColorSlot>().SwitchElements(initialSlot.gameObject);
             transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform);
             transform.position = eventData.pointerCurrentRaycast.gameObject.transform.position;
@@ -44,11 +44,11 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         //  ================================================================= Drag an Element in another element =================================================================
 
-        else if (eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "Element")
+        else if (eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "Element" && eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<ColorSlot>().isUnlocked)
         {
             transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform.parent.transform);
             transform.position = eventData.pointerCurrentRaycast.gameObject.transform.parent.transform.position;
-            if (eventData.pointerCurrentRaycast.gameObject.transform.parent.transform.childCount != 0)
+            if (eventData.pointerCurrentRaycast.gameObject.transform.parent.transform.childCount > 1)
                 eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<ColorSlot>().SwitchElements(initialSlot.gameObject);
         }
         // ================================================================= Drag an Element anywhere else =================================================================
