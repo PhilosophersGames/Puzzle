@@ -5,15 +5,6 @@ using UnityEngine;
 public class LaserReceiver : MonoBehaviour
 {
     public GameObject door;
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-         
-    }
-
     public void OpenDoor(bool open)
     {
         if (open)

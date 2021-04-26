@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +12,8 @@ public class Mirror : MonoBehaviour
     private LineRenderer lineRenderer;
     private float rotation = 45;
 
+    private RaycastHit2D hit;
+
     private GameObject saveLaserReceiver;
 
     [SerializeField] private LayerMask layerMaskTab;
@@ -20,7 +22,6 @@ public class Mirror : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
         laserPoint = transform.GetChild(0);
-
         if (direction == 1)
         {
             transform.Rotate(0, 0, -90, Space.Self);
@@ -36,13 +37,20 @@ public class Mirror : MonoBehaviour
     }
     void Update()
     {
-        if (isActive)
+        if (GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders)
+            lineRenderer.enabled = true;
+        else
+            lineRenderer.enabled = false;
+        if (isActive && GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders)
         {
             lineRenderer.enabled = true;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, laserPoint.position - transform.position, Mathf.Infinity, ~layerMaskTab);
+            hit = Physics2D.Raycast(laserPoint.position, laserPoint.position - transform.position, Mathf.Infinity, ~layerMaskTab);
             lineRenderer.SetPosition(0, laserPoint.position);
             lineRenderer.SetPosition(1, hit.point);
             inactiveFrames += 1;
+            Debug.Log(hit.collider.tag);
+            if (hit.collider.tag == "Mirror")
+                hit.collider.SendMessage("ActivateLaser");
             if (hit.collider.tag == "LaserReceiver")
             {
                 saveLaserReceiver = hit.collider.gameObject;
@@ -59,9 +67,7 @@ public class Mirror : MonoBehaviour
         {
             isActive = false;
         }
-
     }
-
     public void ActivateLaser()
     {
         inactiveFrames = 0;

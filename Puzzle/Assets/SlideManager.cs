@@ -7,9 +7,12 @@ public class SlideManager : MonoBehaviour
     public bool drawBorderCollider;
 
     private IEnumerator coroutine;
+
+    public bool thereIsColliders;
     private void Start()
     {
         //  StartChangeBool();   
+        thereIsColliders = true;
     }
 
     public void StartChangeBool()
@@ -19,10 +22,10 @@ public class SlideManager : MonoBehaviour
     }
     public IEnumerator ChangeBool()
     {
-        float waitTime = 0.1f;
+        float waitTime = 0.01f;
 
         yield return new WaitForSeconds(waitTime);
         drawBorderCollider = false;
-        Debug.Log(drawBorderCollider);
+        thereIsColliders = true;
     }
 }

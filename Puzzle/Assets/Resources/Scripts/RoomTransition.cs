@@ -52,6 +52,8 @@ public class RoomTransition : MonoBehaviour
 
     public bool slideInBetween;
 
+    private GameObject[] mirrorBox;
+
     private void Awake()
     {
         achievementManager = FindObjectOfType<AchievementManager>();
@@ -68,6 +70,7 @@ public class RoomTransition : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Hat"))
             hat = GameObject.FindGameObjectWithTag("Hat");
         roomScale = GameObject.FindGameObjectWithTag("RoomsContainer").transform.localScale.x;
+        mirrorBox = GameObject.FindGameObjectsWithTag("Mirror");
     }
     void Update()
     {
@@ -109,6 +112,10 @@ public class RoomTransition : MonoBehaviour
         }
         if (slideInBetween == true)
         {
+            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            foreach (GameObject box in mirrorBox)
+                box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders = false;
             GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().drawBorderCollider = true;
             canRotate = false;
             canSlide = false;
@@ -119,6 +126,9 @@ public class RoomTransition : MonoBehaviour
                 GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().StartChangeBool();
                 canRotate = true;
                 canSlide = true;
+                player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                foreach (GameObject box in mirrorBox)
+                    box.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             }
         }
     }
@@ -132,6 +142,7 @@ public class RoomTransition : MonoBehaviour
         float currentAngle = transform.rotation.eulerAngles.z;
         polygoneCollider.enabled = false;
         transform.localScale -= new Vector3(0.3f, 0.3f, 0);
+        transform.parent.transform.GetChild(2).localScale -= new Vector3(0.3f, 0.3f, 0);
         StartCoroutine(Rotate(currentAngle, currentAngle - (90f * delta)));
         isRotating = true;
         HamsterRotation++;
@@ -185,6 +196,7 @@ public class RoomTransition : MonoBehaviour
         isRotating = false;
         polygoneCollider.enabled = true;
         transform.localScale += new Vector3(0.3f, 0.3f, 0);
+        transform.parent.transform.GetChild(2).localScale += new Vector3(0.3f, 0.3f, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
