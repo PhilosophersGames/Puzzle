@@ -9,16 +9,35 @@ public class ColorSlot : MonoBehaviour
     private GameObject skinManager;
 
     [Header("SHOP")]
- 
     [SerializeField] private GameObject User;
     public int colorPrice;
     public bool isUnlocked;
     public GameObject BuyConfirmationPanel;
+
+    [Header("Save System")]
+    public GameObject[] element;
+
     void Start()
     {
+        if (transform.childCount > 1)
+        PlayerPrefs.SetInt($"AssignedColorSlot{transform.GetChild(1).GetComponent<DragDrop>().elementID.ToString()}", colorID);
+        // load the LockState of the Colorslot
+         if (colorID > 1 && colorID != 3)
+        isUnlocked = PlayerPrefs.GetInt($"Color{colorID.ToString()}LockState") == 1 ? true : false;
+        //Load element's previously chosen slots
+        for (int i = 0; i < element.Length; i++)
+        {
+            if(PlayerPrefs.GetInt($"AssignedColorSlot{element[i].GetComponent<DragDrop>().elementID.ToString()}") == colorID)
+            {
+                element[i].transform.position = transform.position;
+                element[i].transform.SetParent(transform);
+            }
+        }
+        if(isUnlocked)
+        transform.GetChild(0).gameObject.SetActive(false);
         skinManager = GameObject.FindGameObjectWithTag("SkinManager");
-
     }
+
     private void Update()
     {
         if (transform.childCount > 1)
@@ -52,7 +71,6 @@ public class ColorSlot : MonoBehaviour
     }
 
     // SHOP related Scripts //
-
     public void EnableBuyConfirmationPanel()
     {
         BuyConfirmationPanel.SetActive(true);
@@ -69,6 +87,7 @@ public class ColorSlot : MonoBehaviour
         if(purchase && colorPrice <= User.GetComponent<User>().wallet)
         {
             isUnlocked = true;
+            PlayerPrefs.SetInt($"Color{colorID.ToString()}LockState", 1);
             transform.GetChild(0).gameObject.SetActive(false);
             User.SendMessage("UpdateUserMoney", -colorPrice);
         }

@@ -31,7 +31,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
-
         //  ================================================================= Drag an Element in a ColorSlot =================================================================
 
         if (eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "ColorSlot" && eventData.pointerCurrentRaycast.gameObject.GetComponent<ColorSlot>().isUnlocked)
@@ -53,6 +52,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         }
         // ================================================================= Drag an Element anywhere else =================================================================
         else
-            transform.position = initialSlot.position;
+            transform.position = initialSlot.position;   
+        PlayerPrefs.SetInt($"AssignedColorSlot{elementID.ToString()}", transform.parent.GetComponent<ColorSlot>().colorID);
     }
 }
