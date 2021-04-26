@@ -19,15 +19,15 @@ public class ColorSlot : MonoBehaviour
 
     void Start()
     {
-        if (transform.childCount > 1)
-        PlayerPrefs.SetInt($"AssignedColorSlot{transform.GetChild(1).GetComponent<DragDrop>().elementID.ToString()}", colorID);
+        if(transform.childCount > 1 && PlayerPrefs.GetInt($"AssignedColorSlot{transform.GetChild(1).GetComponent<DragDrop>().elementID.ToString()}") == 0)
+            PlayerPrefs.SetInt($"AssignedColorSlot{transform.GetChild(1).GetComponent<DragDrop>().elementID.ToString()}", colorID + 1);
         // load the LockState of the Colorslot
-         if (colorID > 1 && colorID != 3)
+         if(colorID > 1 && colorID != 3)
         isUnlocked = PlayerPrefs.GetInt($"Color{colorID.ToString()}LockState") == 1 ? true : false;
         //Load element's previously chosen slots
-        for (int i = 0; i < element.Length; i++)
+        for(int i = 0; i < element.Length; i++)
         {
-            if(PlayerPrefs.GetInt($"AssignedColorSlot{element[i].GetComponent<DragDrop>().elementID.ToString()}") == colorID)
+            if(PlayerPrefs.GetInt($"AssignedColorSlot{element[i].GetComponent<DragDrop>().elementID.ToString()}") == colorID + 1)
             {
                 element[i].transform.position = transform.position;
                 element[i].transform.SetParent(transform);

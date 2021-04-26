@@ -53,6 +53,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         // ================================================================= Drag an Element anywhere else =================================================================
         else
             transform.position = initialSlot.position;   
-        PlayerPrefs.SetInt($"AssignedColorSlot{elementID.ToString()}", transform.parent.GetComponent<ColorSlot>().colorID);
+        PlayerPrefs.SetInt($"AssignedColorSlot{elementID.ToString()}", transform.parent.GetComponent<ColorSlot>().colorID + 1);
     }
 }
