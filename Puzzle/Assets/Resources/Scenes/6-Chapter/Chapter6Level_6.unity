@@ -20779,6 +20779,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4ee1f5ca60208b479fa476cdc033e40, type: 3}
+--- !u!1 &1074946994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2172013932899829477, guid: c4ee1f5ca60208b479fa476cdc033e40,
+    type: 3}
+  m_PrefabInstance: {fileID: 1074946993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1530942523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20846,6 +20852,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bad Hat
       objectReference: {fileID: 0}
+    - target: {fileID: 5753850770407620273, guid: a110ad752a6b9f847863e62444747b13,
+        type: 3}
+      propertyPath: hatSprite
+      value: 
+      objectReference: {fileID: 1074946994}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a110ad752a6b9f847863e62444747b13, type: 3}
 --- !u!1001 &1694834947
