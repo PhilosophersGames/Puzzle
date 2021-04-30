@@ -17,7 +17,7 @@ public class Hat : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Phantom"))
         {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             if (hatType == 0)
