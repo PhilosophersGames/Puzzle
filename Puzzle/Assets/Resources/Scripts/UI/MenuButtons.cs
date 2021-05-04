@@ -11,7 +11,6 @@ public class MenuButtons : MonoBehaviour
     public GameObject MenuCanvas;
     public GameObject SettingsCanvas;
 
-
     private bool[] Unlocklevel;
 
     public AchievementManager achievementManager;
