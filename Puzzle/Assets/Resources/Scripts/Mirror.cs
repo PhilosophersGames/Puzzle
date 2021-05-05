@@ -65,6 +65,7 @@ public class Mirror : MonoBehaviour
         }
         if (inactiveFrames > 5)
         {
+            Debug.Log("Hello");
             isActive = false;
         }
     }
