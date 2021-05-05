@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
+
 public class ColorSlot : MonoBehaviour
 {
-    public int colorID;
+    public Color colorID;
+
     private GameObject skinManager;
 
     [Header("SHOP")]
@@ -19,7 +22,7 @@ public class ColorSlot : MonoBehaviour
 
     void Start()
     {
-        if(transform.childCount > 1 && PlayerPrefs.GetInt($"AssignedColorSlot{transform.GetChild(1).GetComponent<DragDrop>().elementID.ToString()}") == 0)
+       /* if(transform.childCount > 1 && PlayerPrefs.GetInt($"AssignedColorSlot{transform.GetChild(1).GetComponent<DragDrop>().elementID.ToString()}") == 0)
             PlayerPrefs.SetInt($"AssignedColorSlot{transform.GetChild(1).GetComponent<DragDrop>().elementID.ToString()}", colorID + 1);
         // load the LockState of the Colorslot
          if(colorID > 1 && colorID != 3)
@@ -32,10 +35,11 @@ public class ColorSlot : MonoBehaviour
                 element[i].transform.position = transform.position;
                 element[i].transform.SetParent(transform);
             }
-        }
+        }*/
         if(isUnlocked)
         transform.GetChild(0).gameObject.SetActive(false);
         skinManager = GameObject.FindGameObjectWithTag("SkinManager");
+        colorID = GetComponent<Image>().color;
     }
 
     private void Update()
@@ -46,12 +50,12 @@ public class ColorSlot : MonoBehaviour
             {
                 if(child.tag == "Element")
                 {
-                if (child.GetComponent<DragDrop>().elementID == 0)
-                    skinManager.GetComponent<TileSwap>().SendMessage("ColorColliderOneChanger", colorID);
-                else if (child.GetComponent<DragDrop>().elementID == 1)
-                    skinManager.GetComponent<TileSwap>().SendMessage("ColorColliderTwoChanger", colorID);
-                else if (child.GetComponent<DragDrop>().elementID == 2)
-                    skinManager.GetComponent<TileSwap>().SendMessage("ColorPathChanger", colorID);
+                    if (child.GetComponent<DragDrop>().elementID == 0)
+                        skinManager.GetComponent<TileSwap>().SendMessage("ColorColliderOneChanger", colorID);
+                    else if (child.GetComponent<DragDrop>().elementID == 1)
+                        skinManager.GetComponent<TileSwap>().SendMessage("ColorColliderTwoChanger", colorID);
+                    else if (child.GetComponent<DragDrop>().elementID == 2)
+                        skinManager.GetComponent<TileSwap>().SendMessage("ColorPathChanger", colorID);
                 }
             }
         }
@@ -64,7 +68,7 @@ public class ColorSlot : MonoBehaviour
         {
             if(child.tag == "Element")
             {
-                PlayerPrefs.SetInt($"AssignedColorSlot{child.GetComponent<DragDrop>().elementID.ToString()}", colorSlot.GetComponent<ColorSlot>().colorID + 1);
+               // PlayerPrefs.SetInt($"AssignedColorSlot{child.GetComponent<DragDrop>().elementID.ToString()}", colorSlot.GetComponent<ColorSlot>().colorID + 1);
                 child.transform.position = colorSlot.transform.position;
                 child.SetParent(colorSlot.transform);
             }
