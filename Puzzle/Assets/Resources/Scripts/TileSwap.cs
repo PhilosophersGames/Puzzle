@@ -25,10 +25,10 @@ public class TileSwap : MonoBehaviour
         rooms = GameObject.FindGameObjectsWithTag("RoomSkin");
         foreach (GameObject room in rooms)
         {
-            room.GetComponent<RoomColorChanger>().path.SwipTile(startSkin(0), newSkin(0)); 
-            room.GetComponent<RoomColorChanger>().path.SwipTile(startSkin(2), newSkin(0));
-            room.GetComponent<RoomColorChanger>().colider.SwipTile(startSkin(1), newSkin(1));
-            room.GetComponent<RoomColorChanger>().colider.SwipTile(startSkin(3), newSkin(1));
+            room.GetComponent<RoomColorChanger>().path.SwapTile(startSkin[0], newSkin[0]); 
+            room.GetComponent<RoomColorChanger>().path.SwapTile(startSkin[2], newSkin[0]);
+            room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[1], newSkin[1]);
+            room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[3], newSkin[1]);
         }
     }
     public void ColorPathChanger(Color newColorID)
