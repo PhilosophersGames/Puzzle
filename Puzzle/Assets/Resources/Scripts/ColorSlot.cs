@@ -64,6 +64,7 @@ public class ColorSlot : MonoBehaviour
         {
             if(child.tag == "Element")
             {
+                PlayerPrefs.SetInt($"AssignedColorSlot{child.GetComponent<DragDrop>().elementID.ToString()}", colorSlot.GetComponent<ColorSlot>().colorID + 1);
                 child.transform.position = colorSlot.transform.position;
                 child.SetParent(colorSlot.transform);
             }
