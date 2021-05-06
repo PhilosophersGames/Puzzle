@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 
     //public Joystick joystick;
     public Animator animator;
+    public Animator hamsterBallAnimator;
     public Rigidbody2D rb;
     public float moveSpeed;
 
@@ -74,9 +75,17 @@ public class Movement : MonoBehaviour
             isMoving = true;
             animator.SetFloat("Input_x", rb.velocity.x);
             animator.SetFloat("Input_y", rb.velocity.y);
+            hamsterBallAnimator.SetFloat("Inpot_x", rb.velocity.x);
+            hamsterBallAnimator.SetFloat("Inpot_y", rb.velocity.y);
         }
         else
+        {
             isMoving = false;
+            animator.SetFloat("Input_x", 0f);
+            animator.SetFloat("Input_y", 0f);
+            hamsterBallAnimator.SetFloat("Inpot_x", 0f);
+            hamsterBallAnimator.SetFloat("Inpot_y", 0f);
+        }
     }
     void MobileMovement()
     {
@@ -94,6 +103,14 @@ public class Movement : MonoBehaviour
         {
             animator.SetFloat("Input_x", rb.velocity.x);
             animator.SetFloat("Input_y", rb.velocity.y);
+            hamsterBallAnimator.SetFloat("Inpot_x", rb.velocity.x);
+            hamsterBallAnimator.SetFloat("Inpot_y", rb.velocity.y);
+        }
+        else{
+            animator.SetFloat("Input_x", 0f);
+            animator.SetFloat("Input_y", 0f);
+            hamsterBallAnimator.SetFloat("Inpot_x", 0f);
+            hamsterBallAnimator.SetFloat("Inpot_y", 0f);
         }
     }
 }
