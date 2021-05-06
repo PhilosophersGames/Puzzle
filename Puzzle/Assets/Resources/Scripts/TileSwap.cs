@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class TileSwap : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class TileSwap : MonoBehaviour
 
     public Color colorTwoID;
 
+    public GameObject rotateRightButton;
+
+    public GameObject rotateLeftButton;
+
+    public GameObject joystick;
+
     private void Start()
     {
         rooms = GameObject.FindGameObjectsWithTag("RoomSkin");
@@ -30,6 +37,7 @@ public class TileSwap : MonoBehaviour
             room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[1], newSkin[1]);
             room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[3], newSkin[1]);
         }
+       // joystick.transform.GetChild(0).GetComponent<Image>().color.a = 0.7f;
     }
     public void ColorPathChanger(Color newColorID)
     {
@@ -39,6 +47,11 @@ public class TileSwap : MonoBehaviour
             {
                 room.GetComponent<RoomColorChanger>().path.color = newColorID;
             }
+            joystick.GetComponent<Image>().color = newColorID;
+            joystick.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            var tempColor = joystick.transform.GetComponent<Image>().color;
+            tempColor.a = 0.5f;
+            joystick.transform.GetComponent<Image>().color = tempColor;
             colorPathID = newColorID;
         }
     }
@@ -51,6 +64,7 @@ public class TileSwap : MonoBehaviour
                 if (room.GetComponent<RoomColorChanger>().roomID == 0)
                     room.GetComponent<RoomColorChanger>().colider.color = newColorID;
             }
+            rotateRightButton.GetComponent<Image>().color = newColorID;
             colorOneID = newColorID;
         }
     }
@@ -63,6 +77,7 @@ public class TileSwap : MonoBehaviour
                 if (room.GetComponent<RoomColorChanger>().roomID == 1)
                     room.GetComponent<RoomColorChanger>().colider.color = newColorID;
             }
+            rotateLeftButton.GetComponent<Image>().color = newColorID;
             colorOneID = newColorID;
         }
         colorTwoID = newColorID;  
