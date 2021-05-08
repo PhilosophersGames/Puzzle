@@ -48,7 +48,6 @@ public class Mirror : MonoBehaviour
             lineRenderer.SetPosition(0, laserPoint.position);
             lineRenderer.SetPosition(1, hit.point);
             inactiveFrames += 1;
-            Debug.Log(hit.collider.tag);
             if (hit.collider.tag == "Mirror")
                 hit.collider.SendMessage("ActivateLaser");
             if (hit.collider.tag == "LaserReceiver")

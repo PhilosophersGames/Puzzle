@@ -56,6 +56,8 @@ public class ColorSlot : MonoBehaviour
                         skinManager.GetComponent<TileSwap>().SendMessage("ColorColliderTwoChanger", colorID);
                     else if (child.GetComponent<DragDrop>().elementID == 2)
                         skinManager.GetComponent<TileSwap>().SendMessage("ColorPathChanger", colorID);
+                    else if (child.GetComponent<DragDrop>().elementID == 3)
+                        skinManager.GetComponent<TileSwap>().SendMessage("ColorHamsterChanger", colorID);
                 }
             }
         }
