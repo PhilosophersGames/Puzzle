@@ -27,7 +27,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     {
         if (showResult == ShowResult.Finished)
         {
-            GameObject.Find("User").transform.GetComponent<User>().UpdateUserMoney(100);
+            GameObject.Find("User").transform.GetComponent<User>().UpdateUserMoney(10000);
             Debug.Log("User rewarded");
          //   Advertisement.RemoveListener(this);
         }

@@ -10,14 +10,14 @@ public class MenuButtons : MonoBehaviour
     private int startButtonIndex;
     public GameObject MenuCanvas;
     public GameObject SettingsCanvas;
-
+    public GameObject bestScore;
 
     private bool[] Unlocklevel;
 
     public AchievementManager achievementManager;
 
-
-    private void Awake() {
+    void Start()
+    {
 
     }
     public void StartButtonClick()

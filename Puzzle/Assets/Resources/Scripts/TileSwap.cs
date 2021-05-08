@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class TileSwap : MonoBehaviour
 {
@@ -9,197 +10,98 @@ public class TileSwap : MonoBehaviour
     [Header("START SKIN")]
     public TileBase[] startSkin;
 
-    [Header("WHITE")]
-    public TileBase[] colorZero;
+    [Header("WHITE SKIN")]
+    public TileBase[] newSkin;
 
-    [Header("BLACK")]
-    public TileBase[] colorOne;
-
-    [Header("RED")]
-    public TileBase[] colorTwo;
-
-    [Header("ORANGE")]
-    public TileBase[] colorThree;
-
-    [Header("YELLOW")]
-    public TileBase[] colorFour;
-
-    [Header("GREEN")]
-    public TileBase[] colorFive;
-
-    [Header("BLUE")]
-    public TileBase[] colorSix;
-
-    [Header("PURPLE")]
-    public TileBase[] colorSeven;
     private GameObject[] rooms;
-    public int colorPathID;
-    public int colorOneID;
-    public int colorTwoID;
+
+    public Color colorPathID;
+
+    public Color colorOneID;
+
+    public Color colorTwoID;
+
+    public Color colorHamsterID;
+
+    public GameObject rotateRightButton;
+
+    public GameObject rotateLeftButton;
+
+    public GameObject joystick;
+
+    private Image image;
+
+    private GameObject hamsterBall;
+
     private void Start()
     {
+        hamsterBall = GameObject.Find("HamsterBall");
         rooms = GameObject.FindGameObjectsWithTag("RoomSkin");
-        colorOneID = 0;
-        colorTwoID = 1;
-        colorPathID = 3;
         foreach (GameObject room in rooms)
         {
-            room.GetComponent<RoomColorChanger>().path.SwapTile(startSkin[0], Swappedcolor(0, 3));
-            room.GetComponent<RoomColorChanger>().path.SwapTile(startSkin[2], Swappedcolor(0, 3));
-            if (room.GetComponent<RoomColorChanger>().roomID == 0)
-                room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[1], Swappedcolor(1, 0));
-            else if (room.GetComponent<RoomColorChanger>().roomID == 1)
-                room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[1], Swappedcolor(1, 1));
-            if (room.GetComponent<RoomColorChanger>().roomID == 0)
-                room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[3], Swappedcolor(1, 0));
-            else if (room.GetComponent<RoomColorChanger>().roomID == 1)
-                room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[3], Swappedcolor(1, 1));
+            room.GetComponent<RoomColorChanger>().path.SwapTile(startSkin[0], newSkin[0]); 
+            room.GetComponent<RoomColorChanger>().path.SwapTile(startSkin[2], newSkin[0]);
+            room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[1], newSkin[1]);
+            room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[3], newSkin[1]);
         }
+       // joystick.transform.GetChild(0).GetComponent<Image>().color.a = 0.7f;
     }
-    public void ColorPathChanger(int newColorID)
+    public void ColorPathChanger(Color newColorID)
     {
         if (colorPathID != newColorID)
         {
             foreach (GameObject room in rooms)
             {
-                if (colorPathID == 0)
-                    room.GetComponent<RoomColorChanger>().path.SwapTile(colorZero[0], Swappedcolor(0, newColorID));
-                else if (colorPathID == 1)
-                    room.GetComponent<RoomColorChanger>().path.SwapTile(colorOne[0], Swappedcolor(0, newColorID));
-                else if (colorPathID == 2)
-                    room.GetComponent<RoomColorChanger>().path.SwapTile(colorTwo[0], Swappedcolor(0, newColorID));
-                else if (colorPathID == 3)
-                    room.GetComponent<RoomColorChanger>().path.SwapTile(colorThree[0], Swappedcolor(0, newColorID));
-                else if (colorPathID == 4)
-                    room.GetComponent<RoomColorChanger>().path.SwapTile(colorFour[0], Swappedcolor(0, newColorID));
-                else if (colorPathID == 5)
-                    room.GetComponent<RoomColorChanger>().path.SwapTile(colorFive[0], Swappedcolor(0, newColorID));
-                else if (colorPathID == 6)
-                    room.GetComponent<RoomColorChanger>().path.SwapTile(colorSix[0], Swappedcolor(0, newColorID));
-                else if (colorPathID == 7)
-                    room.GetComponent<RoomColorChanger>().path.SwapTile(colorSeven[0], Swappedcolor(0, newColorID));
+                room.GetComponent<RoomColorChanger>().path.color = newColorID;
             }
+            joystick.GetComponent<Image>().color = newColorID;
+            joystick.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            var tempColor = joystick.transform.GetComponent<Image>().color;
+            tempColor.a = 0.5f;
+            joystick.transform.GetComponent<Image>().color = tempColor;
             colorPathID = newColorID;
         }
     }
-    public void ColorColliderOneChanger(int newColorID)
+    public void ColorColliderOneChanger(Color newColorID)
     {
         if (colorOneID != newColorID)
         {
             foreach (GameObject room in rooms)
             {
-                if (colorOneID == 0)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 0)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorZero[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorOneID == 1)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 0)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorOne[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorOneID == 2)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 0)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorTwo[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorOneID == 3)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 0)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorThree[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorOneID == 4)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 0)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorFour[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorOneID == 5)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 0)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorFive[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorOneID == 6)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 0)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorSix[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorOneID == 7)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 0)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorSeven[1], Swappedcolor(1, newColorID));
-                }
+                if (room.GetComponent<RoomColorChanger>().roomID == 0)
+                    room.GetComponent<RoomColorChanger>().colider.color = newColorID;
             }
+            rotateRightButton.GetComponent<Image>().color = newColorID;
+            rotateRightButton.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            image = rotateRightButton.transform.GetChild(0).GetComponent<Image>();
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0.7f);
             colorOneID = newColorID;
         }
     }
-    public void ColorColliderTwoChanger(int newColorID)
+    public void ColorColliderTwoChanger(Color newColorID)
     {
-        if (colorTwoID != newColorID)
+        if (colorOneID != newColorID)
         {
             foreach (GameObject room in rooms)
             {
-                if (colorTwoID == 0)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 1)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorZero[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorTwoID == 1)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 1)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorOne[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorTwoID == 2)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 1)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorTwo[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorTwoID == 3)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 1)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorThree[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorTwoID == 4)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 1)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorFour[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorTwoID == 5)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 1)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorFive[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorTwoID == 6)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 1)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorSix[1], Swappedcolor(1, newColorID));
-                }
-                else if (colorTwoID == 7)
-                {
-                    if (room.GetComponent<RoomColorChanger>().roomID == 1)
-                        room.GetComponent<RoomColorChanger>().colider.SwapTile(colorSeven[1], Swappedcolor(1, newColorID));
-                }
+                if (room.GetComponent<RoomColorChanger>().roomID == 1)
+                    room.GetComponent<RoomColorChanger>().colider.color = newColorID;
             }
-            colorTwoID = newColorID;
+            rotateLeftButton.GetComponent<Image>().color = newColorID;
+            rotateLeftButton.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            image = rotateLeftButton.transform.GetChild(0).GetComponent<Image>();
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0.7f);
+            colorOneID = newColorID;
         }
+        colorTwoID = newColorID;  
     }
-    TileBase Swappedcolor(int i, int newColorID)
+
+    public void ColorHamsterChanger(Color newColorID)
     {
-        if (newColorID == 0)
-            return (colorZero[i]);
-        if (newColorID == 1)
-            return (colorOne[i]);
-        if (newColorID == 2)
-            return (colorTwo[i]);
-        if (newColorID == 3)
-            return (colorThree[i]);
-        if (newColorID == 4)
-            return (colorFour[i]);
-        if (newColorID == 5)
-            return (colorFive[i]);
-        if (newColorID == 6)
-            return (colorSix[i]);
-        if (newColorID == 7)
-            return (colorSeven[i]);
-        return (null);
+        if (colorHamsterID != newColorID)
+        {
+            hamsterBall.GetComponent<SpriteRenderer>().color = newColorID;
+            colorHamsterID = newColorID;
+        }
     }
 }
