@@ -21,6 +21,8 @@ public class TileSwap : MonoBehaviour
 
     public Color colorTwoID;
 
+    public Color colorHamsterID;
+
     public GameObject rotateRightButton;
 
     public GameObject rotateLeftButton;
@@ -29,8 +31,11 @@ public class TileSwap : MonoBehaviour
 
     private Image image;
 
+    private GameObject hamsterBall;
+
     private void Start()
     {
+        hamsterBall = GameObject.Find("HamsterBall");
         rooms = GameObject.FindGameObjectsWithTag("RoomSkin");
         foreach (GameObject room in rooms)
         {
@@ -89,5 +94,14 @@ public class TileSwap : MonoBehaviour
             colorOneID = newColorID;
         }
         colorTwoID = newColorID;  
+    }
+
+    public void ColorHamsterChanger(Color newColorID)
+    {
+        if (colorHamsterID != newColorID)
+        {
+            hamsterBall.GetComponent<SpriteRenderer>().color = newColorID;
+            colorHamsterID = newColorID;
+        }
     }
 }

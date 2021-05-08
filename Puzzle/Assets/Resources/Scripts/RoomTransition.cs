@@ -122,6 +122,7 @@ public class RoomTransition : MonoBehaviour
             transform.parent.position = Vector3.MoveTowards(transform.parent.position, saveSlidePosition, Time.deltaTime * rotSpeed * 8);
             if (transform.parent.position == saveSlidePosition)
             {
+                HamsterRotation++;
                 slideInBetween = false;
                 GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().StartChangeBool();
                 canRotate = true;

@@ -7,10 +7,16 @@ public class LevelSelection : MonoBehaviour
 {
     // Gameobject array to get reference of all the Coins in the scene
     private GameObject[] coins;
+
     public bool[] Unlocklevel;
+
     public AchievementManager achievementManager;
+
     public AchievementLeastRotations achievementLeastRotations;
+
     public GameObject UIEndScreen;
+
+    public GameObject scoreStars;
 
     public bool[] rewardLevels;
 
@@ -53,6 +59,7 @@ public class LevelSelection : MonoBehaviour
     public void EndScreen()
     {
         GameObject.FindGameObjectWithTag("LevelManager").SendMessage("StopTimer");
+        scoreStars.SendMessage("LevelScore", (SceneManager.GetActiveScene().buildIndex - 1));
         if (UIEndScreen)
             UIEndScreen.SetActive(true);
     }
