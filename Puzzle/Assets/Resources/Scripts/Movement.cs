@@ -81,8 +81,8 @@ public class Movement : MonoBehaviour
         else
         {
             isMoving = false;
-        //    animator.SetFloat("Input_x", 0f);
-        //    animator.SetFloat("Input_y", 0f);
+            //animator.SetFloat("Input_x", 0f);
+            //animator.SetFloat("Input_y", 0f);
             hamsterBallAnimator.SetFloat("Inpot_x", 0f);
             hamsterBallAnimator.SetFloat("Inpot_y", 0f);
         }
@@ -107,8 +107,8 @@ public class Movement : MonoBehaviour
             hamsterBallAnimator.SetFloat("Inpot_y", rb.velocity.y);
         }
         else{
-      //      animator.SetFloat("Input_x", 0f);
-      //      animator.SetFloat("Input_y", 0f);
+            //animator.SetFloat("Input_x", 0f);
+            //animator.SetFloat("Input_y", 0f);
             hamsterBallAnimator.SetFloat("Inpot_x", 0f);
             hamsterBallAnimator.SetFloat("Inpot_y", 0f);
         }
