@@ -9,9 +9,9 @@ public class SlideManager : MonoBehaviour
     private IEnumerator coroutine;
 
     public bool thereIsColliders;
+
     private void Start()
-    {
-        //  StartChangeBool();   
+    {   
         thereIsColliders = true;
     }
 
