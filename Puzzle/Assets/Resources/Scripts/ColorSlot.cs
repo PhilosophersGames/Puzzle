@@ -26,7 +26,7 @@ public class ColorSlot : MonoBehaviour
         if(transform.childCount > 1 && PlayerPrefs.GetInt($"AssignedColorSlot{transform.GetChild(1).GetComponent<DragDrop>().elementID.ToString()}") == 0)
             PlayerPrefs.SetInt($"AssignedColorSlot{transform.GetChild(1).GetComponent<DragDrop>().elementID.ToString()}", slotID + 1);
         // load the LockState of the Colorslot
-         if(slotID > 2)
+         if(slotID > 3)
         isUnlocked = PlayerPrefs.GetInt($"Color{slotID.ToString()}LockState") == 1 ? true : false;
         //Load element's previously chosen slots
         for(int i = 0; i < element.Length; i++)
