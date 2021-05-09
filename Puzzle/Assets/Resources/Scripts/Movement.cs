@@ -47,29 +47,6 @@ public class Movement : MonoBehaviour
             //         if (Mathf.Abs(moveSpeed * roundHorizontal) < Mathf.Abs(moveSpeed * Input.GetAxis("Horizontal")) || Mathf.Abs(moveSpeed * roundVertical) < Mathf.Abs(moveSpeed * Input.GetAxis("Vertical")))
             rb.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), moveSpeed * Input.GetAxis("Vertical"));
         }
-        else
-        {
-            // rb.velocity = new Vector2(0, 0);
-            /*  if (rotatePlayer == true && this.CompareTag("Player"))
-             {
-                 if (RoomTransition.rotationDirection == true)
-                     transform.Rotate(0, 0, -90);
-                 if (RoomTransition.rotationDirection == false)
-                     transform.Rotate(0, 0, 90);
-             }
-             if (rotatePlayer == true && this.CompareTag("Phantom") && this.transform.parent == player.transform.parent)
-             {
-                 if (RoomTransition.rotationDirection == true)
-                     transform.Rotate(0, 0, -90);
-                 if (RoomTransition.rotationDirection == false)
-                     transform.Rotate(0, 0, 90);
-             } */
-        }
-        /*         if (RoomTransition.isRotating == true)
-                    rotatePlayer = false;
-                else
-                    rotatePlayer = true;
-         */
         if (rb.velocity != Vector2.zero)
         {
             isMoving = true;
@@ -106,7 +83,8 @@ public class Movement : MonoBehaviour
             hamsterBallAnimator.SetFloat("Inpot_x", rb.velocity.x);
             hamsterBallAnimator.SetFloat("Inpot_y", rb.velocity.y);
         }
-        else{
+        else
+        {
             //animator.SetFloat("Input_x", 0f);
             //animator.SetFloat("Input_y", 0f);
             hamsterBallAnimator.SetFloat("Inpot_x", 0f);

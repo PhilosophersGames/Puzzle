@@ -15,6 +15,7 @@ public class Hat : MonoBehaviour
         hatButton = GameObject.FindGameObjectWithTag("HatButton");
         hatButton.transform.GetChild(0).gameObject.SetActive(false);
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Phantom"))
