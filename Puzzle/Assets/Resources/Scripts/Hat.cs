@@ -8,6 +8,7 @@ public class Hat : MonoBehaviour
     public bool hatEquiped = false;
 
     public GameObject hatSprite;
+    private GameObject character;
     public int hatType;
 
     private void Awake() 
@@ -20,7 +21,9 @@ public class Hat : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.CompareTag("Phantom"))
         {
+            character = other.gameObject;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
             if (hatType == 0)
                 hatButton.transform.GetChild(0).gameObject.SetActive(true);
             EquipHat();
@@ -30,14 +33,14 @@ public class Hat : MonoBehaviour
     public void EquipHat()
     {
         hatEquiped = true;
-        hatSprite.SetActive(true);
+        character.transform.GetChild(1).gameObject.SetActive(true);
         transform.GetComponent<SpriteRenderer>().enabled = false;
     }
     
     public void UnequipHat()
     {
         hatEquiped = false;
-        hatSprite.SetActive(false);
+        character.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     void RotateNeighborRoom()
