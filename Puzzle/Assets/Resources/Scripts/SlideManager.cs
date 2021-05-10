@@ -17,15 +17,17 @@ public class SlideManager : MonoBehaviour
 
     public void StartChangeBool()
     {
-        coroutine = ChangeBool();
-        StartCoroutine(coroutine);
+        drawBorderCollider = false;
+        thereIsColliders = true;
+     //   coroutine = ChangeBool();
+      //  StartCoroutine(coroutine);
     }
-    public IEnumerator ChangeBool()
+    /*public IEnumerator ChangeBool()
     {
         float waitTime = 0.01f;
 
         yield return new WaitForSeconds(waitTime);
         drawBorderCollider = false;
         thereIsColliders = true;
-    }
+    }*/
 }

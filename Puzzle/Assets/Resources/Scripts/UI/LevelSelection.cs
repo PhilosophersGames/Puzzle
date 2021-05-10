@@ -57,11 +57,12 @@ public class LevelSelection : MonoBehaviour
         rewardLevels[SceneManager.GetActiveScene().buildIndex - 1] = true;
     }
     public void EndScreen()
-    {
+    { 
+       if (UIEndScreen)
+            UIEndScreen.SetActive(true);
         GameObject.FindGameObjectWithTag("LevelManager").SendMessage("StopTimer");
         scoreStars.SendMessage("LevelScore", (SceneManager.GetActiveScene().buildIndex - 1));
-        if (UIEndScreen)
-            UIEndScreen.SetActive(true);
+
     }
 
     public void AchievementsGestion()

@@ -326,6 +326,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 472121992882575174, guid: 2390b73d13560409288037fa309f6140,
+        type: 3}
+      propertyPath: hatSprite
+      value: 
+      objectReference: {fileID: 1160161323}
     - target: {fileID: 472121992882575193, guid: 2390b73d13560409288037fa309f6140,
         type: 3}
       propertyPath: m_Name
@@ -11195,6 +11200,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4ee1f5ca60208b479fa476cdc033e40, type: 3}
+--- !u!1 &1160161323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2172013932899829477, guid: c4ee1f5ca60208b479fa476cdc033e40,
+    type: 3}
+  m_PrefabInstance: {fileID: 1160161322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1279052651 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3523043157388632155, guid: 70a5c195084de6a45b35fd679db059e0,

@@ -29,6 +29,8 @@ public class TileSwap : MonoBehaviour
 
     public GameObject joystick;
 
+    public GameObject pauseButton;
+
     private Image image;
 
     private GameObject hamsterBall;
@@ -54,12 +56,19 @@ public class TileSwap : MonoBehaviour
             {
                 room.GetComponent<RoomColorChanger>().path.color = newColorID;
             }
+
+            // Joystick colors//
             joystick.GetComponent<Image>().color = newColorID;
             joystick.transform.GetChild(0).GetComponent<Image>().color = newColorID;
             var tempColor = joystick.transform.GetComponent<Image>().color;
             tempColor.a = 0.5f;
             joystick.transform.GetComponent<Image>().color = tempColor;
             colorPathID = newColorID;
+            // Joystick colors
+
+            // UI Pause Colors //
+            pauseButton.GetComponent<Image>().color = newColorID;
+            pauseButton.transform.GetChild(0).GetComponent<Image>().color = newColorID; 
         }
     }
     public void ColorColliderOneChanger(Color newColorID)
@@ -76,6 +85,9 @@ public class TileSwap : MonoBehaviour
             image = rotateRightButton.transform.GetChild(0).GetComponent<Image>();
             image.color = new Color(image.color.r, image.color.g, image.color.b, 0.7f);
             colorOneID = newColorID;
+
+            // UI Pause Button //
+            pauseButton.transform.GetChild(1).GetComponent<Image>().color = newColorID;
         }
     }
     public void ColorColliderTwoChanger(Color newColorID)
@@ -93,7 +105,11 @@ public class TileSwap : MonoBehaviour
             image.color = new Color(image.color.r, image.color.g, image.color.b, 0.7f);
             colorOneID = newColorID;
         }
-        colorTwoID = newColorID;  
+        colorTwoID = newColorID; 
+
+        // UI PauseButton .//
+
+        pauseButton.transform.GetChild(2).GetComponent<Image>().color = newColorID; 
     }
 
     public void ColorHamsterChanger(Color newColorID)
