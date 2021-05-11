@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class LaserDoor : MonoBehaviour
 {
+
+    public Collider2D col;
     public void ShutDownDoor()
     {
-        transform.parent.gameObject.SetActive(false);
+        col.enabled = false;
     }
 }
