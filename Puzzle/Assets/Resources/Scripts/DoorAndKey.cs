@@ -7,11 +7,14 @@ public class DoorAndKey : MonoBehaviour
 
     public bool DoorOpened;
     public bool hasKey;
+
+    public Animator anim;
+
     // Update is called once per frame
     void Start()
     {
-        if (DoorOpened == true)
-            this.gameObject.SetActive(false);
+    //    if (DoorOpened == true)
+  //          this.gameObject.SetActive(false);
 
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,7 +30,7 @@ public class DoorAndKey : MonoBehaviour
     {
         if (DoorOpened == false)
         {
-            this.gameObject.SetActive(false);
+            anim.SetTrigger("ShutDown");
             DoorOpened = true;
         }
     }

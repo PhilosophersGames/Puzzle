@@ -15,8 +15,8 @@ public class Key : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-           LinkedDoor.GetComponent<DoorAndKey>().DoorOpened = true;
-            Destroy(this.gameObject);
+           LinkedDoor.GetComponent<DoorAndKey>().OpenDoor();
+        Destroy(this.gameObject);
         }
     }
 }
