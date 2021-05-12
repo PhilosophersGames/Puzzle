@@ -6,8 +6,14 @@ public class LaserDoor : MonoBehaviour
 {
 
     public Collider2D col;
+
     public void ShutDownDoor()
     {
         col.enabled = false;
+    }
+
+    public void ActivateDoor()
+    {
+        col.enabled = true;
     }
 }
