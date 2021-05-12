@@ -7,30 +7,30 @@ using UnityEngine.UI;
 
 public class SkinSlot : MonoBehaviour
 {
-    public GameObject trailSkin;
+  //  public int trailSkinID;
 
     public int slotID;
 
-    private GameObject hamsterTrail;
+    private GameObject player;
 
     public bool isUnlocked;
 
 
     void Start()
     {
-        hamsterTrail = GameObject.Find("HamsterTrail");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        if (transform.childCount > 1)
+        if (transform.childCount > 0)
         {
             foreach (Transform child in transform)
             {
                 if (child.tag == "Element")
                 {
                     if (child.GetComponent<DragDrop>().elementID == 4)
-                       hamsterTrail.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", trailSkin);
+                       player.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
                 }
             }
         }

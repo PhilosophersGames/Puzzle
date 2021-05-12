@@ -35,6 +35,8 @@ public class TileSwap : MonoBehaviour
 
     private GameObject hamsterBall;
 
+    private GameObject tempTrail;
+
     private void Start()
     {
         hamsterBall = GameObject.Find("HamsterBall");
@@ -116,7 +118,17 @@ public class TileSwap : MonoBehaviour
     {
         if (colorHamsterID != newColorID)
         {
+            tempTrail = GameObject.FindGameObjectWithTag("Trail");
             hamsterBall.GetComponent<SpriteRenderer>().color = newColorID;
+            tempTrail.GetComponent<ParticleSystem>().startColor = newColorID;
+            Gradient grad = new Gradient();
+            grad.SetKeys(new GradientColorKey[] { new GradientColorKey(newColorID, 0.0f), new GradientColorKey(newColorID, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+            for (int i = 0; i < tempTrail.transform.childCount; i++)
+            {
+                tempTrail.transform.GetChild(i).GetComponent<ParticleSystem>().startColor = newColorID;
+               /* if (tempTrail.transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime.enable == true)
+                    tempTrail.transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime.color = grad;*/
+            }
             colorHamsterID = newColorID;
         }
     }

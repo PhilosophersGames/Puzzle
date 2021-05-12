@@ -6,27 +6,37 @@ public class HamsterTrail : MonoBehaviour
 {
     public GameObject actualTrail;
 
-    public GameObject player;
+    public int actualTrailID = -1;
+
+    public GameObject[] referenceTrails;
+
 
     void Start()
     {
-    
     }
 
     void Update()
     {
-        if (transform.GetChild(0))
-        {
-            actualTrail = transform.GetChild(0).gameObject;
-            actualTrail.transform.parent = null;
-        }
         if (actualTrail)
-            actualTrail.transform.position = player.transform.position;
+            actualTrail.transform.position = transform.position;
     }
 
-    public void ChangeTrail(GameObject newTrail)
+    public void ChangeTrail(int newTrailID)
     {
-        Destroy(actualTrail);
-        actualTrail = Instantiate(newTrail, transform.position, Quaternion.identity);
+        
+        if (!actualTrail || (actualTrail && actualTrailID != newTrailID))
+        {
+            
+            if (actualTrail)
+                Destroy(actualTrail);
+            actualTrail = Instantiate(referenceTrails[newTrailID], transform.position, Quaternion.identity);
+            actualTrail.transform.SetParent(null);
+            actualTrail.GetComponent<ParticleSystem>().startColor = GameObject.FindGameObjectWithTag("SkinManager").GetComponent<TileSwap>().colorHamsterID;
+            for (int i = 0; i < actualTrail.transform.childCount; i++)
+            {
+                actualTrail.transform.GetChild(i).GetComponent<ParticleSystem>().startColor = GameObject.FindGameObjectWithTag("SkinManager").GetComponent<TileSwap>().colorHamsterID;
+            }
+            actualTrailID = newTrailID;
+        }
     }
 }

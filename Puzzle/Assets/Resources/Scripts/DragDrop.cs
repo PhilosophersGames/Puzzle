@@ -18,7 +18,10 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         initialSlot = transform.parent;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        canvas = GameObject.Find("PaletteCanvas").GetComponent<Canvas>();
+        if (isItColorSlot)
+            canvas = GameObject.Find("PaletteCanvasColor").GetComponent<Canvas>();
+        else
+            canvas = GameObject.Find("PaletteCanvasSkin").GetComponent<Canvas>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -61,6 +64,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         // ================================================================= Drag an Element anywhere else =================================================================
         else
             transform.position = initialSlot.position;   
-        PlayerPrefs.SetInt($"AssignedColorSlot{elementID.ToString()}", transform.parent.GetComponent<ColorSlot>().slotID + 1);
+        if (isItColorSlot)
+            PlayerPrefs.SetInt($"AssignedColorSlot{elementID.ToString()}", transform.parent.GetComponent<ColorSlot>().slotID + 1);
     }
 }
