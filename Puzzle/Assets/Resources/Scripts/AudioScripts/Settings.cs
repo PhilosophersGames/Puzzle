@@ -17,7 +17,7 @@ public class Settings : MonoBehaviour
     public GameObject bestScore;
 
     private int[] bestScores = { 2, 2, 5, 4, 4, 10, 9, 14,
-                      2, 4, 4, 13, 7, 11, 12, 0,
+                      2, 4, 4, 13, 7, 11, 12, 33,
                       2, 3, 11, 4, 12, 7, 25, 22,
                       1, 4, 6, 2, 5, 9, 7, 35,
                       3, 1, 2, 1, 1, 16, 9, 33,
