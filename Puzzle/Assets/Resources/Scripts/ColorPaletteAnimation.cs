@@ -8,19 +8,25 @@ public class ColorPaletteAnimation : MonoBehaviour
 
     public GameObject panel;
 
-    public void TriggerColorPaletteAnimation()
+	private bool firstUpdateFrame = true;
+
+    public void Update()
     {
-            anim.SetTrigger("Active");
+        if(panel.active && firstUpdateFrame)
+		{
+            panel.SetActive(false);
+			firstUpdateFrame = false;
+		}
     }
 
     public void ActivePanel()
     {
         if (panel.active)
-            panel.SetActive(false);
+            anim.SetTrigger("ClosePanel");
         else
         {
-            panel.SetActive(true);
-            TriggerColorPaletteAnimation();
+			panel.SetActive(true);
+            anim.SetTrigger("OpenPanel");
         }
     }
 }
