@@ -122,12 +122,15 @@ public class TileSwap : MonoBehaviour
             hamsterBall.GetComponent<SpriteRenderer>().color = newColorID;
             tempTrail.GetComponent<ParticleSystem>().startColor = newColorID;
             Gradient grad = new Gradient();
-            grad.SetKeys(new GradientColorKey[] { new GradientColorKey(newColorID, 0.0f), new GradientColorKey(newColorID, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+            grad.SetKeys(new GradientColorKey[] { new GradientColorKey(newColorID, 1.0f), new GradientColorKey(newColorID, 0.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+            var colorOverLifetime = tempTrail.transform.GetComponent<ParticleSystem>().colorOverLifetime;
+            colorOverLifetime.color = grad;
             for (int i = 0; i < tempTrail.transform.childCount; i++)
             {
                 tempTrail.transform.GetChild(i).GetComponent<ParticleSystem>().startColor = newColorID;
-               /* if (tempTrail.transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime.enable == true)
-                    tempTrail.transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime.color = grad;*/
+                var col = tempTrail.transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime;
+                if (tempTrail.transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime.enabled == true)
+                    col.color = grad;
             }
             colorHamsterID = newColorID;
         }
