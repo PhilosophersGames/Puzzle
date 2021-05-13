@@ -45,7 +45,7 @@ public class ColorSlot : MonoBehaviour
 
     private void Update()
     {
-        if (transform.childCount > 1)
+        if (transform.childCount > 0)
         {
             foreach(Transform child in transform)
             {

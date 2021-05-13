@@ -5,9 +5,28 @@ using UnityEngine;
 public class ColorPaletteAnimation : MonoBehaviour
 {
    [SerializeField] private Animator anim;
- 
-    public void TriggerColorPaletteAnimation()
+
+    public GameObject panel;
+
+	private bool firstUpdateFrame = true;
+
+    public void Update()
     {
-            anim.SetTrigger("Active");
+        if(panel.active && firstUpdateFrame)
+		{
+            panel.SetActive(false);
+			firstUpdateFrame = false;
+		}
+    }
+
+    public void ActivePanel()
+    {
+        if (panel.active)
+            anim.SetTrigger("ClosePanel");
+        else
+        {
+			panel.SetActive(true);
+            anim.SetTrigger("OpenPanel");
+        }
     }
 }

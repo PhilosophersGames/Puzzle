@@ -10,12 +10,18 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private CanvasGroup canvasGroup;
     public Transform initialSlot;
     public int elementID;
+
+    public bool isItColorSlot;
+
     private void Start()
     {
         initialSlot = transform.parent;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        canvas = GameObject.Find("PaletteCanvas").GetComponent<Canvas>();
+        if (isItColorSlot)
+            canvas = GameObject.Find("PaletteCanvasColor").GetComponent<Canvas>();
+        else
+            canvas = GameObject.Find("PaletteCanvasSkin").GetComponent<Canvas>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -33,17 +39,22 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvasGroup.blocksRaycasts = true;
         //  ================================================================= Drag an Element in a ColorSlot =================================================================
 
-        if (eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "ColorSlot" && eventData.pointerCurrentRaycast.gameObject.GetComponent<ColorSlot>().isUnlocked)
+        if ((isItColorSlot && eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "ColorSlot" && eventData.pointerCurrentRaycast.gameObject.GetComponent<ColorSlot>().isUnlocked)
+            || (!isItColorSlot && eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "SkinSlot" && eventData.pointerCurrentRaycast.gameObject.GetComponent<SkinSlot>().isUnlocked))
         {
-            if (eventData.pointerCurrentRaycast.gameObject.transform.childCount > 1)
+            if (isItColorSlot && eventData.pointerCurrentRaycast.gameObject.transform.childCount > 1)
                 eventData.pointerCurrentRaycast.gameObject.GetComponent<ColorSlot>().SwitchElements(initialSlot.gameObject);
+            if (!isItColorSlot && eventData.pointerCurrentRaycast.gameObject.transform.childCount > 1)
+                eventData.pointerCurrentRaycast.gameObject.GetComponent<SkinSlot>().SwitchElements(initialSlot.gameObject);
             transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform);
             transform.position = eventData.pointerCurrentRaycast.gameObject.transform.position;
         }
 
+
         //  ================================================================= Drag an Element in another element =================================================================
 
-        else if (eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "Element" && eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<ColorSlot>().isUnlocked)
+        else if ((isItColorSlot && eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "Element" && eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<ColorSlot>().isUnlocked)
+            || (!isItColorSlot &&eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "Element" && eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<SkinSlot>().isUnlocked))
         {
             transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform.parent.transform);
             transform.position = eventData.pointerCurrentRaycast.gameObject.transform.parent.transform.position;
@@ -53,6 +64,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         // ================================================================= Drag an Element anywhere else =================================================================
         else
             transform.position = initialSlot.position;   
-        PlayerPrefs.SetInt($"AssignedColorSlot{elementID.ToString()}", transform.parent.GetComponent<ColorSlot>().slotID + 1);
+        if (isItColorSlot)
+            PlayerPrefs.SetInt($"AssignedColorSlot{elementID.ToString()}", transform.parent.GetComponent<ColorSlot>().slotID + 1);
     }
 }
