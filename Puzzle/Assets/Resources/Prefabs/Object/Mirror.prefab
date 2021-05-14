@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7416408745308696074}
   - component: {fileID: 8583145116940838920}
   - component: {fileID: 2934812439451511157}
-  - component: {fileID: 6656530046880360191}
+  - component: {fileID: 7793131221183478962}
   m_Layer: 11
   m_Name: Mirror
   m_TagString: Mirror
@@ -234,8 +234,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6656530046880360191
-BoxCollider2D:
+--- !u!60 &7793131221183478962
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -257,9 +257,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5688889, y: 0.5688889}
+      - {x: -0.5688889, y: -0.5688889}
+      - {x: 0.5688889, y: -0.5688889}
+      - {x: 0.5688889, y: 0.5688889}
 --- !u!1 &5384096212862562629
 GameObject:
   m_ObjectHideFlags: 0
