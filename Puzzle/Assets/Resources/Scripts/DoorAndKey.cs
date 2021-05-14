@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class DoorAndKey : MonoBehaviour
 {
-
     public bool DoorOpened;
     public bool hasKey;
+    public Animator anim;
+
     // Update is called once per frame
     void Start()
     {
         if (DoorOpened == true)
-            this.gameObject.SetActive(false);
-
+            OpenDoor();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.CompareTag("Player") && hasKey == true)
         {
             this.gameObject.SetActive(false);
@@ -25,19 +24,14 @@ public class DoorAndKey : MonoBehaviour
 
     public void OpenDoor()
     {
-        if (DoorOpened == false)
-        {
-            this.gameObject.SetActive(false);
+            anim.SetTrigger("ShutDown");
             DoorOpened = true;
-        }
     }
 
     public void CloseDoor()
     {
-        if (DoorOpened == true)
-        {
+            anim.SetTrigger("Open");
             this.gameObject.SetActive(true);
             DoorOpened = false;
-        }
     }
 }
