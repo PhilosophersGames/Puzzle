@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3523043157388632158}
   - component: {fileID: 2363786391373914510}
   m_Layer: 0
-  m_Name: Door
+  m_Name: LaserDoor
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: ab2534f7aea1a49b2817490839927b2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -197,12 +197,27 @@ PrefabInstance:
     - target: {fileID: 111355686937906442, guid: 5a56d14d70a214ddabcfc083daf17df4,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371254124987681575, guid: 5a56d14d70a214ddabcfc083daf17df4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096386044911718047, guid: 5a56d14d70a214ddabcfc083daf17df4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3819100751821744785, guid: 5a56d14d70a214ddabcfc083daf17df4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6422020318008839188, guid: 5a56d14d70a214ddabcfc083daf17df4,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6515791911544528141, guid: 5a56d14d70a214ddabcfc083daf17df4,
         type: 3}
@@ -219,6 +234,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.43137258
       objectReference: {fileID: 0}
+    - target: {fileID: 6515791911544528141, guid: 5a56d14d70a214ddabcfc083daf17df4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7598664045041242479, guid: 5a56d14d70a214ddabcfc083daf17df4,
         type: 3}
       propertyPath: m_Name
@@ -227,7 +247,22 @@ PrefabInstance:
     - target: {fileID: 7731839606637702051, guid: 5a56d14d70a214ddabcfc083daf17df4,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850845096060310518, guid: 5a56d14d70a214ddabcfc083daf17df4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196106589748250373, guid: 5a56d14d70a214ddabcfc083daf17df4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653267851711422978, guid: 5a56d14d70a214ddabcfc083daf17df4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8970641533627408796, guid: 5a56d14d70a214ddabcfc083daf17df4,
         type: 3}
