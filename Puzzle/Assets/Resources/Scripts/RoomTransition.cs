@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
+
 public class RoomTransition : MonoBehaviour
 {
 
@@ -47,6 +49,8 @@ public class RoomTransition : MonoBehaviour
     private GameObject[] ghosts;
 
     public PolygonCollider2D polygoneCollider;
+
+    public TilemapCollider2D col;
 
     private float roomScale;
 
@@ -142,6 +146,7 @@ public class RoomTransition : MonoBehaviour
         achievementManager.UnlockAchievement(Achievements.FirstStep);
         float currentAngle = transform.rotation.eulerAngles.z;
         polygoneCollider.enabled = false;
+        col.gameObject.layer = 12;
         transform.localScale -= new Vector3(0.3f, 0.3f, 0);
         transform.parent.transform.GetChild(2).localScale -= new Vector3(0.3f, 0.3f, 0);
         StartCoroutine(Rotate(currentAngle, currentAngle - (90f * delta)));
@@ -196,6 +201,7 @@ public class RoomTransition : MonoBehaviour
         transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), Quaternion.Euler(0, 0, targetAngle), t);
         isRotating = false;
         polygoneCollider.enabled = true;
+        col.gameObject.layer = 8;
         transform.localScale += new Vector3(0.3f, 0.3f, 0);
         transform.parent.transform.GetChild(2).localScale += new Vector3(0.3f, 0.3f, 0);
     }
