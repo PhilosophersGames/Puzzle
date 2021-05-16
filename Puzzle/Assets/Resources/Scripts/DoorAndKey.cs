@@ -12,8 +12,9 @@ public class DoorAndKey : MonoBehaviour
     void Start()
     {
         if (DoorOpened == true)
-            OpenDoor();
+            OpenDoor(0);
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && hasKey == true)
@@ -22,10 +23,13 @@ public class DoorAndKey : MonoBehaviour
         }
     }
 
-    public void OpenDoor()
+    public void OpenDoor(int type)
     {
-            anim.SetTrigger("ShutDown");
+        anim.SetTrigger("ShutDown");
+        if (type == 0)
             DoorOpened = true;
+        else if (type == 1)
+            Destroy(gameObject);
     }
 
     public void CloseDoor()

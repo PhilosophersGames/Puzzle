@@ -14,18 +14,18 @@ public class Key : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            LinkedDoor.GetComponent<DoorAndKey>().OpenDoor();
+            LinkedDoor.GetComponent<DoorAndKey>().OpenDoor(1);
             if(other.GetComponent<Rigidbody2D>().velocity.x > 0 || other.GetComponent<Rigidbody2D>().velocity.y < 0)
             {
-            stade1.gameObject.SetActive(false);
-            stade2.gameObject.SetActive(true);
-            transform.GetComponent<Collider2D>().enabled = false;
+                stade1.gameObject.SetActive(false);
+                stade2.gameObject.SetActive(true);
+                transform.GetComponent<Collider2D>().enabled = false;
             }
             if(other.GetComponent<Rigidbody2D>().velocity.x < 0 || other.GetComponent<Rigidbody2D>().velocity.y > 0)
             {
-            stade1.gameObject.SetActive(false);
-            stade3.gameObject.SetActive(true);
-            transform.GetComponent<Collider2D>().enabled = false;
+                stade1.gameObject.SetActive(false);
+                stade3.gameObject.SetActive(true);
+                transform.GetComponent<Collider2D>().enabled = false;
             }
         }
     }

@@ -5,11 +5,12 @@ using UnityEngine;
 public class LaserReceiver : MonoBehaviour
 {
     public GameObject door;
-    public void OpenDoor(bool open)
+
+    public void OpenDoorFromLaserReceiver(bool open)
     {
-        if (open)
-            door.GetComponent<DoorAndKey>().OpenDoor();
-        else
+        if (open && door)
+            door.GetComponent<DoorAndKey>().OpenDoor(0);
+        else if (!open && door)
             door.GetComponent<DoorAndKey>().CloseDoor();
     }
 }

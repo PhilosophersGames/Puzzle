@@ -6,13 +6,20 @@ public class Mirror : MonoBehaviour
 {
 
     public int direction;
+
     private bool isActive = false;
+
     private int inactiveFrames;
+
     private Transform laserPoint;
+
     private LineRenderer lineRenderer;
+
     private float rotation = 45;
 
     private RaycastHit2D hit;
+
+    private RaycastHit2D fakeHit;
 
     private GameObject saveLaserReceiver;
 
@@ -37,11 +44,11 @@ public class Mirror : MonoBehaviour
     }
     void Update()
     {
-        if (GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders)
+       /* if (GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders)
             lineRenderer.enabled = true;
         else
-            lineRenderer.enabled = false;
-        if (isActive && GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().thereIsColliders)
+            lineRenderer.enabled = false;*/
+        if (isActive)
         {
             lineRenderer.enabled = true;
             hit = Physics2D.Raycast(laserPoint.position, laserPoint.position - transform.position, Mathf.Infinity, ~layerMaskTab);
@@ -53,14 +60,17 @@ public class Mirror : MonoBehaviour
             if (hit.collider.tag == "LaserReceiver")
             {
                 saveLaserReceiver = hit.collider.gameObject;
-                hit.collider.SendMessage("OpenDoor", true);
+                hit.collider.SendMessage("OpenDoorFromLaserReceiver", true);
             }
-            else if (saveLaserReceiver && (!hit.collider || !(hit.collider.tag == "LaserReceiver")))
-                saveLaserReceiver.SendMessage("OpenDoor", false);
+            if (saveLaserReceiver && (!hit.collider || !(hit.collider.tag == "LaserReceiver")))
+                saveLaserReceiver.SendMessage("OpenDoorFromLaserReceiver", false);
         }
         else
         {
             lineRenderer.enabled = false;
+            hit = Physics2D.Raycast(laserPoint.position, laserPoint.position, 0f, ~layerMaskTab);
+            if (saveLaserReceiver)
+                saveLaserReceiver.SendMessage("OpenDoorFromLaserReceiver", false);
         }
         if (inactiveFrames > 5)
         {
