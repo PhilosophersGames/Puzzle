@@ -16,9 +16,7 @@ public class Score : MonoBehaviour
                       1, 2, 3, 6, 4, 6, 16, 54,
                       3, 6, 6, 14, 15, 20, 22, 0 };
 
-    public Sprite[] scoreImages;
-
-    public Image myImage;
+    public GameObject[] star;
 
     int TwoStarsLimit(int bestScore)
     {
@@ -38,12 +36,19 @@ public class Score : MonoBehaviour
 
     void LevelScore(int level)
     {
-        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = bestScores[level].ToString();
+        transform.GetComponent<TextMeshProUGUI>().text = bestScores[level].ToString();
         if (RoomTransition.HamsterRotation <= bestScores[level])
-            myImage.sprite = scoreImages[0];
+        {
+            star[0].SetActive(true);
+            star[1].SetActive(true);
+            star[2].SetActive(true);
+        }
         else if (RoomTransition.HamsterRotation <= TwoStarsLimit(bestScores[level]))
-            myImage.sprite = scoreImages[1];
+        {
+            star[0].SetActive(true);
+            star[1].SetActive(true);
+        }
         else
-            myImage.sprite = scoreImages[2];
+            star[0].SetActive(true);
     }
 }

@@ -121,9 +121,9 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &247772065 stripped
+--- !u!1 &93810434 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6337318978618107194, guid: c4ee1f5ca60208b479fa476cdc033e40,
+  m_CorrespondingSourceObject: {fileID: 1199070242257674817, guid: c4ee1f5ca60208b479fa476cdc033e40,
     type: 3}
   m_PrefabInstance: {fileID: 700693926}
   m_PrefabAsset: {fileID: 0}
@@ -234,11 +234,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1199070242615759339, guid: c4ee1f5ca60208b479fa476cdc033e40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1927557253}
+    - target: {fileID: 1199070242615759339, guid: c4ee1f5ca60208b479fa476cdc033e40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MenuButtonClick
+      objectReference: {fileID: 0}
     - target: {fileID: 1340640393479643597, guid: c4ee1f5ca60208b479fa476cdc033e40,
         type: 3}
       propertyPath: scoreStars
       value: 
-      objectReference: {fileID: 247772065}
+      objectReference: {fileID: 93810434}
     - target: {fileID: 1779281057719803801, guid: c4ee1f5ca60208b479fa476cdc033e40,
         type: 3}
       propertyPath: m_Tiles.Array.size
@@ -3351,6 +3361,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3936440998533295834, guid: c4ee1f5ca60208b479fa476cdc033e40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4650719140204523305, guid: c4ee1f5ca60208b479fa476cdc033e40,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.size
@@ -5651,6 +5666,17 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6765547775438183584, guid: c4ee1f5ca60208b479fa476cdc033e40,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 277b33a11389249b5865da305cf651ee,
+        type: 3}
+    - target: {fileID: 6765547775438183584, guid: c4ee1f5ca60208b479fa476cdc033e40,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7053293643117847054, guid: c4ee1f5ca60208b479fa476cdc033e40,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -6279,6 +6305,11 @@ PrefabInstance:
     - target: {fileID: 7735150761647352875, guid: c4ee1f5ca60208b479fa476cdc033e40,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742975976355026824, guid: c4ee1f5ca60208b479fa476cdc033e40,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7806380554711957580, guid: c4ee1f5ca60208b479fa476cdc033e40,
@@ -7043,6 +7074,11 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[19].second.m_TileSpriteIndex
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8183864307607008018, guid: c4ee1f5ca60208b479fa476cdc033e40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8336975090068462590, guid: c4ee1f5ca60208b479fa476cdc033e40,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -7167,3 +7203,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1927557253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1199070241856839514, guid: c4ee1f5ca60208b479fa476cdc033e40,
+    type: 3}
+  m_PrefabInstance: {fileID: 700693926}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e451b287a5741ba99d2ce0d6728113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
