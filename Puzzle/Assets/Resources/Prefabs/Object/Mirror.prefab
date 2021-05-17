@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7416408745308696074}
   - component: {fileID: 8583145116940838920}
   - component: {fileID: 2934812439451511157}
-  - component: {fileID: 6656530046880360191}
+  - component: {fileID: 7793131221183478962}
   m_Layer: 11
   m_Name: Mirror
   m_TagString: Mirror
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 62ce7427635bf4140a34e3956f6340af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.46666667}
   m_FlipX: 0
@@ -234,8 +234,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6656530046880360191
-BoxCollider2D:
+--- !u!60 &7793131221183478962
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -257,9 +257,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.49875546, y: 0.4986292}
+      - {x: -0.49853754, y: -0.49852026}
+      - {x: 0.50175476, y: -0.49954247}
+      - {x: 0.49873972, y: 0.5003625}
 --- !u!1 &5384096212862562629
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +332,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.1745283, g: 0.17916922, b: 1, a: 1}
   m_FlipX: 0

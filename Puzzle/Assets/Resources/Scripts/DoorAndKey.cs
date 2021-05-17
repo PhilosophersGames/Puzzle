@@ -4,40 +4,38 @@ using UnityEngine;
 
 public class DoorAndKey : MonoBehaviour
 {
-
     public bool DoorOpened;
     public bool hasKey;
+    public Animator anim;
+
     // Update is called once per frame
     void Start()
     {
         if (DoorOpened == true)
-            this.gameObject.SetActive(false);
-
+            OpenDoor(0);
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.CompareTag("Player") && hasKey == true)
         {
             this.gameObject.SetActive(false);
         }
     }
 
-    public void OpenDoor()
+    public void OpenDoor(int type)
     {
-        if (DoorOpened == false)
-        {
-            this.gameObject.SetActive(false);
+        anim.SetTrigger("ShutDown");
+        if (type == 0)
             DoorOpened = true;
-        }
+        else if (type == 1)
+            Destroy(gameObject);
     }
 
     public void CloseDoor()
     {
-        if (DoorOpened == true)
-        {
+            anim.SetTrigger("Open");
             this.gameObject.SetActive(true);
             DoorOpened = false;
-        }
     }
 }

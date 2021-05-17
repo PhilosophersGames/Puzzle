@@ -24,9 +24,9 @@ public class PressurePlate : MonoBehaviour
             {
                 spriteRenderer.sprite = spriteOn;
                 if (door != null)
-                    door.GetComponent<DoorAndKey>().OpenDoor();
+                    door.GetComponent<DoorAndKey>().OpenDoor(0);
                 if (doorTwo != null)
-                    doorTwo.GetComponent<DoorAndKey>().OpenDoor();
+                    doorTwo.GetComponent<DoorAndKey>().OpenDoor(0);
                 if (doorInversed != null)
                     doorInversed.GetComponent<DoorAndKey>().CloseDoor();
                 if (doorInversedTwo != null)
@@ -49,9 +49,9 @@ public class PressurePlate : MonoBehaviour
                 if (doorTwo != null)
                     doorTwo.GetComponent<DoorAndKey>().CloseDoor();
                 if (doorInversed != null)
-                    doorInversed.GetComponent<DoorAndKey>().OpenDoor();
+                    doorInversed.GetComponent<DoorAndKey>().OpenDoor(0);
                 if (doorInversedTwo != null)
-                    doorInversedTwo.GetComponent<DoorAndKey>().OpenDoor();
+                    doorInversedTwo.GetComponent<DoorAndKey>().OpenDoor(0);
             }
         }
     }

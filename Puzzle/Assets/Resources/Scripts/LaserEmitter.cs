@@ -5,7 +5,9 @@ using UnityEngine;
 public class LaserEmitter : MonoBehaviour
 {
     private LineRenderer lineRenderer;
+
     private Transform laserPoint;
+
     private float rotation = 90;
 
     private GameObject saveLaserReceiver;
@@ -37,10 +39,10 @@ public class LaserEmitter : MonoBehaviour
             if (hit.collider.tag == "LaserReceiver")
             {
                 saveLaserReceiver = hit.collider.gameObject;
-                hit.collider.SendMessage("OpenDoor", true);
+                hit.collider.SendMessage("OpenDoorFromLaserReceiver", true);
             }
             else if (saveLaserReceiver && (!hit.collider || !(hit.collider.tag == "LaserReceiver")))
-                saveLaserReceiver.SendMessage("OpenDoor", false);
+                saveLaserReceiver.SendMessage("OpenDoorFromLaserReceiver", false);
 
         }
     }

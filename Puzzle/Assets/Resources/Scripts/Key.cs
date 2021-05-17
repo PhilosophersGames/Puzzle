@@ -5,18 +5,28 @@ using UnityEngine;
 public class Key : MonoBehaviour
 {
     public GameObject LinkedDoor;
-    void Start()
-    {
-        
-    }
-
+    public GameObject stade2;
+    public GameObject stade1;
+    public GameObject stade3;
+    
     // Update is called once per frame
-    private void OnTriggerEnter2D(Collider2D other) {
-        
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.CompareTag("Player"))
         {
-           LinkedDoor.GetComponent<DoorAndKey>().hasKey = true;
-            Destroy(this.gameObject);
+            LinkedDoor.GetComponent<DoorAndKey>().OpenDoor(1);
+            if(other.GetComponent<Rigidbody2D>().velocity.x > 0 || other.GetComponent<Rigidbody2D>().velocity.y < 0)
+            {
+                stade1.gameObject.SetActive(false);
+                stade2.gameObject.SetActive(true);
+                transform.GetComponent<Collider2D>().enabled = false;
+            }
+            if(other.GetComponent<Rigidbody2D>().velocity.x < 0 || other.GetComponent<Rigidbody2D>().velocity.y > 0)
+            {
+                stade1.gameObject.SetActive(false);
+                stade3.gameObject.SetActive(true);
+                transform.GetComponent<Collider2D>().enabled = false;
+            }
         }
     }
 }
