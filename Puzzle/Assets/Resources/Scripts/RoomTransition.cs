@@ -356,8 +356,10 @@ public class RoomTransition : MonoBehaviour
             }
         }
     }
+
     private GameObject[] bigRooms;
     private Vector3 saveSlidePosition;
+
     public void SlideRoom(int i)
     {
         saveSlidePosition = player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[i].GetComponent<RoomDetector>().slidableRoom.transform.position;

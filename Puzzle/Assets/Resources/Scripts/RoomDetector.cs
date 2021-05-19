@@ -11,6 +11,7 @@ public class RoomDetector : MonoBehaviour
     public GameObject slidableRoom;
 
     public bool isSlidable;
+
     public Collider2D col;
 
     private GameObject[] bigRooms;
@@ -19,15 +20,18 @@ public class RoomDetector : MonoBehaviour
 
     public float offset;
 
+    public GameObject player;
+
     void Awake()
     {
         col = GetComponentInChildren<BoxCollider2D>();
         rooms = GameObject.FindGameObjectWithTag("RoomsContainer");
+        player = GameObject.Find("Player");
     }
 
     void Update()
     {
-        if (rooms.GetComponent<SlideManager>().drawBorderCollider == false)
+        if (rooms.GetComponent<SlideManager>().drawBorderCollider == false && IsPlayerHere())
         {
             CheckBorderLimit();
         }
@@ -39,6 +43,14 @@ public class RoomDetector : MonoBehaviour
         {
             isSlidable = false;
         }
+    }
+
+    public bool IsPlayerHere()
+    {
+        if (this.gameObject.transform.parent.transform.parent == player.transform.parent.transform.parent)
+            return (true);
+        else
+            return (false);
     }
 
     public void CheckBorderLimit()

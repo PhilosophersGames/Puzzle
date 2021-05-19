@@ -5,7 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class RoomColorChanger : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     public bool isPlayerHere = false;
 
@@ -24,6 +23,7 @@ public class RoomColorChanger : MonoBehaviour
     public GameObject hat;
 
     public float RotationSpeed = 100;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -32,7 +32,6 @@ public class RoomColorChanger : MonoBehaviour
         ColorChamber(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (hat && hat.GetComponent<Hat>().hatEquiped)
@@ -54,21 +53,6 @@ public class RoomColorChanger : MonoBehaviour
 
     public void ColorChamber(bool delta)
     {
-        /*if (delta == true)
-        {
-            color = Color.white;
-            color.a = 1f;
-            colider.color = color;
-            path.color = color;
-            decoration.color = color;
-        }
-        else if (delta == false)
-        {
-            color = new Color(0.5f, 0.5f, 0.5f, 1f);
-            colider.color = color;
-            path.color = color;
-            decoration.color = color;
-        }*/
         if (delta == true)
         {
             transform.GetChild(2).transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime));
@@ -92,7 +76,6 @@ public class RoomColorChanger : MonoBehaviour
             isPlayerHere = false;
         for (int i = 0; i < 4; i++)
         {
-            //Debug.Log(neighborRoom[i].GetComponent<RoomDetector>().room);
             if (neighborRoom[i].GetComponent<RoomDetector>().room)
                 neighborRoom[i].GetComponent<RoomDetector>().room.transform.GetComponent<RoomColorChanger>().ColorChamber(false);
             else
