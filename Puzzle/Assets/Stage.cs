@@ -39,7 +39,8 @@ public class Stage : MonoBehaviour
 
     public void GotoStageLevel()
     {
-        GetComponentInParent<LevelSelection>().GoToLevel(number * chapterNumber);
+        GetComponentInParent<LevelSelection>().GoToLevel((8 * (chapterNumber - 1) + number));
+        Debug.Log((8 * (chapterNumber - 1) + number));
     }
 
     public void StageInit()

@@ -148,7 +148,7 @@ public class LevelSelection : MonoBehaviour
     {
         if (i == 1)
             SceneManager.LoadScene(1);
-        if (Unlocklevel[i - 1] >= 1)
+        else
             SceneManager.LoadScene(i);
     }
 
