@@ -66,8 +66,8 @@ public class Mirror : MonoBehaviour
                 saveLaserReceiver.SendMessage("OpenDoorFromLaserReceiver", false);
             if (hit.collider.tag == "Boss")
             {
-                Destroy(hit.collider.gameObject);
-                Destroy(this.gameObject);
+                hit.collider.gameObject.GetComponent<Boss>().BossDefeated();
+                this.gameObject.SetActive(false);
             }
         }
         else

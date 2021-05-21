@@ -362,9 +362,12 @@ public class RoomTransition : MonoBehaviour
 
     public void SlideRoom(int i)
     {
-        saveSlidePosition = player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[i].GetComponent<RoomDetector>().slidableRoom.transform.position;
-        player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[i].GetComponent<RoomDetector>().slidableRoom.transform.position = transform.parent.position;
-        slideInBetween = true;
+        if (!GameObject.FindGameObjectWithTag("Boss"))
+        {
+            saveSlidePosition = player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[i].GetComponent<RoomDetector>().slidableRoom.transform.position;
+            player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[i].GetComponent<RoomDetector>().slidableRoom.transform.position = transform.parent.position;
+            slideInBetween = true;
+        }
     }
     public void RotationButtonRight()
     {

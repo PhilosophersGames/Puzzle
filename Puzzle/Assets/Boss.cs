@@ -18,10 +18,13 @@ public class Boss : MonoBehaviour
 
     private float distance;
 
+    private GameObject[] slideArray;
+
     void Start()
     {
         bossDeplacement = this.transform.position;
-      //  distance = Mathf.Abs(this.transform.position.x - paternPosition.transform.position.x) / 15;
+        slideArray = GameObject.FindGameObjectsWithTag("Slide");
+        //  distance = Mathf.Abs(this.transform.position.x - paternPosition.transform.position.x) / 15;
         distance = 1.60128f;
     }
 
@@ -43,6 +46,15 @@ public class Boss : MonoBehaviour
                 deplacementCount = 0;
             frame = 0;
         }
+    }
+    
+    public void BossDefeated()
+    {
+        foreach (GameObject slide in slideArray)
+        {
+            slide.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        Destroy(this.gameObject);
     }
 
     void ShootProjectile()

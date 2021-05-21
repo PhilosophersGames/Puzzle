@@ -22,11 +22,20 @@ public class RoomDetector : MonoBehaviour
 
     public GameObject player;
 
+    public GameObject[] phantoms;
+
+    public GameObject[] laserBoxes;
+
+    public GameObject[] mirrors;
+
     void Awake()
     {
         col = GetComponentInChildren<BoxCollider2D>();
         rooms = GameObject.FindGameObjectWithTag("RoomsContainer");
         player = GameObject.Find("Player");
+        phantoms = GameObject.FindGameObjectsWithTag("Phantom");
+        laserBoxes = GameObject.FindGameObjectsWithTag("LaserBox");
+        mirrors = GameObject.FindGameObjectsWithTag("Mirror");
     }
 
     void Update()
@@ -49,8 +58,22 @@ public class RoomDetector : MonoBehaviour
     {
         if (this.gameObject.transform.parent.transform.parent == player.transform.parent.transform.parent)
             return (true);
-        else
-            return (false);
+        foreach (GameObject phantom in phantoms)
+        {
+            if (this.gameObject.transform.parent.transform.parent == phantom.transform.parent.transform.parent)
+                return (true);
+        }
+        foreach (GameObject laserBox in laserBoxes)
+        {
+            if (this.gameObject.transform.parent.transform.parent == laserBox.transform.parent.transform.parent)
+                return (true);
+        }
+        foreach (GameObject mirror in mirrors)
+        {
+            if (this.gameObject.transform.parent.transform.parent == mirror.transform.parent.transform.parent)
+                return (true);
+        }
+        return (false);
     }
 
     public void CheckBorderLimit()

@@ -13,6 +13,8 @@ public class GameManagerScript : MonoBehaviour
         foreach(GameObject slide in slideArray)
         {
             slide.transform.parent = null;
+            slide.GetComponent<SpriteRenderer>().color = Color.blue;
+            
         }
     }
 
