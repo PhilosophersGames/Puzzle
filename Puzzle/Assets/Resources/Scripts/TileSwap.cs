@@ -70,8 +70,7 @@ public class TileSwap : MonoBehaviour
             // Joystick colors
 
             // UI Pause Colors //
-            pauseButton.GetComponent<Image>().color = newColorID;
-            pauseButton.transform.GetChild(0).GetComponent<Image>().color = newColorID; 
+            pauseButton.GetComponent<Image>().color = newColorID; 
         }
     }
     public void ColorColliderOneChanger(Color newColorID)
@@ -90,7 +89,6 @@ public class TileSwap : MonoBehaviour
             colorOneID = newColorID;
 
             // UI Pause Button //
-            pauseButton.transform.GetChild(1).GetComponent<Image>().color = newColorID;
         }
     }
     public void ColorColliderTwoChanger(Color newColorID)
@@ -111,8 +109,6 @@ public class TileSwap : MonoBehaviour
         colorTwoID = newColorID; 
 
         // UI PauseButton .//
-
-        pauseButton.transform.GetChild(2).GetComponent<Image>().color = newColorID; 
     }
 
     public void ColorHamsterChanger(Color newColorID)
