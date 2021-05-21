@@ -52,6 +52,7 @@ namespace SimpleInputNamespace
 
 		private Vector2 m_value = Vector2.zero;
 		public Vector2 Value { get { return m_value; } }
+		public GameObject rotationButtons;
 
 		private void Awake()
 		{
@@ -141,6 +142,7 @@ namespace SimpleInputNamespace
 
 		public void OnPointerDown( PointerEventData eventData )
 		{
+			rotationButtons.SetActive(false);
 			joystickHeld = true;
 
 			if( isDynamicJoystick )
@@ -190,6 +192,7 @@ namespace SimpleInputNamespace
 
 		public void OnPointerUp( PointerEventData eventData )
 		{
+			rotationButtons.SetActive(true);
 			joystickHeld = false;
 			m_value = Vector2.zero;
 
