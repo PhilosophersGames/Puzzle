@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class LevelSelection : MonoBehaviour
 {
     // Gameobject array to get reference of all the Coins in the scene
+
     private GameObject[] coins;
 
-    public bool[] Unlocklevel;
+    [SerializeField]
+    private int[] Unlocklevel;
 
     public AchievementManager achievementManager;
 
@@ -22,15 +24,13 @@ public class LevelSelection : MonoBehaviour
 
     void Awake()
     {
-        Unlocklevel = new bool[SceneManager.sceneCountInBuildSettings - 1];
+        Unlocklevel = new int[SceneManager.sceneCountInBuildSettings - 1];
         rewardLevels = new bool[SceneManager.sceneCountInBuildSettings];
         LoadUnlockedLevel();
     }
 
-    private void Start()
-    {
-        UnlockNewChapter();
-    }
+
+
 
     void Update()
     {
@@ -41,11 +41,13 @@ public class LevelSelection : MonoBehaviour
             coins = GameObject.FindGameObjectsWithTag("Coin");
             if (coins.Length == 0)
             {
-                Unlocklevel[SceneManager.GetActiveScene().buildIndex - 1] = true;
+                if (Unlocklevel[SceneManager.GetActiveScene().buildIndex] == 0)
+                    Unlocklevel[SceneManager.GetActiveScene().buildIndex] = 1;
+                Unlocklevel[SceneManager.GetActiveScene().buildIndex - 1] = 2;
                 RewardPlayer();
                 SaveUnlockedLevel();
                 EndScreen();
-            //    AchievementsGestion();
+                AchievementsGestion();
             }
         }
     }
@@ -56,13 +58,13 @@ public class LevelSelection : MonoBehaviour
             GameObject.FindGameObjectWithTag("User").GetComponent<User>().UpdateUserMoney(100);
         rewardLevels[SceneManager.GetActiveScene().buildIndex - 1] = true;
     }
+
     public void EndScreen()
     { 
        if (UIEndScreen)
             UIEndScreen.SetActive(true);
         GameObject.FindGameObjectWithTag("LevelManager").SendMessage("StopTimer");
         scoreStars.SendMessage("LevelScore", (SceneManager.GetActiveScene().buildIndex - 1));
-
     }
 
     public void AchievementsGestion()
@@ -81,11 +83,12 @@ public class LevelSelection : MonoBehaviour
             achievementManager.UnlockAchievement(Achievements.Chapter5);
     }
 
-    private string GetLevelName(int chapterNumber, int i)
+    public string GetLevelName(int chapterNumber, int i)
     {
         string tab = $"C{chapterNumber.ToString()}Level{i.ToString()}";
         return (tab);
     }
+
     public void LoadUnlockedLevel()
     {
         if (PlayerPrefs.HasKey("C2Level3"))
@@ -95,7 +98,7 @@ public class LevelSelection : MonoBehaviour
             for (int level = 0; level <= 63; level++)
             {
                 i++;
-                Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
+                Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)));
                 if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 47 || level == 55)
                 {
                     i = -1;
@@ -106,6 +109,7 @@ public class LevelSelection : MonoBehaviour
         else
             Debug.Log("No Save");
     }
+
     public void SaveUnlockedLevel()
     {
         int chapterNumber = 1;
@@ -113,7 +117,7 @@ public class LevelSelection : MonoBehaviour
         for (int level = 0; level <= 63; level++)
         {
             i++;
-            PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level] ? 1 : 0));
+            PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level]));
             if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 47 || level == 55)
             {
                 i = -1;
@@ -122,20 +126,9 @@ public class LevelSelection : MonoBehaviour
         }
         PlayerPrefs.Save();
     }
-    public void UnlockNewChapter()
-    {
-        Unlocklevel[7] = true;
-        Unlocklevel[15] = true;
-        Unlocklevel[23] = true;
-        Unlocklevel[31] = true;
-        Unlocklevel[39] = true;
-        Unlocklevel[47] = true;
-        Unlocklevel[55] = true;
-        SaveUnlockedLevel();
-    }
+
     public void GoToNexLevel()
     {
-
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
             if (SceneManager.GetActiveScene().buildIndex + 1 == 9 || SceneManager.GetActiveScene().buildIndex + 1 == 17 || SceneManager.GetActiveScene().buildIndex + 1 == 25 || SceneManager.GetActiveScene().buildIndex + 1 == 33 || SceneManager.GetActiveScene().buildIndex + 1 == 41 || SceneManager.GetActiveScene().buildIndex + 1 == 49 || SceneManager.GetActiveScene().buildIndex + 1 == 57)
@@ -150,14 +143,16 @@ public class LevelSelection : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
+
     public void GoToLevel(int i)
     {
-        if (i == -1)
+        if (i == 1)
             SceneManager.LoadScene(1);
-        else if (Unlocklevel[i] == true)
-            SceneManager.LoadScene(i + 2);
+        else
+            SceneManager.LoadScene(i);
     }
-    public void UnlockLevelsTest()
+
+  /* public void UnlockLevelsTest()
     {
         int chapterNumber = 1;
         int i = -1;
@@ -165,10 +160,10 @@ public class LevelSelection : MonoBehaviour
         for (int level = 0; level <= 43; level++)
         {
             i++;
-            if (Unlocklevel[level] == false)
-                Unlocklevel[level] = true;
+            if (Unlocklevel[level] == 0)
+                Unlocklevel[level] = 1;
             PlayerPrefs.SetInt(GetLevelName(chapterNumber, i + 1), (Unlocklevel[level] ? 1 : 0));
-            Unlocklevel[level] = (PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1)) == 1 ? true : false);
+            Unlocklevel[level] = PlayerPrefs.GetInt(GetLevelName(chapterNumber, i + 1));
             if (level == 7 || level == 15 || level == 23 || level == 31 || level == 39 || level == 43 || level == 51 || level == 59)
             {
                 i = -1;
@@ -177,4 +172,5 @@ public class LevelSelection : MonoBehaviour
         }
         SceneManager.LoadScene(0);
     }
+    */
 }

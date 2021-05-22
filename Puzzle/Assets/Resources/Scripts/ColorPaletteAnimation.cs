@@ -10,7 +10,7 @@ public class ColorPaletteAnimation : MonoBehaviour
 
 	private bool firstUpdateFrame = true;
 
-    public void Update()
+    public void LateUpdate()
     {
         if(panel.active && firstUpdateFrame)
 		{
