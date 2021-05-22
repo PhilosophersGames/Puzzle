@@ -15,6 +15,11 @@ public class PressurePlate : MonoBehaviour
     void Start()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
+        if (doorInversed)
+            doorInversed.GetComponent<DoorAndKey>().OpenDoor(0);
+        if (doorInversedTwo)
+            doorInversedTwo.GetComponent<DoorAndKey>().OpenDoor(0);
+
     }
 
     // Update is called once per frame
@@ -32,11 +37,6 @@ public class PressurePlate : MonoBehaviour
                 if (doorInversedTwo != null)
                     doorInversedTwo.GetComponent<DoorAndKey>().CloseDoor();
             }
-         /*   else
-            {
-                spriteRenderer.sprite = spriteOff;
-                door.GetComponent<DoorAndKey>().CloseDoor();
-            }*/
         }
     }
         private void OnTriggerExit2D(Collider2D other) {

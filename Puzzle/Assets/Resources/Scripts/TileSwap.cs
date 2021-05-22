@@ -40,12 +40,10 @@ public class TileSwap : MonoBehaviour
         hamsterBall = GameObject.Find("HamsterBall");
         rooms = GameObject.FindGameObjectsWithTag("RoomSkin");
         GenerateSkinAndColliders();  
-       // joystick.transform.GetChild(0).GetComponent<Image>().color.a = 0.7f;
     }
 
     public void GenerateSkinAndColliders()
     {
-        rooms = GameObject.FindGameObjectsWithTag("RoomSkin");
         foreach (GameObject room in rooms)
         {
            room.GetComponent<RoomColorChanger>().colider.gameObject.GetComponent<CompositeCollider2D>().GenerateGeometry();
