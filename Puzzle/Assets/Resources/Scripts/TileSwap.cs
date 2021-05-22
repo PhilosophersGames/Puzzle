@@ -46,11 +46,11 @@ public class TileSwap : MonoBehaviour
     {
         foreach (GameObject room in rooms)
         {
-           room.GetComponent<RoomColorChanger>().colider.gameObject.GetComponent<CompositeCollider2D>().GenerateGeometry();
-           /* room.GetComponent<RoomColorChanger>().path.SwapTile(startSkin[0], newSkin[0]);
+            room.GetComponent<RoomColorChanger>().colider.gameObject.GetComponent<CompositeCollider2D>().GenerateGeometry();
+            room.GetComponent<RoomColorChanger>().path.SwapTile(startSkin[0], newSkin[0]);
             room.GetComponent<RoomColorChanger>().path.SwapTile(startSkin[2], newSkin[0]);
             room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[1], newSkin[1]);
-            room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[3], newSkin[1]);  */      
+            room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[3], newSkin[1]);        
         }
     }
     public void ColorPathChanger(Color newColorID)
