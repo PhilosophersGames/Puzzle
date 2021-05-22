@@ -23,14 +23,13 @@ public class Boss : MonoBehaviour
     void Start()
     {
         bossDeplacement = this.transform.position;
-        slideArray = GameObject.FindGameObjectsWithTag("Slide");
+        slideArray = GameObject.FindGameObjectsWithTag("Rail");
         //  distance = Mathf.Abs(this.transform.position.x - paternPosition.transform.position.x) / 15;
         distance = 1.60128f;
     }
 
     void Update()
     {
-       // Debug.Log(distance);
         this.transform.position = Vector3.MoveTowards(this.transform.position, bossDeplacement, distance/slideSpeed * Time.deltaTime);
         frame++;
         if (frame >= slideSpeed)

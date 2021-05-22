@@ -9,7 +9,7 @@ public class GameManagerScript : MonoBehaviour
 
     void Start()
     {
-        slideArray = GameObject.FindGameObjectsWithTag("Slide");
+        slideArray = GameObject.FindGameObjectsWithTag("Rail");
         foreach(GameObject slide in slideArray)
         {
             slide.transform.parent = null;
