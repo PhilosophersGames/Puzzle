@@ -10,7 +10,7 @@ public class StarCounter : MonoBehaviour
     private int starsTotal;
     // Update is called once per frame
 
-    public void Start()
+    public void Awake()
     {
         StarScoreCalculation();
     }
@@ -36,6 +36,7 @@ public class StarCounter : MonoBehaviour
             }
         }
         GetComponent<TextMeshProUGUI>().text = starsTotal.ToString();
+        PlayerPrefs.SetInt("StarScoreTotal", starsTotal);
         PlayerPrefs.Save();
     }
 }
