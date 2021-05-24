@@ -13,6 +13,7 @@ public class ColorSlot : MonoBehaviour
     private GameObject skinManager;
 
     [Header("SHOP")]
+    [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private GameObject User;
     public int colorPrice;
     public bool isUnlocked;
@@ -23,6 +24,7 @@ public class ColorSlot : MonoBehaviour
 
     void Start()
     {
+        text.text = colorPrice.ToString();
         if(transform.childCount > 1 && PlayerPrefs.GetInt($"AssignedColorSlot{transform.GetChild(1).GetComponent<DragDrop>().elementID.ToString()}") == 0)
             PlayerPrefs.SetInt($"AssignedColorSlot{transform.GetChild(1).GetComponent<DragDrop>().elementID.ToString()}", slotID + 1);
         // load the LockState of the Colorslot
