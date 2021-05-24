@@ -28,6 +28,8 @@ public class RoomDetector : MonoBehaviour
 
     public GameObject[] mirrors;
 
+    public GameObject[] objects;
+
     void Awake()
     {
         col = GetComponentInChildren<BoxCollider2D>();
@@ -36,6 +38,8 @@ public class RoomDetector : MonoBehaviour
         phantoms = GameObject.FindGameObjectsWithTag("Phantom");
         laserBoxes = GameObject.FindGameObjectsWithTag("LaserBox");
         mirrors = GameObject.FindGameObjectsWithTag("Mirror");
+        objects = GameObject.FindGameObjectsWithTag("Object");
+
     }
 
     void Update()
@@ -71,6 +75,11 @@ public class RoomDetector : MonoBehaviour
         foreach (GameObject mirror in mirrors)
         {
             if (this.gameObject.transform.parent.transform.parent == mirror.transform.parent.transform.parent)
+                return (true);
+        }
+        foreach (GameObject smallObject in objects)
+        {
+            if (this.gameObject.transform.parent.transform.parent == smallObject.transform.parent.transform.parent)
                 return (true);
         }
         return (false);
