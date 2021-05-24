@@ -66,5 +66,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             transform.position = initialSlot.position;   
         if (isItColorSlot)
             PlayerPrefs.SetInt($"AssignedColorSlot{elementID.ToString()}", transform.parent.GetComponent<ColorSlot>().slotID + 1);
+        else
+            PlayerPrefs.SetInt("AssignedTrailSlot", transform.parent.GetComponent<SkinSlot>().slotID + 1);
     }
 }

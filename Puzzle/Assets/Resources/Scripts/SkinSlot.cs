@@ -15,6 +15,8 @@ public class SkinSlot : MonoBehaviour
 
     public bool isUnlocked;
 
+    [SerializeField] private GameObject element;
+
     [Header("SHOP")]
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private GameObject User;
@@ -23,9 +25,19 @@ public class SkinSlot : MonoBehaviour
 
     void Start()
     {
+        if(transform.childCount > 1 && PlayerPrefs.GetInt($"AssignedTrailSlot") == 0)
+            PlayerPrefs.SetInt("AssignedTrailSlot", slotID + 1);
+            if(PlayerPrefs.GetInt("AssignedTrailSlot") == slotID + 1)
+            {
+                element.transform.position = transform.position;
+                element.transform.SetParent(transform);
+            }
+
         player = GameObject.FindGameObjectWithTag("Player");
         if(slotID != 0)
         isUnlocked = PlayerPrefs.GetInt($"Skin{slotID.ToString()}LockState") == 1 ? true : false;
+        if(isUnlocked)
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     private void Update()
