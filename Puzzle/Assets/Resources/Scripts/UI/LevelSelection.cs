@@ -29,9 +29,6 @@ public class LevelSelection : MonoBehaviour
         LoadUnlockedLevel();
     }
 
-
-
-
     void Update()
     {
         // check if we are not in the menu
@@ -44,9 +41,9 @@ public class LevelSelection : MonoBehaviour
                 if (Unlocklevel[SceneManager.GetActiveScene().buildIndex] == 0)
                     Unlocklevel[SceneManager.GetActiveScene().buildIndex] = 1;
                 Unlocklevel[SceneManager.GetActiveScene().buildIndex - 1] = 2;
-                RewardPlayer();
                 SaveUnlockedLevel();
                 EndScreen();
+                RewardPlayer();
                 AchievementsGestion();
             }
         }
@@ -54,9 +51,13 @@ public class LevelSelection : MonoBehaviour
 
     public void RewardPlayer()
     {
-        if (!rewardLevels[SceneManager.GetActiveScene().buildIndex - 1])
+        if (PlayerPrefs.GetInt($"RewardLevel{SceneManager.GetActiveScene().buildIndex.ToString()}") == 0)
+        {
             GameObject.FindGameObjectWithTag("User").GetComponent<User>().UpdateUserMoney(100);
-        rewardLevels[SceneManager.GetActiveScene().buildIndex - 1] = true;
+            rewardLevels[SceneManager.GetActiveScene().buildIndex - 1] = true;
+            PlayerPrefs.SetInt($"RewardLevel{SceneManager.GetActiveScene().buildIndex.ToString()}", 1);
+            PlayerPrefs.Save();
+        }
     }
 
     public void EndScreen()

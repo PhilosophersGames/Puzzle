@@ -15,10 +15,17 @@ public class SkinSlot : MonoBehaviour
 
     public bool isUnlocked;
 
+    [Header("SHOP")]
+    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private GameObject User;
+    public int skinPrice;
+    public GameObject BuyConfirmationPanel;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if(slotID != 0)
+        isUnlocked = PlayerPrefs.GetInt($"Skin{slotID.ToString()}LockState") == 1 ? true : false;
     }
 
     private void Update()
@@ -46,6 +53,29 @@ public class SkinSlot : MonoBehaviour
                 child.transform.position = skinSlot.transform.position;
                 child.SetParent(skinSlot.transform);
             }
+        }
+    }
+
+        // SHOP related Scripts //
+    public void EnableBuyConfirmationPanel()
+    {
+        BuyConfirmationPanel.SetActive(true);
+        BuyConfirmationPanel.GetComponent<BuyColorSlotConfirmationPanel>().colorSlot = gameObject;
+    }
+
+        public void DisableBuyConfirmationPanel()
+    {
+        BuyConfirmationPanel.SetActive(false);
+    }
+
+    public void PurchaseColor(bool purchase)
+    {
+        if(purchase && skinPrice <= User.GetComponent<User>().wallet)
+        {
+            isUnlocked = true;
+            PlayerPrefs.SetInt($"Skin{slotID.ToString()}LockState", 1);
+            transform.GetChild(0).gameObject.SetActive(false);
+            User.SendMessage("UpdateUserMoney", -skinPrice);
         }
     }
 }
