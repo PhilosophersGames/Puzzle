@@ -30,6 +30,7 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
+        //BossDefeated();
         this.transform.position = Vector3.MoveTowards(this.transform.position, bossDeplacement, distance/slideSpeed);
         frame++;
         if (frame >= slideSpeed)
