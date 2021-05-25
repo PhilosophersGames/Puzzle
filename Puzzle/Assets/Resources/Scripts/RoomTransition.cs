@@ -7,8 +7,6 @@ using UnityEngine.Tilemaps;
 
 public class RoomTransition : MonoBehaviour
 {
-
-
     private Button rotateLeftButton;
     private Button rotateRightButton;
     // SWIPE 
@@ -85,7 +83,28 @@ public class RoomTransition : MonoBehaviour
             achievementManager.UnlockAchievement(Achievements.HamsterMind);
         }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        if (GameObject.FindGameObjectWithTag("UIcanvas") && (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped)))
+        if(hat && hat.GetComponent<Hat>().phantomHatEquiped)
+        {
+            GameObject tmPhantom = GameObject.FindGameObjectWithTag("Phantom");
+            if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (tmPhantom.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i])
+                        tmPhantom.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i].GetComponentInChildren<RoomTransition>().RoomRotation(-1);
+                }
+                mobileTap = 0;
+            }
+            else if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (tmPhantom.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i])
+                        tmPhantom.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i].GetComponentInChildren<RoomTransition>().RoomRotation(1);
+                }
+            }
+        }
+        else if (GameObject.FindGameObjectWithTag("UIcanvas") && (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped)))
         {
             if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
                 RoomRotation(-1);
