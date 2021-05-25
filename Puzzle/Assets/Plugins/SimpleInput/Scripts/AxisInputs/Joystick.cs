@@ -210,7 +210,7 @@ namespace SimpleInputNamespace
 				return;
 
 			if( joystickHeld )
-				opacity = Mathf.Min( 0.25f, opacity + Time.unscaledDeltaTime * 4f );
+				opacity = Mathf.Min( 1f, opacity + Time.unscaledDeltaTime * 4f );
 			else
 				opacity = Mathf.Max( 0f, opacity - Time.unscaledDeltaTime * 4f );
 
@@ -221,7 +221,7 @@ namespace SimpleInputNamespace
 			if( background )
 			{
 				c = background.color;
-				c.a = opacity;
+				c.a = opacity / 2;
 				background.color = c;
 			}
 		}

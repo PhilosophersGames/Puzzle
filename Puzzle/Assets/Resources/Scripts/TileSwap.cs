@@ -86,9 +86,9 @@ public class TileSwap : MonoBehaviour
                     room.GetComponent<RoomColorChanger>().colider.color = newColorID;
             }
             rotateRightButton.GetComponent<Image>().color = newColorID;
-           /* rotateRightButton.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            rotateRightButton.transform.GetChild(0).GetComponent<Image>().color = newColorID;
             image = rotateRightButton.transform.GetChild(0).GetComponent<Image>();
-            image.color = new Color(image.color.r, image.color.g, image.color.b, 0.7f);*/
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0.7f);
             colorOneID = newColorID;
 
             // UI Pause Button //

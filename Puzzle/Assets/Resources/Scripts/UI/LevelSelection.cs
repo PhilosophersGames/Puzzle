@@ -74,13 +74,13 @@ public class LevelSelection : MonoBehaviour
             achievementManager.UnlockAchievement(Achievements.MasterMind);
         if (SceneManager.GetActiveScene().buildIndex == 7)
             achievementManager.UnlockAchievement(Achievements.Chapter1);
-        if (SceneManager.GetActiveScene().buildIndex == 11)
+        if (SceneManager.GetActiveScene().buildIndex == 15)
             achievementManager.UnlockAchievement(Achievements.Chapter2);
-        if (SceneManager.GetActiveScene().buildIndex == 17)
+        if (SceneManager.GetActiveScene().buildIndex == 23)
             achievementManager.UnlockAchievement(Achievements.Chapter3);
-        if (SceneManager.GetActiveScene().buildIndex == 21)
+        if (SceneManager.GetActiveScene().buildIndex == 31)
             achievementManager.UnlockAchievement(Achievements.Chapter4);
-        if (SceneManager.GetActiveScene().buildIndex == 28)
+        if (SceneManager.GetActiveScene().buildIndex == 39)
             achievementManager.UnlockAchievement(Achievements.Chapter5);
     }
 
