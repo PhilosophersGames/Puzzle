@@ -87,6 +87,7 @@ public class TileSwap : MonoBehaviour
             }
             rotateRightButton.GetComponent<Image>().color = newColorID;
             rotateRightButton.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            rotateRightButton.transform.GetChild(2).GetComponent<Image>().color = newColorID;
             image = rotateRightButton.transform.GetChild(0).GetComponent<Image>();
             image.color = new Color(image.color.r, image.color.g, image.color.b, 0.7f);
             colorOneID = newColorID;
@@ -105,6 +106,7 @@ public class TileSwap : MonoBehaviour
             }
             rotateLeftButton.GetComponent<Image>().color = newColorID;
             rotateLeftButton.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            rotateLeftButton.transform.GetChild(2).GetComponent<Image>().color = newColorID;
             image = rotateLeftButton.transform.GetChild(0).GetComponent<Image>();
             image.color = new Color(image.color.r, image.color.g, image.color.b, 0.7f);
             colorOneID = newColorID;

@@ -6,11 +6,11 @@ public class ColorPaletteAnimation : MonoBehaviour
 {
    [SerializeField] private Animator[] anim;
 
-   [SerializeField] private Animator animRB;
-
    [SerializeField] private Animator showUIButtonAnim;
 
    [SerializeField] private GameObject showUIButton;
+
+   [SerializeField] private GameObject rotationButton;
 
     [SerializeField] private GameObject pauseButton;
 
@@ -32,7 +32,7 @@ public class ColorPaletteAnimation : MonoBehaviour
     {
         if (panel[0].active)
         {
-            animRB.SetTrigger("Show");
+            rotationButton.SetActive(true);
             showUIButtonAnim.SetTrigger("HideUI");
             pauseButton.SetActive(false);
             anim[0].SetTrigger("ClosePanel");
@@ -40,7 +40,7 @@ public class ColorPaletteAnimation : MonoBehaviour
         }
         else
         {
-            animRB.SetTrigger("Hide");
+            rotationButton.SetActive(false);
             showUIButtonAnim.SetTrigger("ShowUI");           
             pauseButton.SetActive(true);
 			panel[0].SetActive(true);

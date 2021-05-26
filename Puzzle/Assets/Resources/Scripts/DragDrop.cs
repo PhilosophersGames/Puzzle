@@ -54,7 +54,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         //  ================================================================= Drag an Element in another element =================================================================
 
         else if ((isItColorSlot && eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "Element" && eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<ColorSlot>().isUnlocked)
-            || (!isItColorSlot &&eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "Element" && eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<SkinSlot>().isUnlocked))
+            || (!isItColorSlot &&eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag != "Element" && eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<SkinSlot>().isUnlocked))
         {
             transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform.parent.transform);
             transform.position = eventData.pointerCurrentRaycast.gameObject.transform.parent.transform.position;
