@@ -44,7 +44,7 @@ public class LevelSelection : MonoBehaviour
                 SaveUnlockedLevel();
                 EndScreen();
                 RewardPlayer();
-                AchievementsGestion();
+               // AchievementsGestion();
             }
         }
     }
@@ -70,18 +70,8 @@ public class LevelSelection : MonoBehaviour
 
     public void AchievementsGestion()
     {
-        if (achievementLeastRotations.rotationNumbers < 36 && achievementLeastRotations.achievement == true)
-            achievementManager.UnlockAchievement(Achievements.MasterMind);
-        if (SceneManager.GetActiveScene().buildIndex == 7)
-            achievementManager.UnlockAchievement(Achievements.Chapter1);
-        if (SceneManager.GetActiveScene().buildIndex == 15)
-            achievementManager.UnlockAchievement(Achievements.Chapter2);
-        if (SceneManager.GetActiveScene().buildIndex == 23)
-            achievementManager.UnlockAchievement(Achievements.Chapter3);
-        if (SceneManager.GetActiveScene().buildIndex == 31)
-            achievementManager.UnlockAchievement(Achievements.Chapter4);
-        if (SceneManager.GetActiveScene().buildIndex == 39)
-            achievementManager.UnlockAchievement(Achievements.Chapter5);
+    //   if (achievementLeastRotations.rotationNumbers < 36 && achievementLeastRotations.achievement == true)
+      //      achievementManager.UnlockAchievement(Achievements.MasterMind);
     }
 
     public string GetLevelName(int chapterNumber, int i)

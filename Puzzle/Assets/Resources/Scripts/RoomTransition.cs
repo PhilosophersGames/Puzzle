@@ -162,7 +162,7 @@ public class RoomTransition : MonoBehaviour
         rotationDirection = true;
         if (delta == 1)
             rotationDirection = false;
-        achievementManager.UnlockAchievement(Achievements.FirstStep);
+        //achievementManager.UnlockAchievement(Achievements.FirstStep);
         float currentAngle = transform.rotation.eulerAngles.z;
         polygoneCollider.enabled = false;
         col.gameObject.layer = 12;

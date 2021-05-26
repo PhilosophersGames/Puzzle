@@ -25,6 +25,7 @@ public class SkinSlot : MonoBehaviour
 
     void Start()
     {
+        text.text = skinPrice.ToString();
         if(transform.childCount > 1 && PlayerPrefs.GetInt($"AssignedTrailSlot") == 0)
             PlayerPrefs.SetInt("AssignedTrailSlot", slotID + 1);
             if(PlayerPrefs.GetInt("AssignedTrailSlot") == slotID + 1)
@@ -32,7 +33,6 @@ public class SkinSlot : MonoBehaviour
                 element.transform.position = transform.position;
                 element.transform.SetParent(transform);
             }
-
         player = GameObject.FindGameObjectWithTag("Player");
         if(slotID != 0)
         isUnlocked = PlayerPrefs.GetInt($"Skin{slotID.ToString()}LockState") == 1 ? true : false;
