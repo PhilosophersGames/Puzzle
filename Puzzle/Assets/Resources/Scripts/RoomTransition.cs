@@ -102,6 +102,7 @@ public class RoomTransition : MonoBehaviour
                     if (tmPhantom.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i])
                         tmPhantom.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i].GetComponentInChildren<RoomTransition>().RoomRotation(1);
                 }
+                mobileTap = 0;
             }
         }
         else if (GameObject.FindGameObjectWithTag("UIcanvas") && (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped)))
