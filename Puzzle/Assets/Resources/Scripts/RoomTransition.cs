@@ -322,7 +322,7 @@ public class RoomTransition : MonoBehaviour
                 if (!stopTouch && canRotate && canSlide && GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().drawBorderCollider == false)
                 {
                     swipeRange = 5f;
-                    if (Distance.x < -swipeRange && canRotate && touchPos.x > MiddleofRooms.position.x)
+                    if (Distance.x < -swipeRange && canRotate)
                     {
                         //  RIGHT TO LEFT
                         if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[3].GetComponent<RoomDetector>().isSlidable)
@@ -333,9 +333,8 @@ public class RoomTransition : MonoBehaviour
                         }
                         stopTouch = true;
                     }
-                    if (Distance.x > swipeRange && canRotate && touchPos.x <= MiddleofRooms.position.x)
+                    if (Distance.x > swipeRange && canRotate)
                     {
-                        Debug.Log("toleftright");
                         if (GameObject.Find("Hand-Cursor"))
                             GameObject.Find("Hand-Cursor").GetComponent<Animator>().SetBool("SwipeRight", true);
                         // LEFT TO RIGHT
@@ -343,9 +342,8 @@ public class RoomTransition : MonoBehaviour
                             SlideRoom(1);
                         stopTouch = true;
                     }
-                    if (Distance.y < -swipeRange && canRotate && touchPos.y > MiddleofRooms.position.y)
+                    if (Distance.y < -swipeRange && canRotate)
                     {
-                        Debug.Log("toptobottom");
                         // TOP TO BOTTOM
                         if (GameObject.Find("Hand-Cursor"))
                             GameObject.Find("Hand-Cursor").GetComponent<Animator>().SetBool("SwipeDown", true);
@@ -353,9 +351,8 @@ public class RoomTransition : MonoBehaviour
                             SlideRoom(2);
                         stopTouch = true;
                     }
-                    if (Distance.y > swipeRange && canRotate && touchPos.y <= MiddleofRooms.position.y)
+                    if (Distance.y > swipeRange && canRotate)
                     {
-                        Debug.Log("bottomtotop");
                         // BOTTOM TO TOP
                         if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[0].GetComponent<RoomDetector>().isSlidable)
                             SlideRoom(0);

@@ -105,7 +105,7 @@ MonoBehaviour:
   animator: {fileID: 3055952530121297956}
   hamsterBallAnimator: {fileID: 2337641208344241946}
   rb: {fileID: 8592361942556782886}
-  moveSpeed: 8
+  moveSpeed: 10
   isMoving: 0
   canMove: 0
 --- !u!50 &8592361942556782886
@@ -136,7 +136,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6051722994110083586}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -154,10 +154,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.2412017, y: 0.2835073}
-      - {x: -0.24422355, y: -0.2835073}
-      - {x: 0.30163813, y: -0.28048542}
-      - {x: 0.286529, y: 0.28652906}
+    - - {x: -0.28096437, y: 0.32106948}
+      - {x: -0.27735913, y: -0.323279}
+      - {x: 0.30163825, y: -0.3136285}
+      - {x: 0.3042013, y: 0.32409126}
 --- !u!95 &3055952530121297956
 Animator:
   serializedVersion: 3
@@ -184,7 +184,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6051722994110083586}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -192,7 +192,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3557588
+  m_Radius: 0.41646758
 --- !u!1 &6377569405665500584
 GameObject:
   m_ObjectHideFlags: 0
