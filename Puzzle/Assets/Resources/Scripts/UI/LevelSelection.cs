@@ -22,6 +22,8 @@ public class LevelSelection : MonoBehaviour
 
     public bool[] rewardLevels;
 
+    public AchievementsUnlock achievementsUnlock;
+
     void Awake()
     {
         Unlocklevel = new int[SceneManager.sceneCountInBuildSettings - 1];
@@ -44,6 +46,7 @@ public class LevelSelection : MonoBehaviour
                 SaveUnlockedLevel();
                 EndScreen();
                 RewardPlayer();
+                achievementsUnlock.UnlockChapterReward();
                // AchievementsGestion();
             }
         }

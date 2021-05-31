@@ -854,16 +854,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5434836377648597659}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4161139378789140197}
+        m_MethodName: GetReward
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5434836376988196832
 GameObject:
@@ -1282,6 +1282,7 @@ MonoBehaviour:
   lockedIcon: {fileID: 1934319185215768061}
   titleLabel: {fileID: 5434836377780520490}
   descriptionLabel: {fileID: 5434836377515537296}
+  stampImg: {fileID: 5434836377648597659}
   unlocked: 0
   achievement:
     id: 

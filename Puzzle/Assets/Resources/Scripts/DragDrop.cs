@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -37,7 +37,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
-        //  ================================================================= Drag an Element in a ColorSlot =================================================================
+        //  ================================================================= Drag an Element in a Slot =================================================================
 
         if ((isItColorSlot && eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "ColorSlot" && eventData.pointerCurrentRaycast.gameObject.GetComponent<ColorSlot>().isUnlocked)
             || (!isItColorSlot && eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "SkinSlot" && eventData.pointerCurrentRaycast.gameObject.GetComponent<SkinSlot>().isUnlocked))
@@ -53,8 +53,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         //  ================================================================= Drag an Element in another element =================================================================
 
-        else if ((isItColorSlot && eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "Element" && eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<ColorSlot>().isUnlocked)
-            || (!isItColorSlot &&eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag != "Element" && eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<SkinSlot>().isUnlocked))
+        else if ((isItColorSlot && eventData.pointerCurrentRaycast.gameObject && eventData.pointerCurrentRaycast.gameObject.tag == "Element" && eventData.pointerCurrentRaycast.gameObject.transform.parent.GetComponent<ColorSlot>().isUnlocked))
         {
             transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform.parent.transform);
             transform.position = eventData.pointerCurrentRaycast.gameObject.transform.parent.transform.position;

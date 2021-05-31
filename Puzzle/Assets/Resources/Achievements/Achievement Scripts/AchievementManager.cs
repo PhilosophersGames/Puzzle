@@ -68,7 +68,7 @@ public class AchievementManager : MonoBehaviour
 
         ShowNotification(achievement);
         PlayerPrefs.SetInt(item.achievement.id, 1);
-        GameObject.Find("User").transform.GetComponent<User>().UpdateUserMoney(item.achievement.reward);
+        //GameObject.Find("User").transform.GetComponent<User>().UpdateUserMoney(item.achievement.reward);
         item.unlocked = true;
         item.RefreshView();
     }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -22,6 +22,7 @@ public class SkinSlot : MonoBehaviour
     [SerializeField] private GameObject User;
     public int skinPrice;
     public GameObject BuyConfirmationPanel;
+    private GameObject skinManager;
 
     void Start()
     {
@@ -38,20 +39,21 @@ public class SkinSlot : MonoBehaviour
         isUnlocked = PlayerPrefs.GetInt($"Skin{slotID.ToString()}LockState") == 1 ? true : false;
         if(isUnlocked)
         transform.GetChild(0).gameObject.SetActive(false);
+        skinManager = GameObject.FindGameObjectWithTag("SkinManager");
     }
 
     private void Update()
     {
-        if (transform.childCount > 0)
+        if (transform.childCount > 1)
         {
-            foreach (Transform child in transform)
-            {
-                if (child.tag == "Element")
-                {
-                    if (child.GetComponent<DragDrop>().elementID == 4)
-                       player.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
-                }
-            }
+           if (transform.GetChild(1).GetComponent<DragDrop>().elementID == 4)
+           {
+               player.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
+           }
+           else if (transform.GetChild(1).GetComponent<DragDrop>().elementID == 5)
+           {
+                skinManager.GetComponent<TileSwap>().SkinChanger(slotID);
+           }
         }
     }
 

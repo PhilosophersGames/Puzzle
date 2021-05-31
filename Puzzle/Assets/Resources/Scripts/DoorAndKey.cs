@@ -29,7 +29,7 @@ public class DoorAndKey : MonoBehaviour
         if (type == 0)
             DoorOpened = true;
         else if (type == 1)
-            gameObject.SetActive(false);
+            Destroy(this.gameObject);
     }
 
     public void CloseDoor()

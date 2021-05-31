@@ -60,6 +60,7 @@ public class RoomDetector : MonoBehaviour
 
     public bool IsPlayerHere()
     {
+        objects = GameObject.FindGameObjectsWithTag("Object");
         if (this.gameObject.transform.parent.transform.parent == player.transform.parent.transform.parent)
             return (true);
         foreach (GameObject phantom in phantoms)
