@@ -12,15 +12,16 @@ public class HamsterTrail : MonoBehaviour
 
     private Color newColorID;
 
-
-    void Start()
-    {
-    }
+    public bool isItHamster;
 
     void Update()
     {
-        if (actualTrail)
+        if (actualTrail && isItHamster)
             actualTrail.transform.position = transform.position;
+        else if (actualTrail && isItHamster == false)
+        {
+            actualTrail.transform.position = Camera.main.ScreenToWorldPoint(transform.position);
+        }
     }
 
     public void ChangeTrail(int newTrailID)
@@ -31,7 +32,14 @@ public class HamsterTrail : MonoBehaviour
             newColorID = GameObject.FindGameObjectWithTag("SkinManager").GetComponent<TileSwap>().colorHamsterID;
             if (actualTrail)
                 Destroy(actualTrail);
-            actualTrail = Instantiate(referenceTrails[newTrailID], transform.position, Quaternion.identity);
+
+            if (isItHamster)
+                actualTrail = Instantiate(referenceTrails[newTrailID], transform.position, Quaternion.identity);
+            else
+            {
+                actualTrail = Instantiate(referenceTrails[newTrailID], Camera.main.ScreenToWorldPoint(transform.position), Quaternion.identity);
+                actualTrail.transform.localScale = new Vector3(5, 5, 5);
+            }
             actualTrail.transform.SetParent(null);
             actualTrail.GetComponent<ParticleSystem>().startColor = GameObject.FindGameObjectWithTag("SkinManager").GetComponent<TileSwap>().colorHamsterID;
           /*  Gradient grad = new Gradient();

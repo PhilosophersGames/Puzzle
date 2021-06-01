@@ -46,6 +46,8 @@ public class TileSwap : MonoBehaviour
 
     private GameObject hamsterBall;
 
+    private GameObject[] trails;
+
     private int actualSkinID = 0;
 
     void Start()
@@ -60,7 +62,6 @@ public class TileSwap : MonoBehaviour
             room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[3], basicSkin[1]);
             room.GetComponent<RoomColorChanger>().colider.gameObject.GetComponent<CompositeCollider2D>().GenerateGeometry();
         }
-
     }
 
     public void GenerateSkinAndColliders(TileBase[] newSkin, int newSkinID)
@@ -180,7 +181,9 @@ public class TileSwap : MonoBehaviour
             hamsterBall.GetComponent<SpriteRenderer>().color = newColorID;
             if (GameObject.FindGameObjectWithTag("Trail"))
             {
-                GameObject.FindGameObjectWithTag("Trail").GetComponent<ParticleSystem>().startColor = newColorID;
+                trails = GameObject.FindGameObjectsWithTag("Trail");
+                trails[0].GetComponent<ParticleSystem>().startColor = newColorID;
+                trails[1].GetComponent<ParticleSystem>().startColor = newColorID;
             /*    Gradient grad = new Gradient();
                 grad.SetKeys(new GradientColorKey[] { new GradientColorKey(newColorID, 1.0f), new GradientColorKey(newColorID, 0.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
                 var colorOverLifetime = GameObject.FindGameObjectWithTag("Trail").transform.GetComponent<ParticleSystem>().colorOverLifetime;

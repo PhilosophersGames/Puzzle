@@ -20,6 +20,7 @@ public class SkinSlot : MonoBehaviour
     [Header("SHOP")]
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private GameObject User;
+    [SerializeField] private GameObject joystickThumb;
     public int skinPrice;
     public GameObject BuyConfirmationPanel;
     private GameObject skinManager;
@@ -48,7 +49,9 @@ public class SkinSlot : MonoBehaviour
         {
            if (transform.GetChild(1).GetComponent<DragDrop>().elementID == 4)
            {
-               player.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
+                player.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
+                if(joystickThumb)
+                    joystickThumb.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
            }
            else if (transform.GetChild(1).GetComponent<DragDrop>().elementID == 5)
            {
