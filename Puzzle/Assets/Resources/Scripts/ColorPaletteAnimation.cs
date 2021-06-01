@@ -16,7 +16,7 @@ public class ColorPaletteAnimation : MonoBehaviour
 
    [SerializeField] private GameObject[] panel;
 
-	private bool firstUpdateFrame = true;
+    private bool firstUpdateFrame = true;
 
     public void LateUpdate()
     {
@@ -32,6 +32,11 @@ public class ColorPaletteAnimation : MonoBehaviour
     {
         if (panel[0].active)
         {
+            if (panel[2].active)
+            {
+                panel[2].SetActive(false);
+                panel[1].transform.parent.gameObject.SetActive(true);
+            }
             rotationButton.SetActive(true);
             showUIButtonAnim.SetTrigger("HideUI");
             pauseButton.SetActive(false);

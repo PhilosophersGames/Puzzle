@@ -34,8 +34,8 @@ public class HamsterTrail : MonoBehaviour
             actualTrail = Instantiate(referenceTrails[newTrailID], transform.position, Quaternion.identity);
             actualTrail.transform.SetParent(null);
             actualTrail.GetComponent<ParticleSystem>().startColor = GameObject.FindGameObjectWithTag("SkinManager").GetComponent<TileSwap>().colorHamsterID;
-            Gradient grad = new Gradient();
-            grad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.white, 1.0f), new GradientColorKey(newColorID, 0.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+          /*  Gradient grad = new Gradient();
+            grad.SetKeys(new GradientColorKey[] { new GradientColorKey(newColorID, 1.0f), new GradientColorKey(newColorID, 0.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
             var colorOverLifetime = actualTrail.transform.GetComponent<ParticleSystem>().colorOverLifetime;
             colorOverLifetime.color = grad;
             for (int i = 0; i < actualTrail.transform.childCount; i++)
@@ -44,7 +44,7 @@ public class HamsterTrail : MonoBehaviour
                 var colorOverLifetimeTwo = actualTrail.transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime;
                 if (actualTrail.transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime.enabled == true)
                     colorOverLifetimeTwo.color = grad;
-            }
+            }*/
             actualTrailID = newTrailID;
         }
     }

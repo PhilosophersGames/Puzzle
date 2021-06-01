@@ -20,8 +20,20 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvasGroup = GetComponent<CanvasGroup>();
         if (isItColorSlot)
             canvas = GameObject.Find("PaletteCanvasColor").GetComponent<Canvas>();
-        else
+        else if (GameObject.Find("PaletteCanvasSkin"))
             canvas = GameObject.Find("PaletteCanvasSkin").GetComponent<Canvas>();
+        else
+            canvas = GameObject.Find("PaletteCanvasTile").GetComponent<Canvas>();
+    }
+
+    void Update()
+    {
+        if (isItColorSlot)
+            canvas = GameObject.Find("PaletteCanvasColor").GetComponent<Canvas>();
+        else if (GameObject.Find("PaletteCanvasSkin"))
+            canvas = GameObject.Find("PaletteCanvasSkin").GetComponent<Canvas>();
+        else
+            canvas = GameObject.Find("PaletteCanvasTile").GetComponent<Canvas>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {

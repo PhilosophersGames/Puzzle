@@ -171,7 +171,7 @@ public class TileSwap : MonoBehaviour
             if (GameObject.FindGameObjectWithTag("Trail"))
             {
                 GameObject.FindGameObjectWithTag("Trail").GetComponent<ParticleSystem>().startColor = newColorID;
-                Gradient grad = new Gradient();
+            /*    Gradient grad = new Gradient();
                 grad.SetKeys(new GradientColorKey[] { new GradientColorKey(newColorID, 1.0f), new GradientColorKey(newColorID, 0.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
                 var colorOverLifetime = GameObject.FindGameObjectWithTag("Trail").transform.GetComponent<ParticleSystem>().colorOverLifetime;
                 colorOverLifetime.color = grad;
@@ -181,7 +181,7 @@ public class TileSwap : MonoBehaviour
                     var col = GameObject.FindGameObjectWithTag("Trail").transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime;
                     if (GameObject.FindGameObjectWithTag("Trail").transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime.enabled == true)
                         col.color = grad;
-                }
+                }*/
             }
             colorHamsterID = newColorID;
         }
