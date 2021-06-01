@@ -53,6 +53,7 @@ namespace SimpleInputNamespace
 		private Vector2 m_value = Vector2.zero;
 		public Vector2 Value { get { return m_value; } }
 		public GameObject rotationButtons;
+		public GameObject fakeJoystick;
 
 		private void Awake()
 		{
@@ -87,6 +88,7 @@ namespace SimpleInputNamespace
 		private void Start()
 		{
 			SimpleInputDragListener eventReceiver;
+			fakeJoystick.SetActive(true);
 			if( !isDynamicJoystick )
 			{
 				if( background )
@@ -109,7 +111,6 @@ namespace SimpleInputNamespace
 
 				eventReceiver = dynamicJoystickMovementArea.gameObject.AddComponent<SimpleInputDragListener>();
 			}
-
 			eventReceiver.Listener = this;
 		}
 
@@ -142,9 +143,9 @@ namespace SimpleInputNamespace
 
 		public void OnPointerDown( PointerEventData eventData )
 		{
-			rotationButtons.SetActive(false);
+		//	rotationButtons.SetActive(false);
 			joystickHeld = true;
-
+			fakeJoystick.SetActive(false);
 			if( isDynamicJoystick )
 			{
 				pointerInitialPos = Vector2.zero;
@@ -193,6 +194,7 @@ namespace SimpleInputNamespace
 		public void OnPointerUp( PointerEventData eventData )
 		{
 			rotationButtons.SetActive(true);
+			fakeJoystick.SetActive(true);
 			joystickHeld = false;
 			m_value = Vector2.zero;
 
