@@ -117,18 +117,6 @@ public class TileSwap : MonoBehaviour
             {
                 room.GetComponent<RoomColorChanger>().path.color = newColorID;
             }
-            joystick.GetComponent<Image>().color = newColorID;
-            joystick.transform.GetChild(0).GetComponent<Image>().color = newColorID;
-            var tempColor = joystick.transform.GetComponent<Image>().color;
-            tempColor.a = 0.5f;
-            joystick.transform.GetComponent<Image>().color = tempColor;
-            //// fake joystick
-            fakeJoystick.GetComponent<Image>().color = newColorID;
-            fakeJoystick.transform.GetChild(0).GetComponent<Image>().color = newColorID;
-            var tmpColor = fakeJoystick.transform.GetComponent<Image>().color;
-            tmpColor.a = 0.5f;
-            fakeJoystick.transform.GetComponent<Image>().color = tmpColor;
-            ///
             colorPathID = newColorID;
             pauseButton.GetComponent<Image>().color = newColorID; 
         }
@@ -143,9 +131,6 @@ public class TileSwap : MonoBehaviour
                 if (room.GetComponent<RoomColorChanger>().roomID == 0)
                     room.GetComponent<RoomColorChanger>().colider.color = newColorID;
             }
-            rotateRightButton.GetComponent<Image>().color = newColorID;
-            rotateRightButton.transform.GetChild(0).GetComponent<Image>().color = newColorID;
-            rotateRightButton.transform.GetChild(2).GetComponent<Image>().color = newColorID;
             image = rotateRightButton.transform.GetChild(0).GetComponent<Image>();
             image.color = new Color(image.color.r, image.color.g, image.color.b, 0.7f);
             colorOneID = newColorID;
@@ -161,9 +146,6 @@ public class TileSwap : MonoBehaviour
                 if (room.GetComponent<RoomColorChanger>().roomID == 1)
                     room.GetComponent<RoomColorChanger>().colider.color = newColorID;
             }
-            rotateLeftButton.GetComponent<Image>().color = newColorID;
-            rotateLeftButton.transform.GetChild(0).GetComponent<Image>().color = newColorID;
-            rotateLeftButton.transform.GetChild(2).GetComponent<Image>().color = newColorID;
             image = rotateLeftButton.transform.GetChild(0).GetComponent<Image>();
             image.color = new Color(image.color.r, image.color.g, image.color.b, 0.7f);
             colorOneID = newColorID;
@@ -175,7 +157,26 @@ public class TileSwap : MonoBehaviour
     {
         if (colorHamsterID != newColorID)
         {
-            
+            rotateRightButton.GetComponent<Image>().color = newColorID;
+            rotateRightButton.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            rotateRightButton.transform.GetChild(2).GetComponent<Image>().color = newColorID;
+            rotateLeftButton.GetComponent<Image>().color = newColorID;
+            rotateLeftButton.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            rotateLeftButton.transform.GetChild(2).GetComponent<Image>().color = newColorID;
+            /// joystick
+            joystick.GetComponent<Image>().color = newColorID;
+            joystick.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            var tempColor = joystick.transform.GetComponent<Image>().color;
+            tempColor.a = 0.5f;
+            joystick.transform.GetComponent<Image>().color = tempColor;
+            //// fake joystick
+            fakeJoystick.GetComponent<Image>().color = newColorID;
+            fakeJoystick.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            var tmpColor = fakeJoystick.transform.GetComponent<Image>().color;
+            tmpColor.a = 0.5f;
+            fakeJoystick.transform.GetComponent<Image>().color = tmpColor;
+            ///
+
             hamsterBall.GetComponent<SpriteRenderer>().color = newColorID;
             if (GameObject.FindGameObjectWithTag("Trail"))
             {
