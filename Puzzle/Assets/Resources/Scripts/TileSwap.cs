@@ -38,6 +38,8 @@ public class TileSwap : MonoBehaviour
 
     public GameObject joystick;
 
+    public GameObject fakeJoystick;
+
     public GameObject pauseButton;
 
     private Image image;
@@ -120,6 +122,13 @@ public class TileSwap : MonoBehaviour
             var tempColor = joystick.transform.GetComponent<Image>().color;
             tempColor.a = 0.5f;
             joystick.transform.GetComponent<Image>().color = tempColor;
+            //// fake joystick
+            fakeJoystick.GetComponent<Image>().color = newColorID;
+            fakeJoystick.transform.GetChild(0).GetComponent<Image>().color = newColorID;
+            var tmpColor = fakeJoystick.transform.GetComponent<Image>().color;
+            tmpColor.a = 0.5f;
+            fakeJoystick.transform.GetComponent<Image>().color = tmpColor;
+            ///
             colorPathID = newColorID;
             pauseButton.GetComponent<Image>().color = newColorID; 
         }
@@ -129,7 +138,7 @@ public class TileSwap : MonoBehaviour
     {
         if (colorOneID != newColorID)
         {
-            foreach (GameObject room in rooms)
+            foreach (GameObject room in rooms) 
             {
                 if (room.GetComponent<RoomColorChanger>().roomID == 0)
                     room.GetComponent<RoomColorChanger>().colider.color = newColorID;
