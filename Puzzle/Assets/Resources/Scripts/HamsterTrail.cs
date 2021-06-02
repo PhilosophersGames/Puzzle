@@ -14,13 +14,17 @@ public class HamsterTrail : MonoBehaviour
 
     public bool isItHamster;
 
+    private Vector3 newPosition;
+
     void Update()
     {
         if (actualTrail && isItHamster)
             actualTrail.transform.position = transform.position;
         else if (actualTrail && isItHamster == false)
         {
-            actualTrail.transform.position = Camera.main.ScreenToWorldPoint(transform.position);
+            newPosition = transform.position;
+            newPosition.z = 10;
+            actualTrail.transform.position = Camera.main.ScreenToWorldPoint(newPosition);
         }
     }
 
@@ -37,7 +41,9 @@ public class HamsterTrail : MonoBehaviour
                 actualTrail = Instantiate(referenceTrails[newTrailID], transform.position, Quaternion.identity);
             else
             {
-                actualTrail = Instantiate(referenceTrails[newTrailID], Camera.main.ScreenToWorldPoint(transform.position), Quaternion.identity);
+                newPosition = transform.position;
+                newPosition.z = 10;
+                actualTrail = Instantiate(referenceTrails[newTrailID], Camera.main.ScreenToWorldPoint(newPosition), Quaternion.identity);
                 actualTrail.transform.localScale = new Vector3(5, 5, 5);
             }
             actualTrail.transform.SetParent(null);
