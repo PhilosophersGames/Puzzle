@@ -312,7 +312,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8760879363663117422}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -330,10 +330,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.19750987, y: 0.23852496}
-      - {x: -0.18684238, y: -0.264947}
-      - {x: 0.18666357, y: -0.26481238}
-      - {x: 0.19620882, y: 0.2388721}
+    - - {x: -0.28096437, y: 0.32106948}
+      - {x: -0.27735913, y: -0.323279}
+      - {x: 0.30163825, y: -0.3136285}
+      - {x: 0.3042013, y: 0.32409126}
 --- !u!95 &1234705992
 Animator:
   serializedVersion: 3
@@ -411,7 +411,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8760879363663117422}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -419,7 +419,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3557588
+  m_Radius: 0.41646758
 --- !u!114 &6846051475264966046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,3 +445,4 @@ MonoBehaviour:
   - {fileID: 4975027725073113001, guid: 08700aaac169320448dace5d60703bf5, type: 3}
   - {fileID: 6974158122119720640, guid: 6da5f4400fece6d45a1f42711b4e51d3, type: 3}
   - {fileID: 4106831077093760142, guid: c589f19248f6261449dbefa528510a32, type: 3}
+  isItHamster: 1

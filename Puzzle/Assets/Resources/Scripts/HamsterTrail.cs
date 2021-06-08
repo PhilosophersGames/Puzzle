@@ -12,15 +12,20 @@ public class HamsterTrail : MonoBehaviour
 
     private Color newColorID;
 
+    public bool isItHamster;
 
-    void Start()
-    {
-    }
+    private Vector3 newPosition;
 
     void Update()
     {
-        if (actualTrail)
+        if (actualTrail && isItHamster)
             actualTrail.transform.position = transform.position;
+        else if (actualTrail && isItHamster == false)
+        {
+            newPosition = transform.position;
+            newPosition.z = 10;
+            actualTrail.transform.position = Camera.main.ScreenToWorldPoint(newPosition);
+        }
     }
 
     public void ChangeTrail(int newTrailID)
@@ -31,11 +36,20 @@ public class HamsterTrail : MonoBehaviour
             newColorID = GameObject.FindGameObjectWithTag("SkinManager").GetComponent<TileSwap>().colorHamsterID;
             if (actualTrail)
                 Destroy(actualTrail);
-            actualTrail = Instantiate(referenceTrails[newTrailID], transform.position, Quaternion.identity);
+
+            if (isItHamster)
+                actualTrail = Instantiate(referenceTrails[newTrailID], transform.position, Quaternion.identity);
+            else
+            {
+                newPosition = transform.position;
+                newPosition.z = 10;
+                actualTrail = Instantiate(referenceTrails[newTrailID], Camera.main.ScreenToWorldPoint(newPosition), Quaternion.identity);
+                actualTrail.transform.localScale = new Vector3(5, 5, 5);
+            }
             actualTrail.transform.SetParent(null);
             actualTrail.GetComponent<ParticleSystem>().startColor = GameObject.FindGameObjectWithTag("SkinManager").GetComponent<TileSwap>().colorHamsterID;
-            Gradient grad = new Gradient();
-            grad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.white, 1.0f), new GradientColorKey(newColorID, 0.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+          /*  Gradient grad = new Gradient();
+            grad.SetKeys(new GradientColorKey[] { new GradientColorKey(newColorID, 1.0f), new GradientColorKey(newColorID, 0.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
             var colorOverLifetime = actualTrail.transform.GetComponent<ParticleSystem>().colorOverLifetime;
             colorOverLifetime.color = grad;
             for (int i = 0; i < actualTrail.transform.childCount; i++)
@@ -44,7 +58,7 @@ public class HamsterTrail : MonoBehaviour
                 var colorOverLifetimeTwo = actualTrail.transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime;
                 if (actualTrail.transform.GetChild(i).GetComponent<ParticleSystem>().colorOverLifetime.enabled == true)
                     colorOverLifetimeTwo.color = grad;
-            }
+            }*/
             actualTrailID = newTrailID;
         }
     }

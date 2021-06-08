@@ -8,7 +8,7 @@ public class AchievementNotificationController : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI achievementTitleLabel;
-    [SerializeField] TextMeshProUGUI achievementReward;
+   // [SerializeField] TextMeshProUGUI achievementReward;
 
     private Animator Notification;
 
@@ -20,7 +20,7 @@ public class AchievementNotificationController : MonoBehaviour
     public void ShowNotification(Achievement achievement)
     {
         achievementTitleLabel.text = achievement.title;
-        achievementReward.text = achievement.reward.ToString();
+      //  achievementReward.text = achievement.reward.ToString();
         Notification.SetTrigger("Appear");
     }
 }

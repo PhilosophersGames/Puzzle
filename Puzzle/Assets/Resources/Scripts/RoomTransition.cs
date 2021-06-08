@@ -7,8 +7,6 @@ using UnityEngine.Tilemaps;
 
 public class RoomTransition : MonoBehaviour
 {
-
-
     private Button rotateLeftButton;
     private Button rotateRightButton;
     // SWIPE 
@@ -85,7 +83,29 @@ public class RoomTransition : MonoBehaviour
             achievementManager.UnlockAchievement(Achievements.HamsterMind);
         }
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        if (GameObject.FindGameObjectWithTag("UIcanvas") && (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped)))
+        if(hat && hat.GetComponent<Hat>().phantomHatEquiped)
+        {
+            GameObject tmPhantom = GameObject.FindGameObjectWithTag("Phantom");
+            if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (tmPhantom.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i])
+                        tmPhantom.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i].GetComponentInChildren<RoomTransition>().RoomRotation(-1);
+                }
+                mobileTap = 0;
+            }
+            else if ((mobileTap == 2 || Input.GetKeyDown("r")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (tmPhantom.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i])
+                        tmPhantom.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().neighborRoom[i].GetComponentInChildren<RoomTransition>().RoomRotation(1);
+                }
+                mobileTap = 0;
+            }
+        }
+        else if (GameObject.FindGameObjectWithTag("UIcanvas") && (!hat || (hat && !hat.GetComponent<Hat>().hatEquiped)))
         {
             if ((mobileTap == 1 || Input.GetKeyDown("e")) && canRotate && !isRotating && !player.GetComponent<Movement>().isMoving)
                 RoomRotation(-1);
@@ -143,7 +163,7 @@ public class RoomTransition : MonoBehaviour
         rotationDirection = true;
         if (delta == 1)
             rotationDirection = false;
-        achievementManager.UnlockAchievement(Achievements.FirstStep);
+        //achievementManager.UnlockAchievement(Achievements.FirstStep);
         float currentAngle = transform.rotation.eulerAngles.z;
         polygoneCollider.enabled = false;
         col.gameObject.layer = 12;
@@ -303,7 +323,7 @@ public class RoomTransition : MonoBehaviour
                 if (!stopTouch && canRotate && canSlide && GameObject.FindGameObjectWithTag("RoomsContainer").GetComponent<SlideManager>().drawBorderCollider == false)
                 {
                     swipeRange = 5f;
-                    if (Distance.x < -swipeRange && canRotate && touchPos.x > MiddleofRooms.position.x)
+                    if (Distance.x < -swipeRange && canRotate)
                     {
                         //  RIGHT TO LEFT
                         if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[3].GetComponent<RoomDetector>().isSlidable)
@@ -314,9 +334,8 @@ public class RoomTransition : MonoBehaviour
                         }
                         stopTouch = true;
                     }
-                    if (Distance.x > swipeRange && canRotate && touchPos.x <= MiddleofRooms.position.x)
+                    if (Distance.x > swipeRange && canRotate)
                     {
-                        Debug.Log("toleftright");
                         if (GameObject.Find("Hand-Cursor"))
                             GameObject.Find("Hand-Cursor").GetComponent<Animator>().SetBool("SwipeRight", true);
                         // LEFT TO RIGHT
@@ -324,9 +343,8 @@ public class RoomTransition : MonoBehaviour
                             SlideRoom(1);
                         stopTouch = true;
                     }
-                    if (Distance.y < -swipeRange && canRotate && touchPos.y > MiddleofRooms.position.y)
+                    if (Distance.y < -swipeRange && canRotate)
                     {
-                        Debug.Log("toptobottom");
                         // TOP TO BOTTOM
                         if (GameObject.Find("Hand-Cursor"))
                             GameObject.Find("Hand-Cursor").GetComponent<Animator>().SetBool("SwipeDown", true);
@@ -334,9 +352,8 @@ public class RoomTransition : MonoBehaviour
                             SlideRoom(2);
                         stopTouch = true;
                     }
-                    if (Distance.y > swipeRange && canRotate && touchPos.y <= MiddleofRooms.position.y)
+                    if (Distance.y > swipeRange && canRotate)
                     {
-                        Debug.Log("bottomtotop");
                         // BOTTOM TO TOP
                         if (player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[0].GetComponent<RoomDetector>().isSlidable)
                             SlideRoom(0);
@@ -356,13 +373,18 @@ public class RoomTransition : MonoBehaviour
             }
         }
     }
+
     private GameObject[] bigRooms;
     private Vector3 saveSlidePosition;
+
     public void SlideRoom(int i)
     {
-        saveSlidePosition = player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[i].GetComponent<RoomDetector>().slidableRoom.transform.position;
-        player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[i].GetComponent<RoomDetector>().slidableRoom.transform.position = transform.parent.position;
-        slideInBetween = true;
+        if (!GameObject.FindGameObjectWithTag("Boss"))
+        {
+            saveSlidePosition = player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[i].GetComponent<RoomDetector>().slidableRoom.transform.position;
+            player.transform.parent.transform.parent.GetComponentInChildren<AdjacentRooms>().roomDetector[i].GetComponent<RoomDetector>().slidableRoom.transform.position = transform.parent.position;
+            slideInBetween = true;
+        }
     }
     public void RotationButtonRight()
     {

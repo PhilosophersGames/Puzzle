@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,12 +15,17 @@ public class PressurePlate : MonoBehaviour
     void Start()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
+        if (doorInversed)
+            doorInversed.GetComponent<DoorAndKey>().OpenDoor(0);
+        if (doorInversedTwo)
+            doorInversedTwo.GetComponent<DoorAndKey>().OpenDoor(0);
+
     }
 
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D other) {
         {
-            if (other.CompareTag("Object") || other.CompareTag("Player")|| other.CompareTag("Phantom"))
+            if (other.CompareTag("Object") || other.CompareTag("Player") || other.CompareTag("Phantom") || other.CompareTag("Mirror"))
             {
                 spriteRenderer.sprite = spriteOn;
                 if (door != null)
@@ -32,16 +37,11 @@ public class PressurePlate : MonoBehaviour
                 if (doorInversedTwo != null)
                     doorInversedTwo.GetComponent<DoorAndKey>().CloseDoor();
             }
-         /*   else
-            {
-                spriteRenderer.sprite = spriteOff;
-                door.GetComponent<DoorAndKey>().CloseDoor();
-            }*/
         }
     }
         private void OnTriggerExit2D(Collider2D other) {
         {
-            if ((other.CompareTag("Object") || other.CompareTag("Player") || other.CompareTag("Phantom")))
+            if ((other.CompareTag("Object") || other.CompareTag("Player") || other.CompareTag("Phantom") || other.CompareTag("Mirror")))
             {
                 spriteRenderer.sprite = spriteOff;
                 if (door != null)

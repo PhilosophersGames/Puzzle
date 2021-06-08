@@ -8,17 +8,17 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 3
+  defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Philosopher's Games
-  productName: HamsterMind
+  productName: A Maze in Ghost
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1
-  m_ShowUnitySplashLogo: 1
+  m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
@@ -56,8 +56,8 @@ PlayerSettings:
   androidShowActivityIndicatorOnLoading: -1
   iosUseCustomAppBackgroundBehavior: 0
   iosAllowHTTPDownload: 1
-  allowedAutorotateToPortrait: 1
-  allowedAutorotateToPortraitUpsideDown: 1
+  allowedAutorotateToPortrait: 0
+  allowedAutorotateToPortraitUpsideDown: 0
   allowedAutorotateToLandscapeRight: 1
   allowedAutorotateToLandscapeLeft: 1
   useOSAutorotation: 1
@@ -66,7 +66,7 @@ PlayerSettings:
   disableDepthAndStencilBuffers: 0
   androidStartInFullscreen: 1
   androidRenderOutsideSafeArea: 1
-  androidUseSwappy: 0
+  androidUseSwappy: 1
   androidBlitType: 0
   defaultIsNativeResolution: 0
   macRetinaSupport: 1
@@ -123,7 +123,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.4
+  bundleVersion: 0.5
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -168,9 +168,9 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier: {}
   buildNumber: {}
-  AndroidBundleVersionCode: 3
+  AndroidBundleVersionCode: 5
   AndroidMinSdkVersion: 19
-  AndroidTargetSdkVersion: 0
+  AndroidTargetSdkVersion: 30
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -242,7 +242,7 @@ PlayerSettings:
   clonedFromGUID: 5f34be1353de5cf4398729fda238591b
   templatePackageId: com.unity.template.2d@3.3.0
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  AndroidTargetArchitectures: 1
+  AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: '{inproject}: user.keystore'
@@ -253,7 +253,7 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -265,7 +265,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 0aa0679cd62508f4099e13b90ad0050d, type: 3}
+      m_Icon: {fileID: 2800000, guid: 2fac5c79c1cac421bb92c9f7ab533bb3, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -309,82 +309,82 @@ PlayerSettings:
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      m_Width: 432
-      m_Height: 432
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      m_Width: 324
-      m_Height: 324
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      m_Width: 216
-      m_Height: 216
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      m_Width: 162
-      m_Height: 162
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      m_Width: 108
-      m_Height: 108
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
-      m_Width: 81
-      m_Height: 81
-      m_Kind: 2
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
+      - {fileID: 2800000, guid: 4417afd9638787d46bd6db7451af792d, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
+      - {fileID: 2800000, guid: 662c282f7bb3e944e87ddfb83055f94f, type: 3}
       m_Width: 144
       m_Height: 144
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
+      - {fileID: 2800000, guid: a574117d0d4739e48992517e7dc14806, type: 3}
       m_Width: 96
       m_Height: 96
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
+      - {fileID: 2800000, guid: e0bf538c8c284a54baf3510e46895c31, type: 3}
       m_Width: 72
       m_Height: 72
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
+      - {fileID: 2800000, guid: 8d44d26d54855654f9b962ccb3d2b755, type: 3}
       m_Width: 48
       m_Height: 48
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 2800000, guid: f9619065fedd7a34f8b8f1a9172bba93, type: 3}
+      - {fileID: 2800000, guid: 1bb0256620e452e4eb173442cf7666c8, type: 3}
       m_Width: 36
       m_Height: 36
       m_Kind: 0
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 6d9dc5fd3848cb7429a956b5b55ce78b, type: 3}
+      - {fileID: 2800000, guid: 6d9dc5fd3848cb7429a956b5b55ce78b, type: 3}
+      m_Width: 432
+      m_Height: 432
+      m_Kind: 2
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 0dc36dfa25db8ec44b626d805c5983e4, type: 3}
+      - {fileID: 2800000, guid: 0dc36dfa25db8ec44b626d805c5983e4, type: 3}
+      m_Width: 324
+      m_Height: 324
+      m_Kind: 2
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 2228079c42b0e364fab83fc2918ab535, type: 3}
+      - {fileID: 2800000, guid: 2228079c42b0e364fab83fc2918ab535, type: 3}
+      m_Width: 216
+      m_Height: 216
+      m_Kind: 2
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 9cf2a49364ff2214cb80abfba1b9e06f, type: 3}
+      - {fileID: 2800000, guid: 9cf2a49364ff2214cb80abfba1b9e06f, type: 3}
+      m_Width: 162
+      m_Height: 162
+      m_Kind: 2
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 8ddf6f98786aeb448ac37906f6f6b115, type: 3}
+      - {fileID: 2800000, guid: 8ddf6f98786aeb448ac37906f6f6b115, type: 3}
+      m_Width: 108
+      m_Height: 108
+      m_Kind: 2
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: 3fd60d76f34250141b2a6ef4edff7725, type: 3}
+      - {fileID: 2800000, guid: 3fd60d76f34250141b2a6ef4edff7725, type: 3}
+      m_Width: 81
+      m_Height: 81
+      m_Kind: 2
       m_SubKind: 
   - m_BuildTarget: iPhone
     m_Icons:
@@ -764,7 +764,8 @@ PlayerSettings:
   webGLWasmStreaming: 0
   scriptingDefineSymbols: {}
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    Android: 1
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}

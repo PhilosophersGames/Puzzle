@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class ColorPaletteAnimation : MonoBehaviour
 {
-   [SerializeField] private Animator anim;
+   [SerializeField] private GameObject[] panel;
+   [SerializeField] private GameObject panelManager;
+   [SerializeField] private Animator panelManagerAnim;
+                                                                                                                                                             
+    private bool firstUpdateFrame = true;
 
-    public GameObject panel;
-
-	private bool firstUpdateFrame = true;
-
-    public void Update()
+    /*public void LateUpdate()
     {
-        if(panel.active && firstUpdateFrame)
+        if(panel[0].active && firstUpdateFrame)
 		{
-            panel.SetActive(false);
+            panel[0].SetActive(false);
+            panel[1].SetActive(false);
 			firstUpdateFrame = false;
 		}
+    }*/
+
+    public void OpenPanel()
+    {
+        panelManagerAnim.SetTrigger("OpenPanel");
     }
 
-    public void ActivePanel()
+    public void ClosePanel()
     {
-        if (panel.active)
-            anim.SetTrigger("ClosePanel");
-        else
-        {
-			panel.SetActive(true);
-            anim.SetTrigger("OpenPanel");
-        }
+            panelManagerAnim.SetTrigger("ClosePanel");
     }
 }

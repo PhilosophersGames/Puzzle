@@ -5,6 +5,7 @@ using UnityEngine;
 public class Zoom : MonoBehaviour
 {
     public SpriteRenderer targetSize;
+
     void Start()
     {
         float screenRatio = (float)Screen.width / (float)Screen.height;

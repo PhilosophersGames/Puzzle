@@ -18,8 +18,7 @@ public class AdjacentRooms : MonoBehaviour
             neighborRoom[++i] = room.GetComponent<RoomDetector>().room;
         }
     }
-
-    // Update is called once per frame
+        
     void Update()
     {
         neighborRoom = new GameObject[roomDetector.Length];

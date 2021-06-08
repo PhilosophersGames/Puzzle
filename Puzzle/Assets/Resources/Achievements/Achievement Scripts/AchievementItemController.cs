@@ -11,12 +11,15 @@ public class AchievementItemController : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI titleLabel;
     [SerializeField] TextMeshProUGUI descriptionLabel;
+    [SerializeField] private GameObject stampImg;
 
     public bool unlocked;
     
     #pragma warning disable 0649
 
     public Achievement achievement;
+
+    private bool rewardReceived;
 
     public void RefreshView()
     {
@@ -30,6 +33,16 @@ public class AchievementItemController : MonoBehaviour
     private void OnValidate()
     {
         RefreshView();
+    }
+
+    public void GetReward()
+    {
+        if (PlayerPrefs.GetInt(achievement.id, 0) == 1 && !rewardReceived)
+        {
+            stampImg.SetActive(true);
+            GameObject.Find("User").transform.GetComponent<User>().UpdateUserMoney(achievement.reward);
+            rewardReceived = true;
+        }
     }
 }
 

@@ -45,7 +45,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6696216003618638605}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!114 &6600680167154765051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ RectTransform:
   m_GameObject: {fileID: 8400163394799020889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 6854924903040906136}
   m_Father: {fileID: 0}
@@ -208,7 +208,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.64, y: 0.64}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5120915236996037442
 CanvasRenderer:
@@ -275,3 +275,4 @@ MonoBehaviour:
   canvas: {fileID: 0}
   initialSlot: {fileID: 0}
   elementID: 0
+  isItColorSlot: 0

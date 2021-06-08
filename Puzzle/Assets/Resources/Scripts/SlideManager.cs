@@ -19,15 +19,5 @@ public class SlideManager : MonoBehaviour
     {
         drawBorderCollider = false;
         thereIsColliders = true;
-     //   coroutine = ChangeBool();
-      //  StartCoroutine(coroutine);
     }
-    /*public IEnumerator ChangeBool()
-    {
-        float waitTime = 0.01f;
-
-        yield return new WaitForSeconds(waitTime);
-        drawBorderCollider = false;
-        thereIsColliders = true;
-    }*/
 }

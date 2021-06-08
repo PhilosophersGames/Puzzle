@@ -11,6 +11,7 @@ public class RoomDetector : MonoBehaviour
     public GameObject slidableRoom;
 
     public bool isSlidable;
+
     public Collider2D col;
 
     private GameObject[] bigRooms;
@@ -19,15 +20,31 @@ public class RoomDetector : MonoBehaviour
 
     public float offset;
 
+    public GameObject player;
+
+    public GameObject[] phantoms;
+
+    public GameObject[] laserBoxes;
+
+    public GameObject[] mirrors;
+
+    public GameObject[] objects;
+
     void Awake()
     {
         col = GetComponentInChildren<BoxCollider2D>();
         rooms = GameObject.FindGameObjectWithTag("RoomsContainer");
+        player = GameObject.Find("Player");
+        phantoms = GameObject.FindGameObjectsWithTag("Phantom");
+        laserBoxes = GameObject.FindGameObjectsWithTag("LaserBox");
+        mirrors = GameObject.FindGameObjectsWithTag("Mirror");
+        objects = GameObject.FindGameObjectsWithTag("Object");
+
     }
 
     void Update()
     {
-        if (rooms.GetComponent<SlideManager>().drawBorderCollider == false)
+        if (rooms.GetComponent<SlideManager>().drawBorderCollider == false && IsPlayerHere())
         {
             CheckBorderLimit();
         }
@@ -39,6 +56,34 @@ public class RoomDetector : MonoBehaviour
         {
             isSlidable = false;
         }
+    }
+
+    public bool IsPlayerHere()
+    {
+        objects = GameObject.FindGameObjectsWithTag("Object");
+        if (this.gameObject.transform.parent.transform.parent == player.transform.parent.transform.parent)
+            return (true);
+        foreach (GameObject phantom in phantoms)
+        {
+            if (this.gameObject.transform.parent.transform.parent == phantom.transform.parent.transform.parent)
+                return (true);
+        }
+        foreach (GameObject laserBox in laserBoxes)
+        {
+            if (this.gameObject.transform.parent.transform.parent == laserBox.transform.parent.transform.parent)
+                return (true);
+        }
+        foreach (GameObject mirror in mirrors)
+        {
+            if (this.gameObject.transform.parent.transform.parent == mirror.transform.parent.transform.parent)
+                return (true);
+        }
+        foreach (GameObject smallObject in objects)
+        {
+            if (this.gameObject.transform.parent.transform.parent == smallObject.transform.parent.transform.parent)
+                return (true);
+        }
+        return (false);
     }
 
     public void CheckBorderLimit()
