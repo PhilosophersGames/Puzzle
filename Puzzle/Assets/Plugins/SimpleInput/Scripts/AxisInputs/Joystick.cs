@@ -193,7 +193,7 @@ namespace SimpleInputNamespace
 
 		public void OnPointerUp( PointerEventData eventData )
 		{
-			rotationButtons.SetActive(true);
+			//rotationButtons.SetActive(true);
 			fakeJoystick.SetActive(true);
 			joystickHeld = false;
 			m_value = Vector2.zero;
