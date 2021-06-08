@@ -28,6 +28,12 @@ public class AchievementItemController : MonoBehaviour
 
         unlockedIcon.enabled = unlocked;
         lockedIcon.enabled = !unlocked;
+
+        if(PlayerPrefs.GetInt($"{achievement.id.ToString()}rewardReceived", 0) == 1)
+        {
+            rewardReceived = true;
+            stampImg.SetActive(true);
+        }
     }
 
     private void OnValidate()
@@ -40,10 +46,10 @@ public class AchievementItemController : MonoBehaviour
         if (PlayerPrefs.GetInt(achievement.id, 0) == 1 && !rewardReceived)
         {
             stampImg.SetActive(true);
+            // Need to work on a function which returns multiple reward outputs (coins, trails, skins, colors...)//
             GameObject.Find("User").transform.GetComponent<User>().UpdateUserMoney(achievement.reward);
             rewardReceived = true;
+            PlayerPrefs.SetInt($"{achievement.id.ToString()}rewardReceived", 1);
         }
     }
 }
-
-
