@@ -11,6 +11,7 @@ public class MenuButtons : MonoBehaviour
     public GameObject MenuCanvas;
     public GameObject SettingsCanvas;
     public GameObject bestScore;
+    private const string RewardedAdUnitId = "9a93e73ff295f688";
 
     private bool[] Unlocklevel;
 
@@ -99,5 +100,17 @@ private void StartLevel()
         {
             Debug.Log("No Save");
         }
-}
+    }
+
+    public void ShowRewardedAd()
+    {
+        if (MaxSdk.IsRewardedAdReady(RewardedAdUnitId))
+        {
+            MaxSdk.ShowRewardedAd(RewardedAdUnitId);
+        }
+        else
+        {
+            Debug.Log("Ad not ready");
+        }
+    }
 }
