@@ -39,16 +39,16 @@ public class SkinSlot : MonoBehaviour
         /// element id = 5 -> TILES
         if(transform.childCount > 1 && PlayerPrefs.GetInt($"AssignedTilesSlot") == 0 && transform.GetChild(1).gameObject.GetComponent<DragDrop>().elementID == 5)
             PlayerPrefs.SetInt("AssignedTilesSlot", slotID + 1);
-            if(PlayerPrefs.GetInt("AssignedTilesSlot") == slotID + 1 && transform.GetChild(1).gameObject.GetComponent<DragDrop>().elementID == 5)
-            {
-                element.transform.position = transform.position;
-                element.transform.SetParent(transform);
-            }
+        if (transform.childCount > 1 && PlayerPrefs.GetInt("AssignedTilesSlot") == slotID + 1 && transform.GetChild(1).gameObject.GetComponent<DragDrop>().elementID == 5)
+        {
+            element.transform.position = transform.position;
+            element.transform.SetParent(transform);
+        }
         player = GameObject.FindGameObjectWithTag("Player");
         if(slotID != 0)
-        isUnlocked = PlayerPrefs.GetInt($"Skin{slotID.ToString()}LockState") == 1 ? true : false;
+            isUnlocked = PlayerPrefs.GetInt($"Skin{slotID.ToString()}LockState") == 1 ? true : false;
         if(isUnlocked)
-        transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(false);
         skinManager = GameObject.FindGameObjectWithTag("SkinManager");
     }
 
@@ -59,8 +59,10 @@ public class SkinSlot : MonoBehaviour
            if (transform.GetChild(1).GetComponent<DragDrop>().elementID == 4)
            {
                 player.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
-                if(joystickThumb)
+                if(joystickThumb.activeSelf)
+                {
                     joystickThumb.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
+                }
            }
            else if (transform.GetChild(1).GetComponent<DragDrop>().elementID == 5)
            {

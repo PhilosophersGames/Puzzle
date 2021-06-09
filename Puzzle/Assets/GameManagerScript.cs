@@ -10,14 +10,11 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         slideArray = GameObject.FindGameObjectsWithTag("Rail");
-        if (GameObject.FindGameObjectWithTag("Boss"))
+        foreach (GameObject slide in slideArray)
         {
-            foreach (GameObject slide in slideArray)
-            {
-                slide.transform.parent = null;
-                slide.GetComponent<SpriteRenderer>().color = Color.blue;
-
-            }
+            slide.transform.parent = null;
+            if (GameObject.FindGameObjectWithTag("Boss"))
+               slide.GetComponent<SpriteRenderer>().color = Color.blue;
         }
     }
 

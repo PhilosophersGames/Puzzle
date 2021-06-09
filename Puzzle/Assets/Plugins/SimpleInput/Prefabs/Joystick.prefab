@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 222141538447059830}
   - component: {fileID: 114675716580427132}
   - component: {fileID: 114282555968907678}
-  - component: {fileID: 1346233053904281445}
   m_Layer: 5
   m_Name: Joystick
   m_TagString: Untagged
@@ -105,32 +104,6 @@ MonoBehaviour:
   canFollowPointer: 0
   rotationButtons: {fileID: 0}
   fakeJoystick: {fileID: 0}
---- !u!114 &1346233053904281445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531213445540486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20e19340d889f4544b389f4ea4717d77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actualTrail: {fileID: 0}
-  actualTrailID: -1
-  referenceTrails:
-  - {fileID: 125742, guid: 552b7b5872bf41745810a0b7bdabf440, type: 3}
-  - {fileID: 1526286183916428, guid: 5dc2b5550eec55d47b8322e441e1d169, type: 3}
-  - {fileID: 125638, guid: 36c40fe19a4447d468678ecd395846df, type: 3}
-  - {fileID: 106092, guid: faed733be55ec8345802e8121b1b1952, type: 3}
-  - {fileID: 1752594976691668560, guid: e0e71a8b92e80b24fa46f9cca4e68616, type: 3}
-  - {fileID: 185524, guid: 7ef15b3b75916c044aa8aa197b362208, type: 3}
-  - {fileID: 130200, guid: 23818e20c9fcaa74eae69d5f3348c74d, type: 3}
-  - {fileID: 4975027725073113001, guid: 08700aaac169320448dace5d60703bf5, type: 3}
-  - {fileID: 6974158122119720640, guid: 6da5f4400fece6d45a1f42711b4e51d3, type: 3}
-  - {fileID: 4106831077093760142, guid: c589f19248f6261449dbefa528510a32, type: 3}
-  isItHamster: 0
 --- !u!1 &1615126503581138
 GameObject:
   m_ObjectHideFlags: 0
