@@ -79,7 +79,6 @@ public class Score : MonoBehaviour
 
     /// Save StarScore of all the levels
 
-
     void GetChapterAndLevelId()
     {
         string tab = SceneManager.GetActiveScene().name;

@@ -1,50 +1,118 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.Advertisements;
+using UnityEngine.UI;
 
-public class AdsManager : MonoBehaviour, IUnityAdsListener
+public class AdsManager : MonoBehaviour
 {
-    string gameId = "rewardedVideo";
-    private int wallet;
+    private const string MaxSdkKey = "tLxZHAemiZ1tuwIQbt8N2G-imGZINgShlz7b33by00Fy6qP8rOJ0zzPdzpArEnBeI7e5c5ZXvTRU_bDieTiiZf";
+    private const string RewardedAdUnitId = "9a93e73ff295f688";
+
+    public Button showRewardedButton; 
+    private int rewardedRetryAttempt;
+    [SerializeField] private GameObject user;
 
     void Start()
     {
-        Advertisement.AddListener(this);
-        Advertisement.Initialize("4016577", true);
-    }
+        showRewardedButton.onClick.AddListener(ShowRewardedAd);
 
-    private void OnDisable()
-    {
-        Advertisement.RemoveListener(this);
-    }
-    public void ShowAd(string p)
-    {
-        Advertisement.Show(p);
-    }
-
-    public void OnUnityAdsDidFinish(string gameId, ShowResult showResult)
-    {
-        if (showResult == ShowResult.Finished)
+        MaxSdkCallbacks.OnSdkInitializedEvent += sdkConfiguration =>
         {
-          //  GameObject.Find("User").transform.GetComponent<User>().UpdateUserMoney(1);
-            Debug.Log("User rewarded");
-         //   Advertisement.RemoveListener(this);
-        }
-        else if (showResult == ShowResult.Failed)
+            // AppLovin SDK is initialized, configure and start loading ads.
+            Debug.Log("MAX SDK Initialized");
+
+            InitializeRewardedAds();
+            MaxSdk.ShowMediationDebugger();
+        };
+
+        MaxSdk.SetSdkKey(MaxSdkKey);
+        MaxSdk.InitializeSdk();
+    }
+
+    #region Rewarded Ad Methods
+
+    private void InitializeRewardedAds()
+    {
+        // Attach callbacks
+        MaxSdkCallbacks.OnRewardedAdLoadedEvent += OnRewardedAdLoadedEvent;
+        MaxSdkCallbacks.OnRewardedAdLoadFailedEvent += OnRewardedAdFailedEvent;
+        MaxSdkCallbacks.OnRewardedAdFailedToDisplayEvent += OnRewardedAdFailedToDisplayEvent;
+        MaxSdkCallbacks.OnRewardedAdDisplayedEvent += OnRewardedAdDisplayedEvent;
+        MaxSdkCallbacks.OnRewardedAdClickedEvent += OnRewardedAdClickedEvent;
+        MaxSdkCallbacks.OnRewardedAdHiddenEvent += OnRewardedAdDismissedEvent;
+        MaxSdkCallbacks.OnRewardedAdReceivedRewardEvent += OnRewardedAdReceivedRewardEvent;
+
+        // Load the first RewardedAd
+        LoadRewardedAd();
+    }
+
+    private void LoadRewardedAd()
+    {
+        MaxSdk.LoadRewardedAd(RewardedAdUnitId);
+    }
+
+    private void ShowRewardedAd()
+    {
+        if (MaxSdk.IsRewardedAdReady(RewardedAdUnitId))
         {
-            Debug.Log("FAIL");
+            MaxSdk.ShowRewardedAd(RewardedAdUnitId);
+        }
+        else
+        {
+           Debug.Log("Rewarded not ready");
         }
     }
-    public void OnUnityAdsDidStart(string gameId)
-    {
 
-    }
-    public void OnUnityAdsReady(string gameId)
+    private void OnRewardedAdLoadedEvent(string adUnitId)
     {
+        // Rewarded ad is ready to be shown. MaxSdk.IsRewardedAdReady(rewardedAdUnitId) will now return 'true'
+        Debug.Log("Rewarded ad loaded");
+        
+        // Reset retry attempt
+        rewardedRetryAttempt = 0;
     }
 
-    public void OnUnityAdsDidError(string gameId)
+    private void OnRewardedAdFailedEvent(string adUnitId, int errorCode)
     {
-    } 
+        // Rewarded ad failed to load. We recommend retrying with exponentially higher delays up to a maximum delay (in this case 64 seconds).
+        rewardedRetryAttempt++;
+        double retryDelay = Math.Pow(2, Math.Min(6, rewardedRetryAttempt));
+        
+        Debug.Log("Rewarded ad failed to load with error code: " + errorCode);
+        
+        Invoke("LoadRewardedAd", (float) retryDelay);
+    }
+
+    private void OnRewardedAdFailedToDisplayEvent(string adUnitId, int errorCode)
+    {
+        // Rewarded ad failed to display. We recommend loading the next ad
+        Debug.Log("Rewarded ad failed to display with error code: " + errorCode);
+        LoadRewardedAd();
+    }
+
+    private void OnRewardedAdDisplayedEvent(string adUnitId)
+    {
+        Debug.Log("Rewarded ad displayed");
+    }
+
+    private void OnRewardedAdClickedEvent(string adUnitId)
+    {
+        Debug.Log("Rewarded ad clicked");
+    }
+
+    private void OnRewardedAdDismissedEvent(string adUnitId)
+    {
+        // Rewarded ad is hidden. Pre-load the next ad
+        Debug.Log("Rewarded ad dismissed");
+        LoadRewardedAd();
+    }
+
+    private void OnRewardedAdReceivedRewardEvent(string adUnitId, MaxSdk.Reward reward)
+    {
+        // Rewarded ad was displayed and user should receive the reward
+
+        user.GetComponent<User>().UpdateUserMoney(100);
+        Debug.Log("Rewarded ad received reward");
+    }
+
+    #endregion
 }
