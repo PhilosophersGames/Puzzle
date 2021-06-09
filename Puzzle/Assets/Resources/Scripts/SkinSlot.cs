@@ -61,7 +61,6 @@ public class SkinSlot : MonoBehaviour
                 player.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
                 if (joystickThumb)
                     joystickThumb.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
-                }
            }
            else if (transform.GetChild(1).GetComponent<DragDrop>().elementID == 5)
            {
@@ -90,14 +89,14 @@ public class SkinSlot : MonoBehaviour
         BuyConfirmationPanel.GetComponent<BuyColorSlotConfirmationPanel>().colorSlot = gameObject;
     }
 
-        public void DisableBuyConfirmationPanel()
+    public void DisableBuyConfirmationPanel()
     {
         BuyConfirmationPanel.SetActive(false);
     }
 
     public void PurchaseColor(bool purchase)
     {
-        if(purchase && skinPrice <= User.GetComponent<User>().wallet)
+        if (purchase && skinPrice <= User.GetComponent<User>().wallet)
         {
             isUnlocked = true;
             PlayerPrefs.SetInt($"Skin{slotID.ToString()}LockState", 1);
