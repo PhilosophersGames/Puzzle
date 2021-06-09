@@ -47,7 +47,10 @@ MonoBehaviour:
   Unlocklevel: 
   achievementManager: {fileID: 7599364842064851026}
   achievementLeastRotations: {fileID: 5952267512645118375}
+  UIEndScreen: {fileID: 0}
+  scoreStars: {fileID: 0}
   rewardLevels: 
+  achievementsUnlock: {fileID: 5424452525260530785}
 --- !u!114 &5952267512645118375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,5 +216,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17b532363379d48acadc8aab5d556d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5424452525260530785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5424452524329236434, guid: 51f21e9986571f54f9263336a60fe416,
+    type: 3}
+  m_PrefabInstance: {fileID: 1484952499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7599364842064851025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de26f7c7e697bf842aeb716d29ceea18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
