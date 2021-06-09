@@ -112,7 +112,7 @@ public class AdsManager : MonoBehaviour
 
         user.GetComponent<User>().UpdateUserMoney(100);
         Debug.Log("Rewarded ad received reward");
+        showRewardedButton.gameObject.SetActive(false);
     }
-
     #endregion
 }

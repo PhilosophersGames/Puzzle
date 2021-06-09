@@ -75,27 +75,26 @@ public class TileSwap : MonoBehaviour
 
     public void GenerateSkinAndColliders(TileBase[] newSkin, int newSkinID)
     {
-     
         foreach (GameObject room in rooms)
         {
             if (actualSkinID == 0)
             {
-                room.GetComponent<RoomColorChanger>().path.SwapTile(basicSkin[0], newSkin[0]);
+         //       room.GetComponent<RoomColorChanger>().path.SwapTile(basicSkin[0], newSkin[0]);
                 room.GetComponent<RoomColorChanger>().colider.SwapTile(basicSkin[1], newSkin[1]);
             }
             else if (actualSkinID == 1)
             {
-                room.GetComponent<RoomColorChanger>().path.SwapTile(skinOne[0], newSkin[0]);
+           //     room.GetComponent<RoomColorChanger>().path.SwapTile(skinOne[0], newSkin[0]);
                 room.GetComponent<RoomColorChanger>().colider.SwapTile(skinOne[1], newSkin[1]);
             }
             else if (actualSkinID == 2)
             {
-                room.GetComponent<RoomColorChanger>().path.SwapTile(skinTwo[0], newSkin[0]);
+       //         room.GetComponent<RoomColorChanger>().path.SwapTile(skinTwo[0], newSkin[0]);
                 room.GetComponent<RoomColorChanger>().colider.SwapTile(skinTwo[1], newSkin[1]);
             }
             else if (actualSkinID == 3)
             {
-                room.GetComponent<RoomColorChanger>().path.SwapTile(skinThree[0], newSkin[0]);
+         //       room.GetComponent<RoomColorChanger>().path.SwapTile(skinThree[0], newSkin[0]);
                 room.GetComponent<RoomColorChanger>().colider.SwapTile(skinThree[1], newSkin[1]);
             }
         }

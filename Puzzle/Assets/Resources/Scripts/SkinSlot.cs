@@ -56,10 +56,10 @@ public class SkinSlot : MonoBehaviour
     {
         if (transform.childCount > 1)
         {
-           if (transform.GetChild(1).GetComponent<DragDrop>().elementID == 4)
+           if (transform.GetChild(1).GetComponent<DragDrop>().elementID == 4 && player.GetComponent<HamsterTrail>().actualTrailID != slotID)
            {
                 player.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
-                if(joystickThumb.activeSelf)
+                if(joystickThumb)
                 {
                     joystickThumb.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
                 }
