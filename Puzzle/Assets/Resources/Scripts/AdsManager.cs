@@ -53,7 +53,7 @@ public class AdsManager : MonoBehaviour
         MaxSdk.LoadRewardedAd(RewardedAdUnitId);
     }
 
-    private void ShowRewardedAd()
+    public void ShowRewardedAd()
     {
         if (MaxSdk.IsRewardedAdReady(RewardedAdUnitId))
         {
