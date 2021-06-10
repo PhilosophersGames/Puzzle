@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AdsManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class AdsManager : MonoBehaviour
     public Button showRewardedButton; 
     private int rewardedRetryAttempt;
     [SerializeField] private GameObject user;
+    [SerializeField] private RewardAnimation rewardAnimation;
+    [SerializeField] private bool isMenu;
 
     void Start()
     {
@@ -109,10 +112,13 @@ public class AdsManager : MonoBehaviour
     private void OnRewardedAdReceivedRewardEvent(string adUnitId, MaxSdk.Reward reward)
     {
         // Rewarded ad was displayed and user should receive the reward
-
         user.GetComponent<User>().UpdateUserMoney(100);
+        if(!isMenu)
+        {
+            rewardAnimation.UpdateRewardAmount(100);
+            showRewardedButton.gameObject.SetActive(false);
+        }
         Debug.Log("Rewarded ad received reward");
-        showRewardedButton.gameObject.SetActive(false);
     }
     #endregion
 }

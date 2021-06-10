@@ -60,7 +60,6 @@ public class SkinSlot : MonoBehaviour
            {
                 player.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
                 if(joystickThumb)
-                {
                     joystickThumb.GetComponent<HamsterTrail>().SendMessage("ChangeTrail", slotID);
            }
            else if (transform.GetChild(1).GetComponent<DragDrop>().elementID == 5)

@@ -7,22 +7,19 @@ public class RewardAnimation : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI goldText;
     [SerializeField] private int gold;
-                     private int frame;
-    [SerializeField] private int speed;
     [SerializeField] private int amount;
-
-    private void Start()
-    {
-        amount = 100;
-    }
 
     void Update()
     {
-        frame++;
-        if (((amount / speed) %  frame) == 0 && gold < amount)
+        if (gold < amount)
         {
-            gold++;
-            goldText.text = gold.ToString();
+            gold += 2;
+            goldText.text = $"+{gold.ToString()}";
         }
+    }
+    
+    public void UpdateRewardAmount(int newValue)
+    {
+        amount += newValue;
     }
 }
