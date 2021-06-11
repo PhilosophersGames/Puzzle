@@ -374,7 +374,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &95214444
 RectTransform:
@@ -27225,7 +27225,7 @@ PrefabInstance:
     - target: {fileID: 1761236689295517106, guid: 376e2baf9ae6b4cf7b141b417f47db61,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1761236689295517106, guid: 376e2baf9ae6b4cf7b141b417f47db61,
         type: 3}
@@ -27236,11 +27236,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 922621622}
     - target: {fileID: 1761236689295517106, guid: 376e2baf9ae6b4cf7b141b417f47db61,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowAd
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 1761236689295517106, guid: 376e2baf9ae6b4cf7b141b417f47db61,
         type: 3}
@@ -27251,6 +27251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: rewardedVideo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761236689295517106, guid: 376e2baf9ae6b4cf7b141b417f47db61,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1761236689295517107, guid: 376e2baf9ae6b4cf7b141b417f47db61,
         type: 3}
@@ -30449,6 +30454,16 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4332400247110610044, guid: 851709e2e5c735e4183cdb69a1b84d9b,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332400247110610044, guid: 851709e2e5c735e4183cdb69a1b84d9b,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1555678495}
     - target: {fileID: 4332400247110610045, guid: 851709e2e5c735e4183cdb69a1b84d9b,
         type: 3}
       propertyPath: m_ReferenceResolution.x

@@ -10,13 +10,13 @@ public class AdsManager : MonoBehaviour
 
     public Button showRewardedButton; 
     private int rewardedRetryAttempt;
-    [SerializeField] private GameObject user;
+    public GameObject user;
     [SerializeField] private RewardAnimation rewardAnimation;
     [SerializeField] private bool isMenu;
 
     void Start()
     {
-        showRewardedButton.onClick.AddListener(ShowRewardedAd);
+            showRewardedButton.onClick.AddListener(ShowRewardedAd);
 
         MaxSdkCallbacks.OnSdkInitializedEvent += sdkConfiguration =>
         {
@@ -112,11 +112,12 @@ public class AdsManager : MonoBehaviour
     private void OnRewardedAdReceivedRewardEvent(string adUnitId, MaxSdk.Reward reward)
     {
         // Rewarded ad was displayed and user should receive the reward
+        user = GameObject.FindWithTag("User");
         user.GetComponent<User>().UpdateUserMoney(100);
         if(!isMenu)
         {
             rewardAnimation.UpdateRewardAmount(100);
-            showRewardedButton.gameObject.SetActive(false);
+          //  showRewardedButton.gameObject.SetActive(false);
         }
         Debug.Log("Rewarded ad received reward");
     }
