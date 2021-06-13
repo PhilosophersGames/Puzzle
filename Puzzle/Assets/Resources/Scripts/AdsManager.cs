@@ -7,6 +7,7 @@ public class AdsManager : MonoBehaviour
 {
     private const string MaxSdkKey = "tLxZHAemiZ1tuwIQbt8N2G-imGZINgShlz7b33by00Fy6qP8rOJ0zzPdzpArEnBeI7e5c5ZXvTRU_bDieTiiZf";
     private const string RewardedAdUnitId = "9a93e73ff295f688";
+    private const string RewardedAdUnitIdAndroid = "6f36fbc950e51236";
 
     public Button showRewardedButton; 
     private int rewardedRetryAttempt;
@@ -18,17 +19,20 @@ public class AdsManager : MonoBehaviour
     {
             showRewardedButton.onClick.AddListener(ShowRewardedAd);
 
+        if (isMenu)
+        {
         MaxSdkCallbacks.OnSdkInitializedEvent += sdkConfiguration =>
         {
-            // AppLovin SDK is initialized, configure and start loading ads.
-            Debug.Log("MAX SDK Initialized");
+                // AppLovin SDK is initialized, configure and start loading ads.
+                Debug.Log("MAX SDK Initialized");
 
-            InitializeRewardedAds();
-            MaxSdk.ShowMediationDebugger();
-        };
+                InitializeRewardedAds();
+                MaxSdk.ShowMediationDebugger();
+            };
 
-        MaxSdk.SetSdkKey(MaxSdkKey);
-        MaxSdk.InitializeSdk();
+            MaxSdk.SetSdkKey(MaxSdkKey);
+            MaxSdk.InitializeSdk();
+            }
     }
 
     #region Rewarded Ad Methods
@@ -50,11 +54,17 @@ public class AdsManager : MonoBehaviour
 
     private void LoadRewardedAd()
     {
+        #if UNITY_IOS
         MaxSdk.LoadRewardedAd(RewardedAdUnitId);
+        #endif
+        #if UNITY_ANDROID
+        MaxSdk.LoadRewardedAd(RewardedAdUnitIdAndroid);
+        #endif
     }
 
     public void ShowRewardedAd()
     {
+        #if UNITY_IOS
         if (MaxSdk.IsRewardedAdReady(RewardedAdUnitId))
         {
             MaxSdk.ShowRewardedAd(RewardedAdUnitId);
@@ -63,6 +73,17 @@ public class AdsManager : MonoBehaviour
         {
            Debug.Log("Rewarded not ready");
         }
+        #endif
+        #if UNITY_ANDROID
+        if (MaxSdk.IsRewardedAdReady(RewardedAdUnitIdAndroid))
+        {
+            MaxSdk.ShowRewardedAd(RewardedAdUnitIdAndroid);
+        }
+        else
+        {
+           Debug.Log("Rewarded not ready");
+        }
+        #endif
     }
 
     private void OnRewardedAdLoadedEvent(string adUnitId)
