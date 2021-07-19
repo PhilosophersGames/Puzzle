@@ -30,7 +30,6 @@ public class HamsterTrail : MonoBehaviour
 
     public void ChangeTrail(int newTrailID)
     {
-        
         if (!actualTrail || (actualTrail && actualTrailID != newTrailID))
         {
             newColorID = GameObject.FindGameObjectWithTag("SkinManager").GetComponent<TileSwap>().colorHamsterID;
