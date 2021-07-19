@@ -56,7 +56,7 @@ public class TileSwap : MonoBehaviour
     {
         hamsterBall = GameObject.Find("HamsterBall");
         rooms = GameObject.FindGameObjectsWithTag("RoomSkin");
-        backgroundVFX = GameObject.Find("BackGroundsVFX");
+     //   backgroundVFX = GameObject.Find("BackGroundsVFX");
         foreach (GameObject room in rooms)
         {
             room.GetComponent<RoomColorChanger>().path.SwapTile(startSkin[0], basicSkin[0]);
@@ -65,12 +65,13 @@ public class TileSwap : MonoBehaviour
             room.GetComponent<RoomColorChanger>().colider.SwapTile(startSkin[3], basicSkin[1]);
             room.GetComponent<RoomColorChanger>().colider.gameObject.GetComponent<CompositeCollider2D>().GenerateGeometry();
         }
-        for (int i = 0; i < backgroundVFX.transform.childCount; i++)
+    /*     for (int i = 0; i < backgroundVFX.transform.childCount; i++)
         {
             backgroundVFX.transform.GetChild(i).gameObject.SetActive(false);
         }
         if (backgroundVFX.transform.childCount > actualSkinID)
             backgroundVFX.transform.GetChild(actualSkinID).gameObject.SetActive(true);
+    */
     }
 
     public void GenerateSkinAndColliders(TileBase[] newSkin, int newSkinID)
