@@ -99,12 +99,13 @@ public class TileSwap : MonoBehaviour
                 room.GetComponent<RoomColorChanger>().colider.SwapTile(skinThree[1], newSkin[1]);
             }
         }
-        for (int i = 0; i < backgroundVFX.transform.childCount; i++)
+       /* for (int i = 0; i < backgroundVFX.transform.childCount; i++)
         {
             backgroundVFX.transform.GetChild(i).gameObject.SetActive(false);
         }
         if (backgroundVFX.transform.childCount > newSkinID)
             backgroundVFX.transform.GetChild(newSkinID).gameObject.SetActive(true);
+        */
         actualSkinID = newSkinID;
     }
 
